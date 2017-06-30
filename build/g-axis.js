@@ -31,7 +31,7 @@
 				scale.paddingInner(0.2);
 			}
 
-			yLabel = parent.append('g')
+			let yLabel = parent.append('g')
 				.attr('class', 'axis yAxis')
 				.call(yAxis);
 
