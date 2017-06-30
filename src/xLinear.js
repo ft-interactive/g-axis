@@ -28,11 +28,10 @@ export default function () {
 	}
 
 	axis.align = (d) => {
-		if (d === undefined) return align;
+		if (!d) return align;
 		align = d;
 		return axis;
 	};
-
 	axis.scale = (d) => {
 		if (!d) return scale;
 		scale = d;
