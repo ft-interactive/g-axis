@@ -89,7 +89,7 @@
 		let labelWidth = 0;
 		let tickSize = 0;
 		let offset = 0;
-		let yLabel
+		let yLabel;
 
 		function axis(parent) {
 			const yAxis = getAxis(align)
@@ -111,6 +111,9 @@
 			function () {
 				labelWidth = Math.max(this.getBBox().width, labelWidth);
 			});
+
+			parent.selectAll('.axis.yAxis text')
+				.attr('id', 'yAxisLabel');
 		}
 
 		axis.scale = (d) => {
