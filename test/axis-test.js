@@ -1,7 +1,7 @@
 const tape = require('tape'); // eslint-disable-line
-const foo = require('../');
+const axis = require('../');
 
 tape('foo() returns the answer to the ultimate question of life, the universe, and everything.', (test) => {
-	test.equal(foo.foo(), 42);
+	test.equal(axis.yOrdinal().labelWidth(), 0);
 	test.end();
 });
