@@ -19,9 +19,8 @@ export default function () {
 		if (scale.domain.length > 1) {
 			scale.paddingInner(0.1);
 		}
-		else {
-			scale.paddingInner(0.2);
-		}
+
+		else {scale.paddingInner(0.2)};
 
 		let yLabel = parent.append('g')
 			.attr('class', 'axis yAxis')
@@ -59,7 +58,7 @@ export default function () {
 	};
 	axis.yLabel = (d) => {
 		if (d === undefined) return yLabel;
-		labelWidth = d;
+		yLabel = d;
 		return axis;
 	};
 	axis.paddingInner = (d) => {
