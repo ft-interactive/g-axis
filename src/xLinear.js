@@ -28,6 +28,7 @@ export default function () {
 	}
 
 	axis.align = (d) => {
+		if (d === undefined) return align;
 		align = d;
 		return axis;
 	};
