@@ -4,7 +4,7 @@
 	(factory((global.gAxis = global.gAxis || {}),global.d3));
 }(this, function (exports,d3) { 'use strict';
 
-	function xFoo () {
+	function xLinear () {
 		return 42;
 	}
 
@@ -105,7 +105,7 @@
 		return axis;
 	}
 
-	exports.xFoo = xFoo;
+	exports.xLinear = xLinear;
 	exports.yOrdinal = yOrdinal;
 
 	Object.defineProperty(exports, '__esModule', { value: true });

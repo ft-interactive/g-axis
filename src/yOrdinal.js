@@ -10,6 +10,7 @@ export default function () {
 	let labelWidth = 0;
 	let tickSize = 0;
 	let offset = 0;
+	let yLabel
 
 	function axis(parent) {
 		const yAxis = getAxis(align)
@@ -22,7 +23,7 @@ export default function () {
 
 		else {scale.paddingInner(0.2)};
 
-		let yLabel = parent.append('g')
+		yLabel = parent.append('g')
 			.attr('class', 'axis yAxis')
 			.call(yAxis);
 
