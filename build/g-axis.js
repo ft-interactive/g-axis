@@ -11,24 +11,35 @@
 	function yOrdinal () {
 		let align = 'left';
 		let scale = d3.scaleBand()
-	        .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
+			.domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
 	        .rangeRound([0, 220])
 	        .paddingInner(0.1)
-	        .paddingOuter(0.05);
+			.paddingOuter(0.05);
 		let labelWidth = 0;
 		let tickSize = 0;
 		let offset = 0;
 
 		function axis(parent) {
-			const xAxis = getAxis()
+			const yAxis = getAxis(align)
 	            .tickSize(tickSize)
-				.scale(scale);
+	            .scale(scale);
 
-			const yLabel = parent.append('g')
-				.attr('class', 'axis xAxis')
-				.call(xAxis);
+			if (scale.domain.length > 1) {
+				scale.paddingInner(0.1);
+			}
+			else {
+				scale.paddingInner(0.2);
+			}
 
-			yLabel.attr('transform', 'translate(0, ' + (offset) + ')');
+			yLabel = parent.append('g')
+				.attr('class', 'axis yAxis')
+				.call(yAxis);
+
+			//Calculate width of widest .tick text
+			parent.selectAll('.yAxis text').each(
+			function () {
+				labelWidth = Math.max(this.getBBox().width, labelWidth);
+			});
 		}
 
 		axis.scale = (d) => {
@@ -85,12 +96,13 @@
 			return axis;
 		};
 
-		function getAxis (alignment) {
-			return {
+		function getAxis(alignment) {
+			return{
 				'left': d3.axisLeft(),
-				'right': d3.axisRight(),
+				'right':d3.axisRight()
 			} [alignment];
 		}
+
 		return axis;
 	}
 
