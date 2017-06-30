@@ -12,7 +12,7 @@ export default function () {
 	let offset = 0;
 
 	function axis(parent) {
-		const xAxis = d3.getAxis()
+		const xAxis = getAxis()
             .tickSize(tickSize)
 			.scale(scale);
 
