@@ -14,6 +14,13 @@
 		let xAxisHighlight = 0;
 		let xLabel;
 
+		function getAxis(alignment) {
+			return {
+				top: d3.axisTop(),
+				bottom: d3.axisBottom(),
+			}[alignment];
+		}
+
 		function axis(parent) {
 			const xAxis = getAxis(align)
 				.tickSize(tickSize)
@@ -24,10 +31,8 @@
 				.attr('class', 'axis xAxis')
 				.call(xAxis);
 
-			const origin = xLabel.selectAll('.tick')
-				.filter(function (d) {
-					return d === 0 || d === xAxisHighlight;
-				})
+			xLabel.selectAll('.tick')
+				.filter(d => d === 0 || d === xAxisHighlight)
 				.classed('baseline', true);
 		}
 
@@ -69,13 +74,6 @@
 			return axis;
 		};
 
-		function getAxis(alignment) {
-			return{
-	            'top': d3.axisTop(),
-	            'bottom':d3.axisBottom()
-	        } [alignment];
-		}
-
 		return axis;
 	}
 
@@ -91,24 +89,28 @@
 		let offset = 0;
 		let yLabel;
 
+		function getAxis(alignment) {
+			return {
+				left: d3.axisLeft(),
+				right: d3.axisRight(),
+			}[alignment];
+		}
+
 		function axis(parent) {
 			const yAxis = getAxis(align)
-	            .tickSize(tickSize)
-	            .scale(scale);
+				.tickSize(tickSize)
+				.scale(scale);
 
 			if (scale.domain.length > 1) {
 				scale.paddingInner(0.1);
-			}
-
-			else {scale.paddingInner(0.2)};
+			}		else { scale.paddingInner(0.2); }
 
 			yLabel = parent.append('g')
 				.attr('class', 'axis yAxis')
 				.call(yAxis);
 
-			//Calculate width of widest .tick text
-			parent.selectAll('.yAxis text').each(
-			function () {
+			// Calculate width of widest .tick text
+			parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
 				labelWidth = Math.max(this.getBBox().width, labelWidth);
 			});
 
@@ -170,18 +172,100 @@
 			return axis;
 		};
 
+		return axis;
+	}
+
+	function yLinear () {
+		let scale = d3.scaleLinear()
+			.domain([0, 10000])
+			.range([120, 0]);
+		let align = 'right';
+		let labelWidth = 0;
+		let tickSize = 300;
+		let yAxisHighlight = 0;
+		let numTicks = 5;
+		let yLabel;
+
 		function getAxis(alignment) {
-			return{
-				'left': d3.axisLeft(),
-				'right':d3.axisRight()
-			} [alignment];
+			return {
+				left: d3.axisLeft(),
+				right: d3.axisRight(),
+			}[alignment];
 		}
+
+		function axis(parent) {
+			const yAxis = getAxis(align)
+				.ticks(numTicks)
+				.scale(scale);
+
+			yLabel = parent.append('g')
+				.attr('class', 'axis yAxis')
+				.call(yAxis);
+
+			// Calculate width of widest .tick text
+			parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
+				labelWidth = Math.max(this.getBBox().width, labelWidth);
+			});
+
+	        // Use this to amend the tickSIze and re cal the vAxis
+			yLabel.call(yAxis.tickSize(tickSize - labelWidth));
+
+			yLabel.selectAll('.tick')
+				.filter(d => d === 0 || d === yAxisHighlight)
+				.classed('baseline', true);
+		}
+
+		axis.scale = (d) => {
+			scale = d;
+			return axis;
+		};
+		axis.domain = (d) => {
+			scale.domain(d);
+			return axis;
+		};
+		axis.range = (d) => {
+			scale.range(d);
+			return axis;
+		};
+		axis.align = (d) => {
+			align = d;
+			return axis;
+		};
+		axis.labelWidth = (d) => {
+			if (d === undefined) return labelWidth;
+			labelWidth = d;
+			return axis;
+		};
+		axis.tickSize = (d) => {
+			if (d === undefined) return tickSize;
+			tickSize = d;
+			return axis;
+		};
+		axis.yAxisHighlight = (d) => {
+			yAxisHighlight = d;
+			return axis;
+		};
+		axis.numTicks = (d) => {
+			numTicks = d;
+			return axis;
+		};
+		axis.align = (d) => {
+			if (!d) return align;
+			align = d;
+			return axis;
+		};
+		axis.yLabel = (d) => {
+			if (d === undefined) return yLabel;
+			yLabel = d;
+			return axis;
+		};
 
 		return axis;
 	}
 
 	exports.xLinear = xLinear;
 	exports.yOrdinal = yOrdinal;
+	exports.yLinear = yLinear;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 

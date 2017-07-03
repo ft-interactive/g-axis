@@ -10,6 +10,13 @@ export default function () {
 	let xAxisHighlight = 0;
 	let xLabel;
 
+	function getAxis(alignment) {
+		return {
+			top: d3.axisTop(),
+			bottom: d3.axisBottom(),
+		}[alignment];
+	}
+
 	function axis(parent) {
 		const xAxis = getAxis(align)
 			.tickSize(tickSize)
@@ -20,10 +27,8 @@ export default function () {
 			.attr('class', 'axis xAxis')
 			.call(xAxis);
 
-		const origin = xLabel.selectAll('.tick')
-			.filter(function (d) {
-				return d === 0 || d === xAxisHighlight;
-			})
+		xLabel.selectAll('.tick')
+			.filter(d => d === 0 || d === xAxisHighlight)
 			.classed('baseline', true);
 	}
 
@@ -64,13 +69,6 @@ export default function () {
 		xAxisHighlight = d;
 		return axis;
 	};
-
-	function getAxis(alignment) {
-		return{
-            'top': d3.axisTop(),
-            'bottom':d3.axisBottom()
-        } [alignment];
-	}
 
 	return axis;
 }

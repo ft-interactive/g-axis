@@ -19,20 +19,26 @@
   },
   "scripts": {
     "pretest": "rm -rf build && mkdir build && rollup --globals d3:d3 -f umd -n gAxis -o build/g-axis.js -- index.js",
-    "test": "tape 'test/**/*-test.js'",
+    "test": "nyc tape 'test/**/*-test.js' | tap-spec",
+    "report": "nyc report --reporter=lcov",
     "prepublish": "npm run test && uglifyjs build/g-axis.js -c -m -o build/g-axis.min.js",
     "postpublish": "zip -j build/g-axis.zip -- LICENSE README.md build/g-axis.js build/g-axis.min.js",
     "lint": "eslint {index.js,src/**/*.js,test/**/*.js}",
-    "lint:fix": "eslint --fix {index.js,src/**/*.js,test/**/*.js}"
+    "lint:fix": "eslint --fix {index.js,src/**/*.js,test/**/*.js}",
+    "posttest": "npm run report",
+    "coverage": "codecov"
   },
   "dependencies": {
     "d3": "^4.9.1"
   },
   "devDependencies": {
+    "codecov": "^2.2.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.6.1",
+    "nyc": "^11.0.3",
     "rollup": "0.27",
+    "tap-spec": "^4.1.1",
     "tape": "4",
     "uglify-js": "2"
   },
@@ -40,9 +46,12 @@
     "extends": "airbnb-base",
     "rules": {
       "indent": [
-        "error", "tab"
+        "error",
+        "tab"
       ],
-      "no-tabs": [0]
+      "no-tabs": [
+        0
+      ]
     }
   }
 }
