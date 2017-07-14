@@ -41,17 +41,5 @@
     "tap-spec": "^4.1.1",
     "tape": "4",
     "uglify-es": "^3.0.23"
-  },
-  "eslintConfig": {
-    "extends": "airbnb-base",
-    "rules": {
-      "indent": [
-        "error",
-        "tab"
-      ],
-      "no-tabs": [
-        0
-      ]
-    }
   }
 }
