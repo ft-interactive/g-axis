@@ -11,28 +11,32 @@ export default function () {
 	let numTicks = 5;
 	let yLabel;
 
+	function getAxis(alignment) {
+		return {
+			left: d3.axisLeft(),
+			right: d3.axisRight(),
+		}[alignment];
+	}
+
 	function axis(parent) {
 		const yAxis = getAxis(align)
-            .ticks(numTicks)
-            .scale(scale);
+			.ticks(numTicks)
+			.scale(scale);
 
 		yLabel = parent.append('g')
-            .attr('class', 'axis yAxis')
-            .call(yAxis);
+			.attr('class', 'axis yAxis')
+			.call(yAxis);
 
-		//Calculate width of widest .tick text
-        parent.selectAll('.yAxis text').each(
-            function(){
-				labelWidth = Math.max(this.getBBox().width, labelWidth);
-			});
+		// Calculate width of widest .tick text
+		parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
+			labelWidth = Math.max(this.getBBox().width, labelWidth);
+		});
 
-        //Use this to amend the tickSIze and re cal the vAxis
+        // Use this to amend the tickSIze and re cal the vAxis
 		yLabel.call(yAxis.tickSize(tickSize - labelWidth));
 
-		const origin = xLabel.selectAll('.tick')
-			.filter(function (d) {
-				return d === 0 || d === yAxisHighlight;
-			})
+		yLabel.selectAll('.tick')
+			.filter(d => d === 0 || d === yAxisHighlight)
 			.classed('baseline', true);
 	}
 
@@ -81,13 +85,5 @@ export default function () {
 		return axis;
 	};
 
-	function getAxis(alignment){
-		return{
-			'left': d3.axisLeft(),
-			'right': d3.axisRight()
-		} [alignment];
-	}
-
 	return axis;
-
 }

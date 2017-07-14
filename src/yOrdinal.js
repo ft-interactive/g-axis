@@ -12,24 +12,28 @@ export default function () {
 	let offset = 0;
 	let yLabel;
 
+	function getAxis(alignment) {
+		return {
+			left: d3.axisLeft(),
+			right: d3.axisRight(),
+		}[alignment];
+	}
+
 	function axis(parent) {
 		const yAxis = getAxis(align)
-            .tickSize(tickSize)
-            .scale(scale);
+			.tickSize(tickSize)
+			.scale(scale);
 
 		if (scale.domain.length > 1) {
 			scale.paddingInner(0.1);
-		}
-
-		else {scale.paddingInner(0.2)};
+		}		else { scale.paddingInner(0.2); }
 
 		yLabel = parent.append('g')
 			.attr('class', 'axis yAxis')
 			.call(yAxis);
 
-		//Calculate width of widest .tick text
-		parent.selectAll('.yAxis text').each(
-		function () {
+		// Calculate width of widest .tick text
+		parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
 			labelWidth = Math.max(this.getBBox().width, labelWidth);
 		});
 
@@ -90,13 +94,6 @@ export default function () {
 		align = d;
 		return axis;
 	};
-
-	function getAxis(alignment) {
-		return{
-			'left': d3.axisLeft(),
-			'right':d3.axisRight()
-		} [alignment];
-	}
 
 	return axis;
 }
