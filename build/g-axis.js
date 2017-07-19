@@ -144,7 +144,7 @@
         };
 
         axis.offset = (d) => {
-            if (d) return offset;
+            if (!d) return offset;
             offset = d;
             return axis;
         };
