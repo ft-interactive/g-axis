@@ -533,6 +533,8 @@
                 labelWidth = Math.max(this.getBBox().width, labelWidth);
             });
 
+            yLabel.call(yAxis.tickSize(tickSize - labelWidth));
+
             parent.selectAll('.axis.yAxis text')
                 .attr('id', 'yAxisLabel');
         }
