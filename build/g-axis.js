@@ -440,6 +440,10 @@
             // Use this to amend the tickSIze and re cal the vAxis
             yLabel.call(yAxis.tickSize(tickSize - labelWidth));
 
+            if(align === 'right') {
+                yLabel.selectAll('.text').attr('transform', `translate(${labelWidth},0)`);
+            }
+
             yLabel.selectAll('.tick')
           .filter(d => d === 0 || d === yAxisHighlight)
           .classed('baseline', true);
