@@ -440,7 +440,7 @@
             // Use this to amend the tickSIze and re cal the vAxis
             yLabel.call(yAxis.tickSize(tickSize - labelWidth));
 
-            if(tickAlign=="right") {
+            if(lign=="right") {
                 yLabel.selectAll("text")
                 .attr("dx",labelWidth)
             }
@@ -495,7 +495,7 @@
             return axis;
         };
 
-        return axis;
+        return axis
     }
 
     function yOrdinal () {
