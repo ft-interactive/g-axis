@@ -440,8 +440,9 @@
             // Use this to amend the tickSIze and re cal the vAxis
             yLabel.call(yAxis.tickSize(tickSize - labelWidth));
 
-            if(align == 'right') {
-                yLabel.selectAll('.text').attr('dx', labelWidth);
+            if(tickAlign=="right") {
+                yLabel.selectAll("text")
+                .attr("dx",labelWidth)
             }
 
             yLabel.selectAll('.tick')
