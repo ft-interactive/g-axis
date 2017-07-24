@@ -35,8 +35,8 @@ export default function () {
         // Use this to amend the tickSIze and re cal the vAxis
         yLabel.call(yAxis.tickSize(tickSize - labelWidth));
 
-        if(align === 'right') {
-            yLabel.selectAll('.text').attr('transform', `translate(${labelWidth},0)`);
+        if(align == 'right') {
+            yLabel.selectAll('.text').attr('dx', labelWidth);
         }
 
         yLabel.selectAll('.tick')
