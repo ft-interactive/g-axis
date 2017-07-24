@@ -35,7 +35,7 @@ export default function () {
         // Use this to amend the tickSIze and re cal the vAxis
         yLabel.call(yAxis.tickSize(tickSize - labelWidth));
 
-        if(align === 'right') {
+        if(align == 'right') {
             yLabel.selectAll('text')
             .attr("dx",labelWidth)
         }
@@ -55,10 +55,6 @@ export default function () {
     };
     axis.range = (d) => {
         scale.range(d);
-        return axis;
-    };
-    axis.align = (d) => {
-        align = d;
         return axis;
     };
     axis.labelWidth = (d) => {
