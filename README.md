@@ -81,7 +81,7 @@ if (align == 'top' ){
 
 #myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [0,220])
 
-#myAxis<b>.fullYear([boolean])</b> used on charts where <b>interval('year')< is used and forces the notation into a full year i.e 1977 instead of 77
+#myAxis<b>.fullYear([boolean])</b> used on charts where <b>interval('year')</b>is used and forces the notation into a full year i.e 1977 instead of 77
 
 #myAxis<b>.interval([String])</b> Defines the tick interval on the axis (see examples). By default this is set to "lustrum" meaning every five years. It can be set to:
  * "century" -- every one hundred years
