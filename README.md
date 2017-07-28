@@ -9,7 +9,6 @@ The FT axis styles---add the folowwing link in your index file header
 
 ``` html
 <link rel="stylesheet" href="//rawgit.com/ft-interactive/visual-vocabulary-templates/master/styles.css">
-
 ```
 The [d3 library](https://d3js.org/) is already installed in the build
 
@@ -19,8 +18,7 @@ If you are working within the g-chartfram architecture add the following code to
 
 
 ```
-import * as gAxis from 'g-axis';
-
+import * as gAxis from 'g-axis
 ```
 
 ### NPM install
@@ -32,23 +30,18 @@ Not yet deployed
 
 Always create and call a y-axis first, as it returms <b>.yLable()</b> that holds a value equal to the width of the widest tick label. This value is used to re-define the left or right margin of the chartframe before defining the <b>.domain()</b> of the x-axis e.g.
 
-yOrdinal axis where the width of 'Switzerland' is returned in <b>.yLable</b>
+yOrdinal axis where the width of 'Switzerland' is returned in <b>.yLabel</b>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-large.png)
-
-'Dem Republic of Congo' leave less space for the x-axis <b>.domain()</b>
+The tick 'Dem Republic of Congo'is much longer so will leave less space for the x-axis <b>.domain()</b>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-small.png)
 
+The following axis types are currently defined in theis repo (click to jump to section)
 
-
-The following axis types are currently defined in theis repo
-
-Go to section
-
+* yLinear()
+* yOrdinal()
 * [xDate](#-xdate)
 * xLinear()
 * xOrdinal()
-* yLinear()
-* yOrdinal()
 
 # xDate
 
