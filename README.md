@@ -44,7 +44,7 @@ Go to section
 
 <b>Note</b> Your y-axis of choice should be created and appended to the current frame before attaching an x-axis as the size of the y-axis tick text should be used to determine the .domain() of the new x-axis
 
-Add the following code to your index.js to append a default xDate() axis to the current frame (grey here but is not normally visible). <b>Note</b> that <b>.tickSize()</b> is included although not vital to create the axis
+Add the following code to your index.js to append a default xDate() axis to the current frame (grey here but is not normally visible). <b>Note</b> that <b>.tickSize()</b> is included although not vital to create the axis and no positioning has been applied. The minor axis is visible as the default setting for <b>.minorAxis() </b>is true.
 
 ```
 const xAxis = gAxis.xDate();
@@ -58,6 +58,25 @@ currentFrame.plot()
 ```
 
 ![alt tag](https://github.com/ft-interactive/g-axise/blob/master/images/xDate-default.png)
+
+### Postioning
+
+To correctly position the axis in the current frame <b>.plot()</b>> object insert the following code after the axis has been called. this will position the axis at the bottom of the frame as the default setting for <b>.align()</b> is true
+
+```
+if (align == 'bottom' ){
+    myXAxis.xLabel().attr('transform', `translate(0,${currentFrame.dimension().height})`);
+    if(minorAxis) {
+        myXAxis.xLabelMinor().attr('transform', `translate(0,${currentFrame.dimension().height})`);
+
+    }
+}
+if (align == 'top' ){
+    myXAxis.xLabel().attr('transform', `translate(0,${myXAxis.tickSize()})`);
+}
+```
+
+![alt tag](https://github.com/ft-interactive/g-axise/blob/master/images/xDate-default-bottom.png)
 
 
 ## xLinear
