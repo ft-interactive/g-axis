@@ -35,7 +35,7 @@ The tick 'Dem Republic of Congo'is much longer so will leave less space for the 
 
 For more detail on <b>.yLabel()</b> and its use in positioning see: ,to come
 
-The following axis types are currently defined in theis repo (click to jump to section)
+The following axis types are currently defined in this repo (click to jump to section)
 
 * yLinear()
 * yOrdinal()
@@ -111,6 +111,29 @@ The interval of the ticks will also effect the tick formatting, which will defau
 #xAxis<b>.xlabel()</b> Returns an accessor to allow the axis ticks to have changes made to their style
 
 #xAxis<b>.xabel()</b> Returns an accessor to allow the axis ticks to have changes made to their style
+
+## Examples
+### Yearly
+
+From Jan 1 2005 to June 1 2017, with each year labeled and no minor axis
+
+```
+const xAxis = xaxisDate();//sets up yAxis
+const currentFrame = frame[frameName];
+
+let mindate = new Date(2005,1,1);
+let maxdate = new Date(2017,6,1);
+
+myXAxis
+	.domain([mindate,maxdate])
+	.range([0,currentFrame.dimension().width])
+	.interval("years")
+	.minorAxis(false)
+
+currentFrame.plot()
+    .call(myXAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-yearly.png)
 
 
 
