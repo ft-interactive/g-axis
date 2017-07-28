@@ -57,7 +57,7 @@ currentFrame.plot()
 	.call(xAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axise/blob/master/images/xDate-default.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-default.png)
 
 ### Postioning
 
@@ -76,7 +76,7 @@ if (align == 'top' ){
 }
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axise/blob/master/images/xDate-default-bottom.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-default-bottom.png)
 
 
 ## xLinear
