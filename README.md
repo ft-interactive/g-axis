@@ -33,9 +33,7 @@ yOrdinal axis where the width of 'Switzerland' is returned in <b>.yLabel</b>
 The tick 'Dem Republic of Congo'is much longer so will leave less space for the x-axis <b>.domain()</b>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-small.png)
 
-For more detail on <b>.yLabel()</b> and its use in positioning see:
-* to come
-* to come
+For more detail on <b>.yLabel()</b> and its use in positioning see: ,to come
 
 The following axis types are currently defined in theis repo (click to jump to section)
 
@@ -65,7 +63,7 @@ currentFrame.plot()
 
 ## Postioning
 
-To position the axis in the frame add the following code after the axis has been called. This will place the axis at correctly at eithr the top or bottom depending on the <b>.align()</b> setter, bottom by default.
+To position the axis in the frame add the following code after the axis has been called. This will place the axis correctly at eithr the top or bottom depending on the <b>.align()</b> setter, bottom by default. If full height ticks length are defined then this code will need to be re-calculated, see examples
 
 ```
 if (align == 'bottom' ){
@@ -79,6 +77,7 @@ if (align == 'top' ){
 }
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-default-bottom.png)
+You can now use the <b>.align()</b> to position the axis at the top or the bottom of the fram, see API reference
 
 ## xDate API reference
 
@@ -99,11 +98,18 @@ if (align == 'top' ){
  * "weeks" -- every week
  * "days" -- every day
 
- The interval of the ticks will also effect the tick formatting, which will default to the following:
- ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-tick-format.png)
+The interval of the ticks will also effect the tick formatting, which will default to the following:
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-tick-format.png)
 
- #myAxis<b>.tickSize([number])</b> used on charts where <b>interval('year')< is used and forces the notation into a full year i.e 1977 instead of 77
+#myAxis<b>.tickSize([String])</b> Defines the size of the ticks. Usually set to <b>.rem()*.75 for the major ticks. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples
 
+#myAxis<b>.minorTickSize([String])</b> Defines the size of the minor ticks. Usually set to <b>.rem()*.3. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples xxxx---aslo check on automatic styling---xxx
+
+#myAxis<b>.minorTickSize([Boolean])</b> Set to true by default this determines if the minor axis is displayed or not
+
+#myAxis<b>.xlabel()</b> Returns an accessor to allow the axis ticks to have changes made to their style
+
+#myAxis<b>.xabel()</b> Returns an accessor to allow the axis ticks to have changes made to their style
 
 
 
