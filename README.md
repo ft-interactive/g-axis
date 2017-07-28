@@ -39,11 +39,11 @@ The following axis types are currently defined in theis repo (click to jump to s
 
 * yLinear()
 * yOrdinal()
-* [xDate](#-xdate)
+* [xDate](#xdate)
 * xLinear()
 * xOrdinal()
 
-# xDate
+<a id='xdate'>xDate</a>
 
 <b>Note</b> Your y-axis of choice should be created and appended to the current frame before attaching an x-axis as the size of the y-axis tick text should be used to determine the .domain() of the new x-axis
 
