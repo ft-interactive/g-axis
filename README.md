@@ -81,13 +81,13 @@ You can now use the <b>.align()</b> to position the axis at the top or the botto
 
 ## xDate API reference
 
-#myAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleTime(). If no <b>.domain()</b> is defined the default is [Jan 01 1970,Jun 01 2017]
+#xAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleTime(). If no <b>.domain()</b> is defined the default is [Jan 01 1970,Jun 01 2017]
 
-#myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [0,220])
+#xAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [0,220])
 
-#myAxis<b>.fullYear([boolean])</b> used on charts where <b>interval('year')</b>is used and forces the notation into a full year i.e 1977 instead of 77
+#xAxis<b>.fullYear([boolean])</b> used on charts where <b>interval('year')</b>is used and forces the notation into a full year i.e 1977 instead of 77
 
-#myAxis<b>.interval([String])</b> Defines the tick interval on the axis (see examples). By default this is set to "lustrum" meaning every five years. It can be set to:
+#xAxis<b>.interval([String])</b> Defines the tick interval on the axis (see examples). By default this is set to "lustrum" meaning every five years. It can be set to:
  * "century" -- every one hundred years
  * "jubilee" -- every fifty years
  * "decade" -- every ten years
@@ -101,16 +101,16 @@ You can now use the <b>.align()</b> to position the axis at the top or the botto
 The interval of the ticks will also effect the tick formatting, which will default to the following:
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-tick-format.png)
 
-#myAxis<b>.tickSize([Number])</b> Defines the size of the ticks. Usually set to <b>.rem()</b> *.75 for the major ticks. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples
+#xAxis<b>.tickSize([Number])</b> Defines the size of the ticks. Usually set to <b>.rem()</b> *.75 for the major ticks. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples
 
-#myAxis<b>.minorTickSize([String])</b> Defines the size of the minor ticks. Usually set to <b>.rem()</b>*.3. When full height ticks are required some adjustment will be needed to the positioning of the axis
+#xAxis<b>.minorTickSize([String])</b> Defines the size of the minor ticks. Usually set to <b>.rem()</b>*.3. When full height ticks are required some adjustment will be needed to the positioning of the axis
 <b>Note</b> When the height of the current frame is equal to the <b>.minorTickSize()</b> then the minor tick will change 'axis' and not 'baseline' resulting in the dotted tick lines
 
-#myAxis<b>.minorTickSize([Boolean])</b> Set to true by default this determines if the minor axis is displayed or not
+#xAxis<b>.minorTickSize([Boolean])</b> Set to true by default this determines if the minor axis is displayed or not
 
-#myAxis<b>.xlabel()</b> Returns an accessor to allow the axis ticks to have changes made to their style
+#xAxis<b>.xlabel()</b> Returns an accessor to allow the axis ticks to have changes made to their style
 
-#myAxis<b>.xabel()</b> Returns an accessor to allow the axis ticks to have changes made to their style
+#xAxis<b>.xabel()</b> Returns an accessor to allow the axis ticks to have changes made to their style
 
 
 
