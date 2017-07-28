@@ -114,7 +114,6 @@ The interval of the ticks will also effect the tick formatting, which will defau
 
 ## Examples
 ### Yearly
-
 From Jan 1 2005 to June 1 2017, with each year labeled and no minor axis
 
 ```
