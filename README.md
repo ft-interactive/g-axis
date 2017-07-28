@@ -34,7 +34,7 @@ The following axis types are vurrently defined in theis repo
 
 Go to section
 
-* [xDate](# xdate)
+* [xDate](#-xdate)
 * xLinear()
 * xOrdinal()
 * yLinear()
@@ -44,39 +44,62 @@ Go to section
 
 <b>Note</b> Your y-axis of choice should be created and appended to the current frame before attaching an x-axis as the size of the y-axis tick text should be used to determine the .domain() of the new x-axis
 
-Add the following code to your index.js to append a default xDate() axis to the current frame (grey here but is not normally visible). <b>Note</b> that <b>.tickSize()</b> is included although not vital to create the axis and no positioning has been applied. The minor axis is visible as the default setting for <b>.minorAxis() </b>is true.
+Add the following code to your index.js to append a default xDate() axis to the current frame (grey here but is not normally visible). <b>Note</b> that <b>.tickSize()</b> is included although not vital to create the axis. No positioning has been applied. The minor axis is visible as the default setting for <b>.minorAxis() </b>is true.
 
 ```
 const xAxis = gAxis.xDate();
 
 xAxis
-	.tickSize(currentFrame.rem()/.75)
-	.minorTickSize(currentFrame.rem()/.3)
+	.tickSize(currentFrame.rem()*.75)
+	.minorTickSize(currentFrame.rem()*.3)
 
 currentFrame.plot()
 	.call(xAxis);
 ```
-
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-default.png)
 
-### Postioning
+## Postioning
 
-To correctly position the axis in the current frame <b>.plot()</b>> object insert the following code after the axis has been called. this will position the axis at the bottom of the frame as the default setting for <b>.align()</b> is true
+To position the axis in the frame add the following code after the axis has been called. This will place the axis at correctly at eithr the top or bottom depending on the <b>.align()</b> setter, bottom by default.
 
 ```
 if (align == 'bottom' ){
     myXAxis.xLabel().attr('transform', `translate(0,${currentFrame.dimension().height})`);
     if(minorAxis) {
         myXAxis.xLabelMinor().attr('transform', `translate(0,${currentFrame.dimension().height})`);
-
     }
 }
 if (align == 'top' ){
     myXAxis.xLabel().attr('transform', `translate(0,${myXAxis.tickSize()})`);
 }
 ```
-
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-default-bottom.png)
+
+## xDate API reference
+
+#myAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleTime(). If no <b>.domain()</b> is defined the default is [Jan 01 1970,Jun 01 2017]
+
+#myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [0,220])
+
+#myAxis<b>.fullYear([boolean])</b> used on charts where <b>interval('year')< is used and forces the notation into a full year i.e 1977 instead of 77
+
+#myAxis<b>.interval([String])</b> Defines the tick interval on the axis (see examples). By default this is set to "lustrum" meaning every five years. It can be set to:
+ * "century" -- every one hundred years
+ * "jubilee" -- every fifty years
+ * "decade" -- every ten years
+ * "lustrum" -- every five years
+ * "years" -- every year
+ * "quarters" -- every 3 months (Q1, Q2, Q3 etc, although the data still nees to be a valid date)
+ * "months" -- every month
+ * "weeks" -- every week
+ * "days" -- every day
+
+ The interbal also effect the tick formatting which will default to the following:
+ ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-tick-format.png)
+
+ #myAxis<b>.tickSize([number])</b> used on charts where <b>interval('year')< is used and forces the notation into a full year i.e 1977 instead of 77
+
+
 
 
 ## xLinear
