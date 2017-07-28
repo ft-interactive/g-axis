@@ -174,6 +174,25 @@ myXAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-lustrum.png)
 
+### Every month
+From Jun 1 1991 to Feb 1 2000, with month years labeled and no minor axis
+```
+const xAxis = xaxisDate();//sets up yAxis
+const currentFrame = frame[frameName];
+
+let mindate = new Date(1999,6,1);
+let maxdate = new Date(2000,2,1);
+
+myXAxis
+	.domain([mindate,maxdate])
+	.range([0,currentFrame.dimension().width])
+	.interval("months")
+	.minorAxis(false)
+	.tickSize(currentFrame.rem()*.75)
+	.minorTickSize(currentFrame.rem()*.3)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-months.png)
+
 
 ## xLinear
 
