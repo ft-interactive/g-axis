@@ -116,7 +116,6 @@ The interval of the ticks will also effect the tick formatting, which will defau
 ### Yearly
 
 From Jan 1 2005 to June 1 2017, with each year labeled and no minor axis
-
 ```
 const xAxis = xaxisDate();//sets up yAxis
 const currentFrame = frame[frameName];
@@ -135,6 +134,25 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-yearly.png)
 
+### Every ten years
+
+From Jan 1 1940 to June 1 2017, with every ten years labeled and a minor axis
+```
+const xAxis = xaxisDate();//sets up yAxis
+const currentFrame = frame[frameName];
+
+let mindate = new Date(1940,1,1);
+let maxdate = new Date(2017,6,1);
+
+myXAxis
+	.domain([mindate,maxdate])
+	.range([0,currentFrame.dimension().width])
+	.interval("decade")
+	.minorAxis(true)
+	.tickSize(currentFrame.rem()*.75)
+	.minorTickSize(currentFrame.rem()*.3)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-decade.png)
 
 
 ## xLinear
