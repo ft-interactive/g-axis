@@ -30,7 +30,17 @@ Not yet deployed
 
 <b>Note</b> All examples shown are from the web frame style
 
-The following axis types are vurrently defined in theis repo
+Always create and call a y-axis first, as it returms <b>.yLable()</b> that holds a value equal to the width of the widest tick label. This value is used to re-define the left or right margin of the chartframe before defining the <b>.domain()</b> of the x-axis e.g.
+
+yOrdinal axis where the width of 'Switzerland' is returned in <b>.yLable</b>
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-large.png)
+
+'Dem Republic of Congo' leave less space for the x-axis <b>.domain()</b>
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-small.png)
+
+
+
+The following axis types are currently defined in theis repo
 
 Go to section
 
@@ -94,7 +104,7 @@ if (align == 'top' ){
  * "weeks" -- every week
  * "days" -- every day
 
- The interbal also effect the tick formatting which will default to the following:
+ The interval of the ticks will also effect the tick formatting, which will default to the following:
  ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-tick-format.png)
 
  #myAxis<b>.tickSize([number])</b> used on charts where <b>interval('year')< is used and forces the notation into a full year i.e 1977 instead of 77
