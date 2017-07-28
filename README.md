@@ -193,7 +193,7 @@ myXAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-months.png)
 
-##<a id='ylinear'>yLinear</a>
+## <a id='ylinear'>yLinear</a>
 
 ## xOrdinal
 
