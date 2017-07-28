@@ -37,9 +37,9 @@ For more detail on <b>.yLabel()</b> and its use in positioning see: ,to come
 
 The following axis types are currently defined in this repo (click to jump to section)
 
-* yLinear()
+* [yLinear](#ylinear)
 * yOrdinal()
-* [xDate](xdate)
+* [xDate](#xdate)
 * xLinear()
 * xOrdinal()
 
@@ -61,7 +61,7 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-default.png)
 
-## Postioning
+### Postioning
 
 To position the axis in the frame add the following code after the axis has been called. This will place the axis correctly at eithr the top or bottom depending on the <b>.align()</b> setter, bottom by default. If full height ticks length are defined then this code will need to be re-calculated, see examples
 
@@ -79,7 +79,7 @@ if (align == 'top' ){
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-default-bottom.png)
 You can now use the <b>.align()</b> to position the axis at the top or the bottom of the fram, see API reference
 
-## xDate API reference
+### xDate API reference
 
 #xAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleTime(). If no <b>.domain()</b> is defined the default is [Jan 01 1970,Jun 01 2017]
 
@@ -112,7 +112,7 @@ The interval of the ticks will also effect the tick formatting, which will defau
 
 #xAxis<b>.xabel()</b> Returns an accessor to allow the axis ticks to have changes made to their style
 
-## Examples
+## xDate Examples
 ### Yearly
 
 From Jan 1 2005 to June 1 2017, with each year labeled and no minor axis. Full years are turned off by default
@@ -193,8 +193,7 @@ myXAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-months.png)
 
-
-## xLinear
+##<a id='ylinear'>yLinear</a>
 
 ## xOrdinal
 
