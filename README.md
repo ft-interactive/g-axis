@@ -101,7 +101,7 @@ You can now use the <b>.align()</b> to position the axis at the top or the botto
 The interval of the ticks will also effect the tick formatting, which will default to the following:
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-tick-format.png)
 
-#myAxis<b>.tickSize([String])</b> Defines the size of the ticks. Usually set to <b>.rem()*.75 for the major ticks. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples
+#myAxis<b>.tickSize([Number])</b> Defines the size of the ticks. Usually set to <b>.rem()</b> *.75 for the major ticks. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples
 
 #myAxis<b>.minorTickSize([String])</b> Defines the size of the minor ticks. Usually set to <b>.rem()*.3. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples xxxx---aslo check on automatic styling---xxx
 
