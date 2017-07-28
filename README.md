@@ -103,7 +103,8 @@ The interval of the ticks will also effect the tick formatting, which will defau
 
 #myAxis<b>.tickSize([Number])</b> Defines the size of the ticks. Usually set to <b>.rem()</b> *.75 for the major ticks. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples
 
-#myAxis<b>.minorTickSize([String])</b> Defines the size of the minor ticks. Usually set to <b>.rem()*.3. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples xxxx---aslo check on automatic styling---xxx
+#myAxis<b>.minorTickSize([String])</b> Defines the size of the minor ticks. Usually set to <b>.rem()</b>*.3. When full height ticks are required some adjustment will be needed to the positioning of the axis
+<b>Note</b> When the height of the current frame is equal to the <b>.minorTickSize()</b> then the minor tick will change 'axis' and not 'baseline' resulting in the dotted tick lines
 
 #myAxis<b>.minorTickSize([Boolean])</b> Set to true by default this determines if the minor axis is displayed or not
 
