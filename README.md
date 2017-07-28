@@ -26,12 +26,16 @@ Not yet deployed
 
 ## Getting started
 
-<b>Notes</b> All examples shown are from the web frame style. Always create and call a y-axis first, as it returms <b>.yLable()</b> that holds a value equal to the width of the widest tick label. This value is used to re-define the left or right margin of the chartframe before defining the <b>.domain()</b> of the x-axis e.g.
+<b>Notes</b> All examples shown are from the web frame style. Always create and call a y-axis first, as it returms <b>.yLable()</b> that holds a value equal to the width of the widest tick label on the y-axis. This value is used to re-define the left or right margin of the chartframe before defining the <b>.domain()</b> of the x-axis e.g.
 
 yOrdinal axis where the width of 'Switzerland' is returned in <b>.yLabel</b>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-large.png)
 The tick 'Dem Republic of Congo'is much longer so will leave less space for the x-axis <b>.domain()</b>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-small.png)
+
+For more detail on <b>.yLabel()</b> and its use in positioning see:
+* to come
+* to come
 
 The following axis types are currently defined in theis repo (click to jump to section)
 
