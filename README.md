@@ -152,7 +152,7 @@ myXAxis
 	.tickSize(currentFrame.rem()*.75)
 	.minorTickSize(currentFrame.rem()*.3)
 ```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-decade.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-decades.png)
 
 
 ## xLinear
