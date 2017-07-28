@@ -115,7 +115,7 @@ The interval of the ticks will also effect the tick formatting, which will defau
 ## Examples
 ### Yearly
 
-From Jan 1 2005 to June 1 2017, with each year labeled and no minor axis
+From Jan 1 2005 to June 1 2017, with each year labeled and no minor axis. Full years are turned off by default
 ```
 const xAxis = xaxisDate();//sets up yAxis
 const currentFrame = frame[frameName];
@@ -156,7 +156,7 @@ myXAxis
 
 ### Every five years
 
-From Jan 1 1940 to June 1 2017, with every ten years labeled and a minor axis
+From Jan 1 1986 to June 1 2017, with every five years labeled and a minor axis
 ```
 const xAxis = xaxisDate();//sets up yAxis
 const currentFrame = frame[frameName];
