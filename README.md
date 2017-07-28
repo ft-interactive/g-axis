@@ -154,6 +154,26 @@ myXAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-decades.png)
 
+### Every five years
+
+From Jan 1 1940 to June 1 2017, with every ten years labeled and a minor axis
+```
+const xAxis = xaxisDate();//sets up yAxis
+const currentFrame = frame[frameName];
+
+let mindate = new Date(1986,1,1);
+let maxdate = new Date(2017,6,1);
+
+myXAxis
+	.domain([mindate,maxdate])
+	.range([0,currentFrame.dimension().width])
+	.interval("lustrun")
+	.minorAxis(true)
+	.tickSize(currentFrame.rem()*.75)
+	.minorTickSize(currentFrame.rem()*.3)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-lustrum.png)
+
 
 ## xLinear
 
