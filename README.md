@@ -120,6 +120,8 @@ myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the a
 
 myAxis<b>.numTicks([Number])</b> as they name suggest defines how many ticks are on the axis. 0 to 100 with 3 tick would give a zero line, a fifty line and a hundred line.If not enough ticks have been specifiesd d3 will automatically increase the number. [example](#ylinnumticks)
 
+myAxis<b>.yAxishighlight([Number])</b>Changes the style of the tick specified from the normal dotted 'axis' style to the solid 'baseline'. Mostly used on index charts where the 100 line should be highlighted of the minimum tick value goes below zero [example](#ylinhighlight)
+
 ## Examples
 ### <a id='ylinleft'>Left hand axis</a>
 ```
@@ -135,7 +137,7 @@ currentFrame.plot()
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
 
 ### <a id='ylinnumticks'>Number of ticks</a>
-Zero to 200 with 5 tick, making increments of every 50
+Zero to 100 with 6 tick, making increments of every 20
 ```
 myYAxis
     .range([currentFrame.dimension().height,0])
@@ -147,6 +149,22 @@ currentFrame.plot()
     .call(myYAxis);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-numticks.png)
+
+### <a id='ylinhighlight'>yAxisHighlight</a>
+-50 to 200 with 150 highlighted as this is the base line. Zero automatically highlights
+```
+yAxis
+    .domain([-50,200])
+    .range([currentFrame.dimension().height,0])
+    .align(align)
+    .tickSize(currentFrame.dimension().width)
+    .yAxisHighlight(-50);
+
+currentFrame.plot()
+    .call(myYAxis);
+```
+
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight.png)
 
 
 
