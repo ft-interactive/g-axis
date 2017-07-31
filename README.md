@@ -124,7 +124,7 @@ myAxis<b>.range([Array])</b> defines the axis  range in the same way as you woul
 
 myAxis<b>.yAxishighlight([Number])</b>Changes the style of the tick specified from the normal dotted 'axis' style to the solid 'baseline'. Mostly used on index charts where the 100 line should be highlighted of the minimum tick value goes below zero [example](#ylinhighlight)
 
-## Examples
+## yLinear Examples
 ### <a id='ylinleft'>Left hand axis</a>
 ```
  myYAxis
