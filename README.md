@@ -104,20 +104,27 @@ if (align == 'right' ){
         d3.select(currentFrame.plot().node().parentNode)
             .call(currentFrame);
 ```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-resized.png)
 
 The current frame can then still be used to correctly define the <b>.range()</b> values of an x-axis.
 
-### <a id='ylinearapi'>yLinear API reference</a>
+## <a id='ylinearapi'>yLinear API reference</a>
 
-myAxis<b>.align([String])</b> "right" or "left". Determines the alignment of the tick text set as "right" by default. [example](#ylinlift)
+myAxis<b>.align([String])</b> "right" or "left". Determines the alignment of the tick text set as "right" by default. [example](#ylinleft)
+
+myAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.domain()</b> is defined the default is [0,10000]
+
+myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
+
+myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
+
+myAxis<b>.numTicks([Number])</b> as they name suggest defines how many ticks are on the axis. 0 to 100 with 3 tick would give a zero line, a fifty line and a hundred line.If not enough ticks have been specifiesd d3 will automatically increase the number. [example](#ylinnumticks)
 
 ## Examples
-## <a id='ylinleft'>Left hand axis</a>
-
+### <a id='ylinleft'>Left hand axis</a>
 ```
  myYAxis
-    ..domain([0,200])
+    .domain([0,200])
     .range([currentFrame.dimension().height,0])
     .tickSize(currentFrame.dimension().width)
     .align('left')
@@ -127,7 +134,19 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
 
+### <a id='ylinnumticks'>Number of ticks</a>
+Zero to 200 with 5 tick, making increments of every 50
+```
+myYAxis
+    .range([currentFrame.dimension().height,0])
+    .domain([0,200])
+    .tickSize(currentFrame.dimension().width)
+    .numTicks(6)
 
+currentFrame.plot()
+    .call(myYAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-numticks.png)
 
 
 
