@@ -7,6 +7,7 @@ export default function () {
     let align = 'right';
     let labelWidth = 0;
     let tickSize = 300;
+    let invert = false;
     let yAxisHighlight = 0;
     let numTicks = 5;
     let yLabel;
@@ -19,13 +20,17 @@ export default function () {
     }
 
     function axis(parent) {
+        if(invert) {
+            const newRange = scale.range().reverse()
+            scale.range(newRange)
+        }
         const yAxis = getAxis(align)
-      .ticks(numTicks)
-      .scale(scale);
+            .ticks(numTicks)
+            .scale(scale);
 
         yLabel = parent.append('g')
-      .attr('class', 'axis yAxis')
-      .call(yAxis);
+          .attr('class', 'axis yAxis')
+          .call(yAxis);
 
     // Calculate width of widest .tick text
         parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
@@ -78,6 +83,11 @@ export default function () {
     axis.align = (d) => {
         if (!d) return align;
         align = d;
+        return axis;
+    };
+    axis.invert = (d) => {
+        if (!d) return invert;
+        invert = d;
         return axis;
     };
     axis.yLabel = (d) => {
