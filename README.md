@@ -85,11 +85,10 @@ currentFrame.plot()
 
 ### <a id='ylinpos'>Positioning</a>
 The rendered axis returns the width of the widest text label on the y- axis <b>.labelWidth()</b>.
-
-![alt tag](https://github.com/ft-interactive/g-yaxislinear/blob/master/images/yLinear-labelwidth.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png))
 
 <b>.labelWidth</b> is used to amend the right hand margin of the current frame element so that tick text is positioned outside it. The following text will resize the margin depending on the <b>.align()</b> setting
-![alt tag](https://github.com/ft-interactive/g-yaxislinear/blob/master/images/yLinear-labelwidth.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png))
 
 
 
