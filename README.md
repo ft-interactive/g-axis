@@ -45,7 +45,44 @@ The following axis types are currently defined in this repo (click to jump to se
 * xLinear()
 * xOrdinal()
 
-<a id='xdate'>## xDate</a>
+
+# <a id='ylinear'>yLinear</a>
+
+<b>Note</b> All examples shown are from the web frame style.
+yLinear() creates a d3 linear axis with a couple of additional feature to help manage styling and day-to-day production of charts that use a linear y-axis.<b>.align()</b> allows the axis to be aligned to either the left or right hand side of the chart. <b>.invert()</b> is used to invert the scale and <b>.logScale()</b> for when a log scale is needed.
+
+
+## Getting started
+Add the following code to your index.js to append a default y-axis to the current frame object (grey here but is not normally visible)
+
+```
+const yAxis = gAxis.yLinear()
+const currentFrame = frame[frameName];
+
+currentFrame.plot()
+    .call(yAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-default.png)
+
+Use the current frame dimensions to define your <b>.range()</b> and the <b>.ticksize()</b> and a domian
+```
+const yAxis = gAxis.yLinear()
+const currentFrame = frame[frameName];
+
+ yAxis
+    .domain([0,200])
+    .range([currentFrame.dimension().height,0])
+    .tickSize(currentFrame.dimension().width)
+
+currentFrame.plot()
+    .call(yAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/sized.png)
+
+
+
+
+# <a id='xdate'>xDate</a>
 
 <b>Note</b> Your y-axis of choice should be created and appended to the current frame before attaching an x-axis as the size of the y-axis tick text should be used to determine the .domain() of the new x-axis
 
@@ -53,6 +90,7 @@ Add the following code to your index.js to append a default xDate() axis to the 
 
 ```
 const xAxis = gAxis.xDate();
+const currentFrame = frame[frameName];
 
 xAxis
 	.tickSize(currentFrame.rem()*.75)
