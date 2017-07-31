@@ -35,7 +35,9 @@ yOrdinal axis where the width of 'Switzerland' is returned in <b>.yLabel</b>
 The tick 'Dem Republic of Congo'is much longer so will leave less space for the x-axis <b>.domain()</b>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-small.png)
 
-For more detail on <b>.yLabel()</b> and its use in positioning see: ,to come
+For more detail on <b>.yLabel()</b> and its use in positioning see:
+
+* [yLinear Postioning](#ylinpos)
 
 The following axis types are currently defined in this repo (click to jump to section)
 
@@ -50,9 +52,9 @@ The following axis types are currently defined in this repo (click to jump to se
 <b>Note</b> All examples shown are from the web frame style.
 yLinear() creates a d3 linear axis with a couple of additional feature to help manage styling and day-to-day production of charts that use a linear y-axis
 
-* .<b>.align()</b> allows the axis to be aligned to either the left or right hand side of the chart. 
-* <b>.invert()</b> is used to invert the scale and <b>
-* .logScale()</b> for when a log scale is needed.
+* <b>.align()</b> allows the axis to be aligned to either the left or right hand side of the chart. 
+* <b>.invert()</b> is used to invert the scale. <b>
+* ,b>.logScale()</b> for when a log scale is needed.
 
 ## Getting started
 Add the following code to your index.js to append a default y-axis to the current frame object (grey here but is not normally visible)
@@ -64,9 +66,9 @@ const currentFrame = frame[frameName];
 currentFrame.plot()
     .call(yAxis);
 ```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-default.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-small.png)
 
-Use the current frame dimensions to define your <b>.range()</b> and the <b>.ticksize()</b> and a domian
+Use the current frame dimensions to define your <b>.range()</b> and the <b>.ticksize()</b> and a <b>.domian()</b>
 ```
 const yAxis = gAxis.yLinear()
 const currentFrame = frame[frameName];
@@ -80,6 +82,8 @@ currentFrame.plot()
     .call(yAxis);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-sized.png)
+
+### <a id='ylinpos'>Positioning</a>
 
 
 
