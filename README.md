@@ -114,11 +114,13 @@ myAxis<b>.align([String])</b> "right" or "left". Determines the alignment of the
 
 myAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.domain()</b> is defined the default is [0,10000]
 
-myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
+myAxis<b>.invert([boolean])</b> Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom [example](#ylinhighlight)
 
 myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
 myAxis<b>.numTicks([Number])</b> as they name suggest defines how many ticks are on the axis. 0 to 100 with 3 tick would give a zero line, a fifty line and a hundred line.If not enough ticks have been specifiesd d3 will automatically increase the number. [example](#ylinnumticks)
+
+myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
 
 myAxis<b>.yAxishighlight([Number])</b>Changes the style of the tick specified from the normal dotted 'axis' style to the solid 'baseline'. Mostly used on index charts where the 100 line should be highlighted of the minimum tick value goes below zero [example](#ylinhighlight)
 
@@ -163,8 +165,23 @@ yAxis
 currentFrame.plot()
     .call(myYAxis);
 ```
-
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight.png)
+
+### <a id='ylininvert'>Inverted scale</a>
+200 down to zero. 200 line highlighted
+
+```
+yAxis
+    .domain([0,200])
+    .range([currentFrame.dimension().height,0])
+    .tickSize(currentFrame.dimension().width)
+    .yAxisHighlight(200)
+    .invert(true);
+
+currentFrame.plot()
+    .call(yAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
 
 
 
