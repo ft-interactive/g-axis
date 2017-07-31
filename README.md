@@ -45,12 +45,14 @@ The following axis types are currently defined in this repo (click to jump to se
 * xLinear()
 * xOrdinal()
 
-
 # <a id='ylinear'>yLinear</a>
 
 <b>Note</b> All examples shown are from the web frame style.
-yLinear() creates a d3 linear axis with a couple of additional feature to help manage styling and day-to-day production of charts that use a linear y-axis.<b>.align()</b> allows the axis to be aligned to either the left or right hand side of the chart. <b>.invert()</b> is used to invert the scale and <b>.logScale()</b> for when a log scale is needed.
+yLinear() creates a d3 linear axis with a couple of additional feature to help manage styling and day-to-day production of charts that use a linear y-axis
 
+* .<b>.align()</b> allows the axis to be aligned to either the left or right hand side of the chart. 
+* <b>.invert()</b> is used to invert the scale and <b>
+* .logScale()</b> for when a log scale is needed.
 
 ## Getting started
 Add the following code to your index.js to append a default y-axis to the current frame object (grey here but is not normally visible)
@@ -77,7 +79,7 @@ const currentFrame = frame[frameName];
 currentFrame.plot()
     .call(yAxis);
 ```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/sized.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-sized.png)
 
 
 
