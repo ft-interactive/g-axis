@@ -84,10 +84,10 @@ currentFrame.plot()
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-sized.png)
 
 ### <a id='ylinpos'>Positioning</a>
-The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>.
+The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>. this will vary depending on the text e.g. '100,000' will return a larger value than '10'
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png))
 
-<b>.labelWidth()</b> is used to amend the appropriate margin of the current frame so that tick text is positioned outside it. The following text will resize the margin depending on the <b>.align()</b> setting which is 'right' by default.
+<b>.labelWidth()</b> is used to amend the appropriate margin of the current frame so that tick text is positioned outside it. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> setting which is 'right' by default.
 ```
 if (align == 'right' ){
             let newMargin = yAxis.labelWidth()+currentFrame.margin().right
@@ -105,6 +105,29 @@ if (align == 'right' ){
             .call(currentFrame);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png)
+
+The current frame can then still be used to correctly define the <b>.range()</b> values of an x-axis.
+
+### <a id='ylinearapi'>yLinear API reference</a>
+
+myAxis<b>.align([String])</b> "right" or "left". Determines the alignment of the tick text set as "right" by default. [example](#ylinlift)
+
+## Examples
+## <a id='ylinleft'>Left hand axis</a>
+
+```
+ myYAxis
+    ..domain([0,200])
+    .range([currentFrame.dimension().height,0])
+    .tickSize(currentFrame.dimension().width)
+    .align('left')
+
+currentFrame.plot()
+    .call(myYAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
+
+
 
 
 
