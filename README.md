@@ -84,11 +84,27 @@ currentFrame.plot()
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-sized.png)
 
 ### <a id='ylinpos'>Positioning</a>
-The rendered axis returns the width of the widest text label on the y- axis <b>.labelWidth()</b>.
+The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png))
 
-<b>.labelWidth</b> is used to amend the right hand margin of the current frame element so that tick text is positioned outside it. The following text will resize the margin depending on the <b>.align()</b> setting
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png))
+<b>.labelWidth()</b> is used to amend the appropriate margin of the current frame so that tick text is positioned outside it. The following text will resize the margin depending on the <b>.align()</b> setting which is 'right' by default.
+```
+if (align == 'right' ){
+            let newMargin = yAxis.labelWidth()+currentFrame.margin().right
+            //Use newMargin redefine the new margin and range of xAxis
+            currentFrame.margin({right:newMargin});
+            //yAxis.yLabel().attr('transform', `translate(${currentFrame.dimension().width},0)`);
+        }
+        if (align == 'left' ){
+            let newMargin = yAxis.labelWidth()+currentFrame.margin().left
+            //Use newMargin redefine the new margin and range of xAxis
+            currentFrame.margin({left:newMargin});
+            yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize()-yAxis.labelWidth())},0)`);
+        }
+        d3.select(currentFrame.plot().node().parentNode)
+            .call(currentFrame);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png)
 
 
 
