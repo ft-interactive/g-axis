@@ -5,32 +5,47 @@ export default function () {
         .domain([0, 10000])
         .range([120, 0]);
     let align = 'right';
+    let invert = false;
     let labelWidth = 0;
+    let logScale = false;
+    let numTicks = 5;
     let tickSize = 300;
     let invert = false;
     let yAxisHighlight = 0;
-    let numTicks = 5;
     let yLabel;
 
-    function getAxis(alignment) {
-        return {
-            left: d3.axisLeft(),
-            right: d3.axisRight(),
-        }[alignment];
-    }
-
     function axis(parent) {
+<<<<<<< HEAD
         if(invert) {
             const newRange = scale.range().reverse()
             scale.range(newRange)
         }
+=======
+
+        if (logScale) {
+            const newScale = d3.scaleLog()
+            .domain(scale.domain())
+            .range(scale.range());
+            scale = newScale;
+        }
+        if (invert) {
+            const newRange = scale.range().reverse();
+            scale.range(newRange);
+        }
+
+>>>>>>> origin/Add-inver-function-to-yLinear
         const yAxis = getAxis(align)
             .ticks(numTicks)
             .scale(scale);
 
         yLabel = parent.append('g')
+<<<<<<< HEAD
           .attr('class', 'axis yAxis')
           .call(yAxis);
+=======
+            .attr('class', 'axis yAxis')
+            .call(yAxis);
+>>>>>>> origin/Add-inver-function-to-yLinear
 
     // Calculate width of widest .tick text
         parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
@@ -40,16 +55,28 @@ export default function () {
         // Use this to amend the tickSIze and re cal the vAxis
         yLabel.call(yAxis.tickSize(tickSize - labelWidth));
 
-        if(align == 'right') {
+        if (align === 'right') {
             yLabel.selectAll('text')
-            .attr("dx",labelWidth)
+            .attr('dx', labelWidth);
         }
 
         yLabel.selectAll('.tick')
-      .filter(d => d === 0 || d === yAxisHighlight)
-      .classed('baseline', true);
+            .filter(d => d === 0 || d === yAxisHighlight)
+            .classed('baseline', true);
     }
 
+    function getAxis(alignment) {
+        return {
+            left: d3.axisLeft(),
+            right: d3.axisRight(),
+        }[alignment];
+    }
+
+    axis.align = (d) => {
+        if (!d) return align;
+        align = d;
+        return axis;
+    };
     axis.scale = (d) => {
         scale = d;
         return axis;
@@ -67,6 +94,11 @@ export default function () {
         labelWidth = d;
         return axis;
     };
+    axis.logScale = (d) => {
+        if (!d) return logScale;
+        logScale = d;
+        return axis;
+    };
     axis.tickSize = (d) => {
         if (d === undefined) return tickSize;
         tickSize = d;
@@ -80,9 +112,9 @@ export default function () {
         numTicks = d;
         return axis;
     };
-    axis.align = (d) => {
-        if (!d) return align;
-        align = d;
+    axis.invert = (d) => {
+        if (!d) return invert;
+        invert = d;
         return axis;
     };
     axis.invert = (d) => {
@@ -95,6 +127,5 @@ export default function () {
         yLabel = d;
         return axis;
     };
-
-    return axis
+    return axis;
 }
