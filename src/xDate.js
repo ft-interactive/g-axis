@@ -36,7 +36,7 @@ export default function () {
             .scale(scale);
 
         xLabel = parent.append('g')
-            .attr('class', 'axis baseline')
+            .attr('class', 'axis xAxis axis baseline')
             .call(xAxis);
 
         if (minorAxis) {
@@ -46,7 +46,7 @@ export default function () {
                     if (plotHeight === tickSize) {
                         return 'axis xAxis';
                     }
-                    return 'axis baseline';
+                    return 'axis xAxis axis baseline';
                 })
                 .call(xMinor);
         }
