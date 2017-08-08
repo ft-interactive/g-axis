@@ -320,7 +320,7 @@
             .paddingOuter(0.05);
         let labelWidth = 0; // eslint-disable-line
         let tickSize = 0;
-        let offset = 0;
+        let offset = 0;//Why is this here MUST CHECK
         let xLabel;
 
         function axis(parent) {
@@ -410,6 +410,7 @@
             .domain([0, 10000])
             .range([120, 0]);
         let align = 'right';
+        let invert = false;
         let labelWidth = 0;
         let logScale = false;
         let numTicks = 5;
@@ -502,11 +503,6 @@
         };
         axis.numTicks = (d) => {
             numTicks = d;
-            return axis;
-        };
-        axis.invert = (d) => {
-            if (!d) return invert;
-            invert = d;
             return axis;
         };
         axis.invert = (d) => {
