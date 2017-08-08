@@ -414,7 +414,6 @@
         let logScale = false;
         let numTicks = 5;
         let tickSize = 300;
-        let invert = false;
         let yAxisHighlight = 0;
         let yLabel;
 
