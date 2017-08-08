@@ -9,7 +9,7 @@ export default function xAxisOrdinal() {
         .paddingOuter(0.05);
     let labelWidth = 0; // eslint-disable-line
     let tickSize = 0;
-    let offset = 0;
+    let offset = 0;//Why is this here MUST CHECK
     let xLabel;
 
     function axis(parent) {
