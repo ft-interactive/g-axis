@@ -5,7 +5,6 @@ export default function () {
         .domain([0, 10000])
         .range([120, 0]);
     let align = 'right';
-    let invert = false;
     let labelWidth = 0;
     let logScale = false;
     let numTicks = 5;
