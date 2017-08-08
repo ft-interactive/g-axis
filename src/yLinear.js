@@ -15,12 +15,6 @@ export default function () {
     let yLabel;
 
     function axis(parent) {
-<<<<<<< HEAD
-        if(invert) {
-            const newRange = scale.range().reverse()
-            scale.range(newRange)
-        }
-=======
 
         if (logScale) {
             const newScale = d3.scaleLog()
@@ -33,19 +27,14 @@ export default function () {
             scale.range(newRange);
         }
 
->>>>>>> origin/Add-inver-function-to-yLinear
         const yAxis = getAxis(align)
             .ticks(numTicks)
             .scale(scale);
 
         yLabel = parent.append('g')
-<<<<<<< HEAD
           .attr('class', 'axis yAxis')
           .call(yAxis);
-=======
-            .attr('class', 'axis yAxis')
-            .call(yAxis);
->>>>>>> origin/Add-inver-function-to-yLinear
+
 
     // Calculate width of widest .tick text
         parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
