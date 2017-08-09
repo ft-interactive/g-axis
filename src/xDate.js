@@ -50,6 +50,8 @@ export default function () {
                 })
                 .call(xMinor);
         }
+
+        xLabel.selectAll('.domain').remove();
     }
 
     function getTicks(interval) {
