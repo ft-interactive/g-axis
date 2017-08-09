@@ -257,17 +257,19 @@
 
         function axis(parent) {
             const xAxis = getAxis(align)
-          .tickSize(tickSize)
-          .ticks(numTicks)
-          .scale(scale);
+                .tickSize(tickSize)
+                .ticks(numTicks)
+                .scale(scale);
 
             xLabel = parent.append('g')
-          .attr('class', 'axis xAxis')
-          .call(xAxis);
+                .attr('class', 'axis xAxis')
+                .call(xAxis);
 
             xLabel.selectAll('.tick')
-          .filter(d => d === 0 || d === xAxisHighlight)
-          .classed('baseline', true);
+                .filter(d => d === 0 || d === xAxisHighlight)
+                .classed('baseline', true);
+
+            xLabel.selectAll('.domain').remove();
         }
 
         axis.align = (d) => {
@@ -338,6 +340,8 @@
                 .attr('class', 'axis xAxis')
                 .attr('transform', `translate(0,${offset})`)
                 .call(xAxis);
+
+            xLabel.selectAll('.domain').remove();
         }
 
         axis.scale = (d) => {
@@ -558,7 +562,7 @@
                 labelWidth = Math.max(this.getBBox().width, labelWidth);
             });
 
-            //yLabel.call(yAxis.tickSize(tickSize - labelWidth));
+            yLabel.selectAll('.domain').remove();
 
             parent.selectAll('.axis.yAxis text')
                 .attr('id', 'yAxisLabel');

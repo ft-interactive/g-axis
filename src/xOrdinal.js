@@ -27,6 +27,8 @@ export default function xAxisOrdinal() {
             .attr('class', 'axis xAxis')
             .attr('transform', `translate(0,${offset})`)
             .call(xAxis);
+
+        xLabel.selectAll('.domain').remove();
     }
 
     axis.scale = (d) => {

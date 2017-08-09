@@ -40,7 +40,7 @@ export default function () {
             labelWidth = Math.max(this.getBBox().width, labelWidth);
         });
 
-        //yLabel.call(yAxis.tickSize(tickSize - labelWidth));
+        yLabel.selectAll('.domain').remove();
 
         parent.selectAll('.axis.yAxis text')
             .attr('id', 'yAxisLabel');
