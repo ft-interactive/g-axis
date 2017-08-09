@@ -51,6 +51,8 @@ export default function () {
         yLabel.selectAll('.tick')
             .filter(d => d === 0 || d === yAxisHighlight)
             .classed('baseline', true);
+
+        yLabel.selectAll('.domain').remove();
     }
 
     function getAxis(alignment) {
