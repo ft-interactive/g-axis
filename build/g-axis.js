@@ -211,11 +211,6 @@
             scale.domain(d);
             return axis;
         };
-        axis.frameName = (d) => {
-            if (!d) return frameName;
-            frameName = d;
-            return axis;
-        };
         axis.range = (d) => {
             scale.range(d);
             return axis;
