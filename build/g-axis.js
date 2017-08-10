@@ -223,6 +223,7 @@
         };
 
         axis.fullYear = (d) => {
+            if (d === undefined) return fullYear;
             fullYear = d;
             return axis;
         };
@@ -241,6 +242,7 @@
             return axis;
         };
         axis.minorAxis = (d) => {
+            if (d === undefined) return minorAxis;
             minorAxis = d;
             return axis;
         };
