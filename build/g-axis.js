@@ -456,7 +456,7 @@
 
             if (align === 'right') {
                 yLabel.selectAll('text')
-                .attr('dx', labelWidth);
+                .attr('transform', `translate(${(labelWidth)},0)`);
             }
 
             yLabel.selectAll('.tick')
