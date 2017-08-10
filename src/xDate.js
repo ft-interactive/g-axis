@@ -14,7 +14,6 @@ export default function () {
     let align = 'bottom';
     let xLabel;
     let xLabelMinor;
-    let frameName;
 
     function axis(parent) {
         function getAxis(alignment) {
@@ -217,11 +216,7 @@ export default function () {
         scale.range(d);
         return axis;
     };
-    axis.frameName = (d) => {
-        if (!d) return frameName;
-        frameName = d;
-        return axis;
-    };
+
     axis.fullYear = (d) => {
         fullYear = d;
         return axis;
