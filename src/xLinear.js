@@ -66,7 +66,7 @@ export default function () {
         return axis;
     };
     axis.frameName = (d) => {
-        if (!d) return frameName;
+        if (d === undefined) return frameName;
         frameName = d;
         return axis;
     };
