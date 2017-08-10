@@ -95,7 +95,7 @@ export default function () {
         return axis;
     };
     axis.xAxisHighlight = (d) => {
-        yAxisHighlight = d;
+        xAxisHighlight = d;
         return axis;
     };
     axis.numTicks = (d) => {
