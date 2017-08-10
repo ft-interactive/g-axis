@@ -423,6 +423,7 @@
         let tickSize = 300;
         let yAxisHighlight = 0;
         let yLabel;
+        let frameName;
 
         function axis(parent) {
 
@@ -459,6 +460,13 @@
                 .attr('transform', `translate(${(labelWidth)},0)`);
             }
 
+            if (frameName) {
+                parent.selectAll('.axis.yAxis text')
+                    .attr('id', frameName + 'yLabel');
+                parent.selectAll('.axis.yAxis line')
+                    .attr('id', frameName + 'yTick');
+            }
+
             yLabel.selectAll('.tick')
                 .filter(d => d === 0 || d === yAxisHighlight)
                 .classed('baseline', true);
@@ -476,6 +484,11 @@
         axis.align = (d) => {
             if (!d) return align;
             align = d;
+            return axis;
+        };
+        axis.frameName = (d) => {
+            if (!d) return frameName;
+            frameName = d;
             return axis;
         };
         axis.scale = (d) => {
