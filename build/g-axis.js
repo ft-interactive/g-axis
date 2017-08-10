@@ -266,6 +266,8 @@
         let tickSize = 50;
         let numTicks = 5;
         let align = 'bottom';
+        let invert = false;
+        let logScale = false;
         let xAxisHighlight = 0;
         let xLabel;
 
@@ -277,6 +279,18 @@
         }
 
         function axis(parent) {
+
+            if (invert) {
+                const newRange = scale.range().reverse();
+                scale.range(newRange);
+            }
+            if (logScale) {
+                const newScale = d3.scaleLog()
+                .domain(scale.domain())
+                .range(scale.range());
+                scale = newScale;
+            }
+
             const xAxis = getAxis(align)
                 .tickSize(tickSize)
                 .ticks(numTicks)
@@ -298,6 +312,11 @@
             align = d;
             return axis;
         };
+        axis.invert = (d) => {
+            if (d === undefined) return invert;
+            invert = d;
+            return axis;
+        };
         axis.scale = (d) => {
             if (!d) return scale;
             scale = d;
@@ -305,6 +324,11 @@
         };
         axis.domain = (d) => {
             scale.domain(d);
+            return axis;
+        };
+        axis.logScale = (d) => {
+            if (d === undefined) return logScale;
+            logScale = d;
             return axis;
         };
         axis.range = (d) => {
