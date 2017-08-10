@@ -10,6 +10,7 @@
         let scale = d3.scaleTime()
             .domain([mindate, maxdate])
             .range([0, 220]);
+        let frameName;
         let interval = 'lustrum';
         let minorAxis = true;
         let tickSize = 10;
@@ -55,16 +56,16 @@
                     .call(xMinor);
             }
 
-            // if (frameName) {
-            //     xLabel.selectAll('.axis.xAxis text')
-            //         .attr('id', frameName + 'xLabel');
-            //     xLabel.selectAll('.axis.xAxis line')
-            //         .attr('id', frameName + 'xTick');
-            //     if (minorAxis) {
-            //         xLabelMinor.selectAll('.axis.xAxis line')
-            //             .attr('id', frameName + 'xTick');
-            //     }
-            // }
+            if (frameName) {
+                xLabel.selectAll('.axis.xAxis text')
+                .attr('id', frameName + 'xLabel');
+                xLabel.selectAll('.axis.xAxis line')
+                .attr('id', frameName + 'xTick');
+                if (minorAxis) {
+                    xLabelMinor.selectAll('.axis.xAxis line')
+                    .attr('id', frameName + 'xTick');
+                }
+            }
 
             xLabel.selectAll('.domain').remove();
         }
@@ -201,6 +202,11 @@
         }
         axis.align = (d) => {
             align = d;
+            return axis;
+        };
+        axis.frameName = (d) => {
+            if (d === undefined) return frameName;
+            frameName = d;
             return axis;
         };
         axis.scale = (d) => {
