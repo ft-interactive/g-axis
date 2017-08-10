@@ -116,7 +116,7 @@ export default function () {
         return axis;
     };
     axis.invert = (d) => {
-        if (d === undefined) return invert;
+        if (!d) return invert;
         invert = d;
         return axis;
     };
