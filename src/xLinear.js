@@ -7,6 +7,7 @@ export default function () {
     let tickSize = 50;
     let numTicks = 5;
     let align = 'bottom';
+    let invert = false
     let xAxisHighlight = 0;
     let xLabel;
 
@@ -18,6 +19,12 @@ export default function () {
     }
 
     function axis(parent) {
+
+        if (invert) {
+            const newRange = scale.range().reverse();
+            scale.range(newRange);
+        }
+
         const xAxis = getAxis(align)
             .tickSize(tickSize)
             .ticks(numTicks)
@@ -37,6 +44,11 @@ export default function () {
     axis.align = (d) => {
         if (!d) return align;
         align = d;
+        return axis;
+    };
+    axis.invert = (d) => {
+        if (d === undefined) return invert;
+        invert = d;
         return axis;
     };
     axis.scale = (d) => {
