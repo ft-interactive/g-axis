@@ -50,10 +50,10 @@ export default function () {
         }
 
         if (frameName) {
-            parent.selectAll('.axis.yAxis text')
-                .attr('id', frameName + 'yLabel');
-            parent.selectAll('.axis.yAxis line')
-                .attr('id', frameName + 'yTick');
+            yLabel.selectAll('.axis.yAxis text')
+            .attr('id', frameName+'yLabel');
+            yLabel.selectAll('.axis.yAxis line')
+            .attr('id', frameName+'yTick');
         }
 
         yLabel.selectAll('.tick')
@@ -61,6 +61,7 @@ export default function () {
             .classed('baseline', true);
 
         yLabel.selectAll('.domain').remove();
+
     }
 
     function getAxis(alignment) {
@@ -93,17 +94,17 @@ export default function () {
         return axis;
     };
     axis.labelWidth = (d) => {
-        if (d === undefined) return labelWidth;
+        if (!d) return labelWidth;
         labelWidth = d;
         return axis;
     };
     axis.logScale = (d) => {
-        if (!d) return logScale;
+        if (d === undefined) return logScale;
         logScale = d;
         return axis;
     };
     axis.tickSize = (d) => {
-        if (d === undefined) return tickSize;
+        if (!d) return tickSize;
         tickSize = d;
         return axis;
     };
@@ -116,7 +117,7 @@ export default function () {
         return axis;
     };
     axis.invert = (d) => {
-        if (!d) return invert;
+        if (d === undefined) return invert;
         invert = d;
         return axis;
     };
