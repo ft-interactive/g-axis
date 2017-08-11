@@ -270,6 +270,7 @@
         let logScale = false;
         let xAxisHighlight = 0;
         let xLabel;
+        let frameName;
 
         function getAxis(alignment) {
             return {
@@ -310,6 +311,11 @@
         axis.align = (d) => {
             if (!d) return align;
             align = d;
+            return axis;
+        };
+        axis.frameName = (d) => {
+            if (!d) return frameName;
+            frameName = d;
             return axis;
         };
         axis.invert = (d) => {
