@@ -22,8 +22,8 @@ export default function () {
     function axis(parent) {
 
         if (invert) {
-            const newRange = scale.range().reverse();
-            scale.range(newRange);
+            const newDomain = scale.domain().reverse();
+            scale.domain(newDomain);
         }
         if (logScale) {
             const newScale = d3.scaleLog()
