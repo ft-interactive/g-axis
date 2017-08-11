@@ -305,6 +305,10 @@
                 .filter(d => d === 0 || d === xAxisHighlight)
                 .classed('baseline', true);
 
+            if (frameName) {
+                console.log('frameName');
+            }
+
             xLabel.selectAll('.domain').remove();
         }
 
