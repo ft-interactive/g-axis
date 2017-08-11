@@ -281,8 +281,8 @@
         function axis(parent) {
 
             if (invert) {
-                const newDomain = scale.domain().reverse();
-                scale.domain(newDomain);
+                const newRange = scale.range().reverse();
+                scale.range(newRange);
             }
             if (logScale) {
                 const newScale = d3.scaleLog()
@@ -477,8 +477,8 @@
                 scale = newScale;
             }
             if (invert) {
-                const newDomain = scale.domain().reverse();
-                scale.domain(newDomain);
+                const newRange = scale.range().reverse();
+                scale.range(newRange);
             }
 
             const yAxis = getAxis(align)

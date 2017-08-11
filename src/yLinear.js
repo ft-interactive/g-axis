@@ -23,8 +23,8 @@ export default function () {
             scale = newScale;
         }
         if (invert) {
-            const newDomain = scale.domain().reverse();
-            scale.domain(newDomain);
+            const newRange = scale.range().reverse();
+            scale.range(newRange);
         }
 
         const yAxis = getAxis(align)
