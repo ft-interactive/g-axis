@@ -306,7 +306,10 @@
                 .classed('baseline', true);
 
             if (frameName) {
-                console.log('frameName');
+                xLabel.selectAll('.axis.xAxis text')
+                .attr('id', frameName+'xLabel');
+                xLabel.selectAll('.axis.xAxis line')
+                .attr('id', frameName+'xTick');
             }
 
             xLabel.selectAll('.domain').remove();
