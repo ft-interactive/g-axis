@@ -9,8 +9,8 @@ export default function xAxisOrdinal() {
         .paddingOuter(0.05);
     let labelWidth = 0; // eslint-disable-line
     let tickSize = 0;
-    let offset = 0;//Why is this here MUST CHECK
     let xLabel;
+    let frameName;
 
     function axis(parent) {
         const xAxis = getAxis(align)
@@ -25,8 +25,14 @@ export default function xAxisOrdinal() {
 
         xLabel = parent.append('g')
             .attr('class', 'axis xAxis')
-            .attr('transform', `translate(0,${offset})`)
             .call(xAxis);
+
+        if (frameName) {
+            xLabel.selectAll('.axis.xAxis text')
+            .attr('id', frameName+'xLabel');
+            xLabel.selectAll('.axis.xAxis line')
+            .attr('id', frameName+'xTick');
+        }
 
         xLabel.selectAll('.domain').remove();
     }
@@ -38,6 +44,11 @@ export default function xAxisOrdinal() {
     };
     axis.domain = (d) => {
         scale.domain(d);
+        return axis;
+    };
+    axis.frameName = (d) => {
+        if (d === undefined) return frameName;
+        frameName = d;
         return axis;
     };
     axis.rangeRound = (d) => {
@@ -74,12 +85,6 @@ export default function xAxisOrdinal() {
         return axis;
     };
 
-    axis.offset = (d) => {
-        if (d === undefined) return offset;
-        offset = d;
-        return axis;
-    };
-
     axis.align = (d) => {
         if (!d) return align;
         align = d;
@@ -92,6 +97,5 @@ export default function xAxisOrdinal() {
             bottom: d3.axisBottom(),
         }[alignment];
     }
-
     return axis;
 }
