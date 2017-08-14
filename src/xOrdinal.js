@@ -36,6 +36,11 @@ export default function xAxisOrdinal() {
         xLabel.selectAll('.domain').remove();
     }
 
+    axis.align = (d) => {
+        if (!d) return align;
+        align = d;
+        return axis;
+    };
     axis.scale = (d) => {
         if (!d) return scale;
         scale = d;
@@ -75,11 +80,6 @@ export default function xAxisOrdinal() {
     axis.tickSize = (d) => {
         if (!d) return tickSize;
         tickSize = d;
-        return axis;
-    };
-    axis.align = (d) => {
-        if (!d) return align;
-        align = d;
         return axis;
     };
     axis.xLabel = (d) => {
