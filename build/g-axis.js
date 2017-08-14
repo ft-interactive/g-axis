@@ -378,7 +378,6 @@
             .rangeRound([0, 220])
             .paddingInner(0.1)
             .paddingOuter(0.05);
-        let labelWidth = 0; // eslint-disable-line
         let tickSize = 0;
         let xLabel;
         let frameName;
@@ -444,14 +443,8 @@
             return axis;
         };
 
-        axis.xLabel = (d) => {
-            if (d === undefined) return xLabel;
-            labelWidth = d;
-            return axis;
-        };
-
         axis.tickSize = (d) => {
-            if (d === undefined) return tickSize;
+            if (!d) return tickSize;
             tickSize = d;
             return axis;
         };
