@@ -12,6 +12,7 @@ export default function () {
     let tickSize = 0;
     let offset = 0;
     let yLabel;
+    let frameName;
 
     function getAxis(alignment) {
         return {
@@ -40,10 +41,15 @@ export default function () {
             labelWidth = Math.max(this.getBBox().width, labelWidth);
         });
 
+        if (frameName) {
+            yLabel.selectAll('.axis.yAxis text')
+            .attr('id', frameName + 'yLabel');
+            yLabel.selectAll('.axis.xAxis line')
+            .attr('id', frameName + 'yTick');
+        }
+
         yLabel.selectAll('.domain').remove();
 
-        parent.selectAll('.axis.yAxis text')
-            .attr('id', 'yAxisLabel');
     }
 
     axis.scale = (d) => {
@@ -53,6 +59,11 @@ export default function () {
     };
     axis.domain = (d) => {
         scale.domain(d);
+        return axis;
+    };
+    axis.frameName = (d) => {
+        if (d === undefined) return frameName;
+        frameName = d;
         return axis;
     };
     axis.rangeRound = (d) => {
