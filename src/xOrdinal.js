@@ -80,7 +80,7 @@ export default function xAxisOrdinal() {
     };
 
     axis.tickSize = (d) => {
-        if (d === undefined) return tickSize;
+        if (!d) return tickSize;
         tickSize = d;
         return axis;
     };
