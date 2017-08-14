@@ -7,7 +7,6 @@ export default function xAxisOrdinal() {
         .rangeRound([0, 220])
         .paddingInner(0.1)
         .paddingOuter(0.05);
-    let labelWidth = 0; // eslint-disable-line
     let tickSize = 0;
     let xLabel;
     let frameName;
@@ -70,12 +69,6 @@ export default function xAxisOrdinal() {
     axis.paddingOuter = (d) => {
         if (!d) return scale.paddinguter();
         scale.paddinguter(d);
-        return axis;
-    };
-
-    axis.xLabel = (d) => {
-        if (d === undefined) return xLabel;
-        labelWidth = d;
         return axis;
     };
 
