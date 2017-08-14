@@ -448,10 +448,14 @@
             tickSize = d;
             return axis;
         };
-
         axis.align = (d) => {
             if (!d) return align;
             align = d;
+            return axis;
+        };
+        axis.xLabel = (d) => {
+            if (d === undefined) return xLabel;
+            xLabel = d;
             return axis;
         };
 
