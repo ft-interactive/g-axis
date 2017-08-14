@@ -55,7 +55,7 @@ export default function xAxisOrdinal() {
         return axis;
     };
     axis.bandwidth = (d) => {
-        if (!d) return scale.bandwidth();
+        if (d === undefined) return scale.bandwidth();
         scale.bandwidth(d);
         return axis;
     };
