@@ -210,6 +210,7 @@
             return axis;
         };
         axis.scale = (d) => {
+            if (!d) return scale;
             scale = d;
             return axis;
         };
@@ -550,6 +551,7 @@
             return axis;
         };
         axis.scale = (d) => {
+            if (!d) return scale;
             scale = d;
             return axis;
         };

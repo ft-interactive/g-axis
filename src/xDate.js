@@ -206,6 +206,7 @@ export default function () {
         return axis;
     };
     axis.scale = (d) => {
+        if (!d) return scale;
         scale = d;
         return axis;
     };
