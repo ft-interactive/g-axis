@@ -131,7 +131,5 @@ export default function () {
         yLabel = d;
         return axis;
     };
-    return axis; axis;
-    };
     return axis;
 }

@@ -506,12 +506,16 @@
 
 
         // Calculate width of widest .tick text
-            parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
+            yLabel.selectAll('.yAxis text').each(function calcTickTextWidth() {
                 labelWidth = Math.max(this.getBBox().width, labelWidth);
             });
 
             // Use this to amend the tickSIze and re cal the vAxis
-            yLabel.call(yAxis.tickSize(tickSize - labelWidth));
+            console.log('labelWidth',labelWidth,'tickSize',tickSize)
+            if (tickSize<labelWidth) {
+                yLabel.call(yAxis.tickSize)
+            }
+            else {yLabel.call(yAxis.tickSize(tickSize - labelWidth))};
 
             if (align === 'right') {
                 yLabel.selectAll('text')
