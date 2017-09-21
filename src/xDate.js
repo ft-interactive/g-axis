@@ -28,7 +28,14 @@ export default function () {
             .tickSize(tickSize)
             .ticks(getTicks(interval))
             .tickFormat(tickFormat(interval))
-            .scale(scale)
+            .scale(scale);
+
+        const newTicks = scale.ticks(getTicks(interval));
+        newTicks.unshift(scale.domain()[0]);
+        if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
+            newTicks.push(d3.timeYear(scale.domain()[1]));
+        }
+        xAxis.tickValues(newTicks);
 
         const xMinor = d3.axisBottom()
             .tickSize(minorTickSize)
