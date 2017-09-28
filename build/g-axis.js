@@ -84,7 +84,8 @@
                 'decade': d3.timeYear.every(10),
                 'lustrum': d3.timeYear.every(5),
                 'years': d3.timeYear.every(1),
-                'quarters': d3.timeMonth.every(3),
+                'fiscal': d3.timeYear.every(1),
+                'quarters': d3.timeYear.every(1),
                 'months': d3.timeMonth.every(1),
                 'weeks': d3.timeWeek.every(1),
                 'days': d3.timeDay.every(1),
@@ -98,7 +99,8 @@
                 'decade': d3.timeYear.every(1),
                 'lustrum': d3.timeYear.every(1),
                 'years': d3.timeMonth.every(1),
-                'quarters': d3.timeMonth.every(1),
+                'fiscal': d3.timeMonth.every(1),
+                'quarters': d3.timeMonth.every(3),
                 'months': d3.timeDay.every(1),
                 'weeks': d3.timeDay.every(1),
                 'days': d3.timeHour.every(1),
@@ -129,6 +131,10 @@
                 },
                 'years': function(d, i) {
                     const format = checkCentury(d, i);
+                    return format;
+                },
+                'fiscal': function(d, i) {
+                    const format = getFiscal(d, i);
                     return format;
                 },
                 'quarters':function(d, i) {
@@ -205,6 +211,12 @@
                     return formatFullYear(d);
                 }
                 return formatYear(d);
+            }
+            function getFiscal(d,i) {
+                if (fullYear || (+formatFullYear(d) % 100 === 0) || (i === 0)) {
+                    return formatFullYear(d)+ '/' + (Number(formatYear(d))+1);
+                }
+                return formatYear(d) + '/' + (Number(formatYear(d))+1);
             }
         }
         axis.align = (d) => {
