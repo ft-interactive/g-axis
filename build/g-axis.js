@@ -11,6 +11,7 @@
             .domain([mindate, maxdate])
             .range([0, 220]);
         let frameName;
+        let intraday = false;
         let interval = 'lustrum';
         let minorAxis = true;
         let tickSize = 10;
@@ -21,7 +22,20 @@
         let xLabelMinor;
 
         function axis(parent) {
+
             function getAxis(alignment) {
+                if (intraday) {
+                    console.log("intraday axis")
+                    const newDomain = scale.domain()
+                    const newRange = scale.range()
+                    scale = d3.scalePoint()
+                        .domain(newDomain)
+                        .range(newRange)
+                        return {
+                            top: d3.axisTop(),
+                            bottom: d3.axisBottom(),
+                        }[alignment];
+                    }
                 return {
                     top: d3.axisTop(),
                     bottom: d3.axisBottom(),
@@ -29,27 +43,50 @@
             }
 
             const xAxis = getAxis(align)
-                .tickSize(tickSize)
-                .ticks(getTicks(interval))
-                .tickFormat(tickFormat(interval))
-                .scale(scale);
-
-            const newTicks = scale.ticks(getTicks(interval));
-            const dayCheck = (scale.domain()[0]).getDate()
-            const monthCheck = scale.domain()[0].getMonth()
-            if (dayCheck !== 1 && monthCheck !== 0 ) {
-                newTicks.unshift(scale.domain()[0]);
+            if (intraday) {
+                xAxis
+                    .tickSize(tickSize)
+                    .tickFormat(tickFormat(interval))
+                    .scale(scale);
+                xAxis.tickValues(scale.domain().filter(function (d, i) {
+                    var checkDate
+                    if (i == 0) {return d.getDay()}
+                    if(i > 0) {checkDate = new Date (scale.domain()[i-1])}
+                    return (d.getDay()!= checkDate.getDay());
+                }))
             }
-            if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
-                newTicks.push(d3.timeYear(scale.domain()[1]));
+            else {
+                xAxis
+                    .tickSize(tickSize)
+                    .ticks(getTicks(interval))
+                    .tickFormat(tickFormat(interval))
+                    .scale(scale);
+                const newTicks = scale.ticks(getTicks(interval));
+                const dayCheck = (scale.domain()[0]).getDate()
+                const monthCheck = scale.domain()[0].getMonth()
+                if (dayCheck !== 1 && monthCheck !== 0 ) {
+                    newTicks.unshift(scale.domain()[0]);
+                }
+                if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
+                    newTicks.push(d3.timeYear(scale.domain()[1]));
+                }
+                
             }
-            xAxis.tickValues(newTicks);
 
-            const xMinor = d3.axisBottom()
-                .tickSize(minorTickSize)
-                .ticks(getTicksMinor(interval))
-                .tickFormat('')
-                .scale(scale);
+            const xMinor = getAxis(align)
+            if (intraday) {
+                xMinor
+                    .tickSize(minorTickSize)
+                    .tickFormat('')
+                    .scale(scale);
+            }
+            else {
+                xMinor
+                    .tickSize(minorTickSize)
+                    .ticks(getTicksMinor(interval))
+                    .tickFormat('')
+                    .scale(scale);
+            }
 
             xLabel = parent.append('g')
                 .attr('class', 'axis xAxis axis baseline')
@@ -230,6 +267,11 @@
         axis.frameName = (d) => {
             if (d === undefined) return frameName;
             frameName = d;
+            return axis;
+        };
+        axis.intraday = (d) => {
+            if (d === undefined) return intraday;
+            intraday = d;
             return axis;
         };
         axis.scale = (d) => {
