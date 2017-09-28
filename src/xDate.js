@@ -31,7 +31,11 @@ export default function () {
             .scale(scale);
 
         const newTicks = scale.ticks(getTicks(interval));
-        newTicks.unshift(scale.domain()[0]);
+        const dayCheck = (scale.domain()[0]).getDate()
+        const monthCheck = scale.domain()[0].getMonth()
+        if (dayCheck !== 1 && monthCheck !== 0 ) {
+            newTicks.unshift(scale.domain()[0]);
+        }
         if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
             newTicks.push(d3.timeYear(scale.domain()[1]));
         }
