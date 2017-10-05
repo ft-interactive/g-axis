@@ -15,6 +15,7 @@ export default function () {
     let align = 'bottom';
     let xLabel;
     let xLabelMinor;
+    let endticks;
 
     function axis(parent) {
         function getAxis(alignment) {
@@ -39,6 +40,7 @@ export default function () {
         if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
             newTicks.push(d3.timeYear(scale.domain()[1]));
         }
+        if (endTicks) newTicks = scale.domain()
         xAxis.tickValues(newTicks);
 
         const xMinor = d3.axisBottom()
@@ -221,6 +223,11 @@ export default function () {
     }
     axis.align = (d) => {
         align = d;
+        return axis;
+    };
+    axis.endTicks = (d) => {
+        if (d === undefined) return endTicks;
+        endTicks = d;
         return axis;
     };
     axis.frameName = (d) => {
