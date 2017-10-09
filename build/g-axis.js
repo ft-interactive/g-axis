@@ -20,6 +20,7 @@
         let align = 'bottom';
         let xLabel;
         let xLabelMinor;
+        let endTicks;
 
         function axis(parent) {
 
@@ -58,10 +59,10 @@
             else {
                 xAxis
                     .tickSize(tickSize)
-                    .ticks(getTicks(interval))
+                    // .ticks(getTicks(interval))
                     .tickFormat(tickFormat(interval))
                     .scale(scale);
-                const newTicks = scale.ticks(getTicks(interval));
+                let newTicks = scale.ticks(getTicks(interval));
                 const dayCheck = (scale.domain()[0]).getDate()
                 const monthCheck = scale.domain()[0].getMonth()
                 if (dayCheck !== 1 && monthCheck !== 0 ) {
@@ -70,6 +71,9 @@
                 if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
                     newTicks.push(d3.timeYear(scale.domain()[1]));
                 }
+                if(endTicks) {newTicks = scale.domain()}
+                
+                xAxis.tickValues(newTicks)
                 
             }
 
@@ -262,6 +266,11 @@
         }
         axis.align = (d) => {
             align = d;
+            return axis;
+        };
+        axis.endTicks = (d) => {
+            if (d === undefined) return endTicks;
+            endTicks = d;
             return axis;
         };
         axis.frameName = (d) => {
