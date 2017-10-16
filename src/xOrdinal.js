@@ -10,6 +10,7 @@ export default function xAxisOrdinal() {
     let tickSize = 0;
     let xLabel;
     let frameName;
+    let bandwidth;
 
     function axis(parent) {
         const xAxis = getAxis(align)
