@@ -481,6 +481,7 @@
             xLabel.selectAll('.domain').remove();
         }
 
+
         axis.align = (d) => {
             if (!d) return align;
             align = d;
@@ -501,6 +502,7 @@
             return axis;
         };
         axis.rangeRound = (d) => {
+            if (!d) return scale.rangeRound();
             scale.rangeRound(d);
             return axis;
         };
