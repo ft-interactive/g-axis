@@ -517,7 +517,7 @@
         };
 
         axis.paddingOuter = (d) => {
-            if (!d) return scale.paddinguter();
+            if (!d) return scale.paddingOuter();
             scale.paddinguter(d);
             return axis;
         };
