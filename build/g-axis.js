@@ -20,6 +20,7 @@
         let align = 'bottom';
         let xLabel;
         let xLabelMinor;
+        let endTicks;
 
         function axis(parent) {
 
@@ -58,10 +59,10 @@
             else {
                 xAxis
                     .tickSize(tickSize)
-                    .ticks(getTicks(interval))
+                    // .ticks(getTicks(interval))
                     .tickFormat(tickFormat(interval))
                     .scale(scale);
-                const newTicks = scale.ticks(getTicks(interval));
+                let newTicks = scale.ticks(getTicks(interval));
                 const dayCheck = (scale.domain()[0]).getDate()
                 const monthCheck = scale.domain()[0].getMonth()
                 if (dayCheck !== 1 && monthCheck !== 0 ) {
@@ -70,6 +71,8 @@
                 if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
                     newTicks.push(d3.timeYear(scale.domain()[1]));
                 }
+                if(endTicks) {newTicks = scale.domain()}
+                xAxis.tickValues(newTicks)
                 
             }
 
@@ -264,6 +267,11 @@
             align = d;
             return axis;
         };
+        axis.endTicks = (d) => {
+            if (d === undefined) return endTicks;
+            endTicks = d;
+            return axis;
+        };
         axis.frameName = (d) => {
             if (d === undefined) return frameName;
             frameName = d;
@@ -447,6 +455,7 @@
         let tickSize = 0;
         let xLabel;
         let frameName;
+        let bandwidth;
 
         function axis(parent) {
             const xAxis = getAxis(align)
@@ -473,6 +482,7 @@
             xLabel.selectAll('.domain').remove();
         }
 
+
         axis.align = (d) => {
             if (!d) return align;
             align = d;
@@ -493,6 +503,7 @@
             return axis;
         };
         axis.rangeRound = (d) => {
+            if (!d) return scale.rangeRound();
             scale.rangeRound(d);
             return axis;
         };
@@ -509,8 +520,8 @@
         };
 
         axis.paddingOuter = (d) => {
-            if (!d) return scale.paddinguter();
-            scale.paddinguter(d);
+            if (!d) return scale.paddingOuter();
+            scale.paddingOuter(d);
             return axis;
         };
 
