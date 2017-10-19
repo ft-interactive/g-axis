@@ -1,13 +1,12 @@
 import * as d3 from 'd3';
 
-export default function xAxisOrdinal() {
-    let align = 'bottom';
+export default function xAxisOrdinal() {    let align = 'bottom';
     let scale = d3.scaleBand()
         .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
         .rangeRound([0, 220])
         .paddingInner(0.1)
         .paddingOuter(0.05);
-    let tickSize = 0;
+    let tickSize = 10;
     let xLabel;
     let frameName;
 
@@ -65,6 +64,11 @@ export default function xAxisOrdinal() {
         return axis;
     };
 
+    axis.tickSize = (d) => {
+        tickSize = d;
+        return axis;
+    };
+
     axis.paddingInner = (d) => {
         if (!d) return scale.paddingInner();
         scale.paddingInner(d);
@@ -72,14 +76,8 @@ export default function xAxisOrdinal() {
     };
 
     axis.paddingOuter = (d) => {
-        if (!d) return scale.paddinguter();
-        scale.paddinguter(d);
-        return axis;
-    };
-
-    axis.tickSize = (d) => {
-        if (!d) return tickSize;
-        tickSize = d;
+        if (!d) return scale.paddinOuter();
+        scale.paddingOuter(d);
         return axis;
     };
     axis.xLabel = (d) => {
