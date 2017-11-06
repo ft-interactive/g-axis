@@ -445,15 +445,17 @@
         return axis;
     }
 
-    function xAxisOrdinal() {    let align = 'bottom';
+    function xAxisOrdinal() {
+        let align = 'bottom';
         let scale = d3.scaleBand()
             .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
             .rangeRound([0, 220])
             .paddingInner(0.1)
             .paddingOuter(0.05);
-        let tickSize = 10;
+        let tickSize = 0;
         let xLabel;
         let frameName;
+        let bandwidth;
 
         function axis(parent) {
             const xAxis = getAxis(align)
@@ -480,6 +482,7 @@
             xLabel.selectAll('.domain').remove();
         }
 
+
         axis.align = (d) => {
             if (!d) return align;
             align = d;
@@ -500,17 +503,13 @@
             return axis;
         };
         axis.rangeRound = (d) => {
+            if (!d) return scale.rangeRound();
             scale.rangeRound(d);
             return axis;
         };
         axis.bandwidth = (d) => {
             if (d === undefined) return scale.bandwidth();
             scale.bandwidth(d);
-            return axis;
-        };
-
-        axis.tickSize = (d) => {
-            tickSize = d;
             return axis;
         };
 
@@ -521,8 +520,14 @@
         };
 
         axis.paddingOuter = (d) => {
-            if (!d) return scale.paddinOuter();
+            if (!d) return scale.paddingOuter();
             scale.paddingOuter(d);
+            return axis;
+        };
+
+        axis.tickSize = (d) => {
+            if (!d) return tickSize;
+            tickSize = d;
             return axis;
         };
         axis.xLabel = (d) => {
@@ -569,16 +574,7 @@
 
             const yAxis = getAxis(align)
                 .ticks(numTicks)
-                .scale(scale)
-                .tickFormat(logFormat);
-
-            var numberFormat = d3.format(",f");
-            function logFormat(d) {
-              var x = Math.log(d) / Math.log(10) + 1e-6;
-              if (logScale) {
-                return Math.abs(x - Math.floor(x)) < .7 ? numberFormat(d) : "";
-                }
-            };
+                .scale(scale);
 
             yLabel = parent.append('g')
               .attr('class', 'axis yAxis')

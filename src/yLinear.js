@@ -29,16 +29,7 @@ export default function () {
 
         const yAxis = getAxis(align)
             .ticks(numTicks)
-            .scale(scale)
-            .tickFormat(logFormat);
-
-        var numberFormat = d3.format(",f");
-        function logFormat(d) {
-          var x = Math.log(d) / Math.log(10) + 1e-6;
-          if (logScale) {
-            return Math.abs(x - Math.floor(x)) < .7 ? numberFormat(d) : "";
-            }
-        };
+            .scale(scale);
 
         yLabel = parent.append('g')
           .attr('class', 'axis yAxis')
