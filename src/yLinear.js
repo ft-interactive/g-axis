@@ -42,7 +42,6 @@ export default function () {
         });
 
         // Use this to amend the tickSIze and re cal the vAxis
-        console.log('labelWidth',labelWidth,'tickSize',tickSize)
         if (tickSize<labelWidth) {
             yLabel.call(yAxis.tickSize)
         }
