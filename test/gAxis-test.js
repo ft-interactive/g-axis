@@ -1,4 +1,4 @@
-const tape = require('tape'); // eslint-disable-line
+const tape = require('tape');
 const gAxis = require('../');
 
 tape('gAxis exposes xLinear, yLinear and yOrdinal axes', (test) => {

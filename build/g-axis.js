@@ -5,8 +5,8 @@
 }(this, function (exports,d3) { 'use strict';
 
     function xDate () {
-        let mindate = new Date(1970, 1, 1);
-        let maxdate = new Date(2017, 6, 1);
+        const mindate = new Date(1970, 1, 1);
+        const maxdate = new Date(2017, 6, 1);
         let scale = d3.scaleTime()
             .domain([mindate, maxdate])
             .range([0, 220]);
@@ -23,67 +23,63 @@
         let endTicks;
 
         function axis(parent) {
-
             function getAxis(alignment) {
                 if (intraday) {
-                    console.log("intraday axis")
-                    const newDomain = scale.domain()
-                    const newRange = scale.range()
+                    console.log('intraday axis'); // eslint-disable-line
+                    const newDomain = scale.domain();
+                    const newRange = scale.range();
                     scale = d3.scalePoint()
                         .domain(newDomain)
-                        .range(newRange)
-                        return {
-                            top: d3.axisTop(),
-                            bottom: d3.axisBottom(),
-                        }[alignment];
-                    }
+                        .range(newRange);
+                    return {
+                        top: d3.axisTop(),
+                        bottom: d3.axisBottom(),
+                    }[alignment];
+                }
                 return {
                     top: d3.axisTop(),
                     bottom: d3.axisBottom(),
                 }[alignment];
             }
 
-            const xAxis = getAxis(align)
+            const xAxis = getAxis(align);
             if (intraday) {
                 xAxis
                     .tickSize(tickSize)
                     .tickFormat(tickFormat(interval))
                     .scale(scale);
-                xAxis.tickValues(scale.domain().filter(function (d, i) {
-                    var checkDate
-                    if (i == 0) {return d.getDay()}
-                    if(i > 0) {checkDate = new Date (scale.domain()[i-1])}
-                    return (d.getDay()!= checkDate.getDay());
-                }))
-            }
-            else {
+                xAxis.tickValues(scale.domain().filter((d, i) => {
+                    let checkDate;
+                    if (i === 0) { return d.getDay(); }
+                    if (i > 0) { checkDate = new Date(scale.domain()[i - 1]); }
+                    return (d.getDay() !== checkDate.getDay());
+                }));
+            } else {
                 xAxis
                     .tickSize(tickSize)
                     // .ticks(getTicks(interval))
                     .tickFormat(tickFormat(interval))
                     .scale(scale);
                 let newTicks = scale.ticks(getTicks(interval));
-                const dayCheck = (scale.domain()[0]).getDate()
-                const monthCheck = scale.domain()[0].getMonth()
-                if (dayCheck !== 1 && monthCheck !== 0 ) {
+                const dayCheck = (scale.domain()[0]).getDate();
+                const monthCheck = scale.domain()[0].getMonth();
+                if (dayCheck !== 1 && monthCheck !== 0) {
                     newTicks.unshift(scale.domain()[0]);
                 }
                 if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
                     newTicks.push(d3.timeYear(scale.domain()[1]));
                 }
-                if(endTicks) {newTicks = scale.domain()}
-                xAxis.tickValues(newTicks)
-                
+                if (endTicks) { newTicks = scale.domain(); }
+                xAxis.tickValues(newTicks);
             }
 
-            const xMinor = getAxis(align)
+            const xMinor = getAxis(align);
             if (intraday) {
                 xMinor
                     .tickSize(minorTickSize)
                     .tickFormat('')
                     .scale(scale);
-            }
-            else {
+            } else {
                 xMinor
                     .tickSize(minorTickSize)
                     .ticks(getTicksMinor(interval))
@@ -97,7 +93,7 @@
 
             if (minorAxis) {
                 xLabelMinor = parent.append('g')
-                    .attr('class', (d) => {
+                    .attr('class', () => {
                         const plotHeight = d3.select('.chart-plot').node().getBBox().height;
                         if (plotHeight === tickSize) {
                             return 'axis xAxis';
@@ -109,124 +105,124 @@
 
             if (frameName) {
                 xLabel.selectAll('.axis.xAxis text')
-                .attr('id', frameName + 'xLabel');
+                .attr('id', `${frameName}xLabel`);
                 xLabel.selectAll('.axis.xAxis line')
-                .attr('id', frameName + 'xTick');
+                .attr('id', `${frameName}xTick`);
                 if (minorAxis) {
                     xLabelMinor.selectAll('.axis.xAxis line')
-                    .attr('id', frameName + 'xTick');
+                    .attr('id', `${frameName}xTick`);
                 }
             }
 
             xLabel.selectAll('.domain').remove();
         }
 
-        function getTicks(interval) {
+        function getTicks(intvl) {
             return {
-                'century' : d3.timeYear.every(100),
-                'jubilee': d3.timeYear.every(50),
-                'decade': d3.timeYear.every(10),
-                'lustrum': d3.timeYear.every(5),
-                'years': d3.timeYear.every(1),
-                'fiscal': d3.timeYear.every(1),
-                'quarters': d3.timeYear.every(1),
-                'months': d3.timeMonth.every(1),
-                'weeks': d3.timeWeek.every(1),
-                'days': d3.timeDay.every(1),
-                'hours': d3.timeHour.every(1)
-            }[interval];
+                century: d3.timeYear.every(100),
+                jubilee: d3.timeYear.every(50),
+                decade: d3.timeYear.every(10),
+                lustrum: d3.timeYear.every(5),
+                years: d3.timeYear.every(1),
+                fiscal: d3.timeYear.every(1),
+                quarters: d3.timeYear.every(1),
+                months: d3.timeMonth.every(1),
+                weeks: d3.timeWeek.every(1),
+                days: d3.timeDay.every(1),
+                hours: d3.timeHour.every(1),
+            }[intvl];
         }
-        function getTicksMinor(interval) {
+        function getTicksMinor(intvl) {
             return {
-                'century': d3.timeYear.every(10),
-                'jubilee': d3.timeYear.every(10),
-                'decade': d3.timeYear.every(1),
-                'lustrum': d3.timeYear.every(1),
-                'years': d3.timeMonth.every(1),
-                'fiscal': d3.timeMonth.every(1),
-                'quarters': d3.timeMonth.every(3),
-                'months': d3.timeDay.every(1),
-                'weeks': d3.timeDay.every(1),
-                'days': d3.timeHour.every(1),
-                'hours': d3.timeMinute.every(1)
-            }[interval];
+                century: d3.timeYear.every(10),
+                jubilee: d3.timeYear.every(10),
+                decade: d3.timeYear.every(1),
+                lustrum: d3.timeYear.every(1),
+                years: d3.timeMonth.every(1),
+                fiscal: d3.timeMonth.every(1),
+                quarters: d3.timeMonth.every(3),
+                months: d3.timeDay.every(1),
+                weeks: d3.timeDay.every(1),
+                days: d3.timeHour.every(1),
+                hours: d3.timeMinute.every(1),
+            }[intvl];
         }
 
-        function tickFormat(interval) {
-            let formatFullYear = d3.timeFormat('%Y'),
-            formatYear = d3.timeFormat('%y'),
-            formatMonth = d3.timeFormat('%b'),
-            formatWeek = d3.timeFormat('%W'),
-            formatDay = d3.timeFormat('%d'),
-            formatHour = d3.timeFormat('%H:%M');
+        function tickFormat(intvl) {
+            const formatFullYear = d3.timeFormat('%Y');
+            const formatYear = d3.timeFormat('%y');
+            const formatMonth = d3.timeFormat('%b');
+            const formatWeek = d3.timeFormat('%W');
+            const formatDay = d3.timeFormat('%d');
+            const formatHour = d3.timeFormat('%H:%M');
             return {
-                'century': d3.timeFormat('%Y'),
-                'jubilee': function(d, i) {
+                century: d3.timeFormat('%Y'),
+                jubilee(d, i) {
                     const format = checkCentury(d, i);
                     return format;
                 },
-                'decade': function(d, i) {
+                decade(d, i) {
                     const format = checkCentury(d, i);
                     return format;
                 },
-                'lustrum':function(d, i) {
+                lustrum(d, i) {
                     const format = checkCentury(d, i);
                     return format;
                 },
-                'years': function(d, i) {
+                years(d, i) {
                     const format = checkCentury(d, i);
                     return format;
                 },
-                'fiscal': function(d, i) {
+                fiscal(d, i) {
                     const format = getFiscal(d, i);
                     return format;
                 },
-                'quarters':function(d, i) {
+                quarters(d, i) {
                     const format = getQuarters(d, i);
                     return format;
                 },
-                'months': function(d, i) {
+                months(d, i) {
                     const format = checkMonth(d, i);
                     return format;
                 },
-                'weeks':function(d, i) {
+                weeks(d, i) {
                     const format = getWeek(d, i);
                     return format;
                 },
-                'days':function(d, i) {
+                days(d, i) {
                     const format = getDays(d, i);
                     return format;
                 },
-                'hours': function(d, i) {
+                hours(d, i) {
                     const format = getHours(d, i);
                     return format;
                 },
-            }[interval];
+            }[intvl];
 
             function getHours(d, i) {
                 if (d.getHours() === 1 || i === 0) {
-                    return formatHour(d) + ' ' + formatDay(d);
+                    return `${formatHour(d)} ${formatDay(d)}`;
                 }
                 return formatHour(d);
             }
 
             function getDays(d, i) {
                 if (d.getDate() === 1 || i === 0) {
-                    return formatDay(d) + ' ' + formatMonth(d);
+                    return `${formatDay(d)} ${formatMonth(d)}`;
                 }
                 return formatDay(d);
             }
 
-            function getWeek(d, i) {
+            function getWeek(d) {
                 if (d.getDate() < 9) {
-                    return formatWeek(d) + ' ' + formatMonth(d);
+                    return `${formatWeek(d)} ${formatMonth(d)}`;
                 }
                 return formatWeek(d);
             }
 
             function getQuarters(d, i) {
                 if (d.getMonth() < 3 && i < 4) {
-                    return 'Q1 ' + formatFullYear(d);
+                    return `Q1 ${formatFullYear(d)}`;
                 }
                 if (d.getMonth() < 3) {
                     return 'Q1';
@@ -240,6 +236,7 @@
                 if (d.getMonth() >= 9 && d.getMonth() < 12) {
                     return 'Q4';
                 }
+                throw new Error('Invalid quarter');
             }
 
             function checkMonth(d, i) {
@@ -256,11 +253,11 @@
                 }
                 return formatYear(d);
             }
-            function getFiscal(d,i) {
+            function getFiscal(d, i) {
                 if (fullYear || (+formatFullYear(d) % 100 === 0) || (i === 0)) {
-                    return formatFullYear(d)+ '/' + (Number(formatYear(d))+1);
+                    return `${formatFullYear(d)}/${Number(formatYear(d)) + 1}`;
                 }
-                return formatYear(d) + '/' + (Number(formatYear(d))+1);
+                return `${formatYear(d)}/${Number(formatYear(d)) + 1}`;
             }
         }
         axis.align = (d) => {
@@ -354,7 +351,6 @@
         }
 
         function axis(parent) {
-
             if (invert) {
                 const newRange = scale.range().reverse();
                 scale.range(newRange);
@@ -381,9 +377,9 @@
 
             if (frameName) {
                 xLabel.selectAll('.axis.xAxis text')
-                .attr('id', frameName+'xLabel');
+                .attr('id', `${frameName}xLabel`);
                 xLabel.selectAll('.axis.xAxis line')
-                .attr('id', frameName+'xTick');
+                .attr('id', `${frameName}xTick`);
             }
 
             xLabel.selectAll('.domain').remove();
@@ -452,10 +448,9 @@
             .rangeRound([0, 220])
             .paddingInner(0.1)
             .paddingOuter(0.05);
-        let tickSize = 0;
+        let tickSize = 10;
         let xLabel;
         let frameName;
-        let bandwidth;
 
         function axis(parent) {
             const xAxis = getAxis(align)
@@ -474,14 +469,13 @@
 
             if (frameName) {
                 xLabel.selectAll('.axis.xAxis text')
-                .attr('id', frameName+'xLabel');
+                .attr('id', `${frameName}xLabel`);
                 xLabel.selectAll('.axis.xAxis line')
-                .attr('id', frameName+'xTick');
+                .attr('id', `${frameName}xTick`);
             }
 
             xLabel.selectAll('.domain').remove();
         }
-
 
         axis.align = (d) => {
             if (!d) return align;
@@ -503,13 +497,17 @@
             return axis;
         };
         axis.rangeRound = (d) => {
-            if (!d) return scale.rangeRound();
             scale.rangeRound(d);
             return axis;
         };
         axis.bandwidth = (d) => {
             if (d === undefined) return scale.bandwidth();
             scale.bandwidth(d);
+            return axis;
+        };
+
+        axis.tickSize = (d) => {
+            tickSize = d;
             return axis;
         };
 
@@ -520,14 +518,8 @@
         };
 
         axis.paddingOuter = (d) => {
-            if (!d) return scale.paddingOuter();
+            if (!d) return scale.paddinOuter();
             scale.paddingOuter(d);
-            return axis;
-        };
-
-        axis.tickSize = (d) => {
-            if (!d) return tickSize;
-            tickSize = d;
             return axis;
         };
         axis.xLabel = (d) => {
@@ -560,7 +552,6 @@
         let frameName;
 
         function axis(parent) {
-
             if (logScale) {
                 const newScale = d3.scaleLog()
                 .domain(scale.domain())
@@ -587,10 +578,9 @@
             });
 
             // Use this to amend the tickSIze and re cal the vAxis
-            if (tickSize<labelWidth) {
-                yLabel.call(yAxis.tickSize)
-            }
-            else {yLabel.call(yAxis.tickSize(tickSize - labelWidth))};
+            if (tickSize < labelWidth) {
+                yLabel.call(yAxis.tickSize);
+            } else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
 
             if (align === 'right') {
                 yLabel.selectAll('text')
@@ -599,9 +589,9 @@
 
             if (frameName) {
                 yLabel.selectAll('.axis.yAxis text')
-                .attr('id', frameName+'yLabel');
+                .attr('id', `${frameName}yLabel`);
                 yLabel.selectAll('.axis.yAxis line')
-                .attr('id', frameName+'yTick');
+                .attr('id', `${frameName}yTick`);
             }
 
             yLabel.selectAll('.tick')
@@ -609,7 +599,6 @@
                 .classed('baseline', true);
 
             yLabel.selectAll('.domain').remove();
-
         }
 
         function getAxis(alignment) {
@@ -721,13 +710,12 @@
 
             if (frameName) {
                 yLabel.selectAll('.axis.yAxis text')
-                .attr('id', frameName + 'yLabel');
+                .attr('id', `${frameName}yLabel`);
                 yLabel.selectAll('.axis.xAxis line')
-                .attr('id', frameName + 'yTick');
+                .attr('id', `${frameName}yTick`);
             }
 
             yLabel.selectAll('.domain').remove();
-
         }
 
         axis.scale = (d) => {

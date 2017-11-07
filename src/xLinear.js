@@ -21,7 +21,6 @@ export default function () {
     }
 
     function axis(parent) {
-
         if (invert) {
             const newRange = scale.range().reverse();
             scale.range(newRange);
@@ -48,9 +47,9 @@ export default function () {
 
         if (frameName) {
             xLabel.selectAll('.axis.xAxis text')
-            .attr('id', frameName+'xLabel');
+            .attr('id', `${frameName}xLabel`);
             xLabel.selectAll('.axis.xAxis line')
-            .attr('id', frameName+'xTick');
+            .attr('id', `${frameName}xTick`);
         }
 
         xLabel.selectAll('.domain').remove();

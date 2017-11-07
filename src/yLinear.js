@@ -15,7 +15,6 @@ export default function () {
     let frameName;
 
     function axis(parent) {
-
         if (logScale) {
             const newScale = d3.scaleLog()
             .domain(scale.domain())
@@ -42,10 +41,9 @@ export default function () {
         });
 
         // Use this to amend the tickSIze and re cal the vAxis
-        if (tickSize<labelWidth) {
-            yLabel.call(yAxis.tickSize)
-        }
-        else {yLabel.call(yAxis.tickSize(tickSize - labelWidth))};
+        if (tickSize < labelWidth) {
+            yLabel.call(yAxis.tickSize);
+        } else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
 
         if (align === 'right') {
             yLabel.selectAll('text')
@@ -54,9 +52,9 @@ export default function () {
 
         if (frameName) {
             yLabel.selectAll('.axis.yAxis text')
-            .attr('id', frameName+'yLabel');
+            .attr('id', `${frameName}yLabel`);
             yLabel.selectAll('.axis.yAxis line')
-            .attr('id', frameName+'yTick');
+            .attr('id', `${frameName}yTick`);
         }
 
         yLabel.selectAll('.tick')
@@ -64,7 +62,6 @@ export default function () {
             .classed('baseline', true);
 
         yLabel.selectAll('.domain').remove();
-
     }
 
     function getAxis(alignment) {
