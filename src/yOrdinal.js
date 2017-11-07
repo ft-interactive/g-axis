@@ -43,13 +43,12 @@ export default function () {
 
         if (frameName) {
             yLabel.selectAll('.axis.yAxis text')
-            .attr('id', frameName + 'yLabel');
+            .attr('id', `${frameName}yLabel`);
             yLabel.selectAll('.axis.xAxis line')
-            .attr('id', frameName + 'yTick');
+            .attr('id', `${frameName}yTick`);
         }
 
         yLabel.selectAll('.domain').remove();
-
     }
 
     axis.scale = (d) => {

@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 
-export default function xAxisOrdinal() {    let align = 'bottom';
+export default function xAxisOrdinal() {
+    let align = 'bottom';
     let scale = d3.scaleBand()
         .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
         .rangeRound([0, 220])
@@ -27,9 +28,9 @@ export default function xAxisOrdinal() {    let align = 'bottom';
 
         if (frameName) {
             xLabel.selectAll('.axis.xAxis text')
-            .attr('id', frameName+'xLabel');
+            .attr('id', `${frameName}xLabel`);
             xLabel.selectAll('.axis.xAxis line')
-            .attr('id', frameName+'xTick');
+            .attr('id', `${frameName}xTick`);
         }
 
         xLabel.selectAll('.domain').remove();
