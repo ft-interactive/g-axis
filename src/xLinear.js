@@ -22,10 +22,20 @@ export default function () {
     }
 
     function axis(parent) {
+        let deciCheck = false;
+        let span = scale.domain()[1] - scale.domain()[0];
+
         if (invert) {
             const newRange = scale.range().reverse();
+            span = scale.domain()[0]-scale.domain()[1]
             scale.range(newRange);
         }
+        
+        let deciFormat;
+        if (span < 0.1) { deciFormat = d3.format(".2f")}
+        else { deciFormat = d3.format(".1f")}
+        let numberFormat = d3.format("")
+
         if (logScale) {
             const newScale = d3.scaleLog()
             .domain(scale.domain())
@@ -39,16 +49,15 @@ export default function () {
             .scale(scale)
             .tickFormat(formatNumber);
 
-        let numberFormat = d3.format("")
-        let deciFormat = d3.format(".1f")
-
         function formatNumber(d) {
-            console.log(d, d/divisor, numberFormat(d/divisor));
+            test4Decimal = Number.isInteger(d/divisor)
+            if (test4Decimal == false) {deciCheck = true}
             if (d/divisor == 0) {return numberFormat(d/divisor)}
-            if (d/divisor >= -1 && d/divisor <= 1 && d > 10) {
+            if (logScale) {return d/divisor}
+            if (deciCheck) {
                 return deciFormat(d/divisor)
             }
-            return numberFormat(d/divisor)
+            return (d/divisor)
         }
 
         xLabel = parent.append('g')
