@@ -21,7 +21,6 @@ export default function () {
     function axis(parent) {
         function getAxis(alignment) {
             if (intraday) {
-                console.log('intraday axis'); // eslint-disable-line
                 const newDomain = scale.domain();
                 const newRange = scale.range();
                 scale = d3.scalePoint()
