@@ -43,7 +43,6 @@ export default function () {
         let deciFormat = d3.format("")
 
         function formatNumber(d) {
-            console.log(d, d/divisor, numberFormat(d/divisor));
             if (d/divisor < 1 > 0 && d / divisor < 0 > -1) {
                 return deciFormat(d/divisor)
             }
