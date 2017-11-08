@@ -4,6 +4,7 @@ export default function () {
     let scale = d3.scaleLinear()
         .domain([0, 100])
         .range([0, 220]);
+    let divisor = 1;
     let tickSize = 50;
     let numTicks = 5;
     let align = 'bottom';
@@ -35,7 +36,19 @@ export default function () {
         const xAxis = getAxis(align)
             .tickSize(tickSize)
             .ticks(numTicks)
-            .scale(scale);
+            .scale(scale)
+            .tickFormat(formatNumber);
+
+        let numberFormat = d3.format(".1f")
+        let deciFormat = d3.format("")
+
+        function formatNumber(d) {
+            console.log(d, d/divisor, numberFormat(d/divisor));
+            if (d/divisor < 1 > 0 && d / divisor < 0 > -1) {
+                return deciFormat(d/divisor)
+            }
+            return numberFormat(d/divisor)
+        }
 
         xLabel = parent.append('g')
             .attr('class', 'axis xAxis')
@@ -58,6 +71,11 @@ export default function () {
     axis.align = (d) => {
         if (!d) return align;
         align = d;
+        return axis;
+    };
+    axis.divisor = (d) => {
+        if (!d) return divisor;
+        divisor = d;
         return axis;
     };
     axis.frameName = (d) => {

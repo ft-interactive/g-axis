@@ -5,6 +5,7 @@ export default function () {
         .domain([0, 10000])
         .range([120, 0]);
     let align = 'right';
+    let divisor = 1;
     let invert = false;
     let labelWidth = 0;
     let logScale = false;
@@ -28,7 +29,19 @@ export default function () {
 
         const yAxis = getAxis(align)
             .ticks(numTicks)
-            .scale(scale);
+            .scale(scale)
+            .tickFormat(formatNumber);
+
+        let numberFormat = d3.format(".1f")
+        let deciFormat = d3.format("")
+
+        function formatNumber(d) {
+            console.log(d, d/divisor, numberFormat(d/divisor));
+            if (d/divisor < 1 > 0 && d / divisor < 0 > -1) {
+                return deciFormat(d/divisor)
+            }
+            return numberFormat(d/divisor)
+        }
 
         yLabel = parent.append('g')
           .attr('class', 'axis yAxis')
@@ -74,6 +87,11 @@ export default function () {
     axis.align = (d) => {
         if (!d) return align;
         align = d;
+        return axis;
+    };
+    axis.divisor = (d) => {
+        if (!d) return divisor;
+        divisor = d;
         return axis;
     };
     axis.frameName = (d) => {
