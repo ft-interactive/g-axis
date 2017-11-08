@@ -39,11 +39,13 @@ export default function () {
             .scale(scale)
             .tickFormat(formatNumber);
 
-        let numberFormat = d3.format(".1f")
-        let deciFormat = d3.format("")
+        let numberFormat = d3.format("")
+        let deciFormat = d3.format(".1f")
 
         function formatNumber(d) {
-            if (d/divisor < 1 > 0 && d / divisor < 0 > -1) {
+            console.log(d, d/divisor, numberFormat(d/divisor));
+            if (d/divisor == 0) {return numberFormat(d/divisor)}
+            if (d/divisor >= -1 && d/divisor <= 1 && d > 10) {
                 return deciFormat(d/divisor)
             }
             return numberFormat(d/divisor)

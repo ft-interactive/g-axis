@@ -16,6 +16,9 @@ export default function () {
     let frameName;
 
     function axis(parent) {
+        let deciCheck = false;
+        let span = scale.domain()[1] - scale.domain()[0];
+
         if (logScale) {
             const newScale = d3.scaleLog()
             .domain(scale.domain())
@@ -27,19 +30,25 @@ export default function () {
             scale.range(newRange);
         }
 
+        let deciFormat;
+        if (span < 0.1) { deciFormat = d3.format(".2f")}
+        else { deciFormat = d3.format(".1f")}
+        let numberFormat = d3.format("");
+
         const yAxis = getAxis(align)
             .ticks(numTicks)
             .scale(scale)
             .tickFormat(formatNumber);
 
-        let numberFormat = d3.format(".1f")
-        let deciFormat = d3.format("")
-
         function formatNumber(d) {
-            if (d/divisor < 1 > 0 && d / divisor < 0 > -1) {
+            let test4Decimal = Number.isInteger(d/divisor)
+            if (test4Decimal == false) {deciCheck = true}
+            if (d/divisor == 0) {return numberFormat(d/divisor)}
+            if (logScale) {return d/divisor}
+            if (deciCheck) {
                 return deciFormat(d/divisor)
             }
-            return numberFormat(d/divisor)
+            return (d/divisor)
         }
 
         yLabel = parent.append('g')
