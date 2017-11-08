@@ -27,13 +27,14 @@ export default function () {
         }
         if (invert) {
             const newRange = scale.range().reverse();
+            span = scale.domain()[0] - scale.domain()[1];
             scale.range(newRange);
         }
 
         let deciFormat;
-        if (span < 0.1) { deciFormat = d3.format(".2f")}
-        else { deciFormat = d3.format(".1f")}
-        let numberFormat = d3.format("");
+        if (span < 0.1) { deciFormat = d3.format('.2f'); }
+        else { deciFormat = d3.format('.1f'); }
+        const numberFormat = d3.format('');
 
         const yAxis = getAxis(align)
             .ticks(numTicks)
@@ -41,14 +42,14 @@ export default function () {
             .tickFormat(formatNumber);
 
         function formatNumber(d) {
-            let test4Decimal = Number.isInteger(d/divisor)
-            if (test4Decimal == false) {deciCheck = true}
-            if (d/divisor == 0) {return numberFormat(d/divisor)}
-            if (logScale) {return d/divisor}
+            const test4Decimal = Number.isInteger(d / divisor);
+            if (test4Decimal === false) { deciCheck = true; }
+            if (d / divisor === 0) { return numberFormat(d / divisor); }
+            if (logScale) { return d / divisor; }
             if (deciCheck) {
-                return deciFormat(d/divisor)
+                return deciFormat(d / divisor);
             }
-            return (d/divisor)
+            return (d / divisor);
         }
 
         yLabel = parent.append('g')
