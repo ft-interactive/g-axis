@@ -361,7 +361,7 @@
             }
 
             let deciFormat;
-            if (span < 10) { deciFormat = d3.format('.1f'); }
+            if (span > 0.1) { deciFormat = d3.format('.1f'); }
             if (span < 0.1) { deciFormat = d3.format('.2f'); }
             if (span < 0.01) { deciFormat = d3.format('.3f'); }
             if (span < 0.001) { deciFormat = d3.format('.4f'); }
@@ -600,7 +600,7 @@
             }
 
             let deciFormat;
-            if (span < 10) { deciFormat = d3.format('.1f'); }
+            if (span > 0.1) { deciFormat = d3.format('.1f'); }
             if (span < 0.1) { deciFormat = d3.format('.2f'); }
             if (span < 0.01) { deciFormat = d3.format('.3f'); }
             if (span < 0.001) { deciFormat = d3.format('.4f'); }
