@@ -356,7 +356,6 @@
 
             if (invert) {
                 const newRange = scale.range().reverse();
-                span = scale.domain()[0] - scale.domain()[1];
                 scale.range(newRange);
             }
 
@@ -595,7 +594,6 @@
             }
             if (invert) {
                 const newRange = scale.range().reverse();
-                span = scale.domain()[0] - scale.domain()[1];
                 scale.range(newRange);
             }
 
