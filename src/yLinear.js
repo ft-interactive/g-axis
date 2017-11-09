@@ -38,7 +38,7 @@ export default function () {
         if (span < 0.001) { deciFormat = d3.format('.4f'); }
         if (span < 0.0001) { deciFormat = d3.format('.5f'); }
         if (span < 0.00001) { deciFormat = d3.format('.6f'); }
-        const numberFormat = d3.format('');
+        const numberFormat = d3.format(',');
 
         const yAxis = getAxis(align)
             .ticks(numTicks)
@@ -49,11 +49,11 @@ export default function () {
             const test4Decimal = Number.isInteger(d / divisor);
             if (test4Decimal === false) { deciCheck = true; }
             if (d / divisor === 0) { return numberFormat(d / divisor); }
-            if (logScale) { return d / divisor; }
+            if (logScale) { return numberFormat(d / divisor); }
             if (deciCheck) {
                 return deciFormat(d / divisor);
             }
-            return (d / divisor);
+            return numberFormat(d / divisor);
         }
 
         yLabel = parent.append('g')
