@@ -19,19 +19,19 @@
   },
   "scripts": {
     "pretest": "rm -rf build && mkdir build && rollup --globals d3:d3 -f umd -n gAxis -o build/g-axis.js -- index.js",
-    "test": "nyc tape 'test/**/*-test.js' | tap-spec",
-    "report": "nyc report --reporter=lcov",
-    "prepublish": "npm run test && uglifyjs build/g-axis.js -c -m -o build/g-axis.min.js",
-    "postpublish": "zip -j build/g-axis.zip -- LICENSE README.md build/g-axis.js build/g-axis.min.js",
+    "test": "nyc tape -r '@babel/register' test/**/*.js",
+    "report-coverage": "nyc report --reporter=lcov && codecov",
+    "prepare": "npm run test && uglifyjs build/g-axis.js -c -m -o build/g-axis.min.js",
     "lint": "eslint {index.js,src/**/*.js,test/**/*.js}",
-    "lint:fix": "eslint --fix {index.js,src/**/*.js,test/**/*.js}",
-    "posttest": "npm run report",
-    "coverage": "codecov"
+    "lint:fix": "eslint --fix {index.js,src/**/*.js,test/**/*.js}"
   },
   "dependencies": {
     "d3": "^4.9.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.31",
+    "@babel/preset-env": "^7.0.0-beta.31",
+    "@babel/register": "^7.0.0-beta.31",
     "codecov": "^2.2.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",

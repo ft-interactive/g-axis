@@ -1,5 +1,5 @@
-const tape = require('tape');
-const gAxis = require('../');
+import tape from 'tape';
+import * as gAxis from '../index';
 
 tape('gAxis exposes xLinear, yLinear and yOrdinal axes', (test) => {
     test.ok(gAxis.xDate, 'xDate exists');
