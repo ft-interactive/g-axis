@@ -34,10 +34,10 @@ export default function () {
         let deciFormat;
         if (span >= 0.5) { deciFormat = d3.format('.1f'); }
         if (span < 0.5) { deciFormat = d3.format('.2f'); }
-        if (span < 0.1) { deciFormat = d3.format('.3f'); }
-        if (span < 0.001) { deciFormat = d3.format('.4f'); }
-        if (span < 0.0001) { deciFormat = d3.format('.5f'); }
-        if (span < 0.00001) { deciFormat = d3.format('.6f'); }
+        if (span <= 0.011) { deciFormat = d3.format('.3f'); }
+        if (span < 0.0011) { deciFormat = d3.format('.4f'); }
+        if (span < 0.00011) { deciFormat = d3.format('.5f'); }
+        if (span < 0.000011) { deciFormat = d3.format('.6f'); }
         const numberFormat = d3.format(',');
 
         const yAxis = getAxis(align)
