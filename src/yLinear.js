@@ -5,7 +5,7 @@ export default function () {
         .domain([0, 10000])
         .range([120, 0]);
     let align = 'right';
-    let divisor = 1
+    let divisor = 1;
     let invert = false;
     let labelWidth = 0;
     let logScale = false;
@@ -17,7 +17,7 @@ export default function () {
 
     function axis(parent) {
         let deciCheck = false;
-        let span = scale.domain()[1]-scale.domain()[0]
+        const span = scale.domain()[1] - scale.domain()[0];
 
         if (logScale) {
             const newScale = d3.scaleLog()

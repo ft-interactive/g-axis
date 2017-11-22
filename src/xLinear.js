@@ -7,7 +7,7 @@ export default function () {
     let tickSize = 50;
     let numTicks = 5;
     let align = 'bottom';
-    let divisor = 1
+    let divisor = 1;
     let invert = false;
     let logScale = false;
     let xAxisHighlight = 0;
@@ -23,7 +23,7 @@ export default function () {
 
     function axis(parent) {
         let deciCheck = false;
-        let span = scale.domain()[1]-scale.domain()[0]
+        const span = scale.domain()[1] - scale.domain()[0];
 
         if (invert) {
             const newRange = scale.range().reverse();
@@ -51,15 +51,15 @@ export default function () {
             .scale(scale)
             .tickFormat(formatNumber);
 
-         function formatNumber(d) {
-            const test4Decimal = Number.isInteger(d/divisor);
+        function formatNumber(d) {
+            const test4Decimal = Number.isInteger(d / divisor);
             if (test4Decimal === false) { deciCheck = true; }
-            if (d/divisor === 0) {return numberFormat(d/divisor)}
-            if (logScale) {return numberFormat(d/divisor);}
+            if (d / divisor === 0) { return numberFormat(d / divisor); }
+            if (logScale) { return numberFormat(d / divisor); }
             if (deciCheck) {
-                return deciFormat(d/divisor)
+                return deciFormat(d / divisor);
             }
-            return numberFormat(d/divisor)
+            return numberFormat(d / divisor);
         }
 
         xLabel = parent.append('g')
