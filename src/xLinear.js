@@ -7,6 +7,7 @@ export default function () {
     let tickSize = 50;
     let numTicks = 5;
     let align = 'bottom';
+    let divisor = 1
     let invert = false;
     let logScale = false;
     let xAxisHighlight = 0;
@@ -73,6 +74,11 @@ export default function () {
     axis.scale = (d) => {
         if (!d) return scale;
         scale = d;
+        return axis;
+    };
+    axis.divisor = (d) => {
+        if (!d) return divisor;
+        divisor = d;
         return axis;
     };
     axis.domain = (d) => {

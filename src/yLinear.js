@@ -5,6 +5,7 @@ export default function () {
         .domain([0, 10000])
         .range([120, 0]);
     let align = 'right';
+    let divisor = 1
     let invert = false;
     let labelWidth = 0;
     let logScale = false;
@@ -84,6 +85,11 @@ export default function () {
     axis.scale = (d) => {
         if (!d) return scale;
         scale = d;
+        return axis;
+    };
+    axis.divisor = (d) => {
+        if (!d) return divisor;
+        divisor = d;
         return axis;
     };
     axis.domain = (d) => {
