@@ -11,3 +11,4 @@ export { default as xOrdinal } from './src/xOrdinal';
 // y-axes
 export { default as yLinear } from './src/yLinear';
 export { default as yOrdinal } from './src/yOrdinal';
+export { default as yDate } from './src/yDate';

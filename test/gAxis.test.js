@@ -5,6 +5,9 @@ tape('gAxis exposes xLinear, yLinear and yOrdinal axes', (test) => {
     test.ok(gAxis.xDate, 'xDate exists');
     test.equal(typeof gAxis.xDate, 'function');
 
+    test.ok(gAxis.yDate, 'yDate exists');
+    test.equal(typeof gAxis.yDate, 'function');
+
     test.ok(gAxis.xLinear, 'xLinear exists');
     test.equal(typeof gAxis.xLinear, 'function');
 
