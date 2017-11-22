@@ -5,6 +5,7 @@ export default function () {
         .domain([0, 10000])
         .range([120, 0]);
     let align = 'right';
+    let divisor = 1;
     let invert = false;
     let labelWidth = 0;
     let logScale = false;
@@ -15,6 +16,9 @@ export default function () {
     let frameName;
 
     function axis(parent) {
+        let deciCheck = false;
+        let span = scale.domain()[1] - scale.domain()[0];
+
         if (logScale) {
             const newScale = d3.scaleLog()
             .domain(scale.domain())
@@ -26,9 +30,30 @@ export default function () {
             scale.range(newRange);
         }
 
+        let deciFormat;
+        if (span >= 0.5) { deciFormat = d3.format('.1f'); }
+        if (span < 0.5) { deciFormat = d3.format('.2f'); }
+        if (span <= 0.011) { deciFormat = d3.format('.3f'); }
+        if (span < 0.0011) { deciFormat = d3.format('.4f'); }
+        if (span < 0.00011) { deciFormat = d3.format('.5f'); }
+        if (span < 0.000011) { deciFormat = d3.format('.6f'); }
+        const numberFormat = d3.format(',');
+
         const yAxis = getAxis(align)
             .ticks(numTicks)
-            .scale(scale);
+            .scale(scale)
+            .tickFormat(formatNumber);
+
+        function formatNumber(d) {
+            const test4Decimal = Number.isInteger(d / divisor);
+            if (test4Decimal === false) { deciCheck = true; }
+            if (d / divisor === 0) { return numberFormat(d / divisor); }
+            if (logScale) { return numberFormat(d / divisor); }
+            if (deciCheck) {
+                return deciFormat(d / divisor);
+            }
+            return numberFormat(d / divisor);
+        }
 
         yLabel = parent.append('g')
           .attr('class', 'axis yAxis')
@@ -74,6 +99,11 @@ export default function () {
     axis.align = (d) => {
         if (!d) return align;
         align = d;
+        return axis;
+    };
+    axis.divisor = (d) => {
+        if (!d) return divisor;
+        divisor = d;
         return axis;
     };
     axis.frameName = (d) => {
