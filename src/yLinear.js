@@ -26,6 +26,15 @@ export default function () {
             const newRange = scale.range().reverse();
             scale.range(newRange);
         }
+        
+        let deciFormat;
+        if (span >= 0.5) { deciFormat = d3.format('.1f'); }
+        if (span < 0.5) { deciFormat = d3.format('.2f'); }
+        if (span <= 0.011) { deciFormat = d3.format('.3f'); }
+        if (span < 0.0011) { deciFormat = d3.format('.4f'); }
+        if (span < 0.00011) { deciFormat = d3.format('.5f'); }
+        if (span < 0.000011) { deciFormat = d3.format('.6f'); }
+        let numberFormat = d3.format(",")
 
         const yAxis = getAxis(align)
             .ticks(numTicks)
