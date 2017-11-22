@@ -22,6 +22,9 @@ export default function () {
     }
 
     function axis(parent) {
+        let deciCheck = false;
+        let span = scale.domain()[1]-scale.domain()[0]
+
         if (invert) {
             const newRange = scale.range().reverse();
             scale.range(newRange);
@@ -32,7 +35,7 @@ export default function () {
             .range(scale.range());
             scale = newScale;
         }
-        
+
         let deciFormat;
         if (span >= 0.5) { deciFormat = d3.format('.1f'); }
         if (span < 0.5) { deciFormat = d3.format('.2f'); }
@@ -40,12 +43,24 @@ export default function () {
         if (span < 0.0011) { deciFormat = d3.format('.4f'); }
         if (span < 0.00011) { deciFormat = d3.format('.5f'); }
         if (span < 0.000011) { deciFormat = d3.format('.6f'); }
-        let numberFormat = d3.format(",")
+        const numberFormat = d3.format(',');
 
         const xAxis = getAxis(align)
             .tickSize(tickSize)
             .ticks(numTicks)
-            .scale(scale);
+            .scale(scale)
+            .tickFormat(formatNumber);
+
+         function formatNumber(d) {
+            const test4Decimal = Number.isInteger(d/divisor);
+            if (test4Decimal === false) { deciCheck = true; }
+            if (d/divisor === 0) {return numberFormat(d/divisor)}
+            if (logScale) {return numberFormat(d/divisor);}
+            if (deciCheck) {
+                return deciFormat(d/divisor)
+            }
+            return numberFormat(d/divisor)
+        }
 
         xLabel = parent.append('g')
             .attr('class', 'axis xAxis')
