@@ -352,7 +352,7 @@
 
         function axis(parent) {
             let deciCheck = false;
-            let span = scale.domain()[1] - scale.domain()[0];
+            const span = scale.domain()[1] - scale.domain()[0];
 
             if (invert) {
                 const newRange = scale.range().reverse();
@@ -382,8 +382,8 @@
                 .tickFormat(formatNumber);
 
             function formatNumber(d) {
-                const test4Decimal = Number.isInteger(d / divisor);
-                if (test4Decimal === false) { deciCheck = true; }
+                const isDecimal = Number.isInteger(d / divisor);
+                if (isDecimal === false) { deciCheck = true; }
                 if (d / divisor === 0) { return numberFormat(d / divisor); }
                 if (logScale) { return numberFormat(d / divisor); }
                 if (deciCheck) {
@@ -584,7 +584,7 @@
 
         function axis(parent) {
             let deciCheck = false;
-            let span = scale.domain()[1] - scale.domain()[0];
+            const span = scale.domain()[1] - scale.domain()[0];
 
             if (logScale) {
                 const newScale = d3.scaleLog()
@@ -612,8 +612,8 @@
                 .tickFormat(formatNumber);
 
             function formatNumber(d) {
-                const test4Decimal = Number.isInteger(d / divisor);
-                if (test4Decimal === false) { deciCheck = true; }
+                const isDecimal = Number.isInteger(d / divisor);
+                if (isDecimal === false) { deciCheck = true; }
                 if (d / divisor === 0) { return numberFormat(d / divisor); }
                 if (logScale) { return numberFormat(d / divisor); }
                 if (deciCheck) {
