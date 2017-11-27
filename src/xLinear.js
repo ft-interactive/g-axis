@@ -7,6 +7,7 @@ export default function () {
     let tickSize = 50;
     let numTicks = 5;
     let align = 'bottom';
+    let divisor = 1;
     let invert = false;
     let logScale = false;
     let xAxisHighlight = 0;
@@ -21,6 +22,9 @@ export default function () {
     }
 
     function axis(parent) {
+        let deciCheck = false;
+        const span = scale.domain()[1] - scale.domain()[0];
+
         if (invert) {
             const newRange = scale.range().reverse();
             scale.range(newRange);
@@ -32,10 +36,31 @@ export default function () {
             scale = newScale;
         }
 
+        let deciFormat;
+        if (span >= 0.5) { deciFormat = d3.format('.1f'); }
+        if (span < 0.5) { deciFormat = d3.format('.2f'); }
+        if (span <= 0.011) { deciFormat = d3.format('.3f'); }
+        if (span < 0.0011) { deciFormat = d3.format('.4f'); }
+        if (span < 0.00011) { deciFormat = d3.format('.5f'); }
+        if (span < 0.000011) { deciFormat = d3.format('.6f'); }
+        const numberFormat = d3.format(',');
+
         const xAxis = getAxis(align)
             .tickSize(tickSize)
             .ticks(numTicks)
-            .scale(scale);
+            .scale(scale)
+            .tickFormat(formatNumber);
+
+        function formatNumber(d) {
+            const test4Decimal = Number.isInteger(d / divisor);
+            if (test4Decimal === false) { deciCheck = true; }
+            if (d / divisor === 0) { return numberFormat(d / divisor); }
+            if (logScale) { return numberFormat(d / divisor); }
+            if (deciCheck) {
+                return deciFormat(d / divisor);
+            }
+            return numberFormat(d / divisor);
+        }
 
         xLabel = parent.append('g')
             .attr('class', 'axis xAxis')
@@ -73,6 +98,11 @@ export default function () {
     axis.scale = (d) => {
         if (!d) return scale;
         scale = d;
+        return axis;
+    };
+    axis.divisor = (d) => {
+        if (!d) return divisor;
+        divisor = d;
         return axis;
     };
     axis.domain = (d) => {
