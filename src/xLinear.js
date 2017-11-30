@@ -52,8 +52,8 @@ export default function () {
             .tickFormat(formatNumber);
 
         function formatNumber(d) {
-            const test4Decimal = Number.isInteger(d / divisor);
-            if (test4Decimal === false) { deciCheck = true; }
+            const checkDecimal = Number.isInteger(d / divisor);
+            if (checkDecimal === false) { deciCheck = true; }
             if (d / divisor === 0) { return numberFormat(d / divisor); }
             if (logScale) { return numberFormat(d / divisor); }
             if (deciCheck) {
