@@ -491,8 +491,14 @@
         let tickSize = 10;
         let xLabel;
         let frameName;
+        let invert = false;
 
         function axis(parent) {
+            if (invert) {
+                const newDomain = scale.domain().reverse();
+                scale.domain(newDomain);
+            }
+
             const xAxis = getAxis(align)
                 .tickSize(tickSize)
                 .scale(scale);
@@ -534,6 +540,11 @@
         axis.frameName = (d) => {
             if (d === undefined) return frameName;
             frameName = d;
+            return axis;
+        };
+        axis.invert = (d) => {
+            if (d === undefined) return invert;
+            invert = d;
             return axis;
         };
         axis.rangeRound = (d) => {
@@ -750,6 +761,7 @@
         let offset = 0;
         let yLabel;
         let frameName;
+        let invert = false;
 
         function getAxis(alignment) {
             return {
@@ -759,6 +771,11 @@
         }
 
         function axis(parent) {
+            if (invert) {
+                const newDomain = scale.domain().reverse();
+                scale.domain(newDomain);
+            }
+
             const yAxis = getAxis(align)
                 .tickSize(tickSize)
                 .scale(scale);
@@ -800,6 +817,11 @@
         axis.frameName = (d) => {
             if (d === undefined) return frameName;
             frameName = d;
+            return axis;
+        };
+        axis.invert = (d) => {
+            if (d === undefined) return invert;
+            invert = d;
             return axis;
         };
         axis.rangeRound = (d) => {
