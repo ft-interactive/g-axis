@@ -21,6 +21,7 @@
         let xLabel;
         let xLabelMinor;
         let endTicks;
+        let customFormat = false
 
         function axis(parent) {
             function getAxis(alignment) {
@@ -85,6 +86,10 @@
                     .ticks(getTicksMinor(interval))
                     .tickFormat('')
                     .scale(scale);
+            }
+
+            if (customFormat) {
+                xAxis.tickFormat(customFormat);
             }
 
             xLabel = parent.append('g')
@@ -267,6 +272,11 @@
         axis.endTicks = (d) => {
             if (d === undefined) return endTicks;
             endTicks = d;
+            return axis;
+        };
+        axis.tickFormat = (d) => {
+            customFormat = d;
+            scale.tickFormat(d);
             return axis;
         };
         axis.frameName = (d) => {
@@ -858,6 +868,7 @@
         let yLabel;
         let yLabelMinor;
         let endTicks;
+        let customFormat = false;
 
         function axis(parent) {
             function getAxis(alignment) {
@@ -922,6 +933,10 @@
                     .ticks(getTicksMinor(interval))
                     .tickFormat('')
                     .scale(scale);
+            }
+
+            if (customFormat) {
+                yAxis.tickFormat(customFormat);
             }
 
             yLabel = parent.append('g')
@@ -1114,6 +1129,11 @@
         }
         axis.align = (d) => {
             align = d;
+            return axis;
+        };
+        axis.tickFormat = (d) => {
+            customFormat = d
+            scale.tickFormat(d);
             return axis;
         };
         axis.endTicks = (d) => {
