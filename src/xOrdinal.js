@@ -56,6 +56,11 @@ export default function xAxisOrdinal() {
         frameName = d;
         return axis;
     };
+    axis.invert = (d) => {
+        if (d === undefined) return invert;
+        invert = d;
+        return axis;
+    };
     axis.rangeRound = (d) => {
         scale.rangeRound(d);
         return axis;
