@@ -13,6 +13,11 @@ export default function xAxisOrdinal() {
     let invert = false;
 
     function axis(parent) {
+        if (invert) {
+            const newDomain = scale.domain().reverse();
+            scale.domain(newDomain);
+        }
+
         const xAxis = getAxis(align)
             .tickSize(tickSize)
             .scale(scale);

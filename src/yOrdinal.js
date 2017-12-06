@@ -23,6 +23,11 @@ export default function () {
     }
 
     function axis(parent) {
+        if (invert) {
+            const newDomain = scale.domain().reverse();
+            scale.domain(newDomain);
+        }
+
         const yAxis = getAxis(align)
             .tickSize(tickSize)
             .scale(scale);
