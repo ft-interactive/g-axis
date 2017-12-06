@@ -10,6 +10,7 @@ export default function xAxisOrdinal() {
     let tickSize = 10;
     let xLabel;
     let frameName;
+    let invert = false;
 
     function axis(parent) {
         const xAxis = getAxis(align)

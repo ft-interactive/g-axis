@@ -13,6 +13,7 @@ export default function () {
     let offset = 0;
     let yLabel;
     let frameName;
+    let invert = false;
 
     function getAxis(alignment) {
         return {
