@@ -13,6 +13,7 @@ export default function () {
     let offset = 0;
     let yLabel;
     let frameName;
+    let invert = false;
 
     function getAxis(alignment) {
         return {
@@ -22,6 +23,11 @@ export default function () {
     }
 
     function axis(parent) {
+        if (invert) {
+            const newDomain = scale.domain().reverse();
+            scale.domain(newDomain);
+        }
+
         const yAxis = getAxis(align)
             .tickSize(tickSize)
             .scale(scale);
@@ -63,6 +69,11 @@ export default function () {
     axis.frameName = (d) => {
         if (d === undefined) return frameName;
         frameName = d;
+        return axis;
+    };
+    axis.invert = (d) => {
+        if (d === undefined) return invert;
+        invert = d;
         return axis;
     };
     axis.rangeRound = (d) => {
