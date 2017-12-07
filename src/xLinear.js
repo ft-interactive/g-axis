@@ -119,6 +119,11 @@ export default function () {
         scale.range(d);
         return axis;
     };
+    axis.tickFormat = (d) => {
+        customFormat = d
+        scale.tickFormat(d);
+        return axis;
+    };
     axis.tickSize = (d) => {
         if (d === undefined) return tickSize;
         tickSize = d;

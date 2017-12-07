@@ -135,6 +135,11 @@ export default function () {
         logScale = d;
         return axis;
     };
+    axis.tickFormat = (d) => {
+        customFormat = d
+        scale.tickFormat(d);
+        return axis;
+    };
     axis.tickSize = (d) => {
         if (!d) return tickSize;
         tickSize = d;
