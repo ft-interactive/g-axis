@@ -56,6 +56,10 @@ export default function () {
             return numberFormat(d / divisor);
         }
 
+        if (customFormat) {
+            yAxis.tickFormat(customFormat);
+        }
+
         yLabel = parent.append('g')
           .attr('class', 'axis yAxis')
           .call(yAxis);

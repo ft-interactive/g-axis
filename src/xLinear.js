@@ -63,6 +63,10 @@ export default function () {
             return numberFormat(d / divisor);
         }
 
+        if (customFormat) {
+            xAxis.tickFormat(customFormat);
+        }
+
         xLabel = parent.append('g')
             .attr('class', 'axis xAxis')
             .call(xAxis);
