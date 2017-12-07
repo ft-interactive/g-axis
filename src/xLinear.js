@@ -13,6 +13,7 @@ export default function () {
     let xAxisHighlight = 0;
     let xLabel;
     let frameName;
+    let customFormat = false;
 
     function getAxis(alignment) {
         return {

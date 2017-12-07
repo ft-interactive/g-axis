@@ -14,6 +14,7 @@ export default function () {
     let yAxisHighlight = 0;
     let yLabel;
     let frameName;
+    let customFormat = false;
 
     function axis(parent) {
         let deciCheck = false;
