@@ -14,6 +14,7 @@ export default function () {
     let yAxisHighlight = 0;
     let yLabel;
     let frameName;
+    let tickValues;
     let customFormat = false;
 
     function axis(parent) {
@@ -54,6 +55,10 @@ export default function () {
                 return deciFormat(d / divisor);
             }
             return numberFormat(d / divisor);
+        }
+
+        if (tickValues) {
+            yAxis.tickValues(tickValues);
         }
 
         if (customFormat) {
@@ -147,6 +152,11 @@ export default function () {
     axis.tickSize = (d) => {
         if (!d) return tickSize;
         tickSize = d;
+        return axis;
+    };
+    axis.tickValues = (d) => {
+        if (!d) return tickValues;
+        tickValues = d;
         return axis;
     };
     axis.yAxisHighlight = (d) => {
