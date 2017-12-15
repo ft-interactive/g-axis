@@ -14,6 +14,7 @@ export default function () {
     let yAxisHighlight = 0;
     let yLabel;
     let frameName;
+    let customFormat = false;
 
     function axis(parent) {
         let deciCheck = false;
@@ -53,6 +54,10 @@ export default function () {
                 return deciFormat(d / divisor);
             }
             return numberFormat(d / divisor);
+        }
+
+        if (customFormat) {
+            yAxis.tickFormat(customFormat);
         }
 
         yLabel = parent.append('g')
@@ -132,6 +137,11 @@ export default function () {
     axis.logScale = (d) => {
         if (d === undefined) return logScale;
         logScale = d;
+        return axis;
+    };
+    axis.tickFormat = (d) => {
+        customFormat = d
+        scale.tickFormat(d);
         return axis;
     };
     axis.tickSize = (d) => {

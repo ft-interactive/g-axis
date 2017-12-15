@@ -13,6 +13,7 @@ export default function () {
     let xAxisHighlight = 0;
     let xLabel;
     let frameName;
+    let customFormat = false;
 
     function getAxis(alignment) {
         return {
@@ -60,6 +61,10 @@ export default function () {
                 return deciFormat(d / divisor);
             }
             return numberFormat(d / divisor);
+        }
+
+        if (customFormat) {
+            xAxis.tickFormat(customFormat);
         }
 
         xLabel = parent.append('g')
@@ -116,6 +121,11 @@ export default function () {
     };
     axis.range = (d) => {
         scale.range(d);
+        return axis;
+    };
+    axis.tickFormat = (d) => {
+        customFormat = d
+        scale.tickFormat(d);
         return axis;
     };
     axis.tickSize = (d) => {
