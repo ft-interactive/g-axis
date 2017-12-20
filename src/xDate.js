@@ -17,7 +17,8 @@ export default function () {
     let xLabel;
     let xLabelMinor;
     let endTicks;
-    let customFormat = false
+    let customFormat = false;
+    let tickValues;
 
     function axis(parent) {
         function getAxis(alignment) {
@@ -82,6 +83,10 @@ export default function () {
                 .ticks(getTicksMinor(interval))
                 .tickFormat('')
                 .scale(scale);
+        }
+
+        if (tickValues) {
+            xAxis.tickValues(tickValues);
         }
 
         if (customFormat) {
@@ -273,6 +278,11 @@ export default function () {
     axis.tickFormat = (d) => {
         customFormat = d;
         scale.tickFormat(d);
+        return axis;
+    };
+    axis.tickValues = (d) => {
+        if (!d) return tickValues;
+        tickValues = d;
         return axis;
     };
     axis.frameName = (d) => {

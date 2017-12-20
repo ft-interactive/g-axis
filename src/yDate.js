@@ -19,6 +19,7 @@ export default function () {
     let yLabelMinor;
     let endTicks;
     let customFormat = false;
+    let tickValues;
 
     function axis(parent) {
         function getAxis(alignment) {
@@ -83,6 +84,10 @@ export default function () {
                 .ticks(getTicksMinor(interval))
                 .tickFormat('')
                 .scale(scale);
+        }
+
+        if (tickValues) {
+            yAxis.tickValues(tickValues);
         }
 
         if (customFormat) {
@@ -309,6 +314,11 @@ export default function () {
     axis.scale = (d) => {
         if (!d) return scale;
         scale = d;
+        return axis;
+    };
+    axis.tickValues = (d) => {
+        if (!d) return tickValues;
+        tickValues = d;
         return axis;
     };
     axis.domain = (d) => {
