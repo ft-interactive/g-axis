@@ -13,6 +13,8 @@ export default function () {
     let tickSize = 300;
     let yAxisHighlight = 0;
     let yLabel;
+    let label;
+    let rem = 10;
     let frameName;
     let tickValues;
     let customFormat = false;
@@ -132,6 +134,11 @@ export default function () {
     };
     axis.range = (d) => {
         scale.range(d);
+        return axis;
+    };
+    axis.rem = (d) => {
+        if (!d) return rem;
+        rem = d;
         return axis;
     };
     axis.labelWidth = (d) => {
