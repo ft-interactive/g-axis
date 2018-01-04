@@ -94,10 +94,10 @@ export default function () {
             label.forEach((d, i) => {
                 defaultLabel[i] = d
             });
-            
+
             const axisLabel = parent.append('g')
                 .attr('class', 'axis xAxis');
-            
+
             axisLabel.append('text')
                 .attr('y', getVerticle(align, defaultLabel[2]))
                 .attr('x', getHorizontal(defaultLabel[1]))
@@ -107,19 +107,19 @@ export default function () {
             const width = (text.node().getBBox().width) / 2;
             const height = (text.node().getBBox().height) / 2;
             const textX = text.node().getBBox().x + width;
-            let textY = text.node().getBBox().y + height;
-            text.attr('transform ', 'rotate(' + (defaultLabel[3])+ ', ' + textX + ', ' + textY + ')')
-                .style('text-anchor',defaultLabel[1]);
+            const textY = text.node().getBBox().y + height;
+            text.attr('transform', 'rotate(' + (defaultLabel[3]) + ', ' + textX + ', ' + textY + ')')
+                .style('text-anchor', defaultLabel[1]);
 
             function getVerticle(axisAlign, vertAlign) {
                 return {
-                    toptop: 0 - (rem ),
+                    toptop: 0 - (rem),
                     topmiddle: 0,
                     topbottom: 0 + (rem),
                     bottomtop: tickSize,
                     bottommiddle: tickSize + (rem * 1),
                     bottombottom: tickSize + (rem * 2),
-                }[axisAlign+vertAlign];
+                }[axisAlign + vertAlign];
             }
 
             function getHorizontal(anchor) {
