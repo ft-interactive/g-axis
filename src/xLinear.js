@@ -12,6 +12,8 @@ export default function () {
     let logScale = false;
     let xAxisHighlight = 0;
     let xLabel;
+    let label;
+    let rem = 10;
     let frameName;
     let tickValues;
     let customFormat = false;
@@ -87,6 +89,48 @@ export default function () {
             .attr('id', `${frameName}xTick`);
         }
 
+        if (label) {
+            let defaultLabel = [label[0], 'middle', 'middle', 0];
+            label.forEach((d, i) => {
+                defaultLabel[i] = d
+            });
+            
+            const axisLabel = parent.append('g')
+                .attr('class', 'axis xAxis');
+            
+            axisLabel.append('text')
+                .attr('y', getVerticle(align, defaultLabel[2]))
+                .attr('x', getHorizontal(defaultLabel[1]))
+                .text(defaultLabel[0]);
+
+            const text = axisLabel.selectAll('text');
+            const width = (text.node().getBBox().width) / 2;
+            const height = (text.node().getBBox().height) / 2;
+            const textX = text.node().getBBox().x + width;
+            let textY = text.node().getBBox().y + height;
+            text.attr('transform ', 'rotate(' + (defaultLabel[3])+ ', ' + textX + ', ' + textY + ')')
+                .style('text-anchor',defaultLabel[1]);
+
+            function getVerticle(axisAlign, vertAlign) {
+                return {
+                    toptop: 0 - (rem ),
+                    topmiddle: 0,
+                    topbottom: 0 + (rem),
+                    bottomtop: tickSize,
+                    bottommiddle: tickSize + (rem * 1),
+                    bottombottom: tickSize + (rem * 2),
+                }[axisAlign+vertAlign];
+            }
+
+            function getHorizontal(anchor) {
+                return {
+                    start: scale.range()[0],
+                    middle: (scale.range()[1] - scale.range()[0])/2,
+                    end: scale.range()[1],
+                }[anchor];
+            }
+        }
+
         xLabel.selectAll('.domain').remove();
     }
 
@@ -117,6 +161,16 @@ export default function () {
     };
     axis.domain = (d) => {
         scale.domain(d);
+        return axis;
+    };
+    axis.label = (d) => {
+        if (d === undefined) return label;
+        label = d;
+        return axis;
+    };
+    axis.rem = (d) => {
+        if (!d) return rem;
+        rem = d;
         return axis;
     };
     axis.tickValues = (d) => {
