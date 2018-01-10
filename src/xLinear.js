@@ -92,24 +92,12 @@ export default function () {
         if (label) {
             let defaultLabel = {
                 tag: label.tag,
-                hori: 'middle',
-                vert: 'bottom',
-                anchor: 'middle',
-                rotate: 0,
+                hori: (label.hori || 'middle'),
+                vert: (label.vert || 'bottom'),
+                anchor: (label.anchor || 'middle'),
+                rotate: (label.rotate || 0),
             };
-            if (label.hori) {
-                defaultLabel.hori = label.hori;
-            }
-            if (label.vert) {
-                defaultLabel.vert = label.vert;
-            }
-            if (label.anchor) {
-                defaultLabel.anchor = label.anchor;
-            }
-            if (label.rotate) {
-                defaultLabel.rotate = label.rotate;
-            }
-
+            
             const axisLabel = parent.append('g')
                 .attr('class', 'axis xAxis');
 

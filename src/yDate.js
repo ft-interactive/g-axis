@@ -139,23 +139,11 @@ export default function () {
         if (label) {
             let defaultLabel = {
                 tag: label.tag,
-                hori: 'left',
-                vert: 'middle',
-                anchor: 'middle',
-                rotate: -90,
+                hori: (label.hori || 'left'),
+                vert: (label.vert || 'middle'),
+                anchor: (label.anchor || 'middle'),
+                rotate: (label.rotate || -90),
             };
-            if (label.hori) {
-                defaultLabel.hori = label.hori;
-            }
-            if (label.vert) {
-                defaultLabel.vert = label.vert;
-            }
-            if (label.anchor) {
-                defaultLabel.anchor = label.anchor;
-            }
-            if (label.rotate) {
-                defaultLabel.rotate = label.rotate;
-            }
 
             let axisLabel = parent.append('g')
                 .attr('class', 'axis xAxis');
