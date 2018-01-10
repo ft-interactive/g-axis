@@ -88,7 +88,7 @@ export default function xAxisOrdinal() {
     };
 
     axis.paddingOuter = (d) => {
-        if (!d) return scale.paddinOuter();
+        if (!d) return scale.paddingOuter();
         scale.paddingOuter(d);
         return axis;
     };

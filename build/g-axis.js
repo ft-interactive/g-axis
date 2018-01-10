@@ -21,7 +21,8 @@
         let xLabel;
         let xLabelMinor;
         let endTicks;
-        let customFormat = false
+        let customFormat = false;
+        let tickValues;
 
         function axis(parent) {
             function getAxis(alignment) {
@@ -86,6 +87,10 @@
                     .ticks(getTicksMinor(interval))
                     .tickFormat('')
                     .scale(scale);
+            }
+
+            if (tickValues) {
+                xAxis.tickValues(tickValues);
             }
 
             if (customFormat) {
@@ -279,6 +284,11 @@
             scale.tickFormat(d);
             return axis;
         };
+        axis.tickValues = (d) => {
+            if (!d) return tickValues;
+            tickValues = d;
+            return axis;
+        };
         axis.frameName = (d) => {
             if (d === undefined) return frameName;
             frameName = d;
@@ -353,6 +363,8 @@
         let xAxisHighlight = 0;
         let xLabel;
         let frameName;
+        let tickValues;
+        let customFormat = false;
 
         function getAxis(alignment) {
             return {
@@ -402,6 +414,14 @@
                 return numberFormat(d / divisor);
             }
 
+            if (tickValues) {
+                xAxis.tickValues(tickValues);
+            }
+
+            if (customFormat) {
+                xAxis.tickFormat(customFormat);
+            }
+
             xLabel = parent.append('g')
                 .attr('class', 'axis xAxis')
                 .call(xAxis);
@@ -449,6 +469,11 @@
             scale.domain(d);
             return axis;
         };
+        axis.tickValues = (d) => {
+            if (!d) return tickValues;
+            tickValues = d;
+            return axis;
+        };
         axis.logScale = (d) => {
             if (d === undefined) return logScale;
             logScale = d;
@@ -456,6 +481,11 @@
         };
         axis.range = (d) => {
             scale.range(d);
+            return axis;
+        };
+        axis.tickFormat = (d) => {
+            customFormat = d
+            scale.tickFormat(d);
             return axis;
         };
         axis.tickSize = (d) => {
@@ -569,7 +599,7 @@
         };
 
         axis.paddingOuter = (d) => {
-            if (!d) return scale.paddinOuter();
+            if (!d) return scale.paddingOuter();
             scale.paddingOuter(d);
             return axis;
         };
@@ -602,6 +632,8 @@
         let yAxisHighlight = 0;
         let yLabel;
         let frameName;
+        let tickValues;
+        let customFormat = false;
 
         function axis(parent) {
             let deciCheck = false;
@@ -641,6 +673,14 @@
                     return deciFormat(d / divisor);
                 }
                 return numberFormat(d / divisor);
+            }
+
+            if (tickValues) {
+                yAxis.tickValues(tickValues);
+            }
+
+            if (customFormat) {
+                yAxis.tickFormat(customFormat);
             }
 
             yLabel = parent.append('g')
@@ -722,9 +762,19 @@
             logScale = d;
             return axis;
         };
+        axis.tickFormat = (d) => {
+            customFormat = d
+            scale.tickFormat(d);
+            return axis;
+        };
         axis.tickSize = (d) => {
             if (!d) return tickSize;
             tickSize = d;
+            return axis;
+        };
+        axis.tickValues = (d) => {
+            if (!d) return tickValues;
+            tickValues = d;
             return axis;
         };
         axis.yAxisHighlight = (d) => {
@@ -891,6 +941,7 @@
         let yLabelMinor;
         let endTicks;
         let customFormat = false;
+        let tickValues;
 
         function axis(parent) {
             function getAxis(alignment) {
@@ -955,6 +1006,10 @@
                     .ticks(getTicksMinor(interval))
                     .tickFormat('')
                     .scale(scale);
+            }
+
+            if (tickValues) {
+                yAxis.tickValues(tickValues);
             }
 
             if (customFormat) {
@@ -1181,6 +1236,11 @@
         axis.scale = (d) => {
             if (!d) return scale;
             scale = d;
+            return axis;
+        };
+        axis.tickValues = (d) => {
+            if (!d) return tickValues;
+            tickValues = d;
             return axis;
         };
         axis.domain = (d) => {
