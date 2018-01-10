@@ -9,6 +9,7 @@ export default function xAxisOrdinal() {
         .paddingOuter(0.05);
     let tickSize = 10;
     let xLabel;
+    let label;
     let frameName;
     let invert = false;
 
@@ -64,6 +65,11 @@ export default function xAxisOrdinal() {
     axis.invert = (d) => {
         if (d === undefined) return invert;
         invert = d;
+        return axis;
+    };
+    axis.label = (d) => {
+        if (d === undefined) return label;
+        label = d;
         return axis;
     };
     axis.rangeRound = (d) => {
