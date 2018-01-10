@@ -90,14 +90,14 @@ export default function () {
         }
 
         if (label) {
-            let defaultLabel = {
+            const defaultLabel = {
                 tag: label.tag,
                 hori: (label.hori || 'middle'),
                 vert: (label.vert || 'bottom'),
                 anchor: (label.anchor || 'middle'),
                 rotate: (label.rotate || 0),
             };
-            
+
             const axisLabel = parent.append('g')
                 .attr('class', 'axis xAxis');
 

@@ -124,7 +124,7 @@ export default function () {
         }
         
         if (label) {
-            let defaultLabel = {
+            const defaultLabel = {
                 tag: label.tag,
                 hori: (label.hori || 'middle'),
                 vert: (label.vert || 'bottom'),

@@ -95,7 +95,7 @@ export default function () {
         }
 
         if (label) {
-            let defaultLabel = {
+            const defaultLabel = {
                 tag: label.tag,
                 hori: (label.hori || 'left'),
                 vert: (label.vert || 'middle'),
@@ -103,7 +103,7 @@ export default function () {
                 rotate: (label.rotate || -90),
             };
 
-            let axisLabel = parent.append('g')
+            const axisLabel = parent.append('g')
                 .attr('class', 'axis xAxis');
 
             axisLabel.append('text')
