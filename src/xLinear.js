@@ -90,26 +90,41 @@ export default function () {
         }
 
         if (label) {
-            let defaultLabel = [label[0], 'middle', 'middle', 0];
-            label.forEach((d, i) => {
-                defaultLabel[i] = d
-            });
+            let defaultLabel = {
+                tag: label.tag,
+                hori: 'middle',
+                vert: 'bottom',
+                anchor: 'middle',
+                rotate: 0,
+            };
+            if (label.hori) {
+                defaultLabel.hori = label.hori;
+            }
+            if (label.vert) {
+                defaultLabel.vert = label.vert;
+            }
+            if (label.anchor) {
+                defaultLabel.anchor = label.anchor;
+            }
+            if (label.rotate) {
+                defaultLabel.rotate = label.rotate;
+            }
 
             const axisLabel = parent.append('g')
                 .attr('class', 'axis xAxis');
 
             axisLabel.append('text')
-                .attr('y', getVerticle(align, defaultLabel[2]))
-                .attr('x', getHorizontal(defaultLabel[1]))
-                .text(defaultLabel[0]);
+                .attr('y', getVerticle(align, defaultLabel.vert))
+                .attr('x', getHorizontal(defaultLabel.hori))
+                .text(defaultLabel.tag);
 
             const text = axisLabel.selectAll('text');
             const width = (text.node().getBBox().width) / 2;
             const height = (text.node().getBBox().height) / 2;
             const textX = text.node().getBBox().x + width;
             const textY = text.node().getBBox().y + height;
-            text.attr('transform', 'rotate(' + (defaultLabel[3]) + ', ' + textX + ', ' + textY + ')')
-                .style('text-anchor', defaultLabel[1]);
+            text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                .style('text-anchor', defaultLabel.anchor);
 
             function getVerticle(axisAlign, vertAlign) {
                 return {
@@ -122,12 +137,12 @@ export default function () {
                 }[axisAlign + vertAlign];
             }
 
-            function getHorizontal(anchor) {
+            function getHorizontal(hori) {
                 return {
-                    start: scale.range()[0],
-                    middle: (scale.range()[1] - scale.range()[0])/2,
-                    end: scale.range()[1],
-                }[anchor];
+                    left: scale.range()[0],
+                    middle: (scale.range()[1] - scale.range()[0]) / 2,
+                    right: scale.range()[1],
+                }[hori];
             }
         }
 
