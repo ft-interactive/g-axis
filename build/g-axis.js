@@ -18,8 +18,11 @@
         let minorTickSize = 5;
         let fullYear = false;
         let align = 'bottom';
+        let label;
         let xLabel;
         let xLabelMinor;
+        let label;
+        let rem = 10;
         let endTicks;
         let customFormat = false;
         let tickValues;
@@ -121,6 +124,51 @@
                 if (minorAxis) {
                     xLabelMinor.selectAll('.axis.xAxis line')
                     .attr('id', `${frameName}xTick`);
+                }
+            }
+            
+            if (label) {
+                const defaultLabel = {
+                    tag: label.tag,
+                    hori: (label.hori || 'middle'),
+                    vert: (label.vert || 'bottom'),
+                    anchor: (label.anchor || 'middle'),
+                    rotate: (label.rotate || 0),
+                };
+
+                const axisLabel = parent.append('g')
+                    .attr('class', 'axis xAxis');
+
+                axisLabel.append('text')
+                    .attr('y', getVerticle(align, defaultLabel.vert))
+                    .attr('x', getHorizontal(defaultLabel.hori))
+                    .text(defaultLabel.tag);
+
+                const text = axisLabel.selectAll('text');
+                const width = (text.node().getBBox().width) / 2;
+                const height = (text.node().getBBox().height) / 2;
+                const textX = text.node().getBBox().x + width;
+                const textY = text.node().getBBox().y + height;
+                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                    .style('text-anchor', defaultLabel.anchor);
+
+                function getVerticle(axisAlign, vertAlign) {
+                    return {
+                        toptop: 0 - (rem),
+                        topmiddle: 0,
+                        topbottom: 0 + (rem),
+                        bottomtop: tickSize,
+                        bottommiddle: tickSize + (rem * 1),
+                        bottombottom: tickSize + (rem * 2),
+                    }[axisAlign + vertAlign];
+                }
+
+                function getHorizontal(hori) {
+                    return {
+                        left: scale.range()[0],
+                        middle: (scale.range()[1] - scale.range()[0]) / 2,
+                        right: scale.range()[1],
+                    }[hori];
                 }
             }
 
@@ -279,6 +327,16 @@
             endTicks = d;
             return axis;
         };
+        axis.label = (d) => {
+            if (d === undefined) return label;
+            label = d;
+            return axis;
+        };
+        axis.rem = (d) => {
+            if (!d) return rem;
+            rem = d;
+            return axis;
+        };
         axis.tickFormat = (d) => {
             customFormat = d;
             scale.tickFormat(d);
@@ -362,6 +420,8 @@
         let logScale = false;
         let xAxisHighlight = 0;
         let xLabel;
+        let label;
+        let rem = 10;
         let frameName;
         let tickValues;
         let customFormat = false;
@@ -437,6 +497,51 @@
                 .attr('id', `${frameName}xTick`);
             }
 
+            if (label) {
+                const defaultLabel = {
+                    tag: label.tag,
+                    hori: (label.hori || 'middle'),
+                    vert: (label.vert || 'bottom'),
+                    anchor: (label.anchor || 'middle'),
+                    rotate: (label.rotate || 0),
+                };
+
+                const axisLabel = parent.append('g')
+                    .attr('class', 'axis xAxis');
+
+                axisLabel.append('text')
+                    .attr('y', getVerticle(align, defaultLabel.vert))
+                    .attr('x', getHorizontal(defaultLabel.hori))
+                    .text(defaultLabel.tag);
+
+                const text = axisLabel.selectAll('text');
+                const width = (text.node().getBBox().width) / 2;
+                const height = (text.node().getBBox().height) / 2;
+                const textX = text.node().getBBox().x + width;
+                const textY = text.node().getBBox().y + height;
+                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                    .style('text-anchor', defaultLabel.anchor);
+
+                function getVerticle(axisAlign, vertAlign) {
+                    return {
+                        toptop: 0 - (rem),
+                        topmiddle: 0,
+                        topbottom: 0 + (rem),
+                        bottomtop: tickSize,
+                        bottommiddle: tickSize + (rem * 1),
+                        bottombottom: tickSize + (rem * 2),
+                    }[axisAlign + vertAlign];
+                }
+
+                function getHorizontal(hori) {
+                    return {
+                        left: scale.range()[0],
+                        middle: (scale.range()[1] - scale.range()[0]) / 2,
+                        right: scale.range()[1],
+                    }[hori];
+                }
+            }
+
             xLabel.selectAll('.domain').remove();
         }
 
@@ -467,6 +572,16 @@
         };
         axis.domain = (d) => {
             scale.domain(d);
+            return axis;
+        };
+        axis.label = (d) => {
+            if (d === undefined) return label;
+            label = d;
+            return axis;
+        };
+        axis.rem = (d) => {
+            if (!d) return rem;
+            rem = d;
             return axis;
         };
         axis.tickValues = (d) => {
@@ -520,6 +635,7 @@
             .paddingOuter(0.05);
         let tickSize = 10;
         let xLabel;
+        let label;
         let frameName;
         let invert = false;
 
@@ -550,6 +666,51 @@
                 .attr('id', `${frameName}xTick`);
             }
 
+            if (label) {
+                const defaultLabel = {
+                    tag: label.tag,
+                    hori: (label.hori || 'middle'),
+                    vert: (label.vert || 'bottom'),
+                    anchor: (label.anchor || 'middle'),
+                    rotate: (label.rotate || 0),
+                };
+
+                const axisLabel = parent.append('g')
+                    .attr('class', 'axis xAxis');
+
+                axisLabel.append('text')
+                    .attr('y', getVerticle(align, defaultLabel.vert))
+                    .attr('x', getHorizontal(defaultLabel.hori))
+                    .text(defaultLabel.tag);
+
+                const text = axisLabel.selectAll('text');
+                const width = (text.node().getBBox().width) / 2;
+                const height = (text.node().getBBox().height) / 2;
+                const textX = text.node().getBBox().x + width;
+                const textY = text.node().getBBox().y + height;
+                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                    .style('text-anchor', defaultLabel.anchor);
+
+                function getVerticle(axisAlign, vertAlign) {
+                    return {
+                        toptop: 0 - (rem),
+                        topmiddle: 0,
+                        topbottom: 0 + (rem),
+                        bottomtop: tickSize,
+                        bottommiddle: tickSize + (rem * 1),
+                        bottombottom: tickSize + (rem * 2),
+                    }[axisAlign + vertAlign];
+                }
+
+                function getHorizontal(hori) {
+                    return {
+                        left: scale.range()[0],
+                        middle: (scale.range()[1] - scale.range()[0]) / 2,
+                        right: scale.range()[1],
+                    }[hori];
+                }
+            }
+
             xLabel.selectAll('.domain').remove();
         }
 
@@ -575,6 +736,11 @@
         axis.invert = (d) => {
             if (d === undefined) return invert;
             invert = d;
+            return axis;
+        };
+        axis.label = (d) => {
+            if (d === undefined) return label;
+            label = d;
             return axis;
         };
         axis.rangeRound = (d) => {
@@ -631,6 +797,8 @@
         let tickSize = 300;
         let yAxisHighlight = 0;
         let yLabel;
+        let label;
+        let rem = 10;
         let frameName;
         let tickValues;
         let customFormat = false;
@@ -710,6 +878,51 @@
                 .attr('id', `${frameName}yTick`);
             }
 
+            if (label) {
+                const defaultLabel = {
+                    tag: label.tag,
+                    hori: (label.hori || 'left'),
+                    vert: (label.vert || 'middle'),
+                    anchor: (label.anchor || 'middle'),
+                    rotate: (label.rotate || -90),
+                };
+
+                const axisLabel = parent.append('g')
+                    .attr('class', 'axis xAxis');
+
+                axisLabel.append('text')
+                    .attr('y', getVerticle(defaultLabel.vert))
+                    .attr('x', getHorizontal(align, defaultLabel.hori))
+                    .text(defaultLabel.tag)
+
+                const text = axisLabel.selectAll('text');
+                const width = (text.node().getBBox().width) / 2;
+                const height = (text.node().getBBox().height) / 2;
+                const textX = text.node().getBBox().x + width;
+                const textY = text.node().getBBox().y + height;
+                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                    .style('text-anchor', defaultLabel.anchor);
+
+                function getVerticle(vert) {
+                    return {
+                        top: scale.range()[0],
+                        middle: (scale.range()[1] - scale.range()[0]) / 2,
+                        bottom: scale.range()[1],
+                    }[vert];
+                }
+
+                function getHorizontal(axisAlign, horiAlign) {
+                    return {
+                        leftleft: 0 - (labelWidth + (rem / .9)),
+                        leftmiddle: 0 - (labelWidth / 2),
+                        leftright: (rem),
+                        rightleft: tickSize,
+                        rightmiddle: tickSize + (rem * 1),
+                        rightright: tickSize + (rem * 2),
+                    }[axisAlign + horiAlign];
+                }
+            }
+
             yLabel.selectAll('.tick')
                 .filter(d => d === 0 || d === yAxisHighlight)
                 .classed('baseline', true);
@@ -750,6 +963,16 @@
         };
         axis.range = (d) => {
             scale.range(d);
+            return axis;
+        };
+        axis.rem = (d) => {
+            if (!d) return rem;
+            rem = d;
+            return axis;
+        };
+        axis.label = (d) => {
+            if (d === undefined) return label;
+            label = d;
             return axis;
         };
         axis.labelWidth = (d) => {
@@ -810,6 +1033,7 @@
         let tickSize = 0;
         let offset = 0;
         let yLabel;
+        let label;
         let frameName;
         let invert = false;
 
@@ -852,6 +1076,51 @@
                 .attr('id', `${frameName}yTick`);
             }
 
+            if (label) {
+                const defaultLabel = {
+                    tag: label.tag,
+                    hori: (label.hori || 'left'),
+                    vert: (label.vert || 'middle'),
+                    anchor: (label.anchor || 'middle'),
+                    rotate: (label.rotate || -90),
+                };
+
+                const axisLabel = parent.append('g')
+                    .attr('class', 'axis xAxis');
+
+                axisLabel.append('text')
+                    .attr('y', getVerticle(defaultLabel.vert))
+                    .attr('x', getHorizontal(align, defaultLabel.hori))
+                    .text(defaultLabel.tag)
+
+                const text = axisLabel.selectAll('text');
+                const width = (text.node().getBBox().width) / 2;
+                const height = (text.node().getBBox().height) / 2;
+                const textX = text.node().getBBox().x + width;
+                const textY = text.node().getBBox().y + height;
+                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                    .style('text-anchor', defaultLabel.anchor);
+
+                function getVerticle(vert) {
+                    return {
+                        top: scale.range()[0],
+                        middle: (scale.range()[1] - scale.range()[0]) / 2,
+                        bottom: scale.range()[1],
+                    }[vert];
+                }
+
+                function getHorizontal(axisAlign, horiAlign) {
+                    return {
+                        leftleft: 0 - (labelWidth + (rem / .9)),
+                        leftmiddle: 0 - (labelWidth / 2),
+                        leftright: (rem),
+                        rightleft: tickSize,
+                        rightmiddle: tickSize + (rem * 1),
+                        rightright: tickSize + (rem * 2),
+                    }[axisAlign + horiAlign];
+                }
+            }
+
             yLabel.selectAll('.domain').remove();
         }
 
@@ -872,6 +1141,11 @@
         axis.invert = (d) => {
             if (d === undefined) return invert;
             invert = d;
+            return axis;
+        };
+        axis.label = (d) => {
+            if (d === undefined) return label;
+            label = d;
             return axis;
         };
         axis.rangeRound = (d) => {
@@ -938,6 +1212,7 @@
         let fullYear = false;
         let align = 'left';
         let yLabel;
+        let label;
         let yLabelMinor;
         let endTicks;
         let customFormat = false;
@@ -1057,6 +1332,50 @@
                     .attr('id', `${frameName}xTick`);
                 }
             }
+            if (label) {
+                const defaultLabel = {
+                    tag: label.tag,
+                    hori: (label.hori || 'left'),
+                    vert: (label.vert || 'middle'),
+                    anchor: (label.anchor || 'middle'),
+                    rotate: (label.rotate || -90),
+                };
+
+                const axisLabel = parent.append('g')
+                    .attr('class', 'axis xAxis');
+
+                axisLabel.append('text')
+                    .attr('y', getVerticle(defaultLabel.vert))
+                    .attr('x', getHorizontal(align, defaultLabel.hori))
+                    .text(defaultLabel.tag)
+
+                const text = axisLabel.selectAll('text');
+                const width = (text.node().getBBox().width) / 2;
+                const height = (text.node().getBBox().height) / 2;
+                const textX = text.node().getBBox().x + width;
+                const textY = text.node().getBBox().y + height;
+                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                    .style('text-anchor', defaultLabel.anchor);
+
+                function getVerticle(vert) {
+                    return {
+                        top: scale.range()[0],
+                        middle: (scale.range()[1] - scale.range()[0]) / 2,
+                        bottom: scale.range()[1],
+                    }[vert];
+                }
+
+                function getHorizontal(axisAlign, horiAlign) {
+                    return {
+                        leftleft: 0 - (labelWidth + (rem / .9)),
+                        leftmiddle: 0 - (labelWidth / 2),
+                        leftright: (rem),
+                        rightleft: tickSize,
+                        rightmiddle: tickSize + (rem * 1),
+                        rightright: tickSize + (rem * 2),
+                    }[axisAlign + horiAlign];
+                }
+            }
 
             yLabel.selectAll('.domain').remove();
         }
@@ -1226,6 +1545,11 @@
         axis.intraday = (d) => {
             if (d === undefined) return intraday;
             intraday = d;
+            return axis;
+        };
+        axis.label = (d) => {
+            if (d === undefined) return label;
+            label = d;
             return axis;
         };
         axis.labelWidth = (d) => {

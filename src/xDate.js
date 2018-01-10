@@ -17,7 +17,6 @@ export default function () {
     let label;
     let xLabel;
     let xLabelMinor;
-    let label;
     let rem = 10;
     let endTicks;
     let customFormat = false;
