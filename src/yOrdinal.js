@@ -12,6 +12,7 @@ export default function () {
     let tickSize = 0;
     let offset = 0;
     let yLabel;
+    let label;
     let frameName;
     let invert = false;
 
@@ -74,6 +75,11 @@ export default function () {
     axis.invert = (d) => {
         if (d === undefined) return invert;
         invert = d;
+        return axis;
+    };
+    axis.label = (d) => {
+        if (d === undefined) return label;
+        label = d;
         return axis;
     };
     axis.rangeRound = (d) => {

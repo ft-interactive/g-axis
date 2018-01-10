@@ -16,6 +16,7 @@ export default function () {
     let fullYear = false;
     let align = 'left';
     let yLabel;
+    let lable;
     let yLabelMinor;
     let endTicks;
     let customFormat = false;
@@ -304,6 +305,11 @@ export default function () {
     axis.intraday = (d) => {
         if (d === undefined) return intraday;
         intraday = d;
+        return axis;
+    };
+    axis.label = (d) => {
+        if (d === undefined) return label;
+        label = d;
         return axis;
     };
     axis.labelWidth = (d) => {

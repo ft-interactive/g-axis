@@ -14,6 +14,7 @@ export default function () {
     let minorTickSize = 5;
     let fullYear = false;
     let align = 'bottom';
+    let label;
     let xLabel;
     let xLabelMinor;
     let label;
