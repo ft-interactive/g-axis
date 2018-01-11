@@ -28,6 +28,7 @@ export default function () {
     function axis(parent) {
         let deciCheck = false;
         const span = scale.domain()[1] - scale.domain()[0];
+        let plotHeight = parent.node().getBBox().height;
 
         if (invert) {
             const newRange = scale.range().reverse();

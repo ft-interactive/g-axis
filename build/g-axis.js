@@ -436,6 +436,7 @@
         function axis(parent) {
             let deciCheck = false;
             const span = scale.domain()[1] - scale.domain()[0];
+            let plotHeight = parent.node().getBBox().height;
 
             if (invert) {
                 const newRange = scale.range().reverse();
@@ -527,9 +528,9 @@
                         toptop: 0 - (rem),
                         topmiddle: 0,
                         topbottom: 0 + (rem),
-                        bottomtop: tickSize,
-                        bottommiddle: tickSize + (rem * 1),
-                        bottombottom: tickSize + (rem * 3),
+                        bottomtop: plotHeight,
+                        bottommiddle: plotHeight + (rem),
+                        bottombottom: plotHeight + (rem * 3),
                     }[axisAlign + vertAlign];
                 }
 
