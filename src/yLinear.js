@@ -13,6 +13,8 @@ export default function () {
     let tickSize = 300;
     let yAxisHighlight = 0;
     let yLabel;
+    let label;
+    let rem = 10;
     let frameName;
     let tickValues;
     let customFormat = false;
@@ -92,6 +94,51 @@ export default function () {
             .attr('id', `${frameName}yTick`);
         }
 
+        if (label) {
+            const defaultLabel = {
+                tag: label.tag,
+                hori: (label.hori || 'left'),
+                vert: (label.vert || 'middle'),
+                anchor: (label.anchor || 'middle'),
+                rotate: (label.rotate || -90),
+            };
+
+            const axisLabel = parent.append('g')
+                .attr('class', 'axis xAxis');
+
+            axisLabel.append('text')
+                .attr('y', getVerticle(defaultLabel.vert))
+                .attr('x', getHorizontal(align, defaultLabel.hori))
+                .text(defaultLabel.tag)
+
+            const text = axisLabel.selectAll('text');
+            const width = (text.node().getBBox().width) / 2;
+            const height = (text.node().getBBox().height) / 2;
+            const textX = text.node().getBBox().x + width;
+            const textY = text.node().getBBox().y + height;
+            text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                .style('text-anchor', defaultLabel.anchor);
+
+            function getVerticle(vert) {
+                return {
+                    top: scale.range()[0],
+                    middle: (scale.range()[1] - scale.range()[0]) / 2,
+                    bottom: scale.range()[1],
+                }[vert];
+            }
+
+            function getHorizontal(axisAlign, horiAlign) {
+                return {
+                    leftleft: 0 - (labelWidth + (rem / .9)),
+                    leftmiddle: 0 - (labelWidth / 2),
+                    leftright: (rem),
+                    rightleft: tickSize,
+                    rightmiddle: tickSize + (rem * 1),
+                    rightright: tickSize + (rem * 2),
+                }[axisAlign + horiAlign];
+            }
+        }
+
         yLabel.selectAll('.tick')
             .filter(d => d === 0 || d === yAxisHighlight)
             .classed('baseline', true);
@@ -132,6 +179,16 @@ export default function () {
     };
     axis.range = (d) => {
         scale.range(d);
+        return axis;
+    };
+    axis.rem = (d) => {
+        if (!d) return rem;
+        rem = d;
+        return axis;
+    };
+    axis.label = (d) => {
+        if (d === undefined) return label;
+        label = d;
         return axis;
     };
     axis.labelWidth = (d) => {

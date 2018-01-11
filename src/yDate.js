@@ -16,6 +16,7 @@ export default function () {
     let fullYear = false;
     let align = 'left';
     let yLabel;
+    let label;
     let yLabelMinor;
     let endTicks;
     let customFormat = false;
@@ -133,6 +134,50 @@ export default function () {
             if (minorAxis) {
                 yLabelMinor.selectAll('.axis.yAxis line')
                 .attr('id', `${frameName}xTick`);
+            }
+        }
+        if (label) {
+            const defaultLabel = {
+                tag: label.tag,
+                hori: (label.hori || 'left'),
+                vert: (label.vert || 'middle'),
+                anchor: (label.anchor || 'middle'),
+                rotate: (label.rotate || -90),
+            };
+
+            const axisLabel = parent.append('g')
+                .attr('class', 'axis xAxis');
+
+            axisLabel.append('text')
+                .attr('y', getVerticle(defaultLabel.vert))
+                .attr('x', getHorizontal(align, defaultLabel.hori))
+                .text(defaultLabel.tag)
+
+            const text = axisLabel.selectAll('text');
+            const width = (text.node().getBBox().width) / 2;
+            const height = (text.node().getBBox().height) / 2;
+            const textX = text.node().getBBox().x + width;
+            const textY = text.node().getBBox().y + height;
+            text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                .style('text-anchor', defaultLabel.anchor);
+
+            function getVerticle(vert) {
+                return {
+                    top: scale.range()[0],
+                    middle: (scale.range()[1] - scale.range()[0]) / 2,
+                    bottom: scale.range()[1],
+                }[vert];
+            }
+
+            function getHorizontal(axisAlign, horiAlign) {
+                return {
+                    leftleft: 0 - (labelWidth + (rem / .9)),
+                    leftmiddle: 0 - (labelWidth / 2),
+                    leftright: (rem),
+                    rightleft: tickSize,
+                    rightmiddle: tickSize + (rem * 1),
+                    rightright: tickSize + (rem * 2),
+                }[axisAlign + horiAlign];
             }
         }
 
@@ -304,6 +349,11 @@ export default function () {
     axis.intraday = (d) => {
         if (d === undefined) return intraday;
         intraday = d;
+        return axis;
+    };
+    axis.label = (d) => {
+        if (d === undefined) return label;
+        label = d;
         return axis;
     };
     axis.labelWidth = (d) => {

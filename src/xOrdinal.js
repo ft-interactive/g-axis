@@ -9,6 +9,7 @@ export default function xAxisOrdinal() {
         .paddingOuter(0.05);
     let tickSize = 10;
     let xLabel;
+    let label;
     let frameName;
     let invert = false;
 
@@ -39,6 +40,51 @@ export default function xAxisOrdinal() {
             .attr('id', `${frameName}xTick`);
         }
 
+        if (label) {
+            const defaultLabel = {
+                tag: label.tag,
+                hori: (label.hori || 'middle'),
+                vert: (label.vert || 'bottom'),
+                anchor: (label.anchor || 'middle'),
+                rotate: (label.rotate || 0),
+            };
+
+            const axisLabel = parent.append('g')
+                .attr('class', 'axis xAxis');
+
+            axisLabel.append('text')
+                .attr('y', getVerticle(align, defaultLabel.vert))
+                .attr('x', getHorizontal(defaultLabel.hori))
+                .text(defaultLabel.tag);
+
+            const text = axisLabel.selectAll('text');
+            const width = (text.node().getBBox().width) / 2;
+            const height = (text.node().getBBox().height) / 2;
+            const textX = text.node().getBBox().x + width;
+            const textY = text.node().getBBox().y + height;
+            text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                .style('text-anchor', defaultLabel.anchor);
+
+            function getVerticle(axisAlign, vertAlign) {
+                return {
+                    toptop: 0 - (rem),
+                    topmiddle: 0,
+                    topbottom: 0 + (rem),
+                    bottomtop: tickSize,
+                    bottommiddle: tickSize + (rem * 1),
+                    bottombottom: tickSize + (rem * 2),
+                }[axisAlign + vertAlign];
+            }
+
+            function getHorizontal(hori) {
+                return {
+                    left: scale.range()[0],
+                    middle: (scale.range()[1] - scale.range()[0]) / 2,
+                    right: scale.range()[1],
+                }[hori];
+            }
+        }
+
         xLabel.selectAll('.domain').remove();
     }
 
@@ -64,6 +110,11 @@ export default function xAxisOrdinal() {
     axis.invert = (d) => {
         if (d === undefined) return invert;
         invert = d;
+        return axis;
+    };
+    axis.label = (d) => {
+        if (d === undefined) return label;
+        label = d;
         return axis;
     };
     axis.rangeRound = (d) => {
