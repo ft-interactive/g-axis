@@ -121,7 +121,7 @@ export default function () {
                     topbottom: 0 + (rem),
                     bottomtop: tickSize,
                     bottommiddle: tickSize + (rem * 1),
-                    bottombottom: tickSize + (rem * 2),
+                    bottombottom: tickSize + (rem * 3),
                 }[axisAlign + vertAlign];
             }
 
