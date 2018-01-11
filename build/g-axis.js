@@ -28,6 +28,7 @@
 
         function axis(parent) {
             let plotHeight = parent.node().getBBox().height;
+            console.log(plotHeight)
 
             function getAxis(alignment) {
                 if (intraday) {
