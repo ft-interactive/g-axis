@@ -437,6 +437,7 @@
             let deciCheck = false;
             const span = scale.domain()[1] - scale.domain()[0];
             let plotHeight = parent.node().getBBox().height;
+            console.log(plotHeight)
 
             if (invert) {
                 const newRange = scale.range().reverse();
