@@ -23,6 +23,8 @@ export default function () {
     let tickValues;
 
     function axis(parent) {
+        let plotHeight = parent.node().getBBox().height;
+
         function getAxis(alignment) {
             if (intraday) {
                 console.log('intraday axis'); // eslint-disable-line
@@ -102,7 +104,6 @@ export default function () {
         if (minorAxis) {
             xLabelMinor = parent.append('g')
                 .attr('class', () => {
-                    const plotHeight = d3.select('.chart-plot').node().getBBox().height;
                     if (plotHeight === tickSize) {
                         return 'axis xAxis';
                     }
@@ -152,9 +153,9 @@ export default function () {
                     toptop: 0 - (rem),
                     topmiddle: 0,
                     topbottom: 0 + (rem),
-                    bottomtop: tickSize,
-                    bottommiddle: tickSize + (rem * 1),
-                    bottombottom: tickSize + (rem * 2),
+                    bottomtop: plotHeight,
+                    bottommiddle: plotHeight + tickSize + (rem * .85),
+                    bottombottom: plotHeight + tickSize + (rem * 1.65),
                 }[axisAlign + vertAlign];
             }
 
