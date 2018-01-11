@@ -159,7 +159,7 @@
                         topbottom: 0 + (rem),
                         bottomtop: plotHeight - rem,
                         bottommiddle: plotHeight + tickSize + (rem * .85),
-                        bottombottom: plotHeight + tickSize + (rem * 1.65),
+                        bottombottom: plotHeight + tickSize + (rem * 1.2),
                     }[axisAlign + vertAlign];
                 }
 
