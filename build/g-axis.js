@@ -160,16 +160,22 @@
                         topmiddle: 0,
                         topbottom: 0 + (rem),
                         bottomtop: plotHeight,
-                        bottommiddle: plotHeight + (rem * 1.6),
-                        bottombottom: plotHeight + tickSize + (rem * 1.7),
+                        bottommiddle: plotHeight + calcOffset(),
+                        bottombottom: plotHeight + calcOffset()+ (rem * 1.1),
                     }[axisAlign + vertAlign];
+                }
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
                 }
 
                 function getHorizontal(hori) {
                     return {
-                        left: scale.range()[0],
-                        middle: (scale.range()[1] - scale.range()[0]) / 2,
-                        right: scale.range()[1],
+                        left: plotWidth - plotWidth,
+                        middle: plotWidth / 2,
+                        right: plotWidth,
                     }[hori];
                 }
             }
@@ -538,16 +544,23 @@
                         topmiddle: 0,
                         topbottom: 0 + (rem),
                         bottomtop: plotHeight,
-                        bottommiddle: plotHeight + (rem * .9),
-                        bottombottom: plotHeight + (rem * 1.8),
+                        bottommiddle: plotHeight + calcOffset(),
+                        bottombottom: plotHeight + calcOffset() + (rem * 1.1),
                     }[axisAlign + vertAlign];
+                }
+
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
                 }
 
                 function getHorizontal(hori) {
                     return {
-                        left: scale.range()[0],
-                        middle: (scale.range()[1] - scale.range()[0]) / 2,
-                        right: scale.range()[1],
+                        left: plotWidth - plotWidth,
+                        middle: plotWidth / 2,
+                        right: plotWidth,
                     }[hori];
                 }
             }
@@ -619,7 +632,7 @@
             return axis;
         };
         axis.tickSize = (d) => {
-            if (!d) return tickSize;
+            if (d === undefined) return tickSize;
             tickSize = d;
             return axis;
         };
@@ -713,20 +726,27 @@
 
                 function getVerticle(axisAlign, vertAlign) {
                     return {
-                       toptop: 0 - (rem),
+                        toptop: 0 - (rem),
                         topmiddle: 0,
                         topbottom: 0 + (rem),
                         bottomtop: plotHeight,
-                        bottommiddle: plotHeight + (rem * .9),
-                        bottombottom: plotHeight + (rem * 1.8),
+                        bottommiddle: plotHeight + calcOffset(),
+                        bottombottom: plotHeight + calcOffset() + (rem * 1.1),
                     }[axisAlign + vertAlign];
+                }
+
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
                 }
 
                 function getHorizontal(hori) {
                     return {
-                        left: scale.range()[0],
-                        middle: (scale.range()[1] - scale.range()[0]) / 2,
-                        right: scale.range()[1],
+                        left: plotWidth - plotWidth,
+                        middle: plotWidth / 2,
+                        right: plotWidth,
                     }[hori];
                 }
             }
@@ -820,6 +840,7 @@
         let labelWidth = 0;
         let logScale = false;
         let numTicks = 5;
+        let plotDim = [120,100];
         let tickSize = 300;
         let yAxisHighlight = 0;
         let yLabel;
@@ -832,6 +853,8 @@
         function axis(parent) {
             let deciCheck = false;
             const span = scale.domain()[1] - scale.domain()[0];
+            const plotWidth = plotDim[0];
+            const plotHeight = plotDim[1];
 
             if (logScale) {
                 const newScale = d3.scaleLog()
@@ -931,21 +954,28 @@
 
                 function getVerticle(vert) {
                     return {
-                        top: scale.range()[0],
-                        middle: (scale.range()[1] - scale.range()[0]) / 2,
-                        bottom: scale.range()[1],
+                        top: plotHeight - plotHeight,
+                        middle: plotHeight / 2,
+                        bottom: plotHeight,
                     }[vert];
                 }
 
                 function getHorizontal(axisAlign, horiAlign) {
                     return {
-                        leftleft: 0 - (labelWidth + (rem / .9)),
-                        leftmiddle: 0 - (labelWidth / 2),
-                        leftright: (rem),
-                        rightleft: tickSize,
-                        rightmiddle: tickSize + (rem * 1),
-                        rightright: tickSize + (rem * 2),
+                        leftleft: 0 - (labelWidth + (rem * 0.6)),
+                        leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
+                        leftright: rem * 0.7,
+                        rightleft: plotWidth - labelWidth,
+                        rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
+                        rightright: plotWidth + (rem) + calcOffset(),
                     }[axisAlign + horiAlign];
+                }
+
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize/2
+                    }
+                    return 0
                 }
             }
 
@@ -985,6 +1015,11 @@
         };
         axis.domain = (d) => {
             scale.domain(d);
+            return axis;
+        };
+        axis.plotDim = (d) => {
+            if (!d) return plotDim;
+            plotDim = d;
             return axis;
         };
         axis.range = (d) => {
@@ -1060,6 +1095,8 @@
         let offset = 0;
         let yLabel;
         let label;
+        let plotDim = [220, 100];
+        let rem = 10;
         let frameName;
         let invert = false;
 
@@ -1071,6 +1108,9 @@
         }
 
         function axis(parent) {
+            const plotWidth = plotDim[0];
+            const plotHeight = plotDim[1];
+
             if (invert) {
                 const newDomain = scale.domain().reverse();
                 scale.domain(newDomain);
@@ -1129,21 +1169,28 @@
 
                 function getVerticle(vert) {
                     return {
-                        top: scale.range()[0],
-                        middle: (scale.range()[1] - scale.range()[0]) / 2,
-                        bottom: scale.range()[1],
+                        top: plotHeight - plotHeight,
+                        middle: plotHeight / 2,
+                        bottom: plotHeight,
                     }[vert];
                 }
 
                 function getHorizontal(axisAlign, horiAlign) {
                     return {
-                        leftleft: 0 - (labelWidth + (rem / .9)),
-                        leftmiddle: 0 - (labelWidth / 2),
-                        leftright: (rem),
-                        rightleft: tickSize,
-                        rightmiddle: tickSize + (rem * 1),
-                        rightright: tickSize + (rem * 2),
+                        leftleft: 0 - (labelWidth + (rem * 0.6)),
+                        leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
+                        leftright: rem * 0.7,
+                        rightleft: plotWidth - labelWidth,
+                        rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
+                        rightright: plotWidth + (rem) + calcOffset(),
                     }[axisAlign + horiAlign];
+                }
+
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize / 2;
+                    }
+                    return 0;
                 }
             }
 
@@ -1203,6 +1250,16 @@
             scale.paddingOuter(d);
             return axis;
         };
+        axis.plotDim = (d) => {
+            if (!d) return plotDim;
+            plotDim = d;
+            return axis;
+        };
+        axis.rem = (d) => {
+            if (!d) return rem;
+            rem = d;
+            return axis;
+        };
         axis.tickSize = (d) => {
             if (d === undefined) return tickSize;
             tickSize = d;
@@ -1233,8 +1290,10 @@
         let interval = 'lustrum';
         let labelWidth = 0;
         let minorAxis = true;
+        let plotDim = [220,100];
         let tickSize = 10;
         let minorTickSize = 5;
+        let rem = 10;
         let fullYear = false;
         let align = 'left';
         let yLabel;
@@ -1245,6 +1304,9 @@
         let tickValues;
 
         function axis(parent) {
+            const plotWidth = plotDim[0];
+            const plotHeight = plotDim[1];
+
             function getAxis(alignment) {
                 if (intraday) {
                     console.log('intraday axis'); // eslint-disable-line
@@ -1385,21 +1447,28 @@
 
                 function getVerticle(vert) {
                     return {
-                        top: scale.range()[0],
-                        middle: (scale.range()[1] - scale.range()[0]) / 2,
-                        bottom: scale.range()[1],
+                        top: plotHeight - plotHeight,
+                        middle: plotHeight / 2,
+                        bottom: plotHeight,
                     }[vert];
                 }
 
                 function getHorizontal(axisAlign, horiAlign) {
                     return {
-                        leftleft: 0 - (labelWidth + (rem / .9)),
-                        leftmiddle: 0 - (labelWidth / 2),
-                        leftright: (rem),
-                        rightleft: tickSize,
-                        rightmiddle: tickSize + (rem * 1),
-                        rightright: tickSize + (rem * 2),
+                        leftleft: 0 - (labelWidth + (rem * 0.6)),
+                        leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
+                        leftright: rem * 0.7,
+                        rightleft: plotWidth - labelWidth,
+                        rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
+                        rightright: plotWidth + (rem) + calcOffset(),
                     }[axisAlign + horiAlign];
+                }
+
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize/2
+                    }
+                    return 0
                 }
             }
 
@@ -1583,6 +1652,11 @@
             labelWidth = d;
             return axis;
         };
+        axis.plotDim = (d) => {
+            if (!d) return plotDim;
+            plotDim = d;
+            return axis;
+        };
         axis.scale = (d) => {
             if (!d) return scale;
             scale = d;
@@ -1624,6 +1698,11 @@
         axis.minorAxis = (d) => {
             if (d === undefined) return minorAxis;
             minorAxis = d;
+            return axis;
+        };
+        axis.rem = (d) => {
+            if (!d) return rem;
+            rem = d;
             return axis;
         };
         axis.yLabel = (d) => {

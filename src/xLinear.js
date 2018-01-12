@@ -31,7 +31,6 @@ export default function () {
         const span = scale.domain()[1] - scale.domain()[0];
         const plotWidth = plotDim[0];
         const plotHeight = plotDim[1];
-        console.log('plotHeight', plotHeight)
 
         if (invert) {
             const newRange = scale.range().reverse();

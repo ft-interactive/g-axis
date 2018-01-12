@@ -13,6 +13,8 @@ export default function () {
     let offset = 0;
     let yLabel;
     let label;
+    let plotDim = [220, 100];
+    let rem = 10;
     let frameName;
     let invert = false;
 
@@ -24,6 +26,9 @@ export default function () {
     }
 
     function axis(parent) {
+        const plotWidth = plotDim[0];
+        const plotHeight = plotDim[1];
+
         if (invert) {
             const newDomain = scale.domain().reverse();
             scale.domain(newDomain);
@@ -82,21 +87,28 @@ export default function () {
 
             function getVerticle(vert) {
                 return {
-                    top: scale.range()[0],
-                    middle: (scale.range()[1] - scale.range()[0]) / 2,
-                    bottom: scale.range()[1],
+                    top: plotHeight - plotHeight,
+                    middle: plotHeight / 2,
+                    bottom: plotHeight,
                 }[vert];
             }
 
             function getHorizontal(axisAlign, horiAlign) {
                 return {
-                    leftleft: 0 - (labelWidth + (rem / .9)),
-                    leftmiddle: 0 - (labelWidth / 2),
-                    leftright: (rem),
-                    rightleft: tickSize,
-                    rightmiddle: tickSize + (rem * 1),
-                    rightright: tickSize + (rem * 2),
+                    leftleft: 0 - (labelWidth + (rem * 0.6)),
+                    leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
+                    leftright: rem * 0.7,
+                    rightleft: plotWidth - labelWidth,
+                    rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
+                    rightright: plotWidth + (rem) + calcOffset(),
                 }[axisAlign + horiAlign];
+            }
+
+            function calcOffset() {
+                if (tickSize > 0 && tickSize < rem) {
+                    return tickSize / 2;
+                }
+                return 0;
             }
         }
 
@@ -154,6 +166,16 @@ export default function () {
     axis.paddingOuter = (d) => {
         if (!d) return scale.paddingOuter();
         scale.paddingOuter(d);
+        return axis;
+    };
+    axis.plotDim = (d) => {
+        if (!d) return plotDim;
+        plotDim = d;
+        return axis;
+    };
+    axis.rem = (d) => {
+        if (!d) return rem;
+        rem = d;
         return axis;
     };
     axis.tickSize = (d) => {
