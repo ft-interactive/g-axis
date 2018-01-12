@@ -156,7 +156,7 @@ export default function () {
                     topmiddle: 0,
                     topbottom: 0 + (rem),
                     bottomtop: plotHeight,
-                    bottommiddle: plotHeight + (rem * 1.6   ),
+                    bottommiddle: plotHeight + (rem * 1.6),
                     bottombottom: plotHeight + tickSize + (rem * 1.7),
                 }[axisAlign + vertAlign];
             }
