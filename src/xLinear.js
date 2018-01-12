@@ -13,6 +13,7 @@ export default function () {
     let xAxisHighlight = 0;
     let xLabel;
     let label;
+    let plotDim = [200, 100];
     let rem = 10;
     let frameName;
     let tickValues;
@@ -120,9 +121,9 @@ export default function () {
                     toptop: 0 - (rem),
                     topmiddle: 0,
                     topbottom: 0 + (rem),
-                    bottomtop: tickSize,
-                    bottommiddle: tickSize + (rem * 1),
-                    bottombottom: tickSize + (rem * 3),
+                    bottomtop: plotHeight,
+                    bottommiddle: plotHeight + (rem * 1.6),
+                    bottombottom: plotHeight + tickSize + (rem * 1.7),
                 }[axisAlign + vertAlign];
             }
 
@@ -170,6 +171,11 @@ export default function () {
     axis.label = (d) => {
         if (d === undefined) return label;
         label = d;
+        return axis;
+    };
+    axis.plotDim = (d) => {
+        if (!d) return plotDim;
+        plotDim = d;
         return axis;
     };
     axis.rem = (d) => {

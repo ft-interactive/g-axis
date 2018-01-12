@@ -24,8 +24,8 @@ export default function () {
     let tickValues;
 
     function axis(parent) {
-        let plotHeight = plotDim[1];
-        let plotWidth = plotDim[0];
+        const plotWidth = plotDim[0];
+        const plotHeight = plotDim[1];
 
         function getAxis(alignment) {
             if (intraday) {
