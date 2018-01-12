@@ -10,6 +10,7 @@ export default function () {
     let labelWidth = 0;
     let logScale = false;
     let numTicks = 5;
+    let plotDim = [120,100];
     let tickSize = 300;
     let yAxisHighlight = 0;
     let yLabel;
@@ -22,6 +23,8 @@ export default function () {
     function axis(parent) {
         let deciCheck = false;
         const span = scale.domain()[1] - scale.domain()[0];
+        const plotWidth = plotDim[0];
+        const plotHeight = plotDim[1];
 
         if (logScale) {
             const newScale = d3.scaleLog()
@@ -121,21 +124,28 @@ export default function () {
 
             function getVerticle(vert) {
                 return {
-                    top: scale.range()[0],
-                    middle: (scale.range()[1] - scale.range()[0]) / 2,
-                    bottom: scale.range()[1],
+                    top: plotHeight - plotHeight,
+                    middle: plotHeight / 2,
+                    bottom: plotHeight,
                 }[vert];
             }
 
             function getHorizontal(axisAlign, horiAlign) {
                 return {
-                    leftleft: 0 - (labelWidth + (rem / .9)),
-                    leftmiddle: 0 - (labelWidth / 2),
-                    leftright: (rem),
-                    rightleft: tickSize,
-                    rightmiddle: tickSize + (rem * 1),
-                    rightright: tickSize + (rem * 2),
+                    leftleft: 0 - (labelWidth + (rem * 0.6)),
+                    leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
+                    leftright: rem * 0.7,
+                    rightleft: plotWidth - labelWidth,
+                    rightmiddle: plotWidth - (labelWidth/2) + (rem * 0.5) + calcOffset(),
+                    rightright: plotWidth + (rem) + calcOffset(),
                 }[axisAlign + horiAlign];
+            }
+
+            function calcOffset() {
+                if (tickSize > 0 && tickSize < rem) {
+                    return tickSize/2
+                }
+                return rem * .9
             }
         }
 
@@ -175,6 +185,11 @@ export default function () {
     };
     axis.domain = (d) => {
         scale.domain(d);
+        return axis;
+    };
+    axis.plotDim = (d) => {
+        if (!d) return plotDim;
+        plotDim = d;
         return axis;
     };
     axis.range = (d) => {
