@@ -156,9 +156,15 @@ export default function () {
                     topmiddle: 0,
                     topbottom: 0 + (rem),
                     bottomtop: plotHeight,
-                    bottommiddle: plotHeight + (rem * 1.6),
-                    bottombottom: plotHeight + tickSize + (rem * 1.7),
+                    bottommiddle: plotHeight + calcOffset(),
+                    bottombottom: plotHeight + calcOffset()+ (rem * 1.1),
                 }[axisAlign + vertAlign];
+            }
+            function calcOffset() {
+                if (tickSize > 0 && tickSize < rem) {
+                    return tickSize + (rem * .8)
+                }
+                return rem * .9
             }
 
             function getHorizontal(hori) {
