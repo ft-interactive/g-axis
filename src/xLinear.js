@@ -31,6 +31,7 @@ export default function () {
         const span = scale.domain()[1] - scale.domain()[0];
         const plotWidth = plotDim[0];
         const plotHeight = plotDim[1];
+        console.log('plotHeight', plotHeight)
 
         if (invert) {
             const newRange = scale.range().reverse();
@@ -123,12 +124,16 @@ export default function () {
                     topmiddle: 0,
                     topbottom: 0 + (rem),
                     bottomtop: plotHeight,
-                    bottommiddle: plotHeight + calcOffset,
-                    bottombottom: plotHeight + (rem * 1.8),
+                    bottommiddle: plotHeight + calcOffset(),
+                    bottombottom: plotHeight + calcOffset() + (rem * 1.1),
                 }[axisAlign + vertAlign];
             }
+            
             function calcOffset() {
-                return {rem * .9}
+                if (tickSize > 0 && tickSize < rem) {
+                    return tickSize + (rem * 0.8);
+                }
+                return (rem * 0.9);
             }
 
             function getHorizontal(hori) {
