@@ -160,7 +160,7 @@
                         topmiddle: 0,
                         topbottom: 0 + (rem),
                         bottomtop: plotHeight,
-                        bottommiddle: plotHeight + (rem * 1.6   ),
+                        bottommiddle: plotHeight + (rem * 1.6),
                         bottombottom: plotHeight + tickSize + (rem * 1.7),
                     }[axisAlign + vertAlign];
                 }
@@ -651,10 +651,15 @@
         let tickSize = 10;
         let xLabel;
         let label;
+        let plotDim = [200, 100];
+        let rem = 10;
         let frameName;
         let invert = false;
 
         function axis(parent) {
+            const plotWidth = plotDim[0];
+            const plotHeight = plotDim[1];
+
             if (invert) {
                 const newDomain = scale.domain().reverse();
                 scale.domain(newDomain);
@@ -708,12 +713,12 @@
 
                 function getVerticle(axisAlign, vertAlign) {
                     return {
-                        toptop: 0 - (rem),
+                       toptop: 0 - (rem),
                         topmiddle: 0,
                         topbottom: 0 + (rem),
-                        bottomtop: tickSize,
-                        bottommiddle: tickSize + (rem * 1),
-                        bottombottom: tickSize + (rem * 2),
+                        bottomtop: plotHeight,
+                        bottommiddle: plotHeight + (rem * .9),
+                        bottombottom: plotHeight + (rem * 1.8),
                     }[axisAlign + vertAlign];
                 }
 
@@ -758,6 +763,16 @@
             label = d;
             return axis;
         };
+        axis.plotDim = (d) => {
+            if (!d) return plotDim;
+            plotDim = d;
+            return axis;
+        };
+        axis.rem = (d) => {
+            if (!d) return rem;
+            rem = d;
+            return axis;
+        };
         axis.rangeRound = (d) => {
             scale.rangeRound(d);
             return axis;
@@ -767,18 +782,15 @@
             scale.bandwidth(d);
             return axis;
         };
-
         axis.tickSize = (d) => {
             tickSize = d;
             return axis;
         };
-
         axis.paddingInner = (d) => {
             if (!d) return scale.paddingInner();
             scale.paddingInner(d);
             return axis;
         };
-
         axis.paddingOuter = (d) => {
             if (!d) return scale.paddingOuter();
             scale.paddingOuter(d);
@@ -789,7 +801,6 @@
             xLabel = d;
             return axis;
         };
-
         function getAxis(alignment) {
             return {
                 top: d3.axisTop(),
