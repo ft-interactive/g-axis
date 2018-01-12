@@ -160,16 +160,22 @@
                         topmiddle: 0,
                         topbottom: 0 + (rem),
                         bottomtop: plotHeight,
-                        bottommiddle: plotHeight + (rem * 1.6),
-                        bottombottom: plotHeight + tickSize + (rem * 1.7),
+                        bottommiddle: plotHeight + calcOffset(),
+                        bottombottom: plotHeight + calcOffset()+ (rem * 1.1),
                     }[axisAlign + vertAlign];
+                }
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
                 }
 
                 function getHorizontal(hori) {
                     return {
-                        left: scale.range()[0],
-                        middle: (scale.range()[1] - scale.range()[0]) / 2,
-                        right: scale.range()[1],
+                        left: plotWidth - plotWidth,
+                        middle: plotWidth / 2,
+                        right: plotWidth,
                     }[hori];
                 }
             }
@@ -446,6 +452,7 @@
             const span = scale.domain()[1] - scale.domain()[0];
             const plotWidth = plotDim[0];
             const plotHeight = plotDim[1];
+            console.log('plotHeight', plotHeight)
 
             if (invert) {
                 const newRange = scale.range().reverse();
@@ -538,16 +545,23 @@
                         topmiddle: 0,
                         topbottom: 0 + (rem),
                         bottomtop: plotHeight,
-                        bottommiddle: plotHeight + (rem * .9),
-                        bottombottom: plotHeight + (rem * 1.8),
+                        bottommiddle: plotHeight + calcOffset(),
+                        bottombottom: plotHeight + calcOffset() + (rem * 1.1),
                     }[axisAlign + vertAlign];
+                }
+
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
                 }
 
                 function getHorizontal(hori) {
                     return {
-                        left: scale.range()[0],
-                        middle: (scale.range()[1] - scale.range()[0]) / 2,
-                        right: scale.range()[1],
+                        left: plotWidth - plotWidth,
+                        middle: plotWidth / 2,
+                        right: plotWidth,
                     }[hori];
                 }
             }
@@ -619,7 +633,7 @@
             return axis;
         };
         axis.tickSize = (d) => {
-            if (!d) return tickSize;
+            if (d === undefined) return tickSize;
             tickSize = d;
             return axis;
         };
@@ -713,20 +727,27 @@
 
                 function getVerticle(axisAlign, vertAlign) {
                     return {
-                       toptop: 0 - (rem),
+                        toptop: 0 - (rem),
                         topmiddle: 0,
                         topbottom: 0 + (rem),
                         bottomtop: plotHeight,
-                        bottommiddle: plotHeight + (rem * .9),
-                        bottombottom: plotHeight + (rem * 1.8),
+                        bottommiddle: plotHeight + calcOffset(),
+                        bottombottom: plotHeight + calcOffset() + (rem * 1.1),
                     }[axisAlign + vertAlign];
+                }
+
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
                 }
 
                 function getHorizontal(hori) {
                     return {
-                        left: scale.range()[0],
-                        middle: (scale.range()[1] - scale.range()[0]) / 2,
-                        right: scale.range()[1],
+                        left: plotWidth - plotWidth,
+                        middle: plotWidth / 2,
+                        right: plotWidth,
                     }[hori];
                 }
             }
