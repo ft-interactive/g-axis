@@ -444,7 +444,8 @@
         function axis(parent) {
             let deciCheck = false;
             const span = scale.domain()[1] - scale.domain()[0];
-            let plotHeight = parent.node().getBBox().height;
+            const plotWidth = plotDim[0];
+            const plotHeight = plotDim[1];
 
             if (invert) {
                 const newRange = scale.range().reverse();
