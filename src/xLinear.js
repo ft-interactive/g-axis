@@ -128,7 +128,7 @@ export default function () {
                     bottombottom: plotHeight + calcOffset() + (rem * 1.1),
                 }[axisAlign + vertAlign];
             }
-            
+
             function calcOffset() {
                 if (tickSize > 0 && tickSize < rem) {
                     return tickSize + (rem * 0.8);
@@ -138,9 +138,9 @@ export default function () {
 
             function getHorizontal(hori) {
                 return {
-                    left: scale.range()[0],
-                    middle: (scale.range()[1] - scale.range()[0]) / 2,
-                    right: scale.range()[1],
+                    left: plotWidth - plotWidth,
+                    middle: plotWidth / 2,
+                    right: plotWidth,
                 }[hori];
             }
         }

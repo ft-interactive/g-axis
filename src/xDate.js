@@ -162,16 +162,16 @@ export default function () {
             }
             function calcOffset() {
                 if (tickSize > 0 && tickSize < rem) {
-                    return tickSize + (rem * .8)
+                    return tickSize + (rem * 0.8);
                 }
-                return rem * .9
+                return (rem * 0.9);
             }
 
             function getHorizontal(hori) {
                 return {
-                    left: scale.range()[0],
-                    middle: (scale.range()[1] - scale.range()[0]) / 2,
-                    right: scale.range()[1],
+                    left: plotWidth - plotWidth,
+                    middle: plotWidth / 2,
+                    right: plotWidth,
                 }[hori];
             }
         }
