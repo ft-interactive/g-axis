@@ -123,8 +123,8 @@ export default function () {
                     topmiddle: 0,
                     topbottom: 0 + (rem),
                     bottomtop: plotHeight,
-                    bottommiddle: plotHeight + (rem * 1.2),
-                    bottombottom: plotHeight + (rem * 1.7),
+                    bottommiddle: plotHeight + (rem * .9),
+                    bottombottom: plotHeight + (rem * 1.8),
                 }[axisAlign + vertAlign];
             }
 
