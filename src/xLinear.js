@@ -123,9 +123,12 @@ export default function () {
                     topmiddle: 0,
                     topbottom: 0 + (rem),
                     bottomtop: plotHeight,
-                    bottommiddle: plotHeight + (rem * .9),
+                    bottommiddle: plotHeight + calcOffset,
                     bottombottom: plotHeight + (rem * 1.8),
                 }[axisAlign + vertAlign];
+            }
+            function calcOffset() {
+                return {rem * .9}
             }
 
             function getHorizontal(hori) {
