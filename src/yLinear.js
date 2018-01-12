@@ -136,7 +136,7 @@ export default function () {
                     leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
                     leftright: rem * 0.7,
                     rightleft: plotWidth - labelWidth,
-                    rightmiddle: plotWidth - (labelWidth/2) + (rem * 0.5) + calcOffset(),
+                    rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
                     rightright: plotWidth + (rem) + calcOffset(),
                 }[axisAlign + horiAlign];
             }
@@ -145,7 +145,7 @@ export default function () {
                 if (tickSize > 0 && tickSize < rem) {
                     return tickSize/2
                 }
-                return rem * .9
+                return 0
             }
         }
 
