@@ -19,6 +19,7 @@
         let fullYear = false;
         let align = 'bottom';
         let label;
+        let plotDim = [200, 100];
         let xLabel;
         let xLabelMinor;
         let rem = 10;
@@ -27,7 +28,8 @@
         let tickValues;
 
         function axis(parent) {
-            let plotHeight = parent.node().getBBox().height;
+            let plotHeight = plotDim[1];
+            let plotWidth = plotDim[0];
 
             function getAxis(alignment) {
                 if (intraday) {
@@ -157,9 +159,9 @@
                         toptop: 0 - (rem),
                         topmiddle: 0,
                         topbottom: 0 + (rem),
-                        bottomtop: plotHeight - rem,
-                        bottommiddle: plotHeight + tickSize + (rem * .85),
-                        bottombottom: plotHeight + tickSize + (rem * 1.2),
+                        bottomtop: plotHeight,
+                        bottommiddle: plotHeight + (rem * 1.6   ),
+                        bottombottom: plotHeight + tickSize + (rem * 1.7),
                     }[axisAlign + vertAlign];
                 }
 
@@ -332,6 +334,11 @@
             label = d;
             return axis;
         };
+        axis.plotDim = (d) => {
+            if (!d) return plotDim;
+            plotDim = d;
+            return axis;
+        };
         axis.rem = (d) => {
             if (!d) return rem;
             rem = d;
@@ -436,7 +443,7 @@
         function axis(parent) {
             let deciCheck = false;
             const span = scale.domain()[1] - scale.domain()[0];
-            //let plotHeight = parent.node().getBBox().height;
+            let plotHeight = parent.node().getBBox().height;
 
             if (invert) {
                 const newRange = scale.range().reverse();
