@@ -619,7 +619,7 @@
             return axis;
         };
         axis.tickSize = (d) => {
-            if (d === undefined) return tickSize;
+            if (!d) return tickSize;
             tickSize = d;
             return axis;
         };
