@@ -539,7 +539,7 @@
                         topbottom: 0 + (rem),
                         bottomtop: plotHeight,
                         bottommiddle: plotHeight + (rem),
-                        bottombottom: plotHeight + (rem * 1.7),
+                        bottombottom: plotHeight + (rem * 3),
                     }[axisAlign + vertAlign];
                 }
 
