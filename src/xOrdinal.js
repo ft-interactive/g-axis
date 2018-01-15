@@ -103,7 +103,6 @@ export default function xAxisOrdinal() {
         }
 
         if (banding) {
-
             let bands = scale.domain()
             console.log(bands)
 

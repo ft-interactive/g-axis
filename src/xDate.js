@@ -100,7 +100,7 @@ export default function () {
             xAxis.tickFormat(customFormat);
         }
 
-        let bandHolder = parent
+        const bandHolder = parent
             .append('g')
             .attr('class', 'highlights');
 

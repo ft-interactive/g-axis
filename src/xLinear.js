@@ -166,7 +166,7 @@ export default function () {
                 return i % 2 === 0;
             })
 
-        function getBandWidth(index) {
+            function getBandWidth(index) {
                 if (index === bands.length-1) {
                     return plotWidth - scale(bands[index])
                 }
