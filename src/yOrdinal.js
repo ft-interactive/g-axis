@@ -135,7 +135,7 @@ export default function () {
                 .enter()
                 .append('rect')
                 .attr('x', 0)
-                .attr('width', plotWidth)
+                .attr('width', plotWidth - labelWidth)
                 .attr('y', d => scale(d.pos) - (yOffset/2))
                 .attr('height', scale.step())
         }
