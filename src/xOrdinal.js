@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 
 export default function xAxisOrdinal() {
+    let banding;
     let align = 'bottom';
     let scale = d3.scaleBand()
         .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
@@ -33,6 +34,10 @@ export default function xAxisOrdinal() {
         } else {
             scale.paddingInner(0.2);
         }
+
+        let bandHolder = parent
+            .append('g')
+            .attr('class', 'highlights');
 
         xLabel = parent.append('g')
             .attr('class', 'axis xAxis')
@@ -70,7 +75,7 @@ export default function xAxisOrdinal() {
             text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
                 .style('text-anchor', defaultLabel.anchor);
 
-            function getVerticle(axisAlign, vertAlign) {
+             function getVerticle(axisAlign, vertAlign) {
                 return {
                     toptop: 0 - (rem),
                     topmiddle: 0,
@@ -80,7 +85,7 @@ export default function xAxisOrdinal() {
                     bottombottom: plotHeight + calcOffset() + (rem * 1.1),
                 }[axisAlign + vertAlign];
             }
-
+            
             function calcOffset() {
                 if (tickSize > 0 && tickSize < rem) {
                     return tickSize + (rem * 0.8);
@@ -90,11 +95,35 @@ export default function xAxisOrdinal() {
 
             function getHorizontal(hori) {
                 return {
-                    left: plotWidth - plotWidth,
-                    middle: plotWidth / 2,
+                    left: plotWidth-plotWidth,
+                    middle: plotWidth/2,
                     right: plotWidth,
                 }[hori];
             }
+        }
+
+        if (banding) {
+
+            let bands = scale.domain()
+            console.log(bands)
+
+            bands = bands.map((d,i) => {
+                return{
+                    pos: d,
+                }
+            })
+            .filter((d, i) => {
+                return i % 2 === 1;
+            })
+            const yOffset  = (scale.step() / 100) * (scale.paddingInner() * 100)
+            bandHolder.selectAll('rect')
+                .data(bands)
+                .enter()
+                .append('rect')
+                .attr('y', 0)
+                .attr('height', plotHeight)
+                .attr('x', d => scale(d.pos) - (yOffset/2))
+                .attr('width', scale.step())
         }
 
         xLabel.selectAll('.domain').remove();
@@ -103,6 +132,11 @@ export default function xAxisOrdinal() {
     axis.align = (d) => {
         if (!d) return align;
         align = d;
+        return axis;
+    };
+    axis.banding = (d) => {
+        if (d === undefined) return banding;
+        banding = d;
         return axis;
     };
     axis.scale = (d) => {
