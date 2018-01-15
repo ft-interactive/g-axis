@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 
 export default function () {
+    let banding;
     let scale = d3.scaleLinear()
         .domain([0, 100])
         .range([0, 220]);
@@ -77,6 +78,10 @@ export default function () {
             xAxis.tickFormat(customFormat);
         }
 
+        let bandHolder = parent
+            .append('g')
+            .attr('class', 'highlights');
+
         xLabel = parent.append('g')
             .attr('class', 'axis xAxis')
             .call(xAxis);
@@ -144,12 +149,51 @@ export default function () {
             }
         }
 
+        if (banding) {
+            if (tickValues) {
+                let bands = xAxis.tickValues()
+            }
+            else  {
+                bands = scale.ticks(numTicks)
+            }
+            bands = bands.map((d,i) => {
+                return{
+                    date: d,
+                    width: getBandWidth(i)
+                }
+            })
+            .filter((d, i) => {
+                return i % 2 === 0;
+            })
+
+        function getBandWidth(index) {
+                if (index === bands.length-1) {
+                    return plotWidth - scale(bands[index])
+                }
+                return scale(bands[index+1]) - scale(bands[index])
+            }
+            
+            bandHolder.selectAll('rect')
+                .data(bands)
+                .enter()
+                .append('rect')
+                .attr('y', 0)
+                .attr('height', plotHeight)
+                .attr('x', d => scale(d.date))
+                .attr('width', d => d.width)
+        }
+
         xLabel.selectAll('.domain').remove();
     }
 
     axis.align = (d) => {
         if (!d) return align;
         align = d;
+        return axis;
+    };
+    axis.banding = (d) => {
+        if (d === undefined) return banding;
+        banding = d;
         return axis;
     };
     axis.frameName = (d) => {
