@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 
 export default function () {
+    let banding;
     let align = 'left';
     let scale = d3.scaleBand()
         .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
@@ -43,6 +44,10 @@ export default function () {
         } else {
             scale.paddingInner(0.2);
         }
+
+        let bandHolder = parent
+            .append('g')
+            .attr('class', 'highlights');
 
         yLabel = parent.append('g')
             .attr('class', 'axis yAxis')
@@ -112,9 +117,42 @@ export default function () {
             }
         }
 
+        if (banding) {
+            let bands = scale.domain()
+            console.log(bands)
+
+            bands = bands.map((d,i) => {
+                return{
+                    pos: d,
+                }
+            })
+            .filter((d, i) => {
+                return i % 2 === 0;
+            })
+            const yOffset  = (scale.step() / 100) * (scale.paddingInner() * 100)
+            bandHolder.selectAll('rect')
+                .data(bands)
+                .enter()
+                .append('rect')
+                .attr('x', 0)
+                .attr('width', plotWidth)
+                .attr('y', d => scale(d.pos) - (yOffset/2))
+                .attr('height', scale.step())
+        }
+
         yLabel.selectAll('.domain').remove();
     }
 
+    axis.align = (d) => {
+        if (!d) return align;
+        align = d;
+        return axis;
+    };
+    axis.banding = (d) => {
+        if (d === undefined) return banding;
+        banding = d;
+        return axis;
+    };
     axis.scale = (d) => {
         if (!d) return scale;
         scale = d;
@@ -186,11 +224,6 @@ export default function () {
     axis.offset = (d) => {
         if (d === undefined) return offset;
         offset = d;
-        return axis;
-    };
-    axis.align = (d) => {
-        if (!d) return align;
-        align = d;
         return axis;
     };
 
