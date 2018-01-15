@@ -198,7 +198,6 @@ export default function () {
                 }
                 return scale(bands[index+1]) - scale(bands[index])
             }
-            console.log('bands', bands)
             
             bandHolder.selectAll('rect')
                 .data(bands)
