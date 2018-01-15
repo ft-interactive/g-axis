@@ -5,6 +5,7 @@
 }(this, function (exports,d3) { 'use strict';
 
     function xDate () {
+        let banding;
         const mindate = new Date(1970, 1, 1);
         const maxdate = new Date(2017, 6, 1);
         let scale = d3.scaleTime()
@@ -103,6 +104,10 @@
                 xAxis.tickFormat(customFormat);
             }
 
+            let bandHolder = parent
+                .append('g')
+                .attr('class', 'highlights');
+
             xLabel = parent.append('g')
                 .attr('class', 'axis xAxis axis baseline')
                 .call(xAxis);
@@ -178,6 +183,34 @@
                         right: plotWidth,
                     }[hori];
                 }
+            }
+            if (banding) {
+                let bands = xAxis.tickValues()
+                bands = bands.map((d,i) => {
+                    return{
+                        date: d,
+                        width: getBandWidth(i)
+                    }
+                })
+                .filter((d, i) => {
+                    return i % 2 === 0;
+                })
+
+            function getBandWidth(index) {
+                    if (index === bands.length-1) {
+                        return plotWidth - scale(bands[index])
+                    }
+                    return scale(bands[index+1]) - scale(bands[index])
+                }
+                
+                bandHolder.selectAll('rect')
+                    .data(bands)
+                    .enter()
+                    .append('rect')
+                    .attr('y', 0)
+                    .attr('height', plotHeight)
+                    .attr('x', d => scale(d.date))
+                    .attr('width', d => d.width)
             }
 
             xLabel.selectAll('.domain').remove();
@@ -330,6 +363,11 @@
             align = d;
             return axis;
         };
+        axis.banding = (d) => {
+            if (d === undefined) return banding;
+            banding = d;
+            return axis;
+        };
         axis.endTicks = (d) => {
             if (d === undefined) return endTicks;
             endTicks = d;
@@ -422,6 +460,7 @@
     }
 
     function xLinear () {
+        let banding;
         let scale = d3.scaleLinear()
             .domain([0, 100])
             .range([0, 220]);
@@ -498,6 +537,10 @@
                 xAxis.tickFormat(customFormat);
             }
 
+            let bandHolder = parent
+                .append('g')
+                .attr('class', 'highlights');
+
             xLabel = parent.append('g')
                 .attr('class', 'axis xAxis')
                 .call(xAxis);
@@ -565,12 +608,51 @@
                 }
             }
 
+            if (banding) {
+                if (tickValues) {
+                    let bands = xAxis.tickValues()
+                }
+                else  {
+                    bands = scale.ticks(numTicks)
+                }
+                bands = bands.map((d,i) => {
+                    return{
+                        date: d,
+                        width: getBandWidth(i)
+                    }
+                })
+                .filter((d, i) => {
+                    return i % 2 === 0;
+                })
+
+            function getBandWidth(index) {
+                    if (index === bands.length-1) {
+                        return plotWidth - scale(bands[index])
+                    }
+                    return scale(bands[index+1]) - scale(bands[index])
+                }
+                
+                bandHolder.selectAll('rect')
+                    .data(bands)
+                    .enter()
+                    .append('rect')
+                    .attr('y', 0)
+                    .attr('height', plotHeight)
+                    .attr('x', d => scale(d.date))
+                    .attr('width', d => d.width)
+            }
+
             xLabel.selectAll('.domain').remove();
         }
 
         axis.align = (d) => {
             if (!d) return align;
             align = d;
+            return axis;
+        };
+        axis.banding = (d) => {
+            if (d === undefined) return banding;
+            banding = d;
             return axis;
         };
         axis.frameName = (d) => {
@@ -655,6 +737,7 @@
     }
 
     function xAxisOrdinal() {
+        let banding;
         let align = 'bottom';
         let scale = d3.scaleBand()
             .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
@@ -687,6 +770,10 @@
             } else {
                 scale.paddingInner(0.2);
             }
+
+            let bandHolder = parent
+                .append('g')
+                .attr('class', 'highlights');
 
             xLabel = parent.append('g')
                 .attr('class', 'axis xAxis')
@@ -724,7 +811,7 @@
                 text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
                     .style('text-anchor', defaultLabel.anchor);
 
-                function getVerticle(axisAlign, vertAlign) {
+                 function getVerticle(axisAlign, vertAlign) {
                     return {
                         toptop: 0 - (rem),
                         topmiddle: 0,
@@ -734,7 +821,7 @@
                         bottombottom: plotHeight + calcOffset() + (rem * 1.1),
                     }[axisAlign + vertAlign];
                 }
-
+                
                 function calcOffset() {
                     if (tickSize > 0 && tickSize < rem) {
                         return tickSize + (rem * 0.8);
@@ -744,11 +831,35 @@
 
                 function getHorizontal(hori) {
                     return {
-                        left: plotWidth - plotWidth,
-                        middle: plotWidth / 2,
+                        left: plotWidth-plotWidth,
+                        middle: plotWidth/2,
                         right: plotWidth,
                     }[hori];
                 }
+            }
+
+            if (banding) {
+
+                let bands = scale.domain()
+                console.log(bands)
+
+                bands = bands.map((d,i) => {
+                    return{
+                        pos: d,
+                    }
+                })
+                .filter((d, i) => {
+                    return i % 2 === 1;
+                })
+                const yOffset  = (scale.step() / 100) * (scale.paddingInner() * 100)
+                bandHolder.selectAll('rect')
+                    .data(bands)
+                    .enter()
+                    .append('rect')
+                    .attr('y', 0)
+                    .attr('height', plotHeight)
+                    .attr('x', d => scale(d.pos) - (yOffset/2))
+                    .attr('width', scale.step())
             }
 
             xLabel.selectAll('.domain').remove();
@@ -757,6 +868,11 @@
         axis.align = (d) => {
             if (!d) return align;
             align = d;
+            return axis;
+        };
+        axis.banding = (d) => {
+            if (d === undefined) return banding;
+            banding = d;
             return axis;
         };
         axis.scale = (d) => {
@@ -831,6 +947,7 @@
     }
 
     function yLinear () {
+        let banding;
         let scale = d3.scaleLinear()
             .domain([0, 10000])
             .range([120, 0]);
@@ -899,6 +1016,10 @@
             if (customFormat) {
                 yAxis.tickFormat(customFormat);
             }
+
+            let bandHolder = parent
+                .append('g')
+                .attr('class', 'highlights');
 
             yLabel = parent.append('g')
               .attr('class', 'axis yAxis')
@@ -979,6 +1100,40 @@
                 }
             }
 
+            if (banding) {
+                if (tickValues) {
+                    let bands = yAxis.tickValues()
+                }
+                else  {
+                    bands = scale.ticks(numTicks)
+                }
+                bands = bands.map((d,i) => {
+                    return{
+                        pos: d,
+                        height: getBandWidth(i)
+                    }
+                })
+                .filter((d, i) => {
+                    return i % 2 === 0;
+                })
+
+                function getBandWidth(index) {
+                    if (index === bands.length-1) {
+                        return plotHeight - scale(bands[index])
+                    }
+                    return scale(bands[index+1]) - scale(bands[index])
+                }
+                
+                bandHolder.selectAll('rect')
+                    .data(bands)
+                    .enter()
+                    .append('rect')
+                    .attr('x', 0)
+                    .attr('width', plotWidth - labelWidth)
+                    .attr('y', d => scale(d.pos))
+                    .attr('height', d => d.height)
+            }
+
             yLabel.selectAll('.tick')
                 .filter(d => d === 0 || d === yAxisHighlight)
                 .classed('baseline', true);
@@ -996,6 +1151,11 @@
         axis.align = (d) => {
             if (!d) return align;
             align = d;
+            return axis;
+        };
+        axis.banding = (d) => {
+            if (d === undefined) return banding;
+            banding = d;
             return axis;
         };
         axis.frameName = (d) => {
@@ -1083,6 +1243,7 @@
     }
 
     function yOrdinal () {
+        let banding;
         let align = 'left';
         let scale = d3.scaleBand()
             .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
@@ -1125,6 +1286,10 @@
             } else {
                 scale.paddingInner(0.2);
             }
+
+            let bandHolder = parent
+                .append('g')
+                .attr('class', 'highlights');
 
             yLabel = parent.append('g')
                 .attr('class', 'axis yAxis')
@@ -1194,9 +1359,42 @@
                 }
             }
 
+            if (banding) {
+                let bands = scale.domain()
+                console.log(bands)
+
+                bands = bands.map((d,i) => {
+                    return{
+                        pos: d,
+                    }
+                })
+                .filter((d, i) => {
+                    return i % 2 === 0;
+                })
+                const yOffset  = (scale.step() / 100) * (scale.paddingInner() * 100)
+                bandHolder.selectAll('rect')
+                    .data(bands)
+                    .enter()
+                    .append('rect')
+                    .attr('x', 0)
+                    .attr('width', plotWidth)
+                    .attr('y', d => scale(d.pos) - (yOffset/2))
+                    .attr('height', scale.step())
+            }
+
             yLabel.selectAll('.domain').remove();
         }
 
+        axis.align = (d) => {
+            if (!d) return align;
+            align = d;
+            return axis;
+        };
+        axis.banding = (d) => {
+            if (d === undefined) return banding;
+            banding = d;
+            return axis;
+        };
         axis.scale = (d) => {
             if (!d) return scale;
             scale = d;
@@ -1270,16 +1468,12 @@
             offset = d;
             return axis;
         };
-        axis.align = (d) => {
-            if (!d) return align;
-            align = d;
-            return axis;
-        };
 
         return axis;
     }
 
     function yDate () {
+        let banding;
         const mindate = new Date(1970, 1, 1);
         const maxdate = new Date(2017, 6, 1);
         let scale = d3.scaleTime()
@@ -1379,6 +1573,10 @@
                 yAxis.tickFormat(customFormat);
             }
 
+            const bandHolder = parent
+                .append('g')
+                .attr('class', 'highlights');
+
             yLabel = parent.append('g')
                 .attr('class', 'axis yAxis axis baseline')
                 .call(yAxis);
@@ -1391,12 +1589,15 @@
             // Use this to amend the tickSIze and re cal the vAxis
             if (tickSize < labelWidth) {
                 yLabel.call(yAxis.tickSize);
-            } else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
+            }
+            else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
 
             if (align === 'right') {
                 yLabel.selectAll('text')
-                .attr('transform', `translate(${(labelWidth)},0)`);
+                .attr('transform', `translate(${(labelWidth)},0)`)
+                .style('text-anchor', 'end');
             }
+            else {yLabel.selectAll('text').style('text-anchor', 'end')}
 
             if (minorAxis) {
                 yLabelMinor = parent.append('g')
@@ -1442,8 +1643,8 @@
                 const height = (text.node().getBBox().height) / 2;
                 const textX = text.node().getBBox().x + width;
                 const textY = text.node().getBBox().y + height;
-                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
-                    .style('text-anchor', defaultLabel.anchor);
+                // text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                //     .style('text-anchor', defaultLabel.anchor);
 
                 function getVerticle(vert) {
                     return {
@@ -1470,6 +1671,40 @@
                     }
                     return 0
                 }
+            }
+
+            if (banding) {
+                let bands = yAxis.tickValues()
+                bands = bands.map((d,i) => {
+                    return{
+                        date: d,
+                        height: getBandWidth(i)
+                    }
+                })
+                .filter((d, i) => {
+                    return i % 2 === 0;
+                })
+
+            function getBandWidth(index) {
+                    if (index === bands.length-1) {
+                        return plotHeight - scale(bands[index])
+                    }
+                    return scale(bands[index+1]) - scale(bands[index])
+                }
+                
+                bandHolder.selectAll('rect')
+                    .data(bands)
+                    .enter()
+                    .append('rect')
+                    .attr('x', 0)
+                    .attr('width', (d) => {
+                        if (align === 'left ') {
+                            plotWidth - labelWidth 
+                        }
+                        return plotWidth - labelWidth - rem
+                    })
+                    .attr('y', d => scale(d.date))
+                    .attr('height', d => d.height)
             }
 
             yLabel.selectAll('.domain').remove();
@@ -1620,6 +1855,11 @@
         }
         axis.align = (d) => {
             align = d;
+            return axis;
+        };
+        axis.banding = (d) => {
+            if (d === undefined) return banding;
+            banding = d;
             return axis;
         };
         axis.tickFormat = (d) => {
