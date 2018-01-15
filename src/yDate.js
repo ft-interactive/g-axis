@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 
 export default function () {
+    let banding;
     const mindate = new Date(1970, 1, 1);
     const maxdate = new Date(2017, 6, 1);
     let scale = d3.scaleTime()
@@ -100,6 +101,10 @@ export default function () {
             yAxis.tickFormat(customFormat);
         }
 
+        const bandHolder = parent
+            .append('g')
+            .attr('class', 'highlights');
+
         yLabel = parent.append('g')
             .attr('class', 'axis yAxis axis baseline')
             .call(yAxis);
@@ -112,12 +117,15 @@ export default function () {
         // Use this to amend the tickSIze and re cal the vAxis
         if (tickSize < labelWidth) {
             yLabel.call(yAxis.tickSize);
-        } else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
+        }
+        else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
 
         if (align === 'right') {
             yLabel.selectAll('text')
-            .attr('transform', `translate(${(labelWidth)},0)`);
+            .attr('transform', `translate(${(labelWidth)},0)`)
+            .style('text-anchor', 'end');
         }
+        else {yLabel.selectAll('text').style('text-anchor', 'end')}
 
         if (minorAxis) {
             yLabelMinor = parent.append('g')
@@ -163,8 +171,8 @@ export default function () {
             const height = (text.node().getBBox().height) / 2;
             const textX = text.node().getBBox().x + width;
             const textY = text.node().getBBox().y + height;
-            text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
-                .style('text-anchor', defaultLabel.anchor);
+            // text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+            //     .style('text-anchor', defaultLabel.anchor);
 
             function getVerticle(vert) {
                 return {
@@ -191,6 +199,40 @@ export default function () {
                 }
                 return 0
             }
+        }
+
+        if (banding) {
+            let bands = yAxis.tickValues()
+            bands = bands.map((d,i) => {
+                return{
+                    date: d,
+                    height: getBandWidth(i)
+                }
+            })
+            .filter((d, i) => {
+                return i % 2 === 0;
+            })
+
+        function getBandWidth(index) {
+                if (index === bands.length-1) {
+                    return plotHeight - scale(bands[index])
+                }
+                return scale(bands[index+1]) - scale(bands[index])
+            }
+            
+            bandHolder.selectAll('rect')
+                .data(bands)
+                .enter()
+                .append('rect')
+                .attr('x', 0)
+                .attr('width', (d) => {
+                    if (align === 'left ') {
+                        plotWidth - labelWidth 
+                    }
+                    return plotWidth - labelWidth - rem
+                })
+                .attr('y', d => scale(d.date))
+                .attr('height', d => d.height)
         }
 
         yLabel.selectAll('.domain').remove();
@@ -341,6 +383,11 @@ export default function () {
     }
     axis.align = (d) => {
         align = d;
+        return axis;
+    };
+    axis.banding = (d) => {
+        if (d === undefined) return banding;
+        banding = d;
         return axis;
     };
     axis.tickFormat = (d) => {
