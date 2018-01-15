@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 
 export default function () {
+    let banding;
     let scale = d3.scaleLinear()
         .domain([0, 10000])
         .range([120, 0]);
@@ -69,6 +70,10 @@ export default function () {
         if (customFormat) {
             yAxis.tickFormat(customFormat);
         }
+
+        let bandHolder = parent
+            .append('g')
+            .attr('class', 'highlights');
 
         yLabel = parent.append('g')
           .attr('class', 'axis yAxis')
@@ -149,6 +154,40 @@ export default function () {
             }
         }
 
+        if (banding) {
+            if (tickValues) {
+                let bands = yAxis.tickValues()
+            }
+            else  {
+                bands = scale.ticks(numTicks)
+            }
+            bands = bands.map((d,i) => {
+                return{
+                    pos: d,
+                    height: getBandWidth(i)
+                }
+            })
+            .filter((d, i) => {
+                return i % 2 === 0;
+            })
+
+            function getBandWidth(index) {
+                if (index === bands.length-1) {
+                    return plotHeight - scale(bands[index])
+                }
+                return scale(bands[index+1]) - scale(bands[index])
+            }
+            
+            bandHolder.selectAll('rect')
+                .data(bands)
+                .enter()
+                .append('rect')
+                .attr('x', 0)
+                .attr('width', plotWidth - labelWidth)
+                .attr('y', d => scale(d.pos))
+                .attr('height', d => d.height)
+        }
+
         yLabel.selectAll('.tick')
             .filter(d => d === 0 || d === yAxisHighlight)
             .classed('baseline', true);
@@ -166,6 +205,11 @@ export default function () {
     axis.align = (d) => {
         if (!d) return align;
         align = d;
+        return axis;
+    };
+    axis.banding = (d) => {
+        if (d === undefined) return banding;
+        banding = d;
         return axis;
     };
     axis.frameName = (d) => {
