@@ -57,7 +57,7 @@ yLinear() creates a d3 linear axis with a couple of additional feature to help m
 * ,b>.logScale()</b> for when a log scale is needed.
 
 ## Getting started
-Add the following code to your index.js to append a default y-axis to the current frame object (grey here but is not normally visible)
+Add the following code to your index.js to append a default y-axis to the current frame object (grey here but not normally visible)
 
 ```
 const yAxis = gAxis.yLinear()
@@ -112,7 +112,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 
 myAxis<b>.align([String])</b> "right" or "left". Determines the alignment of the tick text set as "right" by default. [example](#ylinleft)
 
-myAxis<b>.banding([Boolean])</b> Determines if the axis banding is switched on or off. <b>Note</b> his function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.[example](#ylinleft)
+myAxis<b>.banding([Boolean])</b> Determines if the axis banding is switched on or off. <b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.[example](#ylinleft)
 
 myAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.domain()</b> is defined the default is [0,10000]
 
