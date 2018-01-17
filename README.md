@@ -112,9 +112,13 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 
 myAxis<b>.align([String])</b> "right" or "left". Determines the alignment of the tick text set as "right" by default. [example](#ylinleft)
 
+myAxis<b>.banding([Boolean])</b> Determines if the axis banding is switched on or off. <b>Note</b> his function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.[example](#ylinleft)
+
 myAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.domain()</b> is defined the default is [0,10000]
 
 myAxis<b>.invert([boolean])</b> Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom [example](#ylinhighlight)
+
+myAxis<b>.label([Object])</b> Adds and positions axis labels to the axis. (#ylinpos)
 
 myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
