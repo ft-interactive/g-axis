@@ -610,16 +610,16 @@
 
             if (banding) {
                 if (tickValues) {
-                    let bands = xAxis.tickValues()
+                    let bands = xAxis.tickValues();
                 }
                 else  {
-                    bands = scale.ticks(numTicks)
+                    let bands = scale.ticks(numTicks);
                 }
                 bands = bands.map((d,i) => {
                     return{
                         date: d,
-                        width: getBandWidth(i)
-                    }
+                        width: getBandWidth(i);
+                    };
                 })
                 .filter((d, i) => {
                     return i % 2 === 0;

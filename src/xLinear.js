@@ -150,29 +150,27 @@ export default function () {
         }
 
         if (banding) {
+            let bands = scale.ticks(numTicks);
             if (tickValues) {
-                let bands = xAxis.tickValues()
-            }
-            else  {
-                bands = scale.ticks(numTicks)
+                bands = xAxis.tickValues();
             }
             bands = bands.map((d,i) => {
                 return{
                     date: d,
-                    width: getBandWidth(i)
-                }
+                    width: getBandWidth(i),
+                };
             })
             .filter((d, i) => {
                 return i % 2 === 0;
-            })
+            });
 
             function getBandWidth(index) {
-                if (index === bands.length-1) {
-                    return plotWidth - scale(bands[index])
+                if (index === bands.length - 1) {
+                    return plotWidth - scale(bands[index]);
                 }
-                return scale(bands[index+1]) - scale(bands[index])
+                return scale(bands[index + 1]) - scale(bands[index]);
             }
-            
+
             bandHolder.selectAll('rect')
                 .data(bands)
                 .enter()
@@ -180,7 +178,7 @@ export default function () {
                 .attr('y', 0)
                 .attr('height', plotHeight)
                 .attr('x', d => scale(d.date))
-                .attr('width', d => d.width)
+                .attr('width', d => d.width);
         }
 
         xLabel.selectAll('.domain').remove();

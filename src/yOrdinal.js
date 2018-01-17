@@ -118,26 +118,24 @@ export default function () {
         }
 
         if (banding) {
-            let bands = scale.domain()
-            console.log(bands)
-
-            bands = bands.map((d,i) => {
-                return{
+            let bands = scale.domain();
+            bands = bands.map((d, i) => {
+                return {
                     pos: d,
-                }
+                };
             })
             .filter((d, i) => {
                 return i % 2 === 0;
-            })
-            const yOffset  = (scale.step() / 100) * (scale.paddingInner() * 100)
+            });
+            const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100);
             bandHolder.selectAll('rect')
                 .data(bands)
                 .enter()
                 .append('rect')
                 .attr('x', 0)
                 .attr('width', plotWidth - labelWidth)
-                .attr('y', d => scale(d.pos) - (yOffset/2))
-                .attr('height', scale.step())
+                .attr('y', d => scale(d.pos) - (yOffset / 2))
+                .attr('height', scale.step());
         }
 
         yLabel.selectAll('.domain').remove();

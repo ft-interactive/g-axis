@@ -103,26 +103,24 @@ export default function xAxisOrdinal() {
         }
 
         if (banding) {
-            let bands = scale.domain()
-            console.log(bands)
-
-            bands = bands.map((d,i) => {
+            let bands = scale.domain();
+            bands = bands.map((d, i) => {
                 return{
                     pos: d,
-                }
+                };
             })
             .filter((d, i) => {
                 return i % 2 === 1;
-            })
-            const yOffset  = (scale.step() / 100) * (scale.paddingInner() * 100)
+            });
+            const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100);
             bandHolder.selectAll('rect')
                 .data(bands)
                 .enter()
                 .append('rect')
                 .attr('y', 0)
                 .attr('height', plotHeight)
-                .attr('x', d => scale(d.pos) - (yOffset/2))
-                .attr('width', scale.step())
+                .attr('x', d => scale(d.pos) - (yOffset / 2))
+                .attr('width', scale.step());
         }
 
         xLabel.selectAll('.domain').remove();

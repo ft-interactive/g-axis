@@ -181,24 +181,24 @@ export default function () {
             }
         }
         if (banding) {
-            let bands = xAxis.tickValues()
+            let bands = xAxis.tickValues();
             bands = bands.map((d,i) => {
-                return{
+                return {
                     date: d,
-                    width: getBandWidth(i)
-                }
+                    width: getBandWidth(i),
+                };
             })
             .filter((d, i) => {
                 return i % 2 === 0;
-            })
+            });
 
         function getBandWidth(index) {
-                if (index === bands.length-1) {
-                    return plotWidth - scale(bands[index])
+                if (index === bands.length - 1) {
+                    return plotWidth - scale(bands[index]);
                 }
-                return scale(bands[index+1]) - scale(bands[index])
+                return scale(bands[index + 1]) - scale(bands[index]);
             }
-            
+
             bandHolder.selectAll('rect')
                 .data(bands)
                 .enter()
