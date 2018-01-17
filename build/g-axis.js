@@ -185,24 +185,24 @@
                 }
             }
             if (banding) {
-                let bands = xAxis.tickValues()
+                let bands = xAxis.tickValues();
                 bands = bands.map((d,i) => {
-                    return{
+                    return {
                         date: d,
-                        width: getBandWidth(i)
-                    }
+                        width: getBandWidth(i),
+                    };
                 })
                 .filter((d, i) => {
                     return i % 2 === 0;
-                })
+                });
 
             function getBandWidth(index) {
-                    if (index === bands.length-1) {
-                        return plotWidth - scale(bands[index])
+                    if (index === bands.length - 1) {
+                        return plotWidth - scale(bands[index]);
                     }
-                    return scale(bands[index+1]) - scale(bands[index])
+                    return scale(bands[index + 1]) - scale(bands[index]);
                 }
-                
+
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
@@ -609,29 +609,27 @@
             }
 
             if (banding) {
+                let bands = scale.ticks(numTicks);
                 if (tickValues) {
-                    let bands = xAxis.tickValues();
-                }
-                else  {
-                    let bands = scale.ticks(numTicks);
+                    bands = xAxis.tickValues();
                 }
                 bands = bands.map((d,i) => {
                     return{
                         date: d,
-                        width: getBandWidth(i);
+                        width: getBandWidth(i),
                     };
                 })
                 .filter((d, i) => {
                     return i % 2 === 0;
-                })
+                });
 
                 function getBandWidth(index) {
-                    if (index === bands.length-1) {
-                        return plotWidth - scale(bands[index])
+                    if (index === bands.length - 1) {
+                        return plotWidth - scale(bands[index]);
                     }
-                    return scale(bands[index+1]) - scale(bands[index])
+                    return scale(bands[index + 1]) - scale(bands[index]);
                 }
-                
+
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
@@ -639,7 +637,7 @@
                     .attr('y', 0)
                     .attr('height', plotHeight)
                     .attr('x', d => scale(d.date))
-                    .attr('width', d => d.width)
+                    .attr('width', d => d.width);
             }
 
             xLabel.selectAll('.domain').remove();
@@ -839,26 +837,24 @@
             }
 
             if (banding) {
-                let bands = scale.domain()
-                console.log(bands)
-
-                bands = bands.map((d,i) => {
+                let bands = scale.domain();
+                bands = bands.map((d, i) => {
                     return{
                         pos: d,
-                    }
+                    };
                 })
                 .filter((d, i) => {
                     return i % 2 === 1;
-                })
-                const yOffset  = (scale.step() / 100) * (scale.paddingInner() * 100)
+                });
+                const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100);
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
                     .append('rect')
                     .attr('y', 0)
                     .attr('height', plotHeight)
-                    .attr('x', d => scale(d.pos) - (yOffset/2))
-                    .attr('width', scale.step())
+                    .attr('x', d => scale(d.pos) - (yOffset / 2))
+                    .attr('width', scale.step());
             }
 
             xLabel.selectAll('.domain').remove();
@@ -1359,26 +1355,24 @@
             }
 
             if (banding) {
-                let bands = scale.domain()
-                console.log(bands)
-
-                bands = bands.map((d,i) => {
-                    return{
+                let bands = scale.domain();
+                bands = bands.map((d, i) => {
+                    return {
                         pos: d,
-                    }
+                    };
                 })
                 .filter((d, i) => {
                     return i % 2 === 0;
-                })
-                const yOffset  = (scale.step() / 100) * (scale.paddingInner() * 100)
+                });
+                const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100);
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
                     .append('rect')
                     .attr('x', 0)
                     .attr('width', plotWidth - labelWidth)
-                    .attr('y', d => scale(d.pos) - (yOffset/2))
-                    .attr('height', scale.step())
+                    .attr('y', d => scale(d.pos) - (yOffset / 2))
+                    .attr('height', scale.step());
             }
 
             yLabel.selectAll('.domain').remove();
