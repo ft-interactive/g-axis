@@ -26,7 +26,7 @@ import * as gAxis from 'g-axis
 ### NPM install
 Not yet deployed
 
-## Getting started
+## Important information
 
 All examples shown are from the web frame style.
 
