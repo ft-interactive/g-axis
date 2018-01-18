@@ -54,7 +54,9 @@ The following axis types are currently defined in this repo (click to jump to se
 # <a id='ylinstarted'>yLinear</a>
 
 <b>Note</b> All examples shown are from the web frame style.
-yLinear() creates a d3 linear axis with a couple of additional feature to help manage styling and day-to-day production of charts that use a linear y-axis
+yLinear() creates a d3 linear axis with a couple of additional feature to help manage styling and day-to-day production of charts that use a linear y-axis.
+
+Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a value equal to the width of the widest tick label on the y-axis. This value is used to re-define the left or right margin of the chartframe before defining the <b>.range()</b> of the x axis.
 
 * [Getting started](#ylinstarted)
 
@@ -86,7 +88,7 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-sized.png)
 
-### <a id='ylinpos'>Positioning</a>
+### <a id='ylinpos'>yLinear positioning</a>
 The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>. this will vary depending on the text e.g. '100,000' will return a larger value than '10'
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png))
 
