@@ -51,16 +51,13 @@ The following axis types are currently defined in this repo (click to jump to se
 * xLinear()
 * xOrdinal()
 
-# <a id='ylinear'>yLinear</a>
+# <a id='ylinstarted'>Getting started</a>
 
 <b>Note</b> All examples shown are from the web frame style.
 yLinear() creates a d3 linear axis with a couple of additional feature to help manage styling and day-to-day production of charts that use a linear y-axis
 
-* <b>.align()</b> allows the axis to be aligned to either the left or right hand side of the chart. 
-* <b>.invert()</b> is used to invert the scale. <b>
-* ,b>.logScale()</b> for when a log scale is needed.
 
-## Getting started
+## <a id='ylinstarted'>Getting started</a>
 Add the following code to your index.js to append a default y-axis to the current frame object (grey here but not normally visible)
 
 ```
