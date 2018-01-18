@@ -36,7 +36,7 @@ Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a 
 
 yOrdinal axis where the width of 'Switzerland' is returned in <b>.labelWidth()</b>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-large.png)
-The tick 'Dem Republic of Congo'is much longer so will leave less space for the x-axis <b>.domain()</b>
+The tick 'Dem Republic of Congo' is much longer so will leave less space for the x axis <b>.range()</b>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-small.png)
 
 For more detail on <b>.labelWidth()</b> and its use in positioning see:
