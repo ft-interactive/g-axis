@@ -159,7 +159,7 @@ yAxis
 
 
 #### <a id='ylinearbanding'>myAxis.banding([boolean]</a>
-Toggles the axis banding on or off. Shased between alternative major axis ticks, so increasing the number of ticks will increase the number of bands.
+Toggles the axis banding on or off. Add shaded bands between alternative major axis ticks, so increasing the number of ticks will increase the number of bands.
 <b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.
 ```
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
