@@ -144,7 +144,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.align([String])](#ylinearalign)
 * [.banding([Boolean])](#ylinearbanding)
 * [.domain([Array])](#ylineardomain)
-* [.yAxishighlight(([Array])](#ylinearyAxishighlight)
+* [.yAxishighlight([Array])](#ylinearyAxishighlight)
 * [.invert([Array])](#ylinearinvert)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
