@@ -142,8 +142,9 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 ## <a id='ylinearapi'>yLinear API reference</a>
 
 * [.align([String])](#ylinearalign)
+* [.banding([boolean])](#ylinearbanding)
 
-#### <a id='ylinearalign'>myAxis.align([String]e</a>
+#### <a id='ylinearalign'>myAxis.align([String]</a>
  "right" or "left". Determines the alignment of the tick text set as "right" by default.
 ```
 yAxis
@@ -157,7 +158,8 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-right.png)
 
 
-myAxis<b>.banding([Boolean])</b> Determines if the axis banding is switched on or off. <b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.[example](#ylinleft)
+#### <a id='ylinearbanding'>myAxis.align([String]e</a>
+Toggles the axis banding on or off. <b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.
 
 myAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.domain()</b> is defined the default is [0,10000]
 
