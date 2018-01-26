@@ -92,14 +92,24 @@ currentFrame.plot()
 
 It is good practice to pass <b>.plotDim(), .rem() .divisor() </b>and <b>.frameName</b> to the axis when you first set it up as they are used in some of built the functionality, such as <b>.banding() and .label()</b> and creating tags used by Pre-flight illustrator script. It would be a good idea to pass <b>.invert() and .logScale()</b> at this point alse.
 ```
-const yAxis = gAxis.yLinear()
 const currentFrame = frame[frameName];
+// define other functions to be called
+const yAxis = yLinear();// sets up yAxis
+// const plotDim=currentFrame.dimension()//useful variable to carry the current frame dimensions
+const tickSize = currentFrame.dimension().width;// Used when drawing the yAxis ticks
+const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height]
 
- yAxis
-    .domain([0,200])
-    .range([currentFrame.dimension().height,0])
-    .tickSize(currentFrame.dimension().width)
+yAxis
+  .tickSize(tickSize)
+  .align(yAxisAlign)
+  .domain([Math.min(yMin, valueExtent[0]), Math.max(yMax, valueExtent[1])])
+  .range([currentFrame.dimension().height, 0])
+  .frameName(frameName)
+  .invert(yScaleInvert)
+  .logScale(yLogScale)
+  .divisor(divisor);
 
+// Draw the yAxis first, this will position the yAxis correctly and measure the width of the label text
 currentFrame.plot()
     .call(yAxis);
 ```
