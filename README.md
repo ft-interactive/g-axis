@@ -56,9 +56,11 @@ The following axis types are currently defined in this repo (click to jump to se
 <b>Note</b> All examples shown are from the web frame style.
 yLinear() creates a d3 linear axis with a couple of additional feature to help manage styling and day-to-day production of charts that use a linear y-axis.
 
-Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a value equal to the width of the widest tick label on the y-axis. This value is used to re-define the left or right margin of the chartframe before crteating the x-axis. For more information see [yLinear Postioning](#ylinpos)
+Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a value equal to the width of the widest tick label on the y-axis. This value is used to re-define the left or right margin of the chartframe before crteating the x-axis. For more information see yLinear Postioning
 
 * [Getting started](#ylinstarted)
+* [yLinear Postioning](#ylinpos)
+* [Full API](#ylinearapi)
 
 
 ## <a id='ylinstarted'>Getting started</a>
