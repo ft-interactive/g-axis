@@ -144,7 +144,15 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.align([String])](#ylinearalign)
 
 #### <a id='ylinearalign'>myAxis.align([String]e</a>
- "right" or "left". Determines the alignment of the tick text set as "right" by default. [example](#ylinleft)
+ "right" or "left". Determines the alignment of the tick text set as "right" by default.
+
+```
+yAxis
+  .align('left');
+```
+
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
+
 
 myAxis<b>.banding([Boolean])</b> Determines if the axis banding is switched on or off. <b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.[example](#ylinleft)
 
