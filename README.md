@@ -194,12 +194,12 @@ Changes the style of the tick specified from the normal thin 'axis' style to the
 yAxis
   .yAxishighlight(100)
 ```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-higjlight.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight.png)
 ```
 yAxis
   .yAxishighlight(-100)
 ```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-higjlight2.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight2.png)
 
 
 
