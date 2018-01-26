@@ -233,7 +233,7 @@ Adding the following code will set a default label
 ```
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
 const label = {
-  tag: 'default axis label'
+	tag: 'default axis label'
 }
 yAxis
 	.rem(currentFrame.rem())
