@@ -141,7 +141,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 
 ## <a id='ylinearapi'>yLinear API reference</a>
 
-* [Getting started](#ylinearalign)
+* [<b>myAxis<b>.align([String])</b>](#ylinearalign)
 
 #<a id='ylinearalign'>yLinear API reference</a> "right" or "left". Determines the alignment of the tick text set as "right" by default. [example](#ylinleft)
 
