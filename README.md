@@ -143,6 +143,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 
 * [.align([String])](#ylinearalign)
 * [.banding([boolean])](#ylinearbanding)
+* [.domain([array])](#ylineardomain)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
  "right" or "left". Determines the alignment of the tick text set as "right" by default.
@@ -182,8 +183,8 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding2.png)
 
-
-myAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.domain()</b> is defined the default is [0,10000]
+#### <a id='ylineardomain'>myAxis.domain([array])</a>
+Defines the axis domain in the same way as you would when creating a normal d3.scaleLinear() scale. If no <b>.domain()</b> is defined the default is [0,10000]
 
 myAxis<b>.invert([boolean])</b> Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom [example](#ylinhighlight)
 
