@@ -187,7 +187,7 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding2.png)
 
 #### <a id='ylineardivisor'>myAxis.divisor([Number]</a>
-Used to help format ticks values whane the data range contains large number e.g. GDP where the figures could be measured in millions or billions. The tivk label figure is divided by the number passed to the divisor, by default this is set to 1 so appears to make no difference. On an axis where the figures are measured in millions 0 - 2,000,000 setting the divisor to 1,000,000 would cause the axis labels to appear as 0 - 9.0.
+Used to help format ticks values whane the data range contains large number e.g. GDP where the figures could be measured in millions or billions. The tick label figure is divided by the number passed to the divisor, by default this is set to 1 so appears to make no difference. On an axis where the figures are measured in millions 0 - 2,000,000 setting the divisor to 1,000,000 would cause the axis labels to appear as 0 - 9.0.
 <b>Note </b> It is veru important to make he appropriate addition to the subtitle of the chart when the divisor has avalue other that 1 e.g. adding 'million'
 
 
