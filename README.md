@@ -60,7 +60,7 @@ Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a 
 
 * [Getting started](#ylinstarted)
 * [yLinear Postioning](#ylinpos)
-* [Full API](#ylinearapi)
+* [Full yLinear API reference](#ylinearapi)
 
 
 ## <a id='ylinstarted'>Getting started</a>
