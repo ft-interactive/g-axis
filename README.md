@@ -188,12 +188,8 @@ yAxis
 
 #### <a id='ylineardivisor'>myAxis.divisor([Number]</a>
 Used to help format ticks values whane the data range contains large number e.g. GDP where the figures could be measured in millions or billions. The tick label figure is divided by the number passed to the divisor, by default this is set to 1 so appears to make no difference. On an axis where the figures are measured in millions 0 - 2,000,000 setting the divisor to 1,000,000 would cause the axis labels to appear as 0 - 9.0.
-<b>Note </b> It is veru important to make he appropriate addition to the subtitle of the chart when the divisor has avalue other that 1 e.g. adding 'million'
 
-
-#### <a id='ylineardomain'>myAxis.domain([Array])</a>
-Defines the axis domain in the same way as you would when creating a normal d3.scaleLinear() scale. If no <b>.domain()</b> is defined the default is [0,10000]
-nearer the bottom.
+<b>Note </b> It is veru important to make he appropriate addition to the subtitle of the chart when the divisor has a value other that 1 e.g. adding the text 'million'
 
 Without using a divisor the chart would be labelled like this:
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-divisorBefore.png)
@@ -206,6 +202,10 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-divisorAfter.png)
 
+
+#### <a id='ylineardomain'>myAxis.domain([Array])</a>
+Defines the axis domain in the same way as you would when creating a normal d3.scaleLinear() scale. If no <b>.domain()</b> is defined the default is [0,10000]
+nearer the bottom.
 
 #### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
 Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
