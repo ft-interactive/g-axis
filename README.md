@@ -225,9 +225,25 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
 
 #### <a id='ylinearlabel'>myAxis.label([Object])</a>
-<b>Note</b> requires that the axis has been pass <b>.rem()</b> to work correctly
+<b>Note .lavel()</b> requires that the axis has been passed both <b>.rem()</b> and <b>.plotDim()</b> to work correctly
 
-Adds and positions an axis label. Labels can be positioned in nine locations and rotated through 360 degrees.
+Adds and positions an axis label. Labels can be positioned in nine locations bye specifying the horizontal and vertical alignment, and rotated through 360 degrees.
+
+Adding the following code will set a default label
+```
+const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
+const label = {
+  tag: 'default axis label'
+}
+
+yAxis
+	.rem(currentFrame.rem())
+	.plotDim(plotdim)
+	.label(true)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-defaultLabel.png)
+
+
 
 myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
