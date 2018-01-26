@@ -235,13 +235,12 @@ const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height
 const label = {
   tag: 'default axis label'
 }
-
 yAxis
 	.rem(currentFrame.rem())
 	.plotDim(plotdim)
 	.label(true)
 ```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-defaultLabel.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelDabel.png)
 
 
 
