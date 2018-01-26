@@ -144,7 +144,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.align([String])](#ylinearalign)
 * [.banding([Boolean])](#ylinearbanding)
 * [.domain([Array])](#ylineardomain)
-* [.highlightLine([Array])](#ylineardomain)
+* [.yAxishighlight(([Array])](#ylinearyAxishighlight()
 * [.invert([Array])](#ylinearinvert)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
@@ -188,6 +188,21 @@ yAxis
 #### <a id='ylineardomain'>myAxis.domain([Array])</a>
 Defines the axis domain in the same way as you would when creating a normal d3.scaleLinear() scale. If no <b>.domain()</b> is defined the default is [0,10000]
 
+#### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
+Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
+```
+yAxis
+  .yAxishighlight(100)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-higjlight.png)
+```
+yAxis
+  .yAxishighlight(-100)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-higjlight2.png)
+
+
+
 #### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
 Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
 ```
@@ -204,8 +219,6 @@ myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the a
 myAxis<b>.numTicks([Number])</b> as they name suggest defines how many ticks are on the axis. 0 to 100 with 3 tick would give a zero line, a fifty line and a hundred line.If not enough ticks have been specifiesd d3 will automatically increase the number. [example](#ylinnumticks)
 
 myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
-
-myAxis<b>.yAxishighlight([Number])</b>Changes the style of the tick specified from the normal dotted 'axis' style to the solid 'baseline'. Mostly used on index charts where the 100 line should be highlighted of the minimum tick value goes below zero [example](#ylinhighlight)
 
 ## yLinear Examples
 ### <a id='ylinleft'>Left hand axis</a>
