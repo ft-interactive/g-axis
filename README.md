@@ -142,8 +142,8 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 ## <a id='ylinearapi'>yLinear API reference</a>
 
 * [.align([String])](#ylinearalign)
-* [.banding([boolean])](#ylinearbanding)
-* [.domain([array])](#ylineardomain)
+* [.banding([Boolean])](#ylinearbanding)
+* [.domain([Array])](#ylineardomain)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
  "right" or "left". Determines the alignment of the tick text set as "right" by default.
@@ -159,7 +159,7 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-right.png)
 
 
-#### <a id='ylinearbanding'>myAxis.banding([boolean]</a>
+#### <a id='ylinearbanding'>myAxis.banding([Boolean]</a>
 Toggles the axis banding on or off. Adds shaded bands between alternative major axis ticks, so increasing the number of ticks will increase the number of bands.
 
 <b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.
@@ -183,7 +183,7 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding2.png)
 
-#### <a id='ylineardomain'>myAxis.domain([array])</a>
+#### <a id='ylineardomain'>myAxis.domain([Array])</a>
 Defines the axis domain in the same way as you would when creating a normal d3.scaleLinear() scale. If no <b>.domain()</b> is defined the default is [0,10000]
 
 myAxis<b>.invert([boolean])</b> Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom [example](#ylinhighlight)
