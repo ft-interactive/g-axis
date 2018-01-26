@@ -71,7 +71,7 @@ const yAxis = gAxis.yLinear()
 const currentFrame = frame[frameName];
 
 currentFrame.plot()
-    .call(yAxis);
+	.call(yAxis);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-default.png)
 
@@ -100,18 +100,18 @@ const tickSize = currentFrame.dimension().width;// Used when drawing the yAxis t
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height]
 
 yAxis
-  .tickSize(tickSize)
-  .align(yAxisAlign)
-  .domain([Math.min(yMin, valueExtent[0]), Math.max(yMax, valueExtent[1])])
-  .range([currentFrame.dimension().height, 0])
-  .frameName(frameName)
-  .invert(yScaleInvert)
-  .logScale(yLogScale)
-  .divisor(divisor);
+	.tickSize(tickSize)
+	.align(yAxisAlign)
+	.domain([Math.min(yMin, valueExtent[0]), Math.max(yMax, valueExtent[1])])
+	.range([currentFrame.dimension().height, 0])
+	.frameName(frameName)
+	.invert(yScaleInvert)
+	.logScale(yLogScale)
+	.divisor(divisor);
 
 // Draw the yAxis first, this will position the yAxis correctly and measure the width of the label text
 currentFrame.plot()
-    .call(yAxis);
+	.call(yAxis);
 ```
 
 ### <a id='ylinpos'>yLinear positioning</a>
@@ -122,18 +122,18 @@ The rendered axis returns the width of the widest text label on the y- axis via 
 ```
 // return the value in the variable newMargin and move axis if needed
 if (yAxisAlign === 'right') {
-  const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
-  // Use newMargin redefine the new margin and range of xAxis
-  currentFrame.margin({ right: newMargin });
+	const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
+	// Use newMargin redefine the new margin and range of xAxis
+	currentFrame.margin({ right: newMargin });
 }
 if (yAxisAlign === 'left') {
-  const newMargin = yAxis.labelWidth() + currentFrame.margin().left;
-  // Use newMargin redefine the new margin and range of xAxis
-  currentFrame.margin({ left: newMargin });
-  yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())},0)`);
+	const newMargin = yAxis.labelWidth() + currentFrame.margin().left;
+	// Use newMargin redefine the new margin and range of xAxis
+  	.margin({ left: newMargin });
+	yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())},0)`);
 }
 d3.select(currentFrame.plot().node().parentNode)
-    .call(currentFrame);
+	.call(currentFrame);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-resized.png)
 
@@ -154,12 +154,12 @@ The current frame can then still be used to correctly define the <b>.range()</b>
  "right" or "left". Determines the alignment of the tick text set as "right" by default.
 ```
 yAxis
-  .align('left');
+	.align('left');
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
 ```
 yAxis
-  .align('right');
+	.align('right');
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-right.png)
 
@@ -172,19 +172,19 @@ Toggles the axis banding on or off. Adds shaded bands between alternative major 
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
 
 yAxis
-  .plotDim(plotDim)
-  .rem(currentFrame.rem())
-  .banding(true)
+	.plotDim(plotDim)
+	.rem(currentFrame.rem())
+	.banding(true)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding.png)
 ```
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
 
 yAxis
-  .plotDim(plotDim)
-  .rem(currentFrame.rem())
-  .banding(true)
-  .numTicks(10)
+	.plotDim(plotDim)
+	.rem(currentFrame.rem())
+	.banding(true)
+	.numTicks(10)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding2.png)
 
@@ -200,7 +200,7 @@ After:
 
 ```
 yAxis
-  .divisor(1000000)
+	.divisor(1000000)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-divisorAfter.png)
 
@@ -213,21 +213,21 @@ nearer the bottom.
 Used to pass the id of the current plot object and add unique ids to the tick label for use with the illustrator Pre Flight script. frameName is passed into the object keys loop and is intergral.
 ```
 yAxis
-  .frameName(frameName)
+	.frameName(frameName)
 ```
 
 #### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
 Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
 ```
 yAxis
-  .invert(true)
+	.invert(true)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
 
 #### <a id='ylinearlabel'>myAxis.label([Object])</a>
 <b>Note .label()</b> requires that the axis has been passed both <b>.rem()</b> and <b>.plotDim()</b> to work correctly
 
-Adds and positions an axis label. Labels can be positioned in nine locations bye specifying the horizontal and vertical alignment, and rotated through 360 degrees. for more information on positioning see [Postioning yLinear labels](#ylinearlabelPos)
+Adds and positions an axis label. Labels can be positioned in nine locations by specifying the horizontal and vertical alignment, and rotated through 360 degrees. for more information on positioning see [Postioning yLinear labels](#ylinearlabelPos)
 
 Adding the following code will set a default label
 ```
