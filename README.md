@@ -159,7 +159,8 @@ yAxis
 
 
 #### <a id='ylinearbanding'>myAxis.align([String]</a>
-Toggles the axis banding on or off. <b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.
+Toggles the axis banding on or off. Shased between alternative major axis ticks, so increasing the number of ticks will increase the number of bands.
+<b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.
 ```
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
 
@@ -169,6 +170,16 @@ yAxis
   .banding(true)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding.png)
+```
+const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
+
+yAxis
+  .plotDim(plotDim)
+  .rem(currentFrame.rem())
+  .banding(true)
+  .numTicks(10)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding2.png)
 
 
 myAxis<b>.domain([Array])</b> defines the axis domain in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.domain()</b> is defined the default is [0,10000]
