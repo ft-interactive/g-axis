@@ -227,7 +227,7 @@ yAxis
 #### <a id='ylinearlabel'>myAxis.label([Object])</a>
 <b>Note .lavel()</b> requires that the axis has been passed both <b>.rem()</b> and <b>.plotDim()</b> to work correctly
 
-Adds and positions an axis label. Labels can be positioned in nine locations bye specifying the horizontal and vertical alignment, and rotated through 360 degrees.
+Adds and positions an axis label. Labels can be positioned in nine locations bye specifying the horizontal and vertical alignment, and rotated through 360 degrees. for more information on positioning see [Postioning yLinear labels](#ylinearlabelPos)
 
 Adding the following code will set a default label
 ```
@@ -241,6 +241,8 @@ yAxis
 	.label(true)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelDefault.png)
+
+#### <a id='ylinearlabelPos'>Postioning yLinear labels)</a>
 
 
 
