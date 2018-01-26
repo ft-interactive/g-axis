@@ -240,7 +240,7 @@ yAxis
 	.plotDim(plotdim)
 	.label(true)
 ```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelDabel.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelDefault.png)
 
 
 
