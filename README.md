@@ -95,19 +95,19 @@ The rendered axis returns the width of the widest text label on the y- axis via 
 <b>.labelWidth()</b> is used to amend the appropriate margin of the current frame so that tick text is positioned outside it. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> setting which is 'right' by default.<b>Note yAxisAlign</b> is usually one of the user defined variable earlier in the code.
 ```
 // return the value in the variable newMargin and move axis if needed
-    if (yAxisAlign === 'right') {
-      const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
-      // Use newMargin redefine the new margin and range of xAxis
-      currentFrame.margin({ right: newMargin });
-    }
-    if (yAxisAlign === 'left') {
-      const newMargin = yAxis.labelWidth() + currentFrame.margin().left;
-      // Use newMargin redefine the new margin and range of xAxis
-      currentFrame.margin({ left: newMargin });
-      yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())},0)`);
-    }
-    d3.select(currentFrame.plot().node().parentNode)
-        .call(currentFrame);
+if (yAxisAlign === 'right') {
+  const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
+  // Use newMargin redefine the new margin and range of xAxis
+  currentFrame.margin({ right: newMargin });
+}
+if (yAxisAlign === 'left') {
+  const newMargin = yAxis.labelWidth() + currentFrame.margin().left;
+  // Use newMargin redefine the new margin and range of xAxis
+  currentFrame.margin({ left: newMargin });
+  yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())},0)`);
+}
+d3.select(currentFrame.plot().node().parentNode)
+    .call(currentFrame);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-resized.png)
 
