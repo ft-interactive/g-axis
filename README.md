@@ -141,9 +141,9 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 
 ## <a id='ylinearapi'>yLinear API reference</a>
 
-* [myAxis.align([String])](#ylinearalign)
+* [.align([String])](#ylinearalign)
 
-#<a id='ylinearalign' myAxis.align([String]e</a> "right" or "left". Determines the alignment of the tick text set as "right" by default. [example](#ylinleft)
+# <a id='ylinearalign'>myAxis.align([String]e</a> "right" or "left". Determines the alignment of the tick text set as "right" by default. [example](#ylinleft)
 
 myAxis<b>.banding([Boolean])</b> Determines if the axis banding is switched on or off. <b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.[example](#ylinleft)
 
