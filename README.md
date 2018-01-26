@@ -147,6 +147,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.domain([Array])](#ylineardomain)
 * [.frameName([String])](#ylinearframeName)
 * [.invert([Array])](#ylinearinvert)
+* [.label([Object])](#ylinearlabel)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
@@ -209,12 +210,11 @@ Defines the axis domain in the same way as you would when creating a normal d3.s
 nearer the bottom.
 
 #### <a id='ylinearframeName'>myAxis.frameName([String])</a>
-Used to pass the id of the current plot object. Used to add unique ids to the tick label for use with the illustratore Pre Flight script. frameName is passed into the object keys loop.
+Used to pass the id of the current plot object and add unique ids to the tick label for use with the illustrator Pre Flight script. frameName is passed into the object keys loop and is intergral.
 ```
 yAxis
   .frameName(frameName)
 ```
-
 
 #### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
 Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
@@ -224,7 +224,10 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
 
-myAxis<b>.label([Object])</b> Adds and positions axis labels to the axis. (#ylinpos)
+#### <a id='ylinearlabel'>myAxis.label([Object])</a>
+<b>Note</b> requires that the axis has been pass <b>.rem()</b> to work correctly
+
+Adds and positions an axis label. Labels can be positioned in nine locations and rotated through 360 degrees.
 
 myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
