@@ -75,7 +75,7 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-default.png)
 
-Use the current frame dimensions to define your <b>.range()</b> and the <b>.ticksize()</b> and a <b>.domian()</b>
+Use the current frame dimensions to define your <b>.range()</b> and the <b>.ticksize()</b> and a <b>.domian()</b>. This will give you a basic working axis correctly positioned
 ```
 const yAxis = gAxis.yLinear()
 const currentFrame = frame[frameName];
@@ -89,6 +89,20 @@ currentFrame.plot()
     .call(yAxis);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-sized.png)
+
+It is good practice to pass <b>.plotDim(), .rem() .divisor() </b>and <b>.frameName</b> to the axis when you first set it up as they are used in some of built the functionality, such as <b>.banding() and .label()</b> and creating tags used by Pre-flight illustrator script. It would be a good idea to pass <b>.invert() and .logScale()</b> at this point alse.
+```
+const yAxis = gAxis.yLinear()
+const currentFrame = frame[frameName];
+
+ yAxis
+    .domain([0,200])
+    .range([currentFrame.dimension().height,0])
+    .tickSize(currentFrame.dimension().width)
+
+currentFrame.plot()
+    .call(yAxis);
+```
 
 ### <a id='ylinpos'>yLinear positioning</a>
 The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>. this will vary depending on the text e.g. '100,000' will return a larger value than '10'
