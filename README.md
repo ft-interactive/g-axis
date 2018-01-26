@@ -145,7 +145,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.banding([Boolean])](#ylinearbanding)
 * [.divisor([Value])](#ylineardivisor)
 * [.domain([Array])](#ylineardomain)
-* [.frameName([Array])](#ylinearframeName)
+* [.frameName([String])](#ylinearframeName)
 * [.invert([Array])](#ylinearinvert)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
 
