@@ -186,7 +186,14 @@ yAxis
 #### <a id='ylineardomain'>myAxis.domain([Array])</a>
 Defines the axis domain in the same way as you would when creating a normal d3.scaleLinear() scale. If no <b>.domain()</b> is defined the default is [0,10000]
 
-myAxis<b>.invert([boolean])</b> Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom [example](#ylinhighlight)
+#### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
+Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
+```
+yAxis
+  .invert(true)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
+
 
 myAxis<b>.label([Object])</b> Adds and positions axis labels to the axis. (#ylinpos)
 
