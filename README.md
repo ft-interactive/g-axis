@@ -143,9 +143,10 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 
 * [.align([String])](#ylinearalign)
 * [.banding([Boolean])](#ylinearbanding)
+* [.divisor([Number])](#ylineardivisor)
 * [.domain([Array])](#ylineardomain)
-* [.yAxishighlight([Array])](#ylinearyAxishighlight)
 * [.invert([Array])](#ylinearinvert)
+* [.yAxishighlight([Array])](#ylinearyAxishighlight)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
  "right" or "left". Determines the alignment of the tick text set as "right" by default.
@@ -185,8 +186,42 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding2.png)
 
+#### <a id='ylineardivisor'>myAxis.divisor([Number]</a>
+Used to help format ticks values whane the data range contains large number e.g. GDP where the figures could be measured in millions or billions. The label figure is divided by the figure passed to the divisor, by default this is set to 1 so appear to make no difference. On an axis where the figures are measured in millions 0 - 2,000,000 setting the divisor to 1,000,000 would cause the axis labels to appear as 0 - 9.0.
+<b>Note </b> It is veru important to make he appropriate addition to the subtitle of the chart when the divisor has avalue other that 1 e.g. adding 'million'
+
+
 #### <a id='ylineardomain'>myAxis.domain([Array])</a>
 Defines the axis domain in the same way as you would when creating a normal d3.scaleLinear() scale. If no <b>.domain()</b> is defined the default is [0,10000]
+nearer the bottom.
+
+Without using a divisor the chart would be labelled like this:
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-divisorBefore.png)
+
+After:
+
+```
+yAxis
+  .divisor(1000000)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-divisorAfter.png)
+
+
+#### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
+Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
+```
+yAxis
+  .invert(true)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
+
+myAxis<b>.label([Object])</b> Adds and positions axis labels to the axis. (#ylinpos)
+
+myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
+
+myAxis<b>.numTicks([Number])</b> as they name suggest defines how many ticks are on the axis. 0 to 100 with 3 tick would give a zero line, a fifty line and a hundred line.If not enough ticks have been specifiesd d3 will automatically increase the number. [example](#ylinnumticks)
+
+myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
 
 #### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
@@ -200,25 +235,6 @@ yAxis
   .yAxishighlight(-100)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight2.png)
-
-
-
-#### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
-Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
-```
-yAxis
-  .invert(true)
-```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
-
-
-myAxis<b>.label([Object])</b> Adds and positions axis labels to the axis. (#ylinpos)
-
-myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
-
-myAxis<b>.numTicks([Number])</b> as they name suggest defines how many ticks are on the axis. 0 to 100 with 3 tick would give a zero line, a fifty line and a hundred line.If not enough ticks have been specifiesd d3 will automatically increase the number. [example](#ylinnumticks)
-
-myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
 
 ## yLinear Examples
 ### <a id='ylinleft'>Left hand axis</a>
