@@ -143,8 +143,9 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 
 * [.align([String])](#ylinearalign)
 * [.banding([Boolean])](#ylinearbanding)
-* [.divisor([Number])](#ylineardivisor)
+* [.divisor([Value])](#ylineardivisor)
 * [.domain([Array])](#ylineardomain)
+* [.frameName([Array])](#ylinearframeName)
 * [.invert([Array])](#ylinearinvert)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
 
@@ -186,7 +187,7 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding2.png)
 
-#### <a id='ylineardivisor'>myAxis.divisor([Number]</a>
+#### <a id='ylineardivisor'>myAxis.divisor([Value]</a>
 Used to help format ticks values whane the data range contains large number e.g. GDP where the figures could be measured in millions or billions. The tick label figure is divided by the number passed to the divisor, by default this is set to 1 so appears to make no difference. On an axis where the figures are measured in millions 0 - 2,000,000 setting the divisor to 1,000,000 would cause the axis labels to appear as 0 - 9.0.
 
 <b>Note </b> It is veru important to make he appropriate addition to the subtitle of the chart when the divisor has a value other that 1 e.g. adding the text 'million'
@@ -206,6 +207,14 @@ yAxis
 #### <a id='ylineardomain'>myAxis.domain([Array])</a>
 Defines the axis domain in the same way as you would when creating a normal d3.scaleLinear() scale. If no <b>.domain()</b> is defined the default is [0,10000]
 nearer the bottom.
+
+#### <a id='ylinearframeName'>myAxis.frameName([String])</a>
+Used to pass the id of the current plot object. Used to add unique ids to the tick label for use with the illustratore Pre Flight script. frameName is passed into the object keys loop.
+```
+yAxis
+  .frameName(frameName)
+```
+
 
 #### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
 Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
