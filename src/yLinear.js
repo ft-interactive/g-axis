@@ -155,11 +155,9 @@ export default function () {
         }
 
         if (banding) {
+            let bands = scale.ticks(numTicks)
             if (tickValues) {
-                let bands = yAxis.tickValues()
-            }
-            else  {
-                bands = scale.ticks(numTicks)
+                bands = yAxis.tickValues()
             }
             bands = bands.map((d,i) => {
                 return{
