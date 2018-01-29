@@ -56,7 +56,7 @@ The following axis types are currently defined in this repo (click to jump to se
 <b>Note</b> All examples shown are from the web frame style.
 yLinear() creates a d3 linear axis with a couple of additional feature to help manage styling and day-to-day production of charts that use a linear y-axis.
 
-Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a value equal to the width of the widest tick label on the y-axis. This value is used to re-define the left or right margin of the chartframe before crteating the x-axis. For more information see yLinear Postioning
+Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a value equal to the width of the widest tick label on the y-axis. This value is used to re-define the left or right margin of the chartframe before crteating the x-axis. For more information see [yLinear Postioning](#ylinpos)
 
 * [Getting started](#ylinstarted)
 * [yLinear Postioning](#ylinpos)
@@ -149,7 +149,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.invert([Array])](#ylinearinvert)
 * [.label([Object])](#ylinearlabel)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
-*= * [.ylinearlabelWidth([Number])](#ylinearlabelWidth)
+* [.ylinearlabelWidth([Number])](#ylinearlabelWidth)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
  "right" or "left". Determines the alignment of the tick text set as "right" by default.
@@ -278,7 +278,7 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelCenterright.png)
 
-#### <a id='ylinearlabelWidth'>myAxis.labelWidth([Object])</a>
+#### <a id='ylinearlabelWidth'>myAxis.labelWidth([Number])</a>
 Used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
 myAxis<b>.numTicks([Number])</b> as they name suggest defines how many ticks are on the axis. 0 to 100 with 3 tick would give a zero line, a fifty line and a hundred line.If not enough ticks have been specifiesd d3 will automatically increase the number. [example](#ylinnumticks)
