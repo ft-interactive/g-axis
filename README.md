@@ -149,7 +149,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.invert([Array])](#ylinearinvert)
 * [.label([Object])](#ylinearlabel)
 * [.labelWidth([Number])](#ylinearlabelWidth)
-* [.numTicks([Number])](#yylinearNumticks)
+* [.numTicks([Number])](#ylinearnumTicks)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
@@ -282,7 +282,7 @@ yAxis
 #### <a id='ylinearlabelWidth'>myAxis.labelWidth([Number])</a>
 Used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
-#### <a id='ylinearNumticks'>myAxis.numTicks([Number])</a>
+#### <a id='ylinearnumTicks'>myAxis.numTicks([Number])</a>
 As they name suggest defines how many ticks are on the axis. 0 to 200 with 3 tick would give a zero line, a 100 and 200 line.If not enough ticks have been specifiesd d3 will automatically increase the number.
 ```
 yAxis
