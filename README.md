@@ -263,6 +263,19 @@ yAxis
     .label(true)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelTopright.png)
+Most commonly used right hand axis. <b>Note</b> if note specified, the vertical position and text anchor revert to their default setting.
+```
+const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
+const label = {
+    tag: 'Middle right, right hand axis',
+    hori:'right',
+}
+yAxis
+    .rem(currentFrame.rem())
+    .plotDim(plotdim)
+    .label(true)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelCenterright.png)
 
 myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
