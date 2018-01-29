@@ -243,7 +243,7 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelDefault.png)
 
 #### <a id='ylinearlabelPos'>Postioning yLinear labels)</a>
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelPositon.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelPosition.png)
 
 myAxis<b>.labelWidth([Number])</b> used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
