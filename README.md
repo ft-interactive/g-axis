@@ -281,7 +281,18 @@ yAxis
 #### <a id='ylinearlabelWidth'>myAxis.labelWidth([Number])</a>
 Used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
-myAxis<b>.numTicks([Number])</b> as they name suggest defines how many ticks are on the axis. 0 to 100 with 3 tick would give a zero line, a fifty line and a hundred line.If not enough ticks have been specifiesd d3 will automatically increase the number. [example](#ylinnumticks)
+#### <a id='ylinearNumticks'>myAxis.numTicks([Number])</a>
+As they name suggest defines how many ticks are on the axis. 0 to 200 with 3 tick would give a zero line, a 100 and 200 line.If not enough ticks have been specifiesd d3 will automatically increase the number.
+```
+yAxis
+    .numTicks(3)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-numticks.png)
+```
+yAxis
+    .numTicks(5)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-numticks5.png)
 
 myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
 
@@ -297,65 +308,6 @@ yAxis
   .yAxishighlight(-100)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight2.png)
-
-## yLinear Examples
-### <a id='ylinleft'>Left hand axis</a>
-```
- myYAxis
-    .domain([0,200])
-    .range([currentFrame.dimension().height,0])
-    .tickSize(currentFrame.dimension().width)
-    .align('left')
-
-currentFrame.plot()
-    .call(myYAxis);
-```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
-
-### <a id='ylinnumticks'>Number of ticks</a>
-Zero to 100 with 6 tick, making increments of every 20
-```
-myYAxis
-    .range([currentFrame.dimension().height,0])
-    .domain([0,200])
-    .tickSize(currentFrame.dimension().width)
-    .numTicks(6)
-
-currentFrame.plot()
-    .call(myYAxis);
-```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-numticks.png)
-
-### <a id='ylinhighlight'>yAxisHighlight</a>
--50 to 200 with 150 highlighted as this is the base line. Zero automatically highlights
-```
-yAxis
-    .domain([-50,200])
-    .range([currentFrame.dimension().height,0])
-    .align(align)
-    .tickSize(currentFrame.dimension().width)
-    .yAxisHighlight(-50);
-
-currentFrame.plot()
-    .call(myYAxis);
-```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight.png)
-
-### <a id='ylininvert'>Inverted scale</a>
-200 down to zero. 200 line highlighted
-
-```
-yAxis
-    .domain([0,200])
-    .range([currentFrame.dimension().height,0])
-    .tickSize(currentFrame.dimension().width)
-    .yAxisHighlight(200)
-    .invert(true);
-
-currentFrame.plot()
-    .call(yAxis);
-```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
 
 
 
