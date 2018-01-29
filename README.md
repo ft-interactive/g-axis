@@ -245,7 +245,7 @@ yAxis
 #### <a id='ylinearlabelPos'>Postioning yLinear labels)</a>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelPosition.png)
 
-positioned top Right
+Positioning a label top Right
 ```
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
 const label = {
