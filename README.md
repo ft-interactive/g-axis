@@ -245,14 +245,16 @@ yAxis
 #### <a id='ylinearlabelPos'>Postioning yLinear labels)</a>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelPosition.png)
 
-Positioning a label top Right
+Positioning a label top left on a right hand axis.
+<b>Note</b> Note that the rotation is set to 360 degrees and not zero. This is because passing the value would be read as false and not zero. Labels on a y-axis are set to 90 degrees by sefault, but passing zero to an axis will cause it to fail. The way round this is to rotate the text through a full 360 degrees. 
 ```
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
 const label = {
-    tag: 'Label top right',
+    tag: 'Top left and rotated 360degrees, anchor ‘end’',
     vert: 'top',
     hori:'right',
-    anchor: 'end'
+    anchor: 'end',
+    rotate 360,
 }
 yAxis
     .rem(currentFrame.rem())
