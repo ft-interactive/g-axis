@@ -148,8 +148,9 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.frameName([String])](#ylinearframeName)
 * [.invert([Array])](#ylinearinvert)
 * [.label([Object])](#ylinearlabel)
+* [.labelWidth([Number])](#ylinearlabelWidth)
+* [.numTicks([Number])](#yylinearNumticks)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
-* [.ylinearlabelWidth([Number])](#ylinearlabelWidth)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
  "right" or "left". Determines the alignment of the tick text set as "right" by default.
