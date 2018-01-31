@@ -148,9 +148,9 @@ export default function () {
 
             function calcOffset() {
                 if (tickSize > 0 && tickSize < rem) {
-                    return tickSize/2
+                    return tickSize / 2
                 }
-                return 0
+                return 0;
             }
         }
 
@@ -163,7 +163,7 @@ export default function () {
             bands = bands.map((d,i) => {
                 return{
                     pos: d,
-                    height: getBandWidth(i);
+                    height: getBandWidth(i),
                 };
             })
             .filter((d, i) => {
@@ -172,11 +172,11 @@ export default function () {
 
             function getBandWidth(index) {
                 if (index === 0) {
-                    return plotHeight - scale(bands[index])
+                    return plotHeight - scale(bands[index]);
                 }
-                return scale(bands[index - 1]) - scale(bands[index])
+                return scale(bands[index - 1]) - scale(bands[index]);
             }
-            
+
             bandHolder.selectAll('rect')
                 .data(bands)
                 .enter()
