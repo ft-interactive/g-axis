@@ -290,7 +290,7 @@ Logscales are a nonlinear scale used when there is a large range in the dataset,
 
 Using a log scale disperses some of the clustering and makes the data easier to read, but still shows the outlaying point 11.
 
-<b>Note </b>That log scales cannot start from zero so the <b>yMin</b> value of your chart will probably have to be changed. Here it was set to 10. Its also worth checking for errors when you have extreeme values in your dataset.
+<b>Note </b>That log scales cannot start from zero so the <b>yMin</b> value of your chart will probably have to be changed (set to 10 below). Its also worth checking for errors when you have extreeme values in your dataset.
 ```
 yAxis
     .logscale(true)
