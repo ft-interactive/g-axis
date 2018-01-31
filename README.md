@@ -195,7 +195,7 @@ yAxis
 #### <a id='ylineardivisor'>myAxis.divisor([Number]</a>
 Used to help format ticks values whane the data range contains large number e.g. GDP where the figures could be measured in millions or billions. The tick label figure is divided by the number passed to the divisor, by default this is set to 1 so appears to make no difference. On an axis where the figures are measured in millions 0 - 2,000,000 setting the divisor to 1,000,000 would cause the axis labels to appear as 0 - 9.0.
 
-<b>Note </b> It is veru important to make he appropriate addition to the subtitle of the chart when the divisor has a value other that 1 e.g. adding the text 'million'
+<b>Note </b> It is very important to make he appropriate addition to the subtitle of the chart when the divisor has a value other that 1 e.g. adding the text 'million'
 
 Without using a divisor the chart would be labelled like this:
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-divisorBefore.png)
@@ -285,8 +285,18 @@ yAxis
 Used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
 #### <a id='ylinearnLog'>myAxis.logScale([Boolean])</a>
-Logscales are a nonlinear scale used when there is a large range in the dataset, commonly used in earthquakes or to minimise clustering when the data contains statistical outlayers e.g. Point 11 on the chart below is a statistical outlayer. All the other data on the chart is grouped between 0 and 20, so whn it is projected using a standard non linear scale, it is difficult to see the information.
+Logscales are a nonlinear scale used when there is a large range in the dataset, commonly used in earthquakes or to minimise clustering when the data contains statistical outlayers e.g. Point 11 on the chart below. All the other data on the chart is grouped between 0 and 100, so when it is projected using a standard non linear scale, it is difficult to see the information.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-linearScale.png)
+
+Using a log scale disperses some of the clustering and makes the data easier to read, but still shows the outlaying point 11.
+
+<b>Note </b>That logScales cannot start from zero so the yMin value of your chart will probably have to be changed. Here it was set to 10. Its also worth checking the data when you have extreeme values.
+```
+yAxis
+    .logscale(logScale)
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-logScale.png)
+
 
 #### <a id='ylinearnumTicks'>myAxis.numTicks([Number])</a>
 As they name suggest defines how many ticks are on the axis. 0 to 200 with 3 tick would give a zero line, a 100 and 200 line.If not enough ticks have been specifiesd d3 will automatically increase the number.
