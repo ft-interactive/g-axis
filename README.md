@@ -150,6 +150,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.label([Object])](#ylinearlabel)
 * [.labelWidth([Number])](#ylinearlabelWidth)
 * [.numTicks([Number])](#ylinearnumTicks)
+* [.rem([Number])](#ylinearyRem)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
@@ -296,6 +297,9 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-numticks5.png)
 
 myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
+
+#### <a id='ylinearyRem'>myAxis.rem([Number])</a>
+Used to calculate the ticksize on short tick sizes and in the positioning of labels. Should usually be the currentFrame.rem() which is the height of the text in the subtitle
 
 #### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
