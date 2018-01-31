@@ -282,7 +282,7 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelCenterright.png)
 
 #### <a id='ylinearlabelWidth'>myAxis.labelWidth([Number])</a>
-Used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos) and [yLinear important information](#important)
+Used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos) and [important information](#important)
 
 #### <a id='ylinearnLog'>myAxis.logScale([Boolean])</a>
 Logscales are a nonlinear scale used when there is a large range in the dataset, commonly used to project earthquake data or to minimise clustering when the data contains statistical outlayers e.g. Point 11 on the chart below. All the other data on the chart is grouped between 0 and 100, so when it is projected using a standard linear scale, it is difficult to read.
