@@ -155,25 +155,26 @@ export default function () {
         }
 
         if (banding) {
-            let bands = scale.ticks(numTicks)
+            let bands = scale.ticks(numTicks);
             if (tickValues) {
-                bands = yAxis.tickValues()
+                bands = yAxis.tickValues();
             }
+
             bands = bands.map((d,i) => {
                 return{
                     pos: d,
-                    height: getBandWidth(i)
-                }
+                    height: getBandWidth(i);
+                };
             })
             .filter((d, i) => {
                 return i % 2 === 0;
             })
 
             function getBandWidth(index) {
-                if (index === bands.length-1) {
+                if (index === 0) {
                     return plotHeight - scale(bands[index])
                 }
-                return scale(bands[index+1]) - scale(bands[index])
+                return scale(bands[index - 1]) - scale(bands[index])
             }
             
             bandHolder.selectAll('rect')
