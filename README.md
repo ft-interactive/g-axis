@@ -323,7 +323,7 @@ Overwrtes the in-built axis formatting to allow you to format labels in the way 
 yAxis
 .tickFormat(d3.format(".2f"))
 ```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinearlabelFormat.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelFormat.png)
 
 
 #### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
