@@ -153,6 +153,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.numTicks([Number])](#ylinearnumTicks)
 * [.rem([Number])](#ylinearyRem)
 * [.tickFormat([count[, specifier]]](#ylinearFormat)
+* [.tickSize([Number]](#ylineartickSize)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
