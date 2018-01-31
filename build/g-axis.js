@@ -609,36 +609,40 @@
             }
 
             if (banding) {
-                let bands = scale.ticks(numTicks);
+                bands = scale.ticks(numTicks);
                 if (tickValues) {
-                    bands = xAxis.tickValues();
+                    let bands = xAxis.tickValues()
                 }
                 bands = bands.map((d,i) => {
                     return{
-                        date: d,
-                        width: getBandWidth(i),
-                    };
+                        pos: d,
+                        width: getBandWidth(i)
+                    }
                 })
                 .filter((d, i) => {
                     return i % 2 === 0;
-                });
+                })
 
                 function getBandWidth(index) {
-                    if (index === bands.length - 1) {
-                        return plotWidth - scale(bands[index]);
+                    if (index === bands.length-1) {
+                        return plotWidth - scale(bands[index])
                     }
-                    return scale(bands[index + 1]) - scale(bands[index]);
+                    return scale(bands[index+1]) - scale(bands[index])
                 }
-
+                
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
                     .append('rect')
                     .attr('y', 0)
                     .attr('height', plotHeight)
-                    .attr('x', d => scale(d.date))
-                    .attr('width', d => d.width);
+                    .attr('x', d => scale(d.pos))
+                    .attr('width', d => d.width)
             }
+
+            xLabel.selectAll('.tick')
+                .filter(d => d === 0 || d === xAxisHighlight)
+                .classed('baseline', true);
 
             xLabel.selectAll('.domain').remove();
         }
@@ -1096,11 +1100,9 @@
             }
 
             if (banding) {
+                let bands = scale.ticks(numTicks)
                 if (tickValues) {
-                    let bands = yAxis.tickValues()
-                }
-                else  {
-                    bands = scale.ticks(numTicks)
+                    bands = yAxis.tickValues()
                 }
                 bands = bands.map((d,i) => {
                     return{
@@ -1660,31 +1662,31 @@
 
                 function calcOffset() {
                     if (tickSize > 0 && tickSize < rem) {
-                        return tickSize/2
+                        return tickSize / 2
                     }
-                    return 0
+                    return 0;
                 }
             }
 
             if (banding) {
-                let bands = yAxis.tickValues()
-                bands = bands.map((d,i) => {
-                    return{
+                let bands = yAxis.tickValues();
+                bands = bands.map((d, i) => {
+                    return {
                         date: d,
-                        height: getBandWidth(i)
-                    }
+                        height: getBandWidth(i),
+                    };
                 })
                 .filter((d, i) => {
                     return i % 2 === 0;
-                })
+                });
 
             function getBandWidth(index) {
-                    if (index === bands.length-1) {
-                        return plotHeight - scale(bands[index])
+                    if (index === bands.length - 1) {
+                        return plotHeight - scale(bands[index]);
                     }
-                    return scale(bands[index+1]) - scale(bands[index])
+                    return scale(bands[index + 1]) - scale(bands[index]);
                 }
-                
+
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
@@ -1692,12 +1694,12 @@
                     .attr('x', 0)
                     .attr('width', (d) => {
                         if (align === 'left ') {
-                            plotWidth - labelWidth 
+                            plotWidth - labelWidth;
                         }
-                        return plotWidth - labelWidth - rem
+                        return plotWidth - labelWidth - rem;
                     })
                     .attr('y', d => scale(d.date))
-                    .attr('height', d => d.height)
+                    .attr('height', d => d.height);
             }
 
             yLabel.selectAll('.domain').remove();
