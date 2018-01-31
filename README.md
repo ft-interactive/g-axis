@@ -285,7 +285,8 @@ yAxis
 Used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
 #### <a id='ylinearnLog'>myAxis.logScale([Boolean])</a>
-Logscales are a nonlinear scale used when there is a large range in the dataset, commonly used in earthquakes or to minimise clustering when the data contains statistical outlayers e.g. 
+Logscales are a nonlinear scale used when there is a large range in the dataset, commonly used in earthquakes or to minimise clustering when the data contains statistical outlayers e.g. Point 11 on the chart below is a statistical outlayer. All the other data on the chart is grouped between 0 and 20, so whn it is projected using a standard non linear scale, it is difficult to see the information.
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-linearScale.png)
 
 #### <a id='ylinearnumTicks'>myAxis.numTicks([Number])</a>
 As they name suggest defines how many ticks are on the axis. 0 to 200 with 3 tick would give a zero line, a 100 and 200 line.If not enough ticks have been specifiesd d3 will automatically increase the number.
