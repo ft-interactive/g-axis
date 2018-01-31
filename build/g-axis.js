@@ -609,7 +609,7 @@
             }
 
             if (banding) {
-                bands = scale.ticks(numTicks);
+                let bands = scale.ticks(numTicks);
                 if (tickValues) {
                     let bands = xAxis.tickValues()
                 }
