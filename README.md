@@ -293,7 +293,7 @@ Using a log scale disperses some of the clustering and makes the data easier to 
 <b>Note </b>That log scales cannot start from zero so the yMin value of your chart will probably have to be changed. Here it was set to 10. Its also worth checking for errors when you have extreeme values in your dataset.
 ```
 yAxis
-    .logscale(logScale)
+    .logscale(true)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-logScale.png)
 
