@@ -152,6 +152,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.logScale([Boolean])](#ylinearnLog)
 * [.numTicks([Number])](#ylinearnumTicks)
 * [.rem([Number])](#ylinearyRem)
+* [.tickFormat([Number])](#ylinearytickFormat)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
 
 #### <a id='ylinearalign'>myAxis.align([String]</a>
@@ -315,6 +316,15 @@ myAxis<b>.range([Array])</b> defines the axis  range in the same way as you woul
 
 #### <a id='ylinearyRem'>myAxis.rem([Number])</a>
 Used to calculate the ticksize for short ticks and positioning labels. Should usually be the currentFrame.rem() which is the height of the text in the subtitle. This kep things like shorts tick proportional to the frame.
+
+#### <a id='ylinearyFormat'>myAxis.tickFormat([count[, specifier]])</a>
+Overwrtes the in-built axis formatting to allow you to format labels in the way you would on any d3 linear axis. 
+```
+yAxis
+.tickFormat(d3.format(".2f"))
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinearlabelFormat.png)
+
 
 #### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
