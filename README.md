@@ -149,6 +149,7 @@ The current frame can then still be used to correctly define the <b>.range()</b>
 * [.invert([Array])](#ylinearinvert)
 * [.label([Object])](#ylinearlabel)
 * [.labelWidth([Number])](#ylinearlabelWidth)
+* [.logScale([Boolean])](#ylinearLog)
 * [.numTicks([Number])](#ylinearnumTicks)
 * [.rem([Number])](#ylinearyRem)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
@@ -283,6 +284,9 @@ yAxis
 #### <a id='ylinearlabelWidth'>myAxis.labelWidth([Number])</a>
 Used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos)
 
+#### <a id='ylinearnumLog'>myAxis.logScale([Boolean])</a>
+Logscales are a nonlinear scale used when there is a large range in the dataset, commonly used in earthquakes or to minimise clustering when the data contains statistical outlayers e.g. 
+
 #### <a id='ylinearnumTicks'>myAxis.numTicks([Number])</a>
 As they name suggest defines how many ticks are on the axis. 0 to 200 with 3 tick would give a zero line, a 100 and 200 line.If not enough ticks have been specifiesd d3 will automatically increase the number.
 ```
@@ -299,7 +303,7 @@ yAxis
 myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
 
 #### <a id='ylinearyRem'>myAxis.rem([Number])</a>
-Used to calculate the ticksize on short tick sizes and in the positioning of labels. Should usually be the currentFrame.rem() which is the height of the text in the subtitle
+Used to calculate the ticksize for short ticks and positioning labels. Should usually be the currentFrame.rem() which is the height of the text in the subtitle. This kep things like shorts tick proportional to the frame.
 
 #### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
