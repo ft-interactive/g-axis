@@ -318,7 +318,7 @@ myAxis<b>.range([Array])</b> defines the axis  range in the same way as you woul
 Used to calculate the ticksize for short ticks and positioning labels. Should usually be the currentFrame.rem() which is the height of the text in the subtitle. This kep things like shorts tick proportional to the frame.
 
 #### <a id='ylinearFormat'>myAxis.tickFormat([count[, specifier]])</a>
-Overwrtes the in-built axis formatting to allow you to format labels in the way you would on any d3 linear axis. 
+Overrides the in-built axis formatting to allow you to format labels in the way you would on any d3 linear axis e.g. two decimal places.
 ```
 yAxis
 .tickFormat(d3.format(".2f"))
