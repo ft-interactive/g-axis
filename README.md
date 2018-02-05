@@ -362,8 +362,8 @@ Sizeing of ticks on a chart can be broken down into three categories.
 
 #### <a id='ylinearyshortTicks'>Short ticks</a>
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
- Where the specified <b>.tickSize()</b> is the same as width of the currentFrame. It is the most commonly used on the <b>yLinear</b> axis.
- For a right hand axis, that will not need a translate transformation:
+Where the specified <b>.tickSize()</b> is the same as width of the currentFrame. It is the most commonly used on the <b>yLinear</b> axis.
+For a right hand axis, that will not need a translate transformation:
 
  ```
 const yAxis = gAxis.yLinear()
