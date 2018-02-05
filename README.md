@@ -327,6 +327,8 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelFormat.png)
 
 #### <a id='ylineartickSize'>myAxis.tickSize([Number])</a>
+<b>Note for all y-axes</b> Unless the value specified for the <b>.tickSize()</b> is less that width of the tick label, than the size of the tick drawn on the chart will be the the value passed to <b>tickSize()</b> less the width of the widest label on the axis. This is so that ticks can be positioned in the chartFrame correctly e.g. 
+
 Sizeing of ticks on a chart can be broken down into three categories.
 
 * [Short ticks - any tick where the size is shorter than the frame width](#ylinearyshortTicks)
