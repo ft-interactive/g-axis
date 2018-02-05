@@ -124,9 +124,7 @@ Axis with a left alignment will be drawn from the origin to the left and so need
 The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>. this will vary depending on the text e.g. '100,000' will return a larger value than '10'
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png)
 
-<b>.labelWidth()</b> is used to amend the appropriate margin of the currentFrame so that text is positioned outside it. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> for axis with ticks of a standard size. For positioning axis where the ticks are longer or shorter then the width of the chartFrame see [tickSize()](#ylineartickSize)
-
-<b>Important note .labelWidth()</b> is also used to resise the <b>.ticksize()</b> when the <b>tickSize()</b> is greater than the width of the longest label, reducing the size of the tick by the <b>.labelWidth()</b>. This is so that the axis sits in the chartFrame correctly when the frame is re-sized.
+<b>.labelWidth()</b> is used to amend the appropriate margin of the currentFrame so that text is positioned outside. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> for axis with ticks of a standard size. For positioning axis where the ticks are longer or shorter then the width of the chartFrame see [tickSize()](#ylineartickSize).
 
 ```
 // return the value in the variable newMargin and move axis if needed
@@ -147,6 +145,8 @@ d3.select(currentFrame.plot().node().parentNode)
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-resized.png)
 
 The currentFrame can then be used to correctly define the <b>.range()</b> values of an x-axis.
+
+<b>Important note .labelWidth()</b> is also used to resise the <b>.ticksize()</b> when the <b>tickSize()</b> is greater than the width of the longest label, reducing the size of the tick by the <b>.labelWidth()</b>. This is so that the axis sits in the chartFrame correctly when the frame is re-sized for more information see [tickSize()](#ylineartickSize).
 
 ## <a id='ylinearapi'>yLinear API reference</a>
 
