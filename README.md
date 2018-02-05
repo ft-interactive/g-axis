@@ -358,7 +358,7 @@ Sizeing of ticks on a chart can be broken down into three categories.
 
 * [Short ticks - any tick where the size is shorter than the frame width](#ylinearyshortTicks)
 * [Standard ticks - ticks that are the same size a the current frame](#ylinearystandardTicks)
-* [Long ticks - tick wider than the current frame](#ylinearalign)
+* [Long ticks - tick wider than the current frame](#ylinearyLongTicks)
 
 #### <a id='ylinearyshortTicks'>Short ticks</a>
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
@@ -378,7 +378,7 @@ currentFrame.plot()
     .call(yAxis);
  ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandard.png)
-Rou will need to adjust the currentFrame right hand margin to include the width of the tick lables so that the labels are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
+You will need to adjust the currentFrame right hand margin to include the width of the tick lables so that the labels are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
 ```
 const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
 // Use newMargin redefine the new margin and range of xAxis
@@ -418,6 +418,8 @@ d3.select(currentFrame.plot().node().parentNode)
             .call(currentFrame);;
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
+
+#### <a id='ylinearyLongTicks'>Long ticks</a>
 
 ### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
