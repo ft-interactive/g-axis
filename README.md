@@ -429,7 +429,6 @@ const currentFrame = frame[frameName];
     .domain([0,200])
     .range([currentFrame.dimension().height,0])
     .tickSize(currentFrame.dimension().width + (currentFrame.rem() *.75))
-    .align('left')
 
 currentFrame.plot()
     .call(yAxis);
@@ -445,6 +444,24 @@ currentFrame.plot()
     .call(yAxis);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-longRightSized.png)
+
+For the left hand axis:
+```
+const yAxis = gAxis.yLinear()
+const currentFrame = frame[frameName];
+
+ yAxis
+    .domain([0,200])
+    .range([currentFrame.dimension().height,0])
+    .tickSize(currentFrame.dimension().width + (currentFrame.rem() *.75))
+    .align('left')
+
+currentFrame.plot()
+    .call(yAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-longLeft.png)
+
+
 ### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
 ```
