@@ -118,7 +118,10 @@ currentFrame.plot()
 The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>. this will vary depending on the text e.g. '100,000' will return a larger value than '10'
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png))
 
-<b>.labelWidth()</b> is used to amend the appropriate margin of the current frame so that tick text is positioned outside it. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> setting which is 'right' by default.<b>Note yAxisAlign</b> is usually one of the user defined variable earlier in the code.
+<b>.labelWidth()</b> is used to amend the appropriate margin of the current frame so that tick text is positioned outside it. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> setting which is 'right' by default.
+
+<b>Important note .labelWidth()</b> is also used to resise the <b>.ticksize()</b> when the <b>tickSize()</b> is greater than the width of the longest label, reducing the size of the tick by the <b>.labelWidth()</b>. This is so that the axis sits in the chartFrame correctly when the frame is re-sized.
+
 ```
 // return the value in the variable newMargin and move axis if needed
 if (yAxisAlign === 'right') {
@@ -137,7 +140,7 @@ d3.select(currentFrame.plot().node().parentNode)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-resized.png)
 
-The current frame can then still be used to correctly define the <b>.range()</b> values of an x-axis.
+The currentFrame can then be used to correctly define the <b>.range()</b> values of an x-axis.
 
 ## <a id='ylinearapi'>yLinear API reference</a>
 
@@ -327,7 +330,7 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelFormat.png)
 
 #### <a id='ylineartickSize'>myAxis.tickSize([Number])</a>
-<b>Note for all y-axes</b> Unless the value specified for the <b>.tickSize()</b> is less that width of the tick label, than the size of the tick drawn on the chart will be the the value passed to <b>tickSize()</b> less the width of the widest label on the axis. This is so that ticks can be positioned in the chartFrame correctly e.g. 
+<b>Note</b> The default is 300px. Unless the value specified for the <b>.tickSize()</b> is less that width of the longest label, than the size of the tick drawn on the chart will be the the value passed to <b>tickSize()</b> - the width of the widest label on the axis. For more information see [yLinear Postioning](#ylinpos). This is so that ticks can be positioned in the chartFrame correctly e.g. 
 
 Sizeing of ticks on a chart can be broken down into three categories.
 
