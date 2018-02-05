@@ -420,7 +420,8 @@ d3.select(currentFrame.plot().node().parentNode)
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
 
 #### <a id='ylinearyLongTicks'>Long ticks</a>
-Whee the tick is longer than the currentFrame width. Mostly used on long vertical charts. Defining how far out from the currentFram.plot() the tick should stick is completely arbitrary. it can be a constant number or a vary between frames. To do the latter its convenient to use <b>.rem()</b> which I shall for this example.
+Where the tick is longer than the currentFrame width. Mostly used on long vertical charts. Defining how far out from the currentFram.plot() the tick should protrude is completely arbitrary. It can be a constant number or a vary between frames. To do the latter its convenient to use <b>.rem()</b> which I shall for this example.
+For a right hand axis: 
 
 ### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
