@@ -387,6 +387,7 @@ currentFrame.margin({ right: newMargin });
 currentFrame.plot()
     .call(yAxis);
 ```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-right.png)
 
 For a left hand axis:
 
