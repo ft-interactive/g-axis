@@ -362,7 +362,46 @@ Sizeing of ticks on a chart can be broken down into three categories.
 
 #### <a id='ylinearyshortTicks'>Short ticks</a>
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
- Where the specified <b>.tickSize()</b> is the same as width of the currentFrame and the most common used on the <b>yLinear</b>.
+ Where the specified <b>.tickSize()</b> is the same as width of the currentFrame and the most commonly used on the <b>yLinear</b> axis.
+ For a right hand axis, that will not need a translate transformation:
+
+ ```
+const yAxis = gAxis.yLinear()
+const currentFrame = frame[frameName];
+
+ yAxis
+    .domain([0,200])
+    .range([currentFrame.dimension().height,0])
+    .tickSize(currentFrame.dimension().width)
+
+currentFrame.plot()
+    .call(yAxis);
+ ```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandard.png)
+
+For a left hand axis:
+
+```
+const yAxis = gAxis.yLinear()
+const currentFrame = frame[frameName];
+
+ yAxis
+    .domain([0,200])
+    .range([currentFrame.dimension().height,0])
+    .tickSize(currentFrame.dimension().width)
+    .align('left')
+
+currentFrame.plot()
+    .call(yAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandardL.png)
+
+This will then need to be tranlated the width of the currentFrame to position it correctly.
+
+```
+yAxis.yLabel().attr('transform', `translate(${(currentFrame.dimension().width)},0)`);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandardLTrans.png)
 
 
 #### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
