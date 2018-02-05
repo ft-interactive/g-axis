@@ -396,13 +396,17 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandardL.png)
 
-This will then need to be tranlated the width of the currentFrame to position it correctly.
+This will then need to be tranlated the width of the currentFrame to position it correctly and you will need to adjust the currentFrame left hand margin to include the width of the tick lables so that the labels are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
+```
+const newMargin = yAxis.labelWidth() + currentFrame.margin().left;
+//Use newMargin redefine the new margin and range of xAxis
+currentFrame.margin({ left: newMargin });
+yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())},0)`);
 
+d3.select(currentFrame.plot().node().parentNode)
+            .call(currentFrame);;
 ```
-yAxis.yLabel().attr('transform', `translate(${(currentFrame.dimension().width)},0)`);
-```
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandardLTrans.png)
-<b>Note</b> You will need to adjust the currentFrame margins and re call it before adding an x-axis. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
 
 #### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
