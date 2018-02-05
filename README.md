@@ -330,7 +330,21 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelFormat.png)
 
 #### <a id='ylineartickSize'>myAxis.tickSize([Number])</a>
-<b>Note</b> The default is 300px. Unless the value specified for the <b>.tickSize()</b> is less that width of the longest label, than the size of the tick drawn on the chart will be the the value passed to <b>tickSize()</b> - the width of the widest label on the axis. For more information see [yLinear Postioning](#ylinpos). This is so that ticks can be positioned in the chartFrame correctly e.g. 
+<b>Note</b> The default is 300px. Unless the value specified for the <b>.tickSize()</b> is less that width of the longest label, than the size of the tick drawn on the chart will be the the value passed to <b>tickSize()</b> - the width of the widest label on the axis. For more information see [yLinear Postioning](#ylinpos). This is so that ticks can be positioned in the chartFrame correctly e.g.
+
+```
+const currentFrame = frame[frameName];
+const yAxis = yLinear();// sets up yAxis
+const tickSize = currentFrame.dimension().width;// Used when drawing the yAxis ticks
+
+yAxis
+    .tickSize(tickSize)
+
+// Draw the yAxis first, this will position the yAxis correctly and measure the width of the label text
+currentFrame.plot()
+    .call(yAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickSize.png)
 
 Sizeing of ticks on a chart can be broken down into three categories.
 
