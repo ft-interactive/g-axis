@@ -362,7 +362,7 @@ Sizeing of ticks on a chart can be broken down into three categories.
 
 #### <a id='ylinearyshortTicks'>Short ticks</a>
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
- Where the specified <b>.tickSize()</b> is the same as width of the currentFrame and the most commonly used on the <b>yLinear</b> axis.
+ Where the specified <b>.tickSize()</b> is the same as width of the currentFrame. It is the most commonly used on the <b>yLinear</b> axis.
  For a right hand axis, that will not need a translate transformation:
 
  ```
@@ -378,6 +378,15 @@ currentFrame.plot()
     .call(yAxis);
  ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandard.png)
+Rou will need to adjust the currentFrame right hand margin to include the width of the tick lables so that the labels are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
+```
+const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
+// Use newMargin redefine the new margin and range of xAxis
+currentFrame.margin({ right: newMargin });
+
+currentFrame.plot()
+    .call(yAxis);
+```
 
 For a left hand axis:
 
