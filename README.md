@@ -116,7 +116,7 @@ currentFrame.plot()
 	.call(yAxis);
 ```
 
-### <a id='ylinpos'>yLinear positioning</a>
+## <a id='ylinpos'>yLinear positioning</a>
 yLinear axis always take the left hand side of the chartFrame as their origin. Axis with a right alignment will be drawn from the origin to the right and appear correctly position e.g.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-alignRight.png)
 
@@ -167,7 +167,7 @@ The currentFrame can then be used to correctly define the <b>.range()</b> values
 * [.tickSize([Number]](#ylineartickSize)
 * [.yAxishighlight([Array])](#ylinearyAxishighlight)
 
-#### <a id='ylinearalign'>myAxis.align([String]</a>
+### <a id='ylinearalign'>myAxis.align([String]</a>
  "right" or "left". Determines the alignment of the tick text set as "right" by default.
 ```
 yAxis
@@ -181,7 +181,7 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-right.png)
 
 
-#### <a id='ylinearbanding'>myAxis.banding([Boolean]</a>
+### <a id='ylinearbanding'>myAxis.banding([Boolean]</a>
 Toggles the axis banding on or off. Adds shaded bands between alternative major axis ticks, so increasing the number of ticks will increase the number of bands.
 
 <b>Note</b> This function will not work correctly unless both <b>.plotDim()</b> and <b>.rem()</b> have also been passed to the axis.
@@ -205,7 +205,7 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding2.png)
 
-#### <a id='ylineardivisor'>myAxis.divisor([Number]</a>
+### <a id='ylineardivisor'>myAxis.divisor([Number]</a>
 Used to help format ticks values whane the data range contains large number e.g. GDP where the figures could be measured in millions or billions. The tick label figure is divided by the number passed to the divisor, by default this is set to 1 so appears to make no difference. On an axis where the figures are measured in millions 0 - 2,000,000 setting the divisor to 1,000,000 would cause the axis labels to appear as 0 - 9.0.
 
 <b>Note </b> It is very important to make he appropriate addition to the subtitle of the chart when the divisor has a value other that 1 e.g. adding the text 'million'
@@ -222,18 +222,18 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-divisorAfter.png)
 
 
-#### <a id='ylineardomain'>myAxis.domain([Array])</a>
+### <a id='ylineardomain'>myAxis.domain([Array])</a>
 Defines the axis domain in the same way as you would when creating a normal d3.scaleLinear() scale. If no <b>.domain()</b> is defined the default is [0,10000]
 nearer the bottom.
 
-#### <a id='ylinearframeName'>myAxis.frameName([String])</a>
+### <a id='ylinearframeName'>myAxis.frameName([String])</a>
 Used to pass the id of the current plot object and add unique ids to the tick label for use with the illustrator Pre Flight script. frameName is passed into the object keys loop and is intergral.
 ```
 yAxis
 	.frameName(frameName)
 ```
 
-#### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
+### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
 Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
 ```
 yAxis
@@ -241,7 +241,7 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
 
-#### <a id='ylinearlabel'>myAxis.label([Object])</a>
+### <a id='ylinearlabel'>myAxis.label([Object])</a>
 <b>Note .label()</b> requires that the axis has been passed both <b>.rem()</b> and <b>.plotDim()</b> to work correctly
 
 Adds and positions an axis label. Labels can be positioned in nine locations by specifying the horizontal and vertical alignment, and rotated through 360 degrees. Text anchoir points can also be specified. For more information and examples on positioning see [Postioning yLinear labels](#ylinearlabelPos)
@@ -259,7 +259,7 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelDefault.png)
 
-#### <a id='ylinearlabelPos'>Postioning yLinear labels)</a>
+### <a id='ylinearlabelPos'>Postioning yLinear labels)</a>
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelPosition.png)
 
 Positioning a label top left on a right hand axis.
@@ -294,10 +294,10 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelCenterright.png)
 
-#### <a id='ylinearlabelWidth'>myAxis.labelWidth([Number])</a>
+### <a id='ylinearlabelWidth'>myAxis.labelWidth([Number])</a>
 Used to return the width of the text on the axis tick. Will vary depending on tick e.g. a label of '1,000,000' will be wider than a label of '10' and will return a higher value. See [yLinear Postioning](#ylinpos) and [important information](#important)
 
-#### <a id='ylinearnLog'>myAxis.logScale([Boolean])</a>
+### <a id='ylinearnLog'>myAxis.logScale([Boolean])</a>
 Logscales are a nonlinear scale used when there is a large range in the dataset, commonly used to project earthquake data or to minimise clustering when the data contains statistical outlayers e.g. Point 11 on the chart below. All the other data on the chart is grouped between 0 and 100, so when it is projected using a standard linear scale, it is difficult to read.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-linearScale.png)
 
@@ -311,7 +311,7 @@ yAxis
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-logScale.png)
 
 
-#### <a id='ylinearnumTicks'>myAxis.numTicks([Number])</a>
+### <a id='ylinearnumTicks'>myAxis.numTicks([Number])</a>
 As they name suggest defines how many ticks are on the axis. 0 to 200 with 3 tick would give a zero line, a 100 and 200 line.If not enough ticks have been specifiesd d3 will automatically increase the number.
 ```
 yAxis
@@ -326,10 +326,10 @@ yAxis
 
 myAxis<b>.range([Array])</b> defines the axis  range in the same way as you would when creating a normal d3.scaleLinear(). If no <b>.range()</b> is defined the default is [120,0])
 
-#### <a id='ylinearyRem'>myAxis.rem([Number])</a>
+### <a id='ylinearyRem'>myAxis.rem([Number])</a>
 Used to calculate the ticksize for short ticks and positioning labels. Should usually be the currentFrame.rem() which is the height of the text in the subtitle. This kep things like shorts tick proportional to the frame.
 
-#### <a id='ylinearFormat'>myAxis.tickFormat([count[, specifier]])</a>
+### <a id='ylinearFormat'>myAxis.tickFormat([count[, specifier]])</a>
 Overrides the in-built axis formatting to allow you to format labels in the way you would on any d3 linear axis e.g. two decimal places.
 ```
 yAxis
@@ -337,7 +337,7 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelFormat.png)
 
-#### <a id='ylineartickSize'>myAxis.tickSize([Number])</a>
+### <a id='ylineartickSize'>myAxis.tickSize([Number])</a>
 <b>Note</b> The default is 300px. Unless the value specified for the <b>.tickSize()</b> is less than the width of the longest label, the size of the tick drawn on the chart will be the the value passed to <b>tickSize()</b> minus the width of the widest label on the axis. For more information see [yLinear Postioning](#ylinpos). This is so that ticks can be positioned in the chartFrame correctly e.g.
 
 ```
@@ -409,7 +409,7 @@ d3.select(currentFrame.plot().node().parentNode)
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
 
-#### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
+### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
 ```
 yAxis
