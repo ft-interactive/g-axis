@@ -435,7 +435,16 @@ currentFrame.plot()
     .call(yAxis);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-longRight.png)
+You will need to adjust the currentFrame right hand margin to include the width of the tick lables so that the labels and an amount of the ticks equal to the <b>.rem() * .75</b> is prodruding from the <b>currentFrame.plot()</b>are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
+```
+const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
+// Use newMargin redefine the new margin and range of xAxis
+currentFrame.margin({ right: newMargin });
 
+currentFrame.plot()
+    .call(yAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-longRightSized.png)
 ### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
 ```
