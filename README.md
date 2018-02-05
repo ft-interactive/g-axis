@@ -66,6 +66,8 @@ Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a 
 ## <a id='ylinstarted'>Getting started</a>
 Add the following code to your index.js to append a default y-axis to the current frame object (grey here but not normally visible)
 
+<b>Note</b> yLinear default alignment is right.
+
 ```
 const yAxis = gAxis.yLinear()
 const currentFrame = frame[frameName];
