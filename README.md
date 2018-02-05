@@ -124,7 +124,7 @@ Axis with a left alignment will be drawn from the origin to the left and so need
 The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>. this will vary depending on the text e.g. '100,000' will return a larger value than '10'
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png)
 
-<b>.labelWidth()</b> is used to amend the appropriate margin of the current frame so that tick text is positioned outside it. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> setting which is 'right' by default.
+<b>.labelWidth()</b> is used to amend the appropriate margin of the current frame so that tick text is positioned outside it. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> setting which is 'right' by default for aix with tick of a standard size. For positioning axis wher the ticks are longer or shorter then the width of the chartFrame see [tckSize](#ylineartickSize)
 
 <b>Important note .labelWidth()</b> is also used to resise the <b>.ticksize()</b> when the <b>tickSize()</b> is greater than the width of the longest label, reducing the size of the tick by the <b>.labelWidth()</b>. This is so that the axis sits in the chartFrame correctly when the frame is re-sized.
 
