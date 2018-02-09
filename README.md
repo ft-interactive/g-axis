@@ -118,16 +118,16 @@ currentFrame.plot()
 ```
 
 ## <a id='ylinpos'>yLinear positioning</a>
-yLinear axis always take the left hand side of the chartFrame as their origin. Axis with a right alignment will be drawn from the origin to the right and appear correctly position e.g.
+yLinear axis always take the left hand side of the currentFrame.plot() as their origin. Axis with a right alignment will be drawn from the origin to the right and appear correctly position e.g.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-alignRight.png)
 
-Axis with a left alignment will be drawn from the origin to the left and so need to be translated to sit in the chartFrame correctly (see code below).
+Axis with a left alignment will be drawn from the origin to the left and so need to be translated to be positioned correctly (see code below).
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-alignLeft.png)
 
 The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>. this will vary depending on the text e.g. '100,000' will return a larger value than '10'
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png)
 
-<b>.labelWidth()</b> is used to amend the appropriate margin of the currentFrame so that text is positioned outside. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> for axis with ticks of a standard size. For positioning axis where the ticks are longer or shorter then the width of the chartFrame see [tickSize()](#ylineartickSize).
+<b>.labelWidth()</b> is used to amend the appropriate margin of the currentFrame so that text is positioned outside the plot object. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> for axis with ticks of a standard size. For positioning axis where the ticks are longer or shorter then the width of the chartFrame see [tickSize()](#ylineartickSize).
 
 ```
 // return the value in the variable newMargin and move axis if needed
@@ -235,7 +235,7 @@ yAxis
 ```
 
 ### <a id='ylinearinvert'>myAxis.invert([Boolean])</a>
-Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom.
+Inverts the scale so that the lowest figures are nearer the top and the highest figures are nearer the bottom. By creating the axis first and then passing it to the code drawing the chart should mean that this function is passed to the chart.
 ```
 yAxis
 	.invert(true)
