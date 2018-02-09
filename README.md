@@ -461,6 +461,8 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-longLeft.png)
 
+This will then need to be tranlated the width of the currentFrame to position it correctly and you will need to adjust the currentFrame left hand margin to include the width of the tick lables so that the labels are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
+
 
 ### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
