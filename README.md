@@ -361,9 +361,11 @@ Sizeing of ticks on a chart can be broken down into three categories.
 * [Long ticks - tick wider than the current frame](#ylinearyLongTicks)
 
 #### <a id='ylinearyshortTicks'>Short ticks</a>
+Where the specified <b>.tickSize()</b> is shorter than the width of the currentFrame. Most commonly used on dial axis charts. For a right hand axis you will need to translate the axis, this is the opposite of Standar and long ticks where the left hand axis nedds to be moved.
+
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
-Where the specified <b>.tickSize()</b> is the same as width of the currentFrame. It is the most commonly used on the <b>yLinear</b> axis.
-For a right hand axis, that will not need a translate transformation:
+Where the specified <b>.tickSize()</b> is the same as width of the currentFrame. It is the most commonly used tick size on the <b>yLinear</b> axis.
+For a left hand axis, you will not need to translate the axis:
 
  ```
 const yAxis = gAxis.yLinear()
@@ -474,9 +476,6 @@ d3.select(currentFrame.plot().node().parentNode)
 .call(currentFrame);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickLongLTrans.png)
-
-
-
 
 ### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
