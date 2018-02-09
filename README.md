@@ -61,6 +61,7 @@ Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a 
 * [Getting started](#ylinstarted)
 * [yLinear Postioning](#ylinpos)
 * [Full yLinear API reference](#ylinearapi)
+* See [.tickSize()](#ylineartickSize) for positioning axis with short or long ticks
 
 
 ## <a id='ylinstarted'>Getting started</a>
