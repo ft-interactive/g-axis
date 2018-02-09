@@ -477,6 +477,7 @@ d3.select(currentFrame.plot().node().parentNode)
 
 
 
+
 ### <a id='ylinearyAxishighlight'>myAxis.yAxishighlight([Number])</a>
 Changes the style of the tick specified from the normal thin 'axis' style to the thicker 'baseline'. Mostly used on index charts where the 100 line should be highlighted or when the minimum tick value goes below zero.
 ```
