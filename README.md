@@ -361,13 +361,26 @@ Sizeing of ticks on a chart can be broken down into three categories.
 * [Long ticks - tick wider than the current frame](#ylinearyLongTicks)
 
 #### <a id='ylinearyshortTicks'>Short ticks</a>
-Where the specified <b>.tickSize()</b> is shorter than the width of the currentFrame. Most commonly used on dual axis charts. For a right hand axis you will need to translate the axis, this is the opposite of [Standard ticks](#ylinearystandardTicks) and [Long ticks](#ylinearyLongTicks) where the left hand axis needs to be moved to posiyion it correctly.
+Where the specified <b>.tickSize()</b> is shorter than the width of the currentFrame. Most commonly used on dual axis charts. For a right hand axis you will need to translate the axis, this is the opposite of [Standard ticks](#ylinearystandardTicks) and [Long ticks](#ylinearyLongTicks) where the left hand axis needs to be moved to posiyion it correctly. The following examples use <b>.rem()</b> to define the size of the ticks as this makes them proportional to each frame style.
+
+Right aligned axis
+```
+const yAxis = gAxis.yLinear()
+const currentFrame = frame[frameName];
+const tickSize = currentFrame.rem() *.75
+
+ yAxis
+    .domain([0,200])
+    .range([currentFrame.dimension().height,0])
+    .tickSize(currentFrame.dimension().width)
+
+currentFrame.plot()
+    .call(yAxis);
+```
 
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
 Where the specified <b>.tickSize()</b> is the same as width of the currentFrame. It is the most commonly used tick size on the <b>yLinear</b> axis.
 For a left hand axis, you will need to translate the axis:
-Example
-
  ```
 const yAxis = gAxis.yLinear()
 const currentFrame = frame[frameName];
