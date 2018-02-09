@@ -396,6 +396,18 @@ currentFrame.plot()
     .call(yAxis);
  ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandard.png)
+
+Add the following code to translate the axis into the correct position and adjust the right margin of the currentFrame so that the labels and the ticks are on the outside of the frame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
+ ```
+const newMargin = yAxis.labelWidth() + currentFrame.margin().right + tickSize;
+// Use newMargin redefine the new margin and range of xAxis
+currentFrame.margin({ right: newMargin });
+yAxis.yLabel().attr('transform', `translate(${currentFrame.dimension().width},0)`);
+
+d3.select(currentFrame.plot().node().parentNode)
+	.call(currentFrame);
+ ```
+
 You will need to adjust the currentFrame right hand margin to include the width of the tick lables so that the labels are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
 ```
 const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
