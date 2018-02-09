@@ -389,6 +389,7 @@ yAxis.yLabel().attr('transform', `translate(${currentFrame.dimension().width},0)
 d3.select(currentFrame.plot().node().parentNode)
 	.call(currentFrame);
  ```
+ ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickShortRightTrans.png)
 
 
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
