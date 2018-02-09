@@ -361,7 +361,7 @@ Sizeing of ticks on a chart can be broken down into three categories.
 * [Long ticks - tick wider than the current frame](#ylinearyLongTicks)
 
 #### <a id='ylinearyshortTicks'>Short ticks</a>
-Where the specified <b>.tickSize()</b> is shorter than the width of the currentFrame. Most commonly used on dual axis charts. For a right hand axis you will need to translate the axis, this is the opposite of [Standard ticks](#ylinearystandardTicks) and [Long ticks](#ylinearyLongTicks) where the left hand axis needs to be moved to posiyion it correctly. The following examples use <b>.rem()</b> to define the size of the ticks as this makes them proportional to each frame style.
+Where the specified <b>.tickSize()</b> is shorter than the width of the currentFrame. Most commonly used on dual axis charts. For a right hand axis you will need to translate the axis, this is the opposite of [Standard ticks](#ylinearystandardTicks) and [Long ticks](#ylinearyLongTicks) where the left hand axis needs to be moved to position it correctly. The following examples use <b>.rem()</b> to define the size of the ticks as this makes them proportional to each frame style.
 
 Right aligned axis
 ```
@@ -377,6 +377,8 @@ const tickSize = currentFrame.rem() *.75
 currentFrame.plot()
     .call(yAxis);
 ```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickShort.png)
+
 
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
 Where the specified <b>.tickSize()</b> is the same as width of the currentFrame. It is the most commonly used tick size on the <b>yLinear</b> axis.
