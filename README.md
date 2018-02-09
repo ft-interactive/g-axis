@@ -361,7 +361,7 @@ Sizeing of ticks on a chart can be broken down into three categories.
 * [Long ticks - tick wider than the current frame](#ylinearyLongTicks)
 
 #### <a id='ylinearyshortTicks'>Short ticks</a>
-Where the specified <b>.tickSize()</b> is shorter than the width of the currentFrame. Most commonly used on dial axis charts. For a right hand axis you will need to translate the axis, this is the opposite of Standar and long ticks where the left hand axis nedds to be moved.
+Where the specified <b>.tickSize()</b> is shorter than the width of the currentFrame. Most commonly used on dual axis charts. For a right hand axis you will need to translate the axis, this is the opposite of [Standard ticks](#ylinearystandardTicks) and [Long ticks](#ylinearyLongTicks) where the left hand axis nedds to be moved.
 
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
 Where the specified <b>.tickSize()</b> is the same as width of the currentFrame. It is the most commonly used tick size on the <b>yLinear</b> axis.
