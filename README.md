@@ -2,6 +2,8 @@
 
 Pre styled centralised repository of axis for use with the FT's g-chartframe architecture as part of the Visual Vocabulary. Creates ordinal, linear or date axis that can be appended to the <b>.plot</b> obejct in the g-chartframe hopefully eliminating the need to code another standard axis or set up the tick format for a date sequence.
 
+This is a guide aimed mostly a users building chart templates or interactive graphics and not a user guide for the Visual Vocabulary.
+
 The axis module also appends the correct script tags for use with the FT Pre-Flight script in Adobe Illustrator.
 
 Should work with other builds where the axis is called into a pre drfined g or svg elements.
