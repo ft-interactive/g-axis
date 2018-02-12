@@ -1032,7 +1032,7 @@
 
             // Use this to amend the tickSIze and re cal the vAxis
             if (tickSize < labelWidth) {
-                yLabel.call(yAxis.tickSize);
+                yLabel.call(yAxis.tickSize(tickSize));
             } else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
 
             if (align === 'right') {
