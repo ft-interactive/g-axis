@@ -522,7 +522,7 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight2.png)
 
-# <a id='yordinal'>yOrdinear</a>
+# <a id='yordinal'>yOrdinal</a>
 
 # <a id='xdate'>xDate</a>
 
