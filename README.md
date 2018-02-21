@@ -48,7 +48,7 @@ For more detail on <b>.labelWidth()</b> and its use in positioning see:
 The following axis types are currently defined in this repo (click to jump to section)
 
 * [yLinear](#ylinear)
-* yOrdinal()
+* [yOrdinal](#yordinal)
 * [xDate](#xdate)
 * xLinear()
 * xOrdinal()
@@ -522,7 +522,7 @@ yAxis
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight2.png)
 
-
+# <a id='yordinal'>yOinear</a>
 
 # <a id='xdate'>xDate</a>
 
