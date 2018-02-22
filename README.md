@@ -544,6 +544,19 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-default.png)
 
+Use the current frame dimensions to define your <b>.range()</b>. The default <b>.tickSize()</b> on the yOrdinal axis is 0. Also shown here with the default <b>.domain()</b> For more infor mation on changing this and positioning yOrdinal axis with tick see ticksize tc
+
+```
+const yAxis = yOrdinal();// sets up yAxis
+const currentFrame = frame[frameName];
+
+yAxis
+	.rangeRound([0,currentFrame.dimension().height]);
+
+currentFrame.plot()
+	.call(yAxis);
+```
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-range.png)
 
 
 # <a id='xdate'>xDate</a>
