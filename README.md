@@ -98,13 +98,12 @@ currentFrame.plot()
 It is good practice to pass <b>.plotDim(), .rem() .divisor() </b>and <b>.frameName</b> to the axis when you first set it up as they are used in some of the in-built functionality, such as <b>.banding()</b> and <b>.label()</b> and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass <b>.invert()</b> and <b>.logScale()</b> at this point alse.
 ```
 const currentFrame = frame[frameName];
-// define other functions to be called
-const yAxis = yLinear();// sets up yAxis
-// const plotDim=currentFrame.dimension()//useful variable to carry the current frame dimensions
-const tickSize = currentFrame.dimension().width;// Used when drawing the yAxis ticks
-const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height]
+const yAxis = yLinear();
+const tickSize = currentFrame.dimension().width;
+const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
 
 yAxis
+	.plotDim(plotDim)
 	.tickSize(tickSize)
 	.align(yAxisAlign)
 	.domain([Math.min(yMin, valueExtent[0]), Math.max(yMax, valueExtent[1])])
@@ -114,7 +113,6 @@ yAxis
 	.logScale(yLogScale)
 	.divisor(divisor);
 
-// Draw the yAxis first, this will position the yAxis correctly and measure the width of the label text
 currentFrame.plot()
 	.call(yAxis);
 ```
@@ -537,7 +535,6 @@ Add the following code to your index.js to append a default y-axis to the curren
 
 ```
 const yAxis = yOrdinal();// sets up yAxis
-const currentFrame = frame[frameName];
 
 currentFrame.plot()
 	.call(yAxis);
@@ -548,7 +545,6 @@ Use the current frame dimensions to define your <b>.range()</b>. The default <b>
 
 ```
 const yAxis = yOrdinal();// sets up yAxis
-const currentFrame = frame[frameName];
 
 yAxis
 	.rangeRound([0,currentFrame.dimension().height]);
@@ -557,6 +553,33 @@ currentFrame.plot()
 	.call(yAxis);
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-range.png)
+
+It is good practice to pass .plotDim(), .rem() .divisor() and .frameName to the axis when you first set it up as they are used in some of the in-built functionality, such as .banding() and .label() and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass .invert() and .logScale() at this point alse.
+```
+const currentFrame = frame[frameName];
+const yAxis = yOrdinal();
+const tickSize = currentFrame.dimension().width;
+const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
+
+yAxis
+	.plotDim(plotDim)
+	.tickSize(tickSize)
+	.align(yAxisAlign)
+	.domain([Math.min(yMin, valueExtent[0]), Math.max(yMax, valueExtent[1])])
+	.range([currentFrame.dimension().height, 0])
+	.frameName(frameName)
+	.invert(yScaleInvert)
+	.logScale(yLogScale)
+	.divisor(divisor);
+
+currentFrame.plot()
+	.call(yAxis);
+```
+
+
+
+
+
 
 
 # <a id='xdate'>xDate</a>
