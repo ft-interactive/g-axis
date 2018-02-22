@@ -558,7 +558,6 @@ It is good practice to pass <b>.plotDim()</b>, <b>.rem()</b>, <b>.divisor()</b> 
 ```
 const currentFrame = frame[frameName];
 const yAxis = yOrdinal();
-const tickSize = currentFrame.dimension().width;
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
 
 yAxis
