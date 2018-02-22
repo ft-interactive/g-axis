@@ -541,9 +541,8 @@ const currentFrame = frame[frameName];
 
 currentFrame.plot()
 	.call(yAxis);
-
 ```
-
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-default.png)
 
 
 
