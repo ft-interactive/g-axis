@@ -95,7 +95,7 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-sized.png)
 
-It is good practice to pass <b>.plotDim(), .rem() .divisor() </b>and <b>.frameName</b> to the axis when you first set it up as they are used in some of the in-built functionality, such as <b>.banding()</b> and <b>.label()</b> and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass <b>.invert()</b> and <b>.logScale()</b> at this point alse.
+It is good practice to pass <b>.plotDim(), .rem() .divisor() </b>and <b>.frameName</b> to the axis when you first set it up as they are used in some of the in-built functionality, such as <b>.banding()</b> and <b>.label()</b> and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass <b>.invert()</b> and <b>.logScale()</b> at this point also.
 ```
 const currentFrame = frame[frameName];
 const yAxis = yLinear();
@@ -554,7 +554,7 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-range.png)
 
-It is good practice to pass .plotDim(), .rem() .divisor() and .frameName to the axis when you first set it up as they are used in some of the in-built functionality, such as .banding() and .label() and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass .invert() and .logScale() at this point alse.
+It is good practice to pass <b>.plotDim()</b>, <b>.rem()</b>, <b>.divisor()</b> and <b>.frameName()</b> to the axis when you first set it up as they are used in some of the in-built functionality, such as <b>.banding()</b> and <b>.label()</b> and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass <b>.invert()</b> and <b>.logScale()</b> at this point also.
 ```
 const currentFrame = frame[frameName];
 const yAxis = yOrdinal();
