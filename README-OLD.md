@@ -527,7 +527,7 @@ yOrdinal() creates a d3 linear axis with a couple of additional feature to help 
 Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a value equal to the width of the widest tick label on the y-axis. This value is used to re-define the left or right margin of the chartframe before creating the x-axis. For more information see [yOrdinal Postioning](#yordpos)
 
 * [Getting started](#yordstarted)
-* [yOrdinal Postioning](#yordpos)
+* [yOrdinal Postioning](#yordstarted)
 
 ## <a id='yordstarted'>Getting started</a>
 Add the following code to your index.js to append a default y-axis to the current frame object (grey here but not normally visible)
@@ -575,8 +575,6 @@ yAxis
 currentFrame.plot()
 	.call(yAxis);
 ```
-
-## <a id='#yordpos'>yOrdinal positioning</a>
 
 
 
