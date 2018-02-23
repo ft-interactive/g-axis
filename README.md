@@ -118,13 +118,13 @@ currentFrame.plot()
 ```
 
 ## <a id='ylinpos'>yLinear positioning</a>
-Before you can position an axis you need to know the steps the g-axis component goes through to render left and right align axis when it is called. yLinear axis nearly always have a <b>.tickSize()</b> to be taken into account. To see what happen when you render a y-axis without a ticksize see the similar [yOrdinal postioning](#yordpos).
+Before you can position an axis you need to know the steps the g-axis component goes through to render left and right align axis when it is called. yLinear axis nearly always have a take into account a <b>.tickSize()</b>. To see what happen when you render a y-axis without a ticksize see the similar [yOrdinal postioning](#yordpos).
 
 yLinear axis always take the left hand side of the currentFrame.plot() as their origin. Unless specified the default alignment for ylinear is right. The following example assumes a standard (width of currentFrame) <b>tickSize()</b>. For more information on positioning axis with short and long ticks see [tickSize()](#ylineartickSize).
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-howright.png)
 
-Axis with a left alignment will be drawn from the origin to the left and so need to be translated to be positioned correctly (see code below).
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-alignLeft.png)
+Left alignment are be drawn from the origin to the left, because of this the labels do not need to be translated.
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-howleft.png)
 
 The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>. this will vary depending on the text e.g. '100,000' will return a larger value than '10'
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png)
