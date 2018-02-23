@@ -120,7 +120,7 @@ currentFrame.plot()
 ## <a id='ylinpos'>yLinear positioning</a>
 Before you can position an axis you need to know the steps the g-axis component goes through to render left and right align axis when it is called. yLinear axis nearly always have a <b>.tickSize()</b> to be taken into account. To see what happen when you render a y-axis without a ticksize see the similar [yOrdinal postioning](#yordpos).
 
-yLinear axis always take the left hand side of the currentFrame.plot() as their origin. Axis with a right alignment will be drawn from the origin to the right and appear correctly position e.g.
+yLinear axis always take the left hand side of the currentFrame.plot() as their origin. Axis with a left alignment will be drawn from the origin to the left and similarly from the origin to the right for right alignment e.g.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-alignRight.png)
 
 Axis with a left alignment will be drawn from the origin to the left and so need to be translated to be positioned correctly (see code below).
