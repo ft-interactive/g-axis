@@ -138,12 +138,12 @@ The rendered axis return the width of the widest text label via <b>.labelWidth()
 // return the value in the variable newMargin and move axis if needed
 if (yAxisAlign === 'right') {
 	const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
-	// Use newMargin redefine the new margin and range of xAxis
+	// Use newMargin redefine the new margin and range of yAxis
 	currentFrame.margin({ right: newMargin });
 }
 if (yAxisAlign === 'left') {
 	const newMargin = yAxis.labelWidth() + currentFrame.margin().left;
-	// Use newMargin redefine the new margin and range of xAxis
+	// Use newMargin redefine the new margin and range of yAxis
   	.margin({ left: newMargin });
 	yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())},0)`);
 }
@@ -581,6 +581,10 @@ currentFrame.plot()
 ```
 
 ## <a id='yordpos'>yOrdinal positioning</a>
+## <a id='ylinpos'>yLinear positioning</a>
+Before you can position an axis you need to know the steps the g-axis component goes through to render left and right aligned axis when it is called. yOrdinal axis nearly never have a take into account a <b>.tickSize()</b>. To see what happen when you render a y-axis with a <b>.tickSize()</b> see the similar [yLinear Postioning](#ylinpos).
+
+
 yOrdinal axis always take the left hand side of the currentFrame.plot() as their origin. Unless a <b>tickSize()</b> is specified both the left and right aligned axis are drawn to the left of the origin e.g.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-alignleft.png)
 
