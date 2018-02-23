@@ -577,7 +577,7 @@ currentFrame.plot()
 	.call(yAxis);
 ```
 
-## <a id='#yordpos'>yOrdinal positioning</a>
+## <a id='yordpos'>yOrdinal positioning</a>
 yOrdinal axis always take the left hand side of the currentFrame.plot() as their origin. Unless a <b>tickSize()</b> is specified both the left and right aligned axis are drawn to the left of the origin e.g.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-alignleft.png)
 
