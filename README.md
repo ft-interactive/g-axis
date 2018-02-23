@@ -527,7 +527,7 @@ yOrdinal() creates a d3 linear axis with a couple of additional feature to help 
 Create and call a y-axis first, as it returms <b>.labelWidth()</b> that holds a value equal to the width of the widest tick label on the y-axis. This value is used to re-define the left or right margin of the chartframe before creating the x-axis. For more information see [yOrdinal Postioning](#yordpos)
 
 * [Getting started](#yordstarted)
-* [yOrdinal Postioning](#yordpos)
+* [yOrdinal postioning](#yordpos)
 
 ## <a id='yordstarted'>Getting started</a>
 Add the following code to your index.js to append a default y-axis to the current frame object (grey here but not normally visible)
@@ -555,7 +555,7 @@ currentFrame.plot()
 ```
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-range.png)
 
-It is good practice to pass <b>.plotDim()</b>, <b>.rem()</b>, <b>.divisor()</b> and <b>.frameName()</b> to the axis when you first set it up as they are used in some of the in-built functionality, such as <b>.banding()</b> and <b>.label()</b> and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass <b>.invert()</b> and <b>.logScale()</b> at this point also.
+It is good practice to pass <b>.plotDim()</b>, <b>.rem()</b>, <b>.divisor()</b> and <b>.frameName()</b> to the axis when you first set it up as they are used in some of the in-built functionality, such as <b>.banding()</b> and <b>.label()</b> and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass <b>.invert()</b> and <b>.logScale()</b> at this point also. This will then need to be correctly positioned, see [yOrdinal postioning](#yordpos)
 ```
 const currentFrame = frame[frameName];
 const yAxis = yOrdinal();
@@ -577,6 +577,8 @@ currentFrame.plot()
 ```
 
 ## <a id='#yordpos'>yOrdinal positioning</a>
+yOrdinal axis always take the left hand side of the currentFrame.plot() as their origin. Unless a <b>tickSize</b> is specified both the left and right aligned axis are drawn to the left of the origin e.g.
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-alignLift.png)
 
 
 
