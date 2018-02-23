@@ -581,8 +581,9 @@ currentFrame.plot()
 ```
 
 ## <a id='yordpos'>yOrdinal positioning</a>
-## <a id='ylinpos'>yLinear positioning</a>
 Before you can position an axis you need to know the steps the g-axis component goes through to render left and right aligned axis when it is called. yOrdinal axis nearly never have a take into account a <b>.tickSize()</b>. To see what happen when you render a y-axis with a <b>.tickSize()</b> see the similar [yLinear Postioning](#ylinpos).
+
+The following example their will be no ticks only labels (default). For more information on positioning yOrdinal with ticks see [tickSize()](#ylineartickSize).
 
 
 yOrdinal axis always take the left hand side of the currentFrame.plot() as their origin. Unless a <b>tickSize()</b> is specified both the left and right aligned axis are drawn to the left of the origin e.g.
