@@ -118,6 +118,8 @@ currentFrame.plot()
 ```
 
 ## <a id='ylinpos'>yLinear positioning</a>
+Before you can position an axis you need to know the steps the g-axis component goes through to render left and right align axis when it is called. yLinear axis nearly always have a <b>.tickSize()</b> to be taken into account. To see what happen when you render a y-axis without a ticksize see the similar [yOrdinal postioning](#yordpos).
+
 yLinear axis always take the left hand side of the currentFrame.plot() as their origin. Axis with a right alignment will be drawn from the origin to the right and appear correctly position e.g.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-alignRight.png)
 
@@ -563,7 +565,6 @@ const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height
 
 yAxis
 	.plotDim(plotDim)
-	.tickSize(tickSize)
 	.align(yAxisAlign)
 	.domain([Math.min(yMin, valueExtent[0]), Math.max(yMax, valueExtent[1])])
 	.range([currentFrame.dimension().height, 0])
@@ -577,9 +578,30 @@ currentFrame.plot()
 ```
 
 ## <a id='#yordpos'>yOrdinal positioning</a>
-yOrdinal axis always take the left hand side of the currentFrame.plot() as their origin. Unless a <b>tickSize</b> is specified both the left and right aligned axis are drawn to the left of the origin e.g.
+yOrdinal axis always take the left hand side of the currentFrame.plot() as their origin. Unless a <b>tickSize()</b> is specified both the left and right aligned axis are drawn to the left of the origin e.g.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-alignleft.png)
 
+Only if a <b>tickSize()</b> is specified on a right align axis (can't think when this would be) does the axis get push to the right e.g.
+![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-alignleft.png)
+```
+const currentFrame = frame[frameName];
+const yAxis = yOrdinal();
+const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
+
+yAxis
+	.plotDim(plotDim)
+	.tickSize(300)
+	.align(yAxisAlign)
+	.domain([Math.min(yMin, valueExtent[0]), Math.max(yMax, valueExtent[1])])
+	.range([currentFrame.dimension().height, 0])
+	.frameName(frameName)
+	.invert(yScaleInvert)
+	.logScale(yLogScale)
+	.divisor(divisor);
+
+currentFrame.plot()
+	.call(yAxis);
+```
 
 
 
