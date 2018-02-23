@@ -126,7 +126,7 @@ yLinear axis always take the left hand side of the currentFrame.plot() as their 
 Left alignment are be drawn from the origin to the left, because of this the labels do not need to be translated.
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-howleft.png)
 
-The rendered axis returns the width of the widest text label on the y- axis via <b>.labelWidth()</b>. this will vary depending on the text e.g. '100,000' will return a larger value than '10'
+The rendered axis return the width of the widest text label via <b>.labelWidth()</b>. this will vary depending on the text e.g. the label '100,000' will return a larger value than '10'
 ![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png)
 
 <b>.labelWidth()</b> is used to amend the appropriate margin of the currentFrame so that text is positioned outside the plot object. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> for axis with ticks of a standard size. For positioning axis where the ticks are longer or shorter then the width of the chartFrame see [tickSize()](#ylineartickSize).
