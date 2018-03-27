@@ -78,7 +78,7 @@ export default function () {
             xAxis.tickFormat(customFormat);
         }
 
-        let bandHolder = parent
+        const bandHolder = parent
             .append('g')
             .attr('class', 'highlights');
 
@@ -109,6 +109,29 @@ export default function () {
             const axisLabel = parent.append('g')
                 .attr('class', 'axis xAxis');
 
+
+            const calcOffset = () => {
+                if (tickSize > 0 && tickSize < rem) {
+                    return tickSize + (rem * 0.8);
+                }
+                return (rem * 0.9);
+            };
+
+            const getVerticle = (axisAlign, vertAlign) => ({
+                toptop: 0 - (rem),
+                topmiddle: 0,
+                topbottom: 0 + (rem),
+                bottomtop: plotHeight,
+                bottommiddle: plotHeight + calcOffset(),
+                bottombottom: plotHeight + calcOffset() + (rem * 1.1),
+            }[axisAlign + vertAlign]);
+
+            const getHorizontal = hori => ({
+                left: plotWidth - plotWidth,
+                middle: plotWidth / 2,
+                right: plotWidth,
+            }[hori]);
+
             axisLabel.append('text')
                 .attr('y', getVerticle(align, defaultLabel.vert))
                 .attr('x', getHorizontal(defaultLabel.hori))
@@ -119,58 +142,25 @@ export default function () {
             const height = (text.node().getBBox().height) / 2;
             const textX = text.node().getBBox().x + width;
             const textY = text.node().getBBox().y + height;
-            text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+            text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
                 .style('text-anchor', defaultLabel.anchor);
-
-            function getVerticle(axisAlign, vertAlign) {
-                return {
-                    toptop: 0 - (rem),
-                    topmiddle: 0,
-                    topbottom: 0 + (rem),
-                    bottomtop: plotHeight,
-                    bottommiddle: plotHeight + calcOffset(),
-                    bottombottom: plotHeight + calcOffset() + (rem * 1.1),
-                }[axisAlign + vertAlign];
-            }
-
-            function calcOffset() {
-                if (tickSize > 0 && tickSize < rem) {
-                    return tickSize + (rem * 0.8);
-                }
-                return (rem * 0.9);
-            }
-
-            function getHorizontal(hori) {
-                return {
-                    left: plotWidth - plotWidth,
-                    middle: plotWidth / 2,
-                    right: plotWidth,
-                }[hori];
-            }
         }
 
         if (banding) {
-            bands = scale.ticks(numTicks);
-            if (tickValues) {
-                let bands = xAxis.tickValues()
-            }
-            bands = bands.map((d,i) => {
-                return{
-                    pos: d,
-                    width: getBandWidth(i)
+            const getBandWidth = (index, bands) => {
+                if (index === bands.length - 1) {
+                    return plotWidth - scale(bands[index]);
                 }
-            })
-            .filter((d, i) => {
-                return i % 2 === 0;
-            })
+                return scale(bands[index + 1]) - scale(bands[index]);
+            };
 
-            function getBandWidth(index) {
-                if (index === bands.length-1) {
-                    return plotWidth - scale(bands[index])
-                }
-                return scale(bands[index+1]) - scale(bands[index])
-            }
-            
+            const bands = (tickValues ? xAxis.tickValues() : scale.ticks(numTicks))
+                .map((d, i, a) => ({
+                    pos: d,
+                    width: getBandWidth(i, a),
+                }))
+                .filter((d, i) => i % 2 === 0);
+
             bandHolder.selectAll('rect')
                 .data(bands)
                 .enter()
@@ -178,7 +168,7 @@ export default function () {
                 .attr('y', 0)
                 .attr('height', plotHeight)
                 .attr('x', d => scale(d.pos))
-                .attr('width', d => d.width)
+                .attr('width', d => d.width);
         }
 
         xLabel.selectAll('.tick')
@@ -252,7 +242,7 @@ export default function () {
         return axis;
     };
     axis.tickFormat = (d) => {
-        customFormat = d
+        customFormat = d;
         scale.tickFormat(d);
         return axis;
     };
