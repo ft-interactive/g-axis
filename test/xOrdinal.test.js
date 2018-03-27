@@ -38,7 +38,7 @@ beforeEach(async () => {
     <html>
     <head>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
-    <script src="https://unpkg.com/g-chartframe"></script>
+    <script src="https://unpkg.com/g-chartframe@5.1.12/build/g-chartframe.js"></script>
     <script>${code}</script>
     </head>
     <body><svg /></body>
