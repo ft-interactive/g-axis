@@ -34,7 +34,15 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
-    server = micro(async () => `<!doctype html><html><head><script src="http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script><script>${code}</script></head><body><svg /></body></html>`);
+    server = micro(async () => `<!doctype html>
+    <html>
+    <head>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
+    <script src="https://unpkg.com/g-chartframe"></script>
+    <script>${code}</script>
+    </head>
+    <body><svg /></body>
+    </html>`);
     url = await listen(server);
 });
 
@@ -51,9 +59,26 @@ test('xDate()', async () => {
     });
 
     await page.evaluate(async () => {
+        const sharedConfig = {
+            source: 'Source not yet added',
+            subtitle: 'Subtitle not yet added',
+            title: 'Title not yet added',
+        };
         const svg = await window.d3.select(document.querySelector('svg'));
+        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig)
+            .margin({
+                bottom: 86,
+                left: 20,
+                right: 5,
+                top: 100,
+            })
+            // .title("Put headline here")
+            .height(500);
+
+        // Instantiate the chart frame
+        svg.call(currentFrame);
         const myScale = window.xDate();
-        svg.call(myScale);
+        currentFrame.plot().call(myScale);
     });
 
     const image = await page.screenshot();
