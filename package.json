@@ -18,11 +18,11 @@
     "url": "https://github.com/ft-interactive/g-axis.git"
   },
   "scripts": {
-    "pretest": "rm -rf build && mkdir build && rollup --globals d3:d3 -f umd -n gAxis -o build/g-axis.js -- index.js",
+    "build": "rm -rf build && mkdir build && rollup --globals d3:d3 -f umd -n gAxis -o build/g-axis.js -- index.js",
     "test": "jest",
     "test:update": "jest --updateSnapshot",
     "report-coverage": "codecov",
-    "prepare": "npm run test && uglifyjs build/g-axis.js -c -m -o build/g-axis.min.js",
+    "prepare": "npm run test && npm run build && uglifyjs build/g-axis.js -c -m -o build/g-axis.min.js",
     "lint": "eslint {index.js,src/**/*.js,test/**/*.js}",
     "lint:fix": "eslint --fix {index.js,src/**/*.js,test/**/*.js}"
   },
