@@ -60,25 +60,30 @@ test('xLinear()', async () => {
 
     await page.evaluate(async () => {
         const sharedConfig = {
-            source: 'Source not yet added',
-            subtitle: 'Subtitle not yet added',
-            title: 'Title not yet added',
+            source: 'g-axis',
+            subtitle: 'Bottom-aligned, default scales',
+            title: 'xLinear test',
         };
-        const svg = await window.d3.select(document.querySelector('svg'));
-        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig)
-            .margin({
-                bottom: 86,
-                left: 20,
-                right: 5,
-                top: 100,
-            })
-            // .title("Put headline here")
-            .height(500);
 
-        // Instantiate the chart frame
+        const svg = await window.d3.select(document.querySelector('svg'));
+        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
+
+        // Set up the chart frame
         svg.call(currentFrame);
-        const myScale = window.xLinear();
-        currentFrame.plot().call(myScale);
+
+        // Instantiate xLinear
+        const xAxis = window.xLinear()
+            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .range([0, currentFrame.dimension().width])
+            .frameName('webFrameMDefault');
+
+        // Set up xAxis
+        currentFrame.plot().call(xAxis);
+
+        // Translate axis to bottom of plot
+        xAxis.xLabel()
+            .attr('transform',
+                `translate(0,${currentFrame.dimension().height - (currentFrame.rem() / 1.5)})`);
     });
 
     const image = await page.screenshot();

@@ -48,7 +48,8 @@ beforeEach(async () => {
 
 afterEach(() => server.close());
 
-test.skip('yDate()', async () => { // @TODO Disabled because this throws for some reason.
+// @TODO this is canonical AFAICT but it still renders off-plot for some reason
+test('yDate()', async () => {
     const browser = await launch();
     const page = await browser.newPage();
     await page.goto(url);
@@ -60,25 +61,39 @@ test.skip('yDate()', async () => { // @TODO Disabled because this throws for som
 
     await page.evaluate(async () => {
         const sharedConfig = {
-            source: 'Source not yet added',
-            subtitle: 'Subtitle not yet added',
-            title: 'Title not yet added',
+            source: 'g-axis',
+            subtitle: 'Left-aligned, default scales',
+            title: 'yDate test',
         };
-        const svg = await window.d3.select(document.querySelector('svg'));
-        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig)
-            .margin({
-                bottom: 86,
-                left: 20,
-                right: 5,
-                top: 100,
-            })
-            // .title("Put headline here")
-            .height(500);
 
-        // Instantiate the chart frame
+        const svg = await window.d3.select(document.querySelector('svg'));
+        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
+
+        // Set up the chart frame
         svg.call(currentFrame);
-        const myScale = window.yDate();
-        currentFrame.plot().call(myScale);
+
+        // Instantiate yDate
+        const yAxis = window.yDate()
+            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .minorTickSize(currentFrame.rem() * 0.3)
+            .range([0, currentFrame.dimension().height])
+            .align('left')
+            .frameName('webMDefault');
+
+        // Set up yAxis
+        currentFrame.plot().call(yAxis);
+
+        // Get newly-calculated margin value
+        const newMargin = yAxis.labelWidth() + currentFrame.margin().left;
+
+        // Use newMargin redefine the new margin and range of xAxis
+        currentFrame.margin({ left: newMargin });
+
+        // Translate axis from the left
+        yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())}, 0)`);
+
+        // Call parent container to update positioning
+        svg.call(currentFrame);
     });
 
     const image = await page.screenshot();

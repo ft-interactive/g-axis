@@ -62,25 +62,31 @@ test('xDate()', async () => {
 
     await page.evaluate(async () => {
         const sharedConfig = {
-            source: 'Source not yet added',
-            subtitle: 'Subtitle not yet added',
-            title: 'Title not yet added',
+            source: 'g-axis',
+            subtitle: 'Bottom-aligned, default scales',
+            title: 'xDate test',
         };
-        const svg = await window.d3.select(document.querySelector('svg'));
-        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig)
-            .margin({
-                bottom: 86,
-                left: 20,
-                right: 5,
-                top: 100,
-            })
-            // .title("Put headline here")
-            .height(500);
 
-        // Instantiate the chart frame
+        const svg = await window.d3.select(document.querySelector('svg'));
+        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
+
+        // Set up the chart frame
         svg.call(currentFrame);
-        const myScale = window.xDate();
-        currentFrame.plot().call(myScale);
+
+        // Instantiate xDate
+        const xAxis = window.xDate()
+            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .frameName('webFrameMDefault')
+            .tickSize(currentFrame.rem() * 0.75)
+            .range([0, currentFrame.dimension().width])
+            .minorTickSize(currentFrame.rem() * 0.3);
+
+        // Set up xAxis
+        currentFrame.plot().call(xAxis);
+
+        // Translate axis to bottom of plot
+        xAxis.xLabel().attr('transform', `translate(0,${currentFrame.dimension().height})`);
+        xAxis.xLabelMinor().attr('transform', `translate(0,${currentFrame.dimension().height})`);
     });
 
     const image = await page.screenshot();

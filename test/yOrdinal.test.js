@@ -60,25 +60,35 @@ test('yOrdinal()', async () => {
 
     await page.evaluate(async () => {
         const sharedConfig = {
-            source: 'Source not yet added',
-            subtitle: 'Subtitle not yet added',
-            title: 'Title not yet added',
+            source: 'g-axis',
+            subtitle: 'Left-aligned, default scales',
+            title: 'yOrdinal test',
         };
-        const svg = await window.d3.select(document.querySelector('svg'));
-        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig)
-            .margin({
-                bottom: 86,
-                left: 20,
-                right: 5,
-                top: 100,
-            })
-            // .title("Put headline here")
-            .height(500);
 
-        // Instantiate the chart frame
+        const svg = await window.d3.select(document.querySelector('svg'));
+        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
+
+        // Set up the chart frame
         svg.call(currentFrame);
-        const myScale = window.yOrdinal();
-        currentFrame.plot().call(myScale);
+
+        // Instantiate yOrdinal
+        const yAxis = window.yOrdinal()
+            .rangeRound([0, currentFrame.dimension().height])
+            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .frameName('webFrameMDefault')
+            .align('left');
+
+        // Set up yAxis
+        currentFrame.plot().call(yAxis);
+
+        // Get newly-calculated margin value
+        const newMargin = yAxis.labelWidth() + currentFrame.margin().left;
+
+        // Use newMargin redefine the new margin and range of xAxis
+        currentFrame.margin({ left: newMargin });
+
+        // Call parent container to update positioning
+        svg.call(currentFrame);
     });
 
     const image = await page.screenshot();
