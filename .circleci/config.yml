@@ -28,7 +28,7 @@
           command: npm run lint
       - run:
           name: test
-          command: npm run test:update
+          command: npm test
       - run:
           name: coverage
           command: npm run report-coverage
