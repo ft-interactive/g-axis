@@ -1,7 +1,7 @@
  version: 2
  jobs:
    build:
-     working_directory: ~/ig
+     working_directory: /ig
      docker:
        - image: node:8
      steps:
@@ -28,7 +28,7 @@
           command: npm run lint
       - run:
           name: test
-          command: npm test
+          command: npm run test:update
       - run:
           name: coverage
           command: npm run report-coverage
