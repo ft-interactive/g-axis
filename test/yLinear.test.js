@@ -30,6 +30,7 @@ test('left-aligned, default scales', async () => {
             .tickSize(currentFrame.dimension().width)
             .domain([0, 200])
             .align('left')
+            .rem(currentFrame.rem())
             .range([currentFrame.dimension().height, 0])
             .frameName('webFrameMDefault');
 
@@ -70,8 +71,9 @@ test('right-aligned, default scales', async () => {
         // Instantiate yLinear
         const yAxis = window.yLinear()
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
-            .tickSize(currentFrame.dimension().width)
+            .tickSize(currentFrame.dimension().width - currentFrame.rem())
             .domain([0, 200])
+            .rem(currentFrame.rem())
             .align('right')
             .range([currentFrame.dimension().height, 0])
             .frameName('webFrameMDefault');

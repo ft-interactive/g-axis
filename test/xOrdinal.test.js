@@ -28,6 +28,7 @@ test('bottom-aligned, default scales', async () => {
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
             .rangeRound([0, currentFrame.dimension().width])
             .align('bottom')
+            .rem(currentFrame.rem())
             .frameName('webFrameMDefault');
 
         // Set up xAxis
@@ -60,6 +61,7 @@ test('top-aligned, default scales', async () => {
         // Instantiate xAxis
         const xAxis = window.xOrdinal()
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .rem(currentFrame.rem())
             .rangeRound([0, currentFrame.dimension().width])
             .align('top')
             .frameName('webFrameMDefault');

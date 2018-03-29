@@ -29,6 +29,7 @@ test('left-aligned, default scales', async () => {
             .rangeRound([0, currentFrame.dimension().height])
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
             .frameName('webFrameMDefault')
+            .rem(currentFrame.rem())
             .align('left');
 
         // Set up yAxis
@@ -66,6 +67,7 @@ test('right-aligned, default scales', async () => {
         const yAxis = window.yOrdinal()
             .rangeRound([0, currentFrame.dimension().height])
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .rem(currentFrame.rem())
             .frameName('webFrameMDefault')
             .align('right');
 
@@ -80,6 +82,9 @@ test('right-aligned, default scales', async () => {
 
         // Call parent container to update positioning
         svg.call(currentFrame);
+
+        yAxis.yLabel().attr('transform',
+            `translate(${currentFrame.dimension().width - yAxis.labelWidth()}, 0)`);
     });
 
     const image = await global.page.screenshot();

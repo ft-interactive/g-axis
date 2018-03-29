@@ -26,6 +26,7 @@ test('bottom-aligned, default scales', async () => {
         // Instantiate xDate
         const xAxis = window.xDate()
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .rem(currentFrame.rem())
             .frameName('webFrameMDefault')
             .align('bottom')
             .tickSize(currentFrame.rem() * 0.75)
@@ -62,6 +63,7 @@ test('top-aligned, default scales', async () => {
         // Instantiate xDate
         const xAxis = window.xDate()
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .rem(currentFrame.rem())
             .frameName('webFrameMDefault')
             .align('top')
             .tickSize(currentFrame.rem() * 0.75)
