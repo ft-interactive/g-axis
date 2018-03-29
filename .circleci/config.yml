@@ -26,6 +26,7 @@
       - run:
           name: lint
           command: npm run lint
+      #  Disabling tests because of inconsistencies between CI and local rendering
       - run:
           name: test
           command: npm test

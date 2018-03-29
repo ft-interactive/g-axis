@@ -5,6 +5,8 @@
  * This sets up and tears down Puppeteer, along with Micro
  */
 
+/* eslint-disable no-console */
+
 const NodeEnvironment = require('jest-environment-node');
 const listen = require('test-listen');
 const micro = require('micro');
@@ -59,7 +61,7 @@ class CustomEnvironment extends NodeEnvironment {
             this.browser = await launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--enable-font-antialiasing'] });
             this.global.page = await this.browser.newPage();
 
-            await this.global.page.goto(this.url);
+            await this.global.page.goto(this.url, { waitUntil: 'networkidle' });
         } catch (e) {
             console.error(e);
 
