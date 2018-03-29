@@ -3,7 +3,7 @@
    build:
      working_directory: ~/ig
      docker:
-       - image: node:latest
+       - image: node:8
      steps:
       - checkout
       - run:
