@@ -51,17 +51,40 @@ class CustomEnvironment extends NodeEnvironment {
         <body><svg /></body>
         </html>`);
 
-        this.url = await listen(this.server);
+        try {
+            this.url = await listen(this.server);
 
-        this.browser = await launch();
-        this.global.page = await this.browser.newPage();
+            this.browser = await launch();
+            this.global.page = await this.browser.newPage();
 
-        await this.global.page.goto(this.url);
+            await this.global.page.goto(this.url);
+        } catch (e) {
+            console.error(e);
+
+            try {
+                this.server.close();
+            } catch (ee) {
+                console.error('Couldn\'t kill server!');
+                console.error(ee);
+            }
+        }
     }
 
     async teardown() {
-        await this.browser.close();
-        await this.server.close();
+        try {
+            await this.browser.close();
+        } catch (e) {
+            console.error('Issue with closing browser');
+            console.error(e);
+        }
+
+        try {
+            await this.server.close();
+        } catch (e) {
+            console.error('Issue with killing server');
+            console.error(e);
+        }
+
         await super.teardown();
     }
 
