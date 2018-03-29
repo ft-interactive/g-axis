@@ -27,6 +27,7 @@ test('bottom-aligned, default scales', async () => {
         const xAxis = window.xDate()
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
             .frameName('webFrameMDefault')
+            .align('bottom')
             .tickSize(currentFrame.rem() * 0.75)
             .range([0, currentFrame.dimension().width])
             .minorTickSize(currentFrame.rem() * 0.3);
@@ -62,16 +63,13 @@ test('top-aligned, default scales', async () => {
         const xAxis = window.xDate()
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
             .frameName('webFrameMDefault')
+            .align('top')
             .tickSize(currentFrame.rem() * 0.75)
             .range([0, currentFrame.dimension().width])
             .minorTickSize(currentFrame.rem() * 0.3);
 
         // Set up xAxis
         currentFrame.plot().call(xAxis);
-
-        // Translate axis to bottom of plot
-        xAxis.xLabel().attr('transform', `translate(0,${currentFrame.dimension().height})`);
-        xAxis.xLabelMinor().attr('transform', `translate(0,${currentFrame.dimension().height})`);
     });
 
     const image = await global.page.screenshot();

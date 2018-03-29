@@ -1,3 +1,10 @@
+/**
+ * @file
+ * Basic unit tests for g-xAxis
+ *
+ * @jest-environment node
+ */
+
 import * as gAxis from '../index';
 
 test('package "main" exports necessary axes', () => {

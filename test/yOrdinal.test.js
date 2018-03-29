@@ -52,7 +52,7 @@ test('right-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
             source: 'g-axis',
-            subtitle: 'Left-aligned, default scales',
+            subtitle: 'Right-aligned, default scales',
             title: 'yOrdinal test',
         };
 
@@ -67,16 +67,16 @@ test('right-aligned, default scales', async () => {
             .rangeRound([0, currentFrame.dimension().height])
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
             .frameName('webFrameMDefault')
-            .align('left');
+            .align('right');
 
         // Set up yAxis
         currentFrame.plot().call(yAxis);
 
         // Get newly-calculated margin value
-        const newMargin = yAxis.labelWidth() + currentFrame.margin().left;
+        const newMargin = yAxis.labelWidth() + currentFrame.margin().right;
 
         // Use newMargin redefine the new margin and range of xAxis
-        currentFrame.margin({ left: newMargin });
+        currentFrame.margin({ right: newMargin });
 
         // Call parent container to update positioning
         svg.call(currentFrame);

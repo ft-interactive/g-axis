@@ -10,7 +10,7 @@ expect.extend({ toMatchImageSnapshot });
 beforeAll(global.build('yLinear'));
 beforeEach(global.start);
 
-test.skip('left-aligned, default scales', async () => {
+test('left-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
             source: 'g-axis',

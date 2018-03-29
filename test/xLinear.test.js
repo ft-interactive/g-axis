@@ -27,6 +27,7 @@ test('bottom-aligned, default scales', async () => {
         const xAxis = window.xLinear()
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
             .range([0, currentFrame.dimension().width])
+            .align('bottom')
             .frameName('webFrameMDefault');
 
         // Set up xAxis
@@ -46,7 +47,7 @@ test('top-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
             source: 'g-axis',
-            subtitle: 'Bottom-aligned, default scales',
+            subtitle: 'Top-aligned, default scales',
             title: 'xLinear test',
         };
 
@@ -60,15 +61,11 @@ test('top-aligned, default scales', async () => {
         const xAxis = window.xLinear()
             .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
             .range([0, currentFrame.dimension().width])
+            .align('top')
             .frameName('webFrameMDefault');
 
         // Set up xAxis
         currentFrame.plot().call(xAxis);
-
-        // Translate axis to bottom of plot
-        xAxis.xLabel()
-            .attr('transform',
-                `translate(0,${currentFrame.dimension().height - (currentFrame.rem() / 1.5)})`);
     });
 
     const image = await global.page.screenshot();
