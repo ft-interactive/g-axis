@@ -3,64 +3,14 @@
  * Test suite for xDate
  */
 import { toMatchImageSnapshot } from 'jest-image-snapshot';
-import listen from 'test-listen';
-import micro from 'micro';
-import { launch } from 'puppeteer';
-import { rollup } from 'rollup';
-
-jest.setTimeout(20000);
 
 expect.extend({ toMatchImageSnapshot });
 
-let server;
-let url;
-let code;
+beforeAll(global.build('xDate'));
+beforeEach(global.start);
 
-beforeAll(async () => {
-    const bundle = await rollup({
-        input: `${__dirname}/../src/xDate.js`,
-        external: [
-            'd3',
-        ],
-    });
-
-    const output = await bundle.generate({
-        format: 'umd',
-        name: 'xDate',
-        globals: {
-            d3: 'd3',
-        },
-    });
-
-    code = output.code;
-});
-
-beforeEach(async () => {
-    server = micro(async () => `<!doctype html>
-    <html>
-    <head>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
-    <script src="https://unpkg.com/g-chartframe@5.1.12/build/g-chartframe.js"></script>
-    <script>${code}</script>
-    </head>
-    <body><svg /></body>
-    </html>`);
-    url = await listen(server);
-});
-
-afterEach(() => server.close());
-
-test('xDate()', async () => {
-    const browser = await launch();
-    const page = await browser.newPage();
-    await page.goto(url);
-
-    // Add xDate
-    await page.addScriptTag({
-        content: code,
-    });
-
-    await page.evaluate(async () => {
+test('bottom-aligned, default scales', async () => {
+    await global.page.evaluate(async () => {
         const sharedConfig = {
             source: 'g-axis',
             subtitle: 'Bottom-aligned, default scales',
@@ -89,8 +39,41 @@ test('xDate()', async () => {
         xAxis.xLabelMinor().attr('transform', `translate(0,${currentFrame.dimension().height})`);
     });
 
-    const image = await page.screenshot();
-    await browser.close();
+    const image = await global.page.screenshot();
 
+    expect(image).toMatchImageSnapshot();
+});
+
+test('top-aligned, default scales', async () => {
+    await global.page.evaluate(async () => {
+        const sharedConfig = {
+            source: 'g-axis',
+            subtitle: 'Top-aligned, default scales',
+            title: 'xDate test',
+        };
+
+        const svg = await window.d3.select(document.querySelector('svg'));
+        const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
+
+        // Set up the chart frame
+        svg.call(currentFrame);
+
+        // Instantiate xDate
+        const xAxis = window.xDate()
+            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .frameName('webFrameMDefault')
+            .tickSize(currentFrame.rem() * 0.75)
+            .range([0, currentFrame.dimension().width])
+            .minorTickSize(currentFrame.rem() * 0.3);
+
+        // Set up xAxis
+        currentFrame.plot().call(xAxis);
+
+        // Translate axis to bottom of plot
+        xAxis.xLabel().attr('transform', `translate(0,${currentFrame.dimension().height})`);
+        xAxis.xLabelMinor().attr('transform', `translate(0,${currentFrame.dimension().height})`);
+    });
+
+    const image = await global.page.screenshot();
     expect(image).toMatchImageSnapshot();
 });

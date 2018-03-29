@@ -1,6 +1,6 @@
 import * as gAxis from '../index';
 
-test('Package "main" exports necessary axes', () => {
+test('package "main" exports necessary axes', () => {
     expect(gAxis.xDate).toBeDefined();
     expect(gAxis.xDate).toBeInstanceOf(Function);
 

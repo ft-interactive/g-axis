@@ -48,5 +48,8 @@
     "tap-spec": "^4.1.1",
     "test-listen": "^1.1.0",
     "uglify-es": "^3.0.23"
+  },
+  "jest": {
+    "testEnvironment": "./test/__env__/puppeteer_environment.js"
   }
 }
