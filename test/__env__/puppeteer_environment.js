@@ -62,6 +62,7 @@ class CustomEnvironment extends NodeEnvironment {
             this.global.page = await this.browser.newPage();
 
             await this.global.page.goto(this.url, { waitUntil: 'networkidle0' });
+            await this.global.page.waitFor(2000);
         } catch (e) {
             console.error(e);
 
