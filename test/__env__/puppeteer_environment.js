@@ -46,6 +46,8 @@ class CustomEnvironment extends NodeEnvironment {
         <head>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
         <script src="https://unpkg.com/g-chartframe@5.1.12/build/g-chartframe.js"></script>
+        <link rel="stylesheet" href="https://ig.ft.com/visual-vocabulary/styles.css">
+        <link rel="stylesheet" href="//www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^2.2.0">
         <script>${this.code}</script>
         </head>
         <body><svg /></body>
