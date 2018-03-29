@@ -7,6 +7,8 @@
 
 import * as gAxis from '../index';
 
+jest.setTimeout(20000);
+
 test('package "main" exports necessary axes', () => {
     expect(gAxis.xDate).toBeDefined();
     expect(gAxis.xDate).toBeInstanceOf(Function);

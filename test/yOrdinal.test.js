@@ -5,6 +5,7 @@
 
 import { toMatchImageSnapshot } from 'jest-image-snapshot';
 
+jest.setTimeout(20000);
 expect.extend({ toMatchImageSnapshot });
 
 beforeAll(global.build('yOrdinal'));
