@@ -61,7 +61,7 @@ class CustomEnvironment extends NodeEnvironment {
             this.browser = await launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--enable-font-antialiasing'] });
             this.global.page = await this.browser.newPage();
 
-            await this.global.page.goto(this.url, { waitUntil: 'networkidle2' });
+            await this.global.page.goto(this.url, { waitUntil: 'networkidle0' });
         } catch (e) {
             console.error(e);
 
