@@ -3,7 +3,7 @@
    build:
      working_directory: /ig
      macos:
-       xcode: "9.3"
+       xcode: "9.0"
      steps:
       - checkout
       - restore_cache:
