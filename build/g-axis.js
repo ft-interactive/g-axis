@@ -1,8 +1,8 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3')) :
     typeof define === 'function' && define.amd ? define(['exports', 'd3'], factory) :
-    (factory((global.gAxis = global.gAxis || {}),global.d3));
-}(this, function (exports,d3) { 'use strict';
+    (factory((global.gAxis = {}),global.d3));
+}(this, (function (exports,d3) { 'use strict';
 
     function xDate () {
         let banding;
@@ -210,7 +210,7 @@
                     .attr('y', 0)
                     .attr('height', plotHeight)
                     .attr('x', d => scale(d.date))
-                    .attr('width', d => d.width)
+                    .attr('width', d => d.width);
             }
 
             xLabel.selectAll('.domain').remove();
@@ -611,7 +611,7 @@
             if (banding) {
                 bands = scale.ticks(numTicks);
                 if (tickValues) {
-                    let bands = xAxis.tickValues()
+                    let bands = xAxis.tickValues();
                 }
                 bands = bands.map((d,i) => {
                     return{
@@ -621,7 +621,7 @@
                 })
                 .filter((d, i) => {
                     return i % 2 === 0;
-                })
+                });
 
                 function getBandWidth(index) {
                     if (index === bands.length-1) {
@@ -637,7 +637,7 @@
                     .attr('y', 0)
                     .attr('height', plotHeight)
                     .attr('x', d => scale(d.pos))
-                    .attr('width', d => d.width)
+                    .attr('width', d => d.width);
             }
 
             xLabel.selectAll('.tick')
@@ -711,7 +711,7 @@
             return axis;
         };
         axis.tickFormat = (d) => {
-            customFormat = d
+            customFormat = d;
             scale.tickFormat(d);
             return axis;
         };
@@ -1062,7 +1062,7 @@
                 axisLabel.append('text')
                     .attr('y', getVerticle(defaultLabel.vert))
                     .attr('x', getHorizontal(align, defaultLabel.hori))
-                    .text(defaultLabel.tag)
+                    .text(defaultLabel.tag);
 
                 const text = axisLabel.selectAll('text');
                 const width = (text.node().getBBox().width) / 2;
@@ -1113,7 +1113,7 @@
                 })
                 .filter((d, i) => {
                     return i % 2 === 0;
-                })
+                });
 
                 function getBandWidth(index) {
                     if (index === 0) {
@@ -1129,7 +1129,7 @@
                     .attr('x', 0)
                     .attr('width', plotWidth - labelWidth)
                     .attr('y', d => scale(d.pos))
-                    .attr('height', d => d.height)
+                    .attr('height', d => d.height);
             }
 
             yLabel.selectAll('.tick')
@@ -1205,7 +1205,7 @@
             return axis;
         };
         axis.tickFormat = (d) => {
-            customFormat = d
+            customFormat = d;
             scale.tickFormat(d);
             return axis;
         };
@@ -1320,7 +1320,7 @@
                 axisLabel.append('text')
                     .attr('y', getVerticle(defaultLabel.vert))
                     .attr('x', getHorizontal(align, defaultLabel.hori))
-                    .text(defaultLabel.tag)
+                    .text(defaultLabel.tag);
 
                 const text = axisLabel.selectAll('text');
                 const width = (text.node().getBBox().width) / 2;
@@ -1593,7 +1593,7 @@
                 .attr('transform', `translate(${(labelWidth)},0)`)
                 .style('text-anchor', 'end');
             }
-            else {yLabel.selectAll('text').style('text-anchor', 'end')}
+            else {yLabel.selectAll('text').style('text-anchor', 'end');}
 
             if (minorAxis) {
                 yLabelMinor = parent.append('g')
@@ -1632,7 +1632,7 @@
                 axisLabel.append('text')
                     .attr('y', getVerticle(defaultLabel.vert))
                     .attr('x', getHorizontal(align, defaultLabel.hori))
-                    .text(defaultLabel.tag)
+                    .text(defaultLabel.tag);
 
                 const text = axisLabel.selectAll('text');
                 const width = (text.node().getBBox().width) / 2;
@@ -1694,9 +1694,6 @@
                     .append('rect')
                     .attr('x', 0)
                     .attr('width', (d) => {
-                        if (align === 'left ') {
-                            plotWidth - labelWidth;
-                        }
                         return plotWidth - labelWidth - rem;
                     })
                     .attr('y', d => scale(d.date))
@@ -1859,7 +1856,7 @@
             return axis;
         };
         axis.tickFormat = (d) => {
-            customFormat = d
+            customFormat = d;
             scale.tickFormat(d);
             return axis;
         };
@@ -1954,6 +1951,11 @@
         return axis;
     }
 
+    /**
+     * g-axis
+     * 2017 Bob Haslett, ft-interactive
+     */
+
     exports.xDate = xDate;
     exports.xLinear = xLinear;
     exports.xOrdinal = xAxisOrdinal;
@@ -1963,4 +1965,4 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

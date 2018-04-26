@@ -1,8 +1,8 @@
 {
   "name": "g-axis",
-  "author": "Bob haslett",
+  "author": "Bob Haslett",
   "version": "0.0.1",
-  "description": "{DESCRIPTION}",
+  "description": "Module for rendering axes FT-style",
   "keywords": [
     "FT",
     "g-chartframe",
@@ -18,10 +18,11 @@
     "url": "https://github.com/ft-interactive/g-axis.git"
   },
   "scripts": {
-    "pretest": "rm -rf build && mkdir build && rollup --globals d3:d3 -f umd -n gAxis -o build/g-axis.js -- index.js",
-    "test": "nyc tape -r '@babel/register' test/**/*.js",
-    "report-coverage": "nyc report --reporter=lcov && codecov",
-    "prepare": "npm run test && uglifyjs build/g-axis.js -c -m -o build/g-axis.min.js",
+    "build": "rm -rf build && mkdir build && rollup --globals d3:d3 -f umd -n gAxis -o build/g-axis.js -- index.js",
+    "test": "jest",
+    "test:update": "jest --updateSnapshot",
+    "report-coverage": "codecov",
+    "prepare": "npm run test && npm run build && uglifyjs build/g-axis.js -c -m -o build/g-axis.min.js",
     "lint": "eslint {index.js,src/**/*.js,test/**/*.js}",
     "lint:fix": "eslint --fix {index.js,src/**/*.js,test/**/*.js}"
   },
@@ -32,14 +33,23 @@
     "@babel/core": "^7.0.0-beta.31",
     "@babel/preset-env": "^7.0.0-beta.31",
     "@babel/register": "^7.0.0-beta.31",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^22.4.3",
     "codecov": "^2.2.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.6.1",
+    "jest": "^22.4.3",
+    "jest-image-snapshot": "^2.4.0",
+    "micro": "^9.1.4",
     "nyc": "^11.0.3",
-    "rollup": "0.27",
+    "puppeteer": "^1.2.0",
+    "rollup": "^0.57.1",
     "tap-spec": "^4.1.1",
-    "tape": "4",
+    "test-listen": "^1.1.0",
     "uglify-es": "^3.0.23"
+  },
+  "jest": {
+    "testEnvironment": "./test/__env__/puppeteer_environment.js"
   }
 }

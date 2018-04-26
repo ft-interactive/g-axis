@@ -1,0 +1,567 @@
+/**
+ * @file
+ * Test environment for g-axis
+ *
+ * This sets up and tears down Puppeteer, along with Micro
+ */
+
+/* eslint-disable no-console */
+
+const NodeEnvironment = require('jest-environment-node');
+const listen = require('test-listen');
+const micro = require('micro');
+const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
+const { launch } = require('puppeteer');
+const { rollup } = require('rollup');
+
+class CustomEnvironment extends NodeEnvironment {
+    async setup() {
+        await super.setup();
+
+        this.global.build = this.generateCode.bind(this);
+        this.global.start = this.startServer.bind(this);
+        this.global.toMatchImageSnapshot = configureToMatchImageSnapshot({
+            failureThreshold: '0.3', // Needed due to CI weirdness
+            failureThresholdType: 'percent',
+        });
+    }
+
+    generateCode(axis) {
+        return async () => {
+            const bundle = await rollup({
+                input: `${__dirname}/../../src/${axis}.js`,
+                external: [
+                    'd3',
+                ],
+            });
+
+            const output = await bundle.generate({
+                format: 'umd',
+                name: axis,
+                globals: {
+                    d3: 'd3',
+                },
+            });
+
+            this.code = output.code;
+        };
+    }
+
+    async startServer() {
+        this.server = micro(async () => `<!doctype html>
+        <html>
+        <head>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
+        <script src="https://unpkg.com/g-chartframe@5.1.12/build/g-chartframe.js"></script>
+        <link rel="stylesheet" href="//www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^2.2.0">
+        <style>
+            /**
+             * Global styles for Visual Vocabulary Templates
+             */
+
+            .section-heading {
+                background-color: #00757F;
+                color: #fff;
+                font-family: MetricWeb;
+                font-weight: 600;
+                font-size: 20px;
+                padding: 8px 8px 5px;
+            }
+
+            figure {
+                width: fit-content;
+            }
+
+            .button-holder {
+                margin-bottom: 50px;
+            }
+
+            svg {
+                font-size: 0;
+                fill: transparent;
+            }
+            .axis {
+                font-size: inherit !important;
+            }
+
+            /* .overall text styles on axis*/
+            .ft-webgraphic-s .axis text,
+            .ft-webgraphic-m .axis text,
+            .ft-webgraphic-m-default .axis text,
+            .ft-webgraphic-l .axis text {
+              font-family: MetricWeb;
+              fill: #66605C;
+            }
+
+            .ft-socialgraphic .axis text,
+            .ft-videographic .axis text {
+                opacity: 0.5;
+            }
+
+            .ft-webgraphic-s .highlighted-label,
+            .ft-webgraphic-m .highlighted-label,
+            .ft-webgraphic-m-default .highlighted-label,
+            .ft-webgraphic-l .highlighted-label {
+              fill: #000000;
+            }
+
+            .ft-socialgraphic .highlighted-label,
+            .ft-videographic .highlighted-label {
+                fill: #ffffff;
+                opacity: 1;
+            }
+            .ft-webgraphic-s .axis text,
+            .ft-webgraphic-s .highlighted-label {
+                font-size: 14px;
+            }
+            .ft-webgraphic-m .axis text,
+            .ft-webgraphic-m .highlighted-label {
+                font-size: 16px;
+            }
+            .ft-webgraphic-m-default .axis text,
+            .ft-webgraphic-m-default .highlighted-label {
+                font-size: 20px;
+            }
+
+            .ft-webgraphic-l .axis text,
+            .ft-webgraphic-l .highlighted-label {
+                font-size: 18px;
+            }
+
+            .ft-printgraphic .axis text,
+            .ft-printgraphic .highlighted-label {
+                font-family: MetricWeb;
+                font-size: 9.6px;
+                fill: #000000;
+            }
+            .ft-socialgraphic .axis text,
+            .ft-socialgraphic .highlighted-label {
+                font-family: MetricWeb;
+                font-size: 28px;
+            }
+            .ft-videographic .axis text,
+            .ft-videographic .highlighted-label {
+                font-family: MetricWeb;
+                font-size: 48px;
+            }
+
+            /* .tick text on yAxis*/
+            .ft-webgraphic-s .yAxis text,
+            .ft-webgraphic-m .yAxis text,
+            .ft-webgraphic-m-default .yAxis text,
+            .ft-webgraphic-l .yAxis text {
+                fill: #66605C;
+                text-anchor: end;
+            }
+            .ft-printgraphic .yAxis text{
+                text-anchor: end;
+            }
+            .ft-socialgraphic .yAxis text{
+                opacity: 0.5;
+                fill: #FFFFFF;
+                text-anchor: end;
+            }
+            .ft-videographic .yAxis text{
+                opacity: 0.5;
+                fill: #FFFFFF;
+                text-anchor: end;
+            }
+
+            /* .tick line styles on yAxis*/
+            .ft-webgraphic-s .yAxis line,
+            .ft-webgraphic-m .yAxis line,
+            .ft-webgraphic-m-default .yAxis line,
+            .ft-webgraphic-l .yAxis line {
+                stroke: #e6d9ce;
+                stroke-width: 1px;
+            }
+            .ft-printgraphic .yAxis line{
+                stroke: #000000;
+                stroke-width: 0.3px;
+            }
+            .ft-socialgraphic .yAxis line{
+                stroke: #FFFFFF;
+                stroke-width: 2px;
+                stroke-dasharray: 2, 8;
+                stroke-opacity: 0.38;
+            }
+            .ft-videographic .yAxis line{
+                stroke: #FFFFFF;
+                stroke-width: 4px;
+                stroke-opacity: 0.38;
+            }
+            /* Makes domian invivible on yAxis*/
+            .ft-webgraphic-s .domain,
+            .ft-webgraphic-m .domain,
+            .ft-webgraphic-m-default .domain,
+            .ft-webgraphic-l .domain {
+                stroke-width: 0px;
+            }
+            .ft-printgraphic .domain{
+                stroke-width: 0px;
+            }
+            .ft-socialgraphic .domain{
+                stroke-width: 0px;
+            }
+            .ft-videographic .domain{
+                stroke-width: 0px;
+            }
+
+            /* reinstate domain for circle timelines*/
+
+            .ft-webgraphic-s .timelineHolder .baseline line,
+            .ft-webgraphic-m .timelineHolder .baseline line,
+            .ft-webgraphic-m-default .timelineHolder .baseline line,
+            .ft-webgraphic-l .timelineHolder .baseline line {
+                stroke: #000000;
+                stroke-width: 1px;
+                stroke-dasharray: 1, 0;
+                stroke-opacity: 0.4;
+            }
+
+            .ft-webgraphic-s .timelineHolder .domain,
+            .ft-webgraphic-m .timelineHolder .domain,
+            .ft-webgraphic-m-default .timelineHolder .domain,
+            .ft-webgraphic-l .timelineHolder .domain,
+            .ft-printgraphic .timelineHolder .domain {
+                stroke-width: 1px;
+                stroke-opacity: 0.4;
+            }
+
+            .ft-socialgraphic .timelineHolder .domain,
+            .ft-videographic .timelineHolder .domain {
+                stroke: #ffffff;
+            }
+
+            .ft-socialgraphic .timelineHolder .domain {
+                stroke-width: 2px
+            }
+
+            .ft-videographic .timelineHolder .domain {
+                stroke-width: 4px
+            }
+            /* .tick text on yAxis*/
+            .ft-webgraphic-s .xAxis text,
+            .ft-webgraphic-m .xAxis text,
+            .ft-webgraphic-m-default .xAxis text,
+            .ft-webgraphic-l .xAxis text {
+                fill: #66605C;
+                text-anchor: middle;
+            }
+            .ft-printgraphic .xAxis text{
+                text-anchor: middle;
+            }
+            .ft-socialgraphic .xAxis text{
+                opacity: 0.5;
+                fill: #FFFFFF;
+                text-anchor: middle;
+            }
+            .ft-videographic .xAxis text{
+                opacity: 0.5;
+                fill: #FFFFFF;
+                text-anchor: middle;
+            }
+            .ft-webgraphic-s .xAxis line,
+            .ft-webgraphic-m .xAxis line,
+            .ft-webgraphic-m-default .xAxis line,
+            .ft-webgraphic-l .xAxis line {
+                stroke: #e6d9ce;
+                stroke-width: 1px;
+            }
+            .ft-printgraphic .xAxis line{
+                stroke: #000000;
+                stroke-width: 0.3px;
+            }
+            .ft-socialgraphic .xAxis line{
+                stroke: #FFFFFF;
+                stroke-width: 2px;
+                stroke-dasharray: 2, 8;
+                stroke-opacity: 0.38;
+            }
+            .ft-videographic .xAxis line{
+                stroke: #FFFFFF;
+                stroke-width: 4px;
+                stroke-opacity: 0.38;
+            }
+            /* Style for the highlight or base line on yAxis*/
+            .ft-webgraphic-s .baseline line,
+            .ft-webgraphic-m .baseline line,
+            .ft-webgraphic-m-default .baseline line,
+            .ft-webgraphic-l .baseline line {
+                stroke: #CEC6B9;
+                stroke-width: 1px;
+                stroke-dasharray: 1, 0;
+            }
+            .ft-printgraphic .baseline line{
+                stroke: #000000;
+                stroke-width: 0.6px;
+            }
+            .ft-printgraphic .xAxis.baseline line{
+                stroke: #000000;
+                stroke-width: 0.3px;
+            }
+            .ft-socialgraphic .baseline line{
+                stroke: #FFFFFF;
+                stroke-width: 2px;
+                stroke-dasharray: 1, 0;
+                stroke-opacity: 0.5;
+            }
+            .ft-videographic .baseline line{
+                stroke: #FFFFFF;
+                stroke-width: 4px;
+                stroke-opacity: .38;
+            }
+            /* Styles for lines on chart*/
+            .ft-webgraphic-s .lines,
+            .ft-webgraphic-m .lines,
+            .ft-webgraphic-m-default .lines,
+            .ft-webgraphic-l .lines {
+                stroke-linecap: square;
+                stroke-linejoin: round;
+                stroke-width: 3px;
+                fill: none;
+            }
+            .ft-printgraphic .lines{
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 2px;
+                fill: none;
+            }
+            .ft-socialgraphic .lines{
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 5px;
+                fill: none;
+            }
+            .ft-videographic .lines{
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 8px;
+                fill: none;
+            }
+
+            /* annotation styling*/
+
+            .ft-webgraphic-s .annotations-holder line,
+            .ft-webgraphic-m .annotations-holder line,
+            .ft-webgraphic-m-default .annotations-holder line,
+            .ft-webgraphic-l .annotations-holder line {
+                stroke: #66605C;
+                stroke-width: 1px;
+            }
+
+            .ft-printgraphic .annotations-holder line {
+                stroke: #000000;
+                stroke-width: 0.5px;
+            }
+            .ft-socialgraphic .annotations-holder line {
+                stroke: #ffffff;
+                stroke-width: 2px;
+                opacity: 0.7;
+            }
+            .ft-videographic .annotations-holder line {
+                stroke: #ffffff;
+                stroke-width: 4px;
+                opacity: 0.7;
+            }
+
+            .ft-webgraphic-s .annotations-holder text {
+                font-size: 14px;
+            }
+
+            .ft-webgraphic-m .annotations-holder text {
+                font-size: 16px;
+            }
+
+            .ft-webgraphic-m-default .annotations-holder text {
+                font-size: 20px;
+            }
+
+            .ft-webgraphic-l .annotations-holder text {
+                font-size: 18px;
+            }
+
+            .ft-webgraphic-s .annotations-holder text,
+            .ft-webgraphic-m .annotations-holder text,
+            .ft-webgraphic-m-default .annotations-holder text,
+            .ft-webgraphic-l .annotations-holder text {
+                fill: #66605C;
+            }
+
+            .ft-printgraphic .annotations-holder text {
+                font-size: 9.6px;
+                fill: #000000;
+            }
+
+            .ft-socialgraphic .annotations-holder text {
+                font-size: 28px;
+                fill: #ffffff;
+                opacity: 0.7;
+            }
+
+            .ft-videographic .annotations-holder text {
+                font-size: 48px;
+                fill: #ffffff;
+                opacity: 0.7;
+            }
+
+            /* .overall text styles on axis*/
+            .ft-webgraphic-s .highlights,
+            .ft-webgraphic-m .highlights,
+            .ft-webgraphic-m-default .highlights,
+            .ft-webgraphic-l .highlights {
+                fill: #FCE6D6;
+            }
+
+            .ft-printgraphic .highlights{
+                fill: #95BFC5;
+                opacity: 0.3;
+            }
+            .ft-socialgraphic .highlights{
+                fill: #ffffff;
+                opacity: 0.2;
+            }
+
+            .ft-videographic .highlights{
+                fill: #ffffff;
+                opacity: 0.2;
+            }
+
+            .ft-webgraphic-s .timeline-label,
+            .ft-webgraphic-m .timeline-label,
+            .ft-webgraphic-m-default .timeline-label,
+            .ft-webgraphic-l .timeline-label {
+                font-family: MetricWeb;
+                fill: #000000;
+            }
+
+            /* legend */
+            .ft-webgraphic-s .legend,
+            .ft-webgraphic-m .legend,
+            .ft-webgraphic-m-default .legend,
+            .ft-webgraphic-l .legend {
+                font-family: MetricWeb;
+                fill: #66605C;
+            }
+
+            .ft-webgraphic-s .timeline-label,
+            .ft-webgraphic-s .legend {
+                font-size: 14px;
+            }
+
+            .ft-webgraphic-m .timeline-label,
+            .ft-webgraphic-m .legend {
+                font-size: 16px;
+            }
+
+            .ft-webgraphic-m-default .timeline-label,
+            .ft-webgraphic-m-default .legend {
+                font-size: 20px;
+            }
+
+            .ft-webgraphic-l .timeline-label,
+            .ft-webgraphic-l .legend {
+                font-size: 18px;
+            }
+
+            .ft-printgraphic .timeline-label,
+            .ft-printgraphic .legend {
+                font-family: MetricWeb;
+                font-size: 9.6px;
+                fill: #000000;
+            }
+
+            .ft-socialgraphic .timeline-label,
+            .ft-socialgraphic .legend text {
+                font-family: MetricWeb;
+                opacity: 0.5;
+                fill: #FFFFFF;
+                font-size: 28px;
+            }
+
+            .ft-videographic .timeline-label,
+            .ft-videographic .legend text{
+                font-family: MetricWeb;
+                opacity: 0.5;
+                fill: #FFFFFF;
+                font-size: 48px;
+            }
+
+            svg text{
+                font-feature-settings: 'tnum',1;
+                -webkit-font-feature-settings: 'tnum';
+                -moz-font-feature-settings: 'tnum';
+            }
+
+            .saveable button{
+              display: block;
+            }
+
+            ul {
+              line-height: 24px;
+            }
+
+            .button {
+                border-radius: 10px;
+                background-color: #00757F;
+                color: #fff;
+                font-family: MetricWeb;
+                font-weight: 600;
+                font-size: 20px;
+                height: 25px;
+                margin-top: 2px;
+                margin-bottom: 10px;
+                margin-right: 10px;
+                border-width: 0px;
+                padding-top: 3px;
+                cursor: pointer;
+            }
+        </style>
+        <script>${this.code}</script>
+        </head>
+        <body><svg /></body>
+        </html>`);
+
+        try {
+            this.url = await listen(this.server);
+
+            this.browser = await launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--enable-font-antialiasing'] });
+            this.global.page = await this.browser.newPage();
+
+            await this.global.page.goto(this.url, { waitUntil: 'networkidle0' });
+        } catch (e) {
+            console.error(e);
+
+            try {
+                this.server.close();
+            } catch (ee) {
+                console.error('Couldn\'t kill server!');
+                console.error(ee);
+            }
+        }
+    }
+
+    async teardown() {
+        try {
+            await this.browser.close();
+        } catch (e) {
+            console.error('Issue with closing browser');
+            console.error(e);
+        }
+
+        try {
+            await this.server.close();
+        } catch (e) {
+            console.error('Issue with killing server');
+            console.error(e);
+        }
+
+        await super.teardown();
+    }
+
+    runScript(script) {
+        return super.runScript(script);
+    }
+}
+
+module.exports = CustomEnvironment;
