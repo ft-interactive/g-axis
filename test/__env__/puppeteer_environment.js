@@ -520,7 +520,7 @@ class CustomEnvironment extends NodeEnvironment {
         try {
             this.url = await listen(this.server);
 
-            this.browser = await launch();
+            this.browser = await launch({ args: ['--enable-font-antialiasing'] });
             this.global.page = await this.browser.newPage();
 
             await this.global.page.goto(this.url, { waitUntil: 'networkidle0' });
