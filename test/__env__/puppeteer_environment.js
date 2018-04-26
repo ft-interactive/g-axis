@@ -22,7 +22,7 @@ class CustomEnvironment extends NodeEnvironment {
         this.global.start = this.startServer.bind(this);
         this.global.toMatchImageSnapshot = configureToMatchImageSnapshot({
             failureThreshold: '0.3', // Needed due to CI weirdness
-            failureThresholdType: 'percent'
+            failureThresholdType: 'percent',
         });
     }
 
