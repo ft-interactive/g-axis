@@ -3,10 +3,9 @@
  * Test suite for yOrdinal
  */
 
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
-
 jest.setTimeout(20000);
-expect.extend({ toMatchImageSnapshot });
+
+expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
 beforeAll(global.build('yOrdinal'));
 beforeEach(global.start);

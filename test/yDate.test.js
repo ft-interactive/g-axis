@@ -4,10 +4,9 @@
  *
  * @jest-environment node
  */
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
 
-jest.setTimeout(20000);
-expect.extend({ toMatchImageSnapshot });
+// jest.setTimeout(20000);
+// expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
 // beforeAll(global.build('yDate'));
 // beforeEach(global.start);

@@ -2,10 +2,9 @@
  * @file
  * Test suite for xDate
  */
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
 
 jest.setTimeout(20000);
-expect.extend({ toMatchImageSnapshot });
+expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
 beforeAll(global.build('xDate'));
 beforeEach(global.start);

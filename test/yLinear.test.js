@@ -3,10 +3,8 @@
  * Test suite for yLinear
  */
 
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
-
 jest.setTimeout(20000);
-expect.extend({ toMatchImageSnapshot });
+expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
 beforeAll(global.build('yLinear'));
 beforeEach(global.start);

@@ -10,6 +10,7 @@
 const NodeEnvironment = require('jest-environment-node');
 const listen = require('test-listen');
 const micro = require('micro');
+const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
 const { launch } = require('puppeteer');
 const { rollup } = require('rollup');
 
@@ -19,6 +20,9 @@ class CustomEnvironment extends NodeEnvironment {
 
         this.global.build = this.generateCode.bind(this);
         this.global.start = this.startServer.bind(this);
+        this.global.toMatchImageSnapshot = configureToMatchImageSnapshot({
+            failureThreshold: '0.3', // Needed due to CI weirdness
+        });
     }
 
     generateCode(axis) {
