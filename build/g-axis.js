@@ -133,7 +133,7 @@
                     .attr('id', `${frameName}xTick`);
                 }
             }
-            
+
             if (label) {
                 const defaultLabel = {
                     tag: label.tag,
@@ -142,6 +142,28 @@
                     anchor: (label.anchor || 'middle'),
                     rotate: (label.rotate || 0),
                 };
+
+                const calcOffset = () => {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
+                };
+
+                const getVerticle = (axisAlign, vertAlign) => ({
+                    toptop: 0 - (rem),
+                    topmiddle: 0,
+                    topbottom: 0 + (rem),
+                    bottomtop: plotHeight,
+                    bottommiddle: plotHeight + calcOffset(),
+                    bottombottom: plotHeight + calcOffset() + (rem * 1.1),
+                }[axisAlign + vertAlign]);
+
+                const getHorizontal = hori => ({
+                    left: plotWidth - plotWidth,
+                    middle: plotWidth / 2,
+                    right: plotWidth,
+                }[hori]);
 
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
@@ -156,52 +178,23 @@
                 const height = (text.node().getBBox().height) / 2;
                 const textX = text.node().getBBox().x + width;
                 const textY = text.node().getBBox().y + height;
-                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
                     .style('text-anchor', defaultLabel.anchor);
-
-                function getVerticle(axisAlign, vertAlign) {
-                    return {
-                        toptop: 0 - (rem),
-                        topmiddle: 0,
-                        topbottom: 0 + (rem),
-                        bottomtop: plotHeight,
-                        bottommiddle: plotHeight + calcOffset(),
-                        bottombottom: plotHeight + calcOffset()+ (rem * 1.1),
-                    }[axisAlign + vertAlign];
-                }
-                function calcOffset() {
-                    if (tickSize > 0 && tickSize < rem) {
-                        return tickSize + (rem * 0.8);
-                    }
-                    return (rem * 0.9);
-                }
-
-                function getHorizontal(hori) {
-                    return {
-                        left: plotWidth - plotWidth,
-                        middle: plotWidth / 2,
-                        right: plotWidth,
-                    }[hori];
-                }
             }
             if (banding) {
-                let bands = xAxis.tickValues();
-                bands = bands.map((d,i) => {
-                    return {
-                        date: d,
-                        width: getBandWidth(i),
-                    };
-                })
-                .filter((d, i) => {
-                    return i % 2 === 0;
-                });
-
-            function getBandWidth(index) {
+                const getBandWidth = (index, bands) => {
                     if (index === bands.length - 1) {
                         return plotWidth - scale(bands[index]);
                     }
                     return scale(bands[index + 1]) - scale(bands[index]);
-                }
+                };
+
+                const bands = xAxis.tickValues()
+                    .map((d, i, a) => ({
+                        date: d,
+                        width: getBandWidth(i, a),
+                    }))
+                    .filter((d, i) => i % 2 === 0);
 
                 bandHolder.selectAll('rect')
                     .data(bands)
@@ -537,7 +530,7 @@
                 xAxis.tickFormat(customFormat);
             }
 
-            let bandHolder = parent
+            const bandHolder = parent
                 .append('g')
                 .attr('class', 'highlights');
 
@@ -568,6 +561,29 @@
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
 
+
+                const calcOffset = () => {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
+                };
+
+                const getVerticle = (axisAlign, vertAlign) => ({
+                    toptop: 0 - (rem),
+                    topmiddle: 0,
+                    topbottom: 0 + (rem),
+                    bottomtop: plotHeight,
+                    bottommiddle: plotHeight + calcOffset(),
+                    bottombottom: plotHeight + calcOffset() + (rem * 1.1),
+                }[axisAlign + vertAlign]);
+
+                const getHorizontal = hori => ({
+                    left: plotWidth - plotWidth,
+                    middle: plotWidth / 2,
+                    right: plotWidth,
+                }[hori]);
+
                 axisLabel.append('text')
                     .attr('y', getVerticle(align, defaultLabel.vert))
                     .attr('x', getHorizontal(defaultLabel.hori))
@@ -578,58 +594,25 @@
                 const height = (text.node().getBBox().height) / 2;
                 const textX = text.node().getBBox().x + width;
                 const textY = text.node().getBBox().y + height;
-                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
                     .style('text-anchor', defaultLabel.anchor);
-
-                function getVerticle(axisAlign, vertAlign) {
-                    return {
-                        toptop: 0 - (rem),
-                        topmiddle: 0,
-                        topbottom: 0 + (rem),
-                        bottomtop: plotHeight,
-                        bottommiddle: plotHeight + calcOffset(),
-                        bottombottom: plotHeight + calcOffset() + (rem * 1.1),
-                    }[axisAlign + vertAlign];
-                }
-
-                function calcOffset() {
-                    if (tickSize > 0 && tickSize < rem) {
-                        return tickSize + (rem * 0.8);
-                    }
-                    return (rem * 0.9);
-                }
-
-                function getHorizontal(hori) {
-                    return {
-                        left: plotWidth - plotWidth,
-                        middle: plotWidth / 2,
-                        right: plotWidth,
-                    }[hori];
-                }
             }
 
             if (banding) {
-                bands = scale.ticks(numTicks);
-                if (tickValues) {
-                    let bands = xAxis.tickValues();
-                }
-                bands = bands.map((d,i) => {
-                    return{
-                        pos: d,
-                        width: getBandWidth(i)
+                const getBandWidth = (index, bands) => {
+                    if (index === bands.length - 1) {
+                        return plotWidth - scale(bands[index]);
                     }
-                })
-                .filter((d, i) => {
-                    return i % 2 === 0;
-                });
+                    return scale(bands[index + 1]) - scale(bands[index]);
+                };
 
-                function getBandWidth(index) {
-                    if (index === bands.length-1) {
-                        return plotWidth - scale(bands[index])
-                    }
-                    return scale(bands[index+1]) - scale(bands[index])
-                }
-                
+                const bands = (tickValues ? xAxis.tickValues() : scale.ticks(numTicks))
+                    .map((d, i, a) => ({
+                        pos: d,
+                        width: getBandWidth(i, a),
+                    }))
+                    .filter((d, i) => i % 2 === 0);
+
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
@@ -773,7 +756,7 @@
                 scale.paddingInner(0.2);
             }
 
-            let bandHolder = parent
+            const bandHolder = parent
                 .append('g')
                 .attr('class', 'highlights');
 
@@ -789,6 +772,28 @@
             }
 
             if (label) {
+                const calcOffset = () => {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
+                };
+
+                const getVerticle = (axisAlign, vertAlign) => ({
+                    toptop: 0 - (rem),
+                    topmiddle: 0,
+                    topbottom: 0 + (rem),
+                    bottomtop: plotHeight,
+                    bottommiddle: plotHeight + calcOffset(),
+                    bottombottom: plotHeight + calcOffset() + (rem * 1.1),
+                }[axisAlign + vertAlign]);
+
+                const getHorizontal = hori => ({
+                    left: plotWidth - plotWidth,
+                    middle: plotWidth / 2,
+                    right: plotWidth,
+                }[hori]);
+
                 const defaultLabel = {
                     tag: label.tag,
                     hori: (label.hori || 'middle'),
@@ -800,6 +805,7 @@
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
 
+
                 axisLabel.append('text')
                     .attr('y', getVerticle(align, defaultLabel.vert))
                     .attr('x', getHorizontal(defaultLabel.hori))
@@ -810,47 +816,19 @@
                 const height = (text.node().getBBox().height) / 2;
                 const textX = text.node().getBBox().x + width;
                 const textY = text.node().getBBox().y + height;
-                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
                     .style('text-anchor', defaultLabel.anchor);
-
-                 function getVerticle(axisAlign, vertAlign) {
-                    return {
-                        toptop: 0 - (rem),
-                        topmiddle: 0,
-                        topbottom: 0 + (rem),
-                        bottomtop: plotHeight,
-                        bottommiddle: plotHeight + calcOffset(),
-                        bottombottom: plotHeight + calcOffset() + (rem * 1.1),
-                    }[axisAlign + vertAlign];
-                }
-                
-                function calcOffset() {
-                    if (tickSize > 0 && tickSize < rem) {
-                        return tickSize + (rem * 0.8);
-                    }
-                    return (rem * 0.9);
-                }
-
-                function getHorizontal(hori) {
-                    return {
-                        left: plotWidth-plotWidth,
-                        middle: plotWidth/2,
-                        right: plotWidth,
-                    }[hori];
-                }
             }
 
             if (banding) {
-                let bands = scale.domain();
-                bands = bands.map((d, i) => {
-                    return{
+                const bands = scale.domain()
+                    .map(d => ({
                         pos: d,
-                    };
-                })
-                .filter((d, i) => {
-                    return i % 2 === 1;
-                });
+                    }))
+                    .filter((d, i) => i % 2 === 1);
+
                 const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100);
+
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
@@ -956,7 +934,7 @@
         let labelWidth = 0;
         let logScale = false;
         let numTicks = 5;
-        let plotDim = [120,100];
+        let plotDim = [120, 100];
         let tickSize = 300;
         let yAxisHighlight = 0;
         let yLabel;
@@ -1016,7 +994,7 @@
                 yAxis.tickFormat(customFormat);
             }
 
-            let bandHolder = parent
+            const bandHolder = parent
                 .append('g')
                 .attr('class', 'highlights');
 
@@ -1059,6 +1037,28 @@
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
 
+                const getVerticle = vert => ({
+                    top: plotHeight - plotHeight,
+                    middle: plotHeight / 2,
+                    bottom: plotHeight,
+                }[vert]);
+
+                const calcOffset = () => {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize / 2;
+                    }
+                    return 0;
+                };
+
+                const getHorizontal = (axisAlign, horiAlign) => ({
+                    leftleft: 0 - (labelWidth + (rem * 0.6)),
+                    leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
+                    leftright: rem * 0.7,
+                    rightleft: plotWidth - labelWidth,
+                    rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
+                    rightright: plotWidth + (rem) + calcOffset(),
+                }[axisAlign + horiAlign]);
+
                 axisLabel.append('text')
                     .attr('y', getVerticle(defaultLabel.vert))
                     .attr('x', getHorizontal(align, defaultLabel.hori))
@@ -1069,58 +1069,24 @@
                 const height = (text.node().getBBox().height) / 2;
                 const textX = text.node().getBBox().x + width;
                 const textY = text.node().getBBox().y + height;
-                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
                     .style('text-anchor', defaultLabel.anchor);
-
-                function getVerticle(vert) {
-                    return {
-                        top: plotHeight - plotHeight,
-                        middle: plotHeight / 2,
-                        bottom: plotHeight,
-                    }[vert];
-                }
-
-                function getHorizontal(axisAlign, horiAlign) {
-                    return {
-                        leftleft: 0 - (labelWidth + (rem * 0.6)),
-                        leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
-                        leftright: rem * 0.7,
-                        rightleft: plotWidth - labelWidth,
-                        rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
-                        rightright: plotWidth + (rem) + calcOffset(),
-                    }[axisAlign + horiAlign];
-                }
-
-                function calcOffset() {
-                    if (tickSize > 0 && tickSize < rem) {
-                        return tickSize / 2
-                    }
-                    return 0;
-                }
             }
 
             if (banding) {
-                let bands = scale.ticks(numTicks);
-                if (tickValues) {
-                    bands = yAxis.tickValues();
-                }
-
-                bands = bands.map((d,i) => {
-                    return{
-                        pos: d,
-                        height: getBandWidth(i),
-                    };
-                })
-                .filter((d, i) => {
-                    return i % 2 === 0;
-                });
-
-                function getBandWidth(index) {
+                const getBandWidth = (index, bands) => {
                     if (index === 0) {
                         return plotHeight - scale(bands[index]);
                     }
                     return scale(bands[index - 1]) - scale(bands[index]);
-                }
+                };
+
+                const bands = (tickValues ? yAxis.tickValues() : scale.ticks(numTicks))
+                    .map((d, i, a) => ({
+                        pos: d,
+                        height: getBandWidth(i, a),
+                    }))
+                    .filter((d, i) => i % 2 === 0);
 
                 bandHolder.selectAll('rect')
                     .data(bands)
@@ -1285,7 +1251,7 @@
                 scale.paddingInner(0.2);
             }
 
-            let bandHolder = parent
+            const bandHolder = parent
                 .append('g')
                 .attr('class', 'highlights');
 
@@ -1317,6 +1283,28 @@
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
 
+                const getVerticle = vert => ({
+                    top: plotHeight - plotHeight,
+                    middle: plotHeight / 2,
+                    bottom: plotHeight,
+                }[vert]);
+
+                const calcOffset = () => {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize / 2;
+                    }
+                    return 0;
+                };
+
+                const getHorizontal = (axisAlign, horiAlign) => ({
+                    leftleft: 0 - (labelWidth + (rem * 0.6)),
+                    leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
+                    leftright: rem * 0.7,
+                    rightleft: plotWidth - labelWidth,
+                    rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
+                    rightright: plotWidth + (rem) + calcOffset(),
+                }[axisAlign + horiAlign]);
+
                 axisLabel.append('text')
                     .attr('y', getVerticle(defaultLabel.vert))
                     .attr('x', getHorizontal(align, defaultLabel.hori))
@@ -1327,47 +1315,19 @@
                 const height = (text.node().getBBox().height) / 2;
                 const textX = text.node().getBBox().x + width;
                 const textY = text.node().getBBox().y + height;
-                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
+                text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
                     .style('text-anchor', defaultLabel.anchor);
-
-                function getVerticle(vert) {
-                    return {
-                        top: plotHeight - plotHeight,
-                        middle: plotHeight / 2,
-                        bottom: plotHeight,
-                    }[vert];
-                }
-
-                function getHorizontal(axisAlign, horiAlign) {
-                    return {
-                        leftleft: 0 - (labelWidth + (rem * 0.6)),
-                        leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
-                        leftright: rem * 0.7,
-                        rightleft: plotWidth - labelWidth,
-                        rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
-                        rightright: plotWidth + (rem) + calcOffset(),
-                    }[axisAlign + horiAlign];
-                }
-
-                function calcOffset() {
-                    if (tickSize > 0 && tickSize < rem) {
-                        return tickSize / 2;
-                    }
-                    return 0;
-                }
             }
 
             if (banding) {
-                let bands = scale.domain();
-                bands = bands.map((d, i) => {
-                    return {
+                const bands = scale.domain()
+                    .map(d => ({
                         pos: d,
-                    };
-                })
-                .filter((d, i) => {
-                    return i % 2 === 0;
-                });
+                    }))
+                    .filter((d, i) => i % 2 === 0);
+
                 const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100);
+
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
@@ -1480,7 +1440,7 @@
         let interval = 'lustrum';
         let labelWidth = 0;
         let minorAxis = true;
-        let plotDim = [220,100];
+        let plotDim = [220, 100];
         let tickSize = 10;
         let minorTickSize = 5;
         let rem = 10;
@@ -1585,21 +1545,19 @@
             // Use this to amend the tickSIze and re cal the vAxis
             if (tickSize < labelWidth) {
                 yLabel.call(yAxis.tickSize);
-            }
-            else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
+            } else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
 
             if (align === 'right') {
                 yLabel.selectAll('text')
                 .attr('transform', `translate(${(labelWidth)},0)`)
                 .style('text-anchor', 'end');
-            }
-            else {yLabel.selectAll('text').style('text-anchor', 'end');}
+            } else { yLabel.selectAll('text').style('text-anchor', 'end'); }
 
             if (minorAxis) {
                 yLabelMinor = parent.append('g')
                     .attr('class', () => {
-                        const plotHeight = d3.select('.chart-plot').node().getBBox().height;
-                        if (plotHeight === tickSize) {
+                        const pHeight = d3.select('.chart-plot').node().getBBox().height;
+                        if (pHeight === tickSize) {
                             return 'axis yAxis';
                         }
                         return 'axis yAxis axis baseline';
@@ -1629,71 +1587,68 @@
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
 
+                const getVerticle = vert => ({
+                    top: plotHeight - plotHeight,
+                    middle: plotHeight / 2,
+                    bottom: plotHeight,
+                }[vert]);
+
+                const calcOffset = () => {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize / 2;
+                    }
+                    return 0;
+                };
+
+                const getHorizontal = (axisAlign, horiAlign) => ({
+                    leftleft: 0 - (labelWidth + (rem * 0.6)),
+                    leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
+                    leftright: rem * 0.7,
+                    rightleft: plotWidth - labelWidth,
+                    rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
+                    rightright: plotWidth + (rem) + calcOffset(),
+                }[axisAlign + horiAlign]);
+
                 axisLabel.append('text')
                     .attr('y', getVerticle(defaultLabel.vert))
                     .attr('x', getHorizontal(align, defaultLabel.hori))
                     .text(defaultLabel.tag);
 
-                const text = axisLabel.selectAll('text');
-                const width = (text.node().getBBox().width) / 2;
-                const height = (text.node().getBBox().height) / 2;
-                const textX = text.node().getBBox().x + width;
-                const textY = text.node().getBBox().y + height;
+                // The following doesn't appear to be used anywhere:
+
+                // const text = axisLabel.selectAll('text');
+                // const width = (text.node().getBBox().width) / 2;
+                // const height = (text.node().getBBox().height) / 2;
+                // const textX = text.node().getBBox().x + width;
+                // const textY = text.node().getBBox().y + height;
                 // text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
                 //     .style('text-anchor', defaultLabel.anchor);
-
-                function getVerticle(vert) {
-                    return {
-                        top: plotHeight - plotHeight,
-                        middle: plotHeight / 2,
-                        bottom: plotHeight,
-                    }[vert];
-                }
-
-                function getHorizontal(axisAlign, horiAlign) {
-                    return {
-                        leftleft: 0 - (labelWidth + (rem * 0.6)),
-                        leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
-                        leftright: rem * 0.7,
-                        rightleft: plotWidth - labelWidth,
-                        rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
-                        rightright: plotWidth + (rem) + calcOffset(),
-                    }[axisAlign + horiAlign];
-                }
-
-                function calcOffset() {
-                    if (tickSize > 0 && tickSize < rem) {
-                        return tickSize / 2
-                    }
-                    return 0;
-                }
             }
 
             if (banding) {
-                let bands = yAxis.tickValues();
-                bands = bands.map((d, i) => {
-                    return {
-                        date: d,
-                        height: getBandWidth(i),
-                    };
-                })
-                .filter((d, i) => {
-                    return i % 2 === 0;
-                });
-
-            function getBandWidth(index) {
+                const getBandWidth = (index, bands) => {
                     if (index === bands.length - 1) {
                         return plotHeight - scale(bands[index]);
                     }
                     return scale(bands[index + 1]) - scale(bands[index]);
-                }
+                };
+
+                const bands = yAxis.tickValues()
+                    .map((d, i, a) => ({
+                        date: d,
+                        height: getBandWidth(i, a),
+                    }))
+                    .filter((d, i) => i % 2 === 0);
 
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
                     .append('rect')
                     .attr('x', 0)
-                    .attr('width', (d) => {
+                    .attr('width', () => {
+                        if (align === 'left ') {
+                            return plotWidth - labelWidth;
+                        }
                         return plotWidth - labelWidth - rem;
                     })
                     .attr('y', d => scale(d.date))
