@@ -1,27 +1,33 @@
-import tape from 'tape';
+/**
+ * @file
+ * Basic unit tests for g-xAxis
+ *
+ * @jest-environment node
+ */
+
 import * as gAxis from '../index';
 
-tape('gAxis exposes xLinear, yLinear and yOrdinal axes', (test) => {
-    test.ok(gAxis.xDate, 'xDate exists');
-    test.equal(typeof gAxis.xDate, 'function');
+jest.setTimeout(20000);
 
-    test.ok(gAxis.yDate, 'yDate exists');
-    test.equal(typeof gAxis.yDate, 'function');
+test('package "main" exports necessary axes', () => {
+    expect(gAxis.xDate).toBeDefined();
+    expect(gAxis.xDate).toBeInstanceOf(Function);
 
-    test.ok(gAxis.xLinear, 'xLinear exists');
-    test.equal(typeof gAxis.xLinear, 'function');
+    expect(gAxis.yDate).toBeDefined();
+    expect(gAxis.yDate).toBeInstanceOf(Function);
 
-    test.ok(gAxis.xOrdinal, 'xOrdinal exists');
-    test.equal(typeof gAxis.xOrdinal, 'function');
+    expect(gAxis.xLinear).toBeDefined();
+    expect(gAxis.xLinear).toBeInstanceOf(Function);
 
-    test.ok(gAxis.xLinear, 'xLinear exists');
-    test.equal(typeof gAxis.xLinear, 'function');
+    expect(gAxis.xOrdinal).toBeDefined();
+    expect(gAxis.xOrdinal).toBeInstanceOf(Function);
 
-    test.ok(gAxis.yLinear, 'yLinear exists');
-    test.equal(typeof gAxis.yLinear, 'function');
+    expect(gAxis.xLinear).toBeDefined();
+    expect(gAxis.xLinear).toBeInstanceOf(Function);
 
-    test.ok(gAxis.yOrdinal, 'yOrdinal exists');
-    test.equal(typeof gAxis.yOrdinal, 'function');
+    expect(gAxis.yLinear).toBeDefined();
+    expect(gAxis.yLinear).toBeInstanceOf(Function);
 
-    test.end();
+    expect(gAxis.yOrdinal).toBeDefined();
+    expect(gAxis.yOrdinal).toBeInstanceOf(Function);
 });
