@@ -1,5 +1,5 @@
 
-function xaxisDate() {
+export default function xaxisDate() {
     let banding;
     const mindate = new Date(1970, 1, 1);
     const maxdate = new Date(2017, 6, 1);

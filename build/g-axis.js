@@ -2,9 +2,9 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3')) :
     typeof define === 'function' && define.amd ? define(['exports', 'd3'], factory) :
     (factory((global.gAxis = {}),global.d3));
-}(this, (function (exports,d3) { 'use strict';
+}(this, (function (exports,d3$1) { 'use strict';
 
-    function xDate () {
+    function xaxisDate() {
         let banding;
         const mindate = new Date(1970, 1, 1);
         const maxdate = new Date(2017, 6, 1);
@@ -34,7 +34,6 @@
 
             function getAxis(alignment) {
                 if (intraday) {
-                    console.log('intraday axis'); // eslint-disable-line
                     const newDomain = scale.domain();
                     const newRange = scale.range();
                     scale = d3.scalePoint()
@@ -104,7 +103,7 @@
                 xAxis.tickFormat(customFormat);
             }
 
-            const bandHolder = parent
+            let bandHolder = parent
                 .append('g')
                 .attr('class', 'highlights');
 
@@ -133,7 +132,7 @@
                     .attr('id', `${frameName}xTick`);
                 }
             }
-
+            
             if (label) {
                 const defaultLabel = {
                     tag: label.tag,
@@ -142,28 +141,6 @@
                     anchor: (label.anchor || 'middle'),
                     rotate: (label.rotate || 0),
                 };
-
-                const calcOffset = () => {
-                    if (tickSize > 0 && tickSize < rem) {
-                        return tickSize + (rem * 0.8);
-                    }
-                    return (rem * 0.9);
-                };
-
-                const getVerticle = (axisAlign, vertAlign) => ({
-                    toptop: 0 - (rem),
-                    topmiddle: 0,
-                    topbottom: 0 + (rem),
-                    bottomtop: plotHeight,
-                    bottommiddle: plotHeight + calcOffset(),
-                    bottombottom: plotHeight + calcOffset() + (rem * 1.1),
-                }[axisAlign + vertAlign]);
-
-                const getHorizontal = hori => ({
-                    left: plotWidth - plotWidth,
-                    middle: plotWidth / 2,
-                    right: plotWidth,
-                }[hori]);
 
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
@@ -178,24 +155,54 @@
                 const height = (text.node().getBBox().height) / 2;
                 const textX = text.node().getBBox().x + width;
                 const textY = text.node().getBBox().y + height;
-                text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
+                text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
                     .style('text-anchor', defaultLabel.anchor);
+
+                function getVerticle(axisAlign, vertAlign) {
+                    return {
+                        toptop: 0 - (rem),
+                        topmiddle: 0,
+                        topbottom: 0 + (rem),
+                        bottomtop: plotHeight,
+                        bottommiddle: plotHeight + calcOffset(),
+                        bottombottom: plotHeight + calcOffset()+ (rem * 1.1),
+                    }[axisAlign + vertAlign];
+                }
+                function calcOffset() {
+                    if (tickSize > 0 && tickSize < rem) {
+                        return tickSize + (rem * 0.8);
+                    }
+                    return (rem * 0.9);
+                }
+
+                function getHorizontal(hori) {
+                    return {
+                        left: plotWidth - plotWidth,
+                        middle: plotWidth / 2,
+                        right: plotWidth,
+                    }[hori];
+                }
             }
             if (banding) {
-                const getBandWidth = (index, bands) => {
-                    if (index === bands.length - 1) {
-                        return plotWidth - scale(bands[index]);
-                    }
-                    return scale(bands[index + 1]) - scale(bands[index]);
-                };
-
-                const bands = xAxis.tickValues()
-                    .map((d, i, a) => ({
+                let bands = xAxis.tickValues();
+                bands = bands.map((d,i) => {
+                    return{
                         date: d,
-                        width: getBandWidth(i, a),
-                    }))
-                    .filter((d, i) => i % 2 === 0);
+                        width: getBandWidth(i)
+                    }
+                })
+                .filter((d, i) => {
+                    return i % 2 === 0;
+                });
 
+            function getBandWidth(index) {
+                    if (index === bands.length-1) {
+                        return plotWidth - scale(bands[index])
+                    }
+                    return scale(bands[index+1]) - scale(bands[index])
+                }
+                console.log('bands', bands);
+                
                 bandHolder.selectAll('rect')
                     .data(bands)
                     .enter()
@@ -220,6 +227,7 @@
                 quarters: d3.timeYear.every(1),
                 months: d3.timeMonth.every(1),
                 weeks: d3.timeWeek.every(1),
+                daily: d3.timeDay.every(1),
                 days: d3.timeDay.every(1),
                 hours: d3.timeHour.every(1),
             }[intvl];
@@ -235,6 +243,7 @@
                 quarters: d3.timeMonth.every(3),
                 months: d3.timeDay.every(1),
                 weeks: d3.timeDay.every(1),
+                daily: d3.timeHour.every(1),
                 days: d3.timeHour.every(1),
                 hours: d3.timeMinute.every(1),
             }[intvl];
@@ -285,6 +294,10 @@
                     const format = getDays(d, i);
                     return format;
                 },
+                daily(d, i) {
+                    const format = getDaily(d, i);
+                    return format;
+                },
                 hours(d, i) {
                     const format = getHours(d, i);
                     return format;
@@ -303,6 +316,23 @@
                     return `${formatDay(d)} ${formatMonth(d)}`;
                 }
                 return formatDay(d);
+            }
+
+            function getDaily(d, i) {
+                const last = scale.domain().length-1;
+                if (i === 0) {
+                    return `${formatDay(d)} ${formatMonth(d)}`;
+                }
+                if (d.getDate() === 1) {
+                    return `${formatMonth(d)}`;
+                }
+                if (d.getDay() === 5) {
+                    return `${formatDay(d)}`;
+                }
+                if (i === last) {
+                    return formatDay(d);
+                }
+                return ''
             }
 
             function getWeek(d) {
@@ -454,7 +484,7 @@
 
     function xLinear () {
         let banding;
-        let scale = d3.scaleLinear()
+        let scale = d3$1.scaleLinear()
             .domain([0, 100])
             .range([0, 220]);
         let tickSize = 50;
@@ -474,8 +504,8 @@
 
         function getAxis(alignment) {
             return {
-                top: d3.axisTop(),
-                bottom: d3.axisBottom(),
+                top: d3$1.axisTop(),
+                bottom: d3$1.axisBottom(),
             }[alignment];
         }
 
@@ -490,20 +520,20 @@
                 scale.range(newRange);
             }
             if (logScale) {
-                const newScale = d3.scaleLog()
+                const newScale = d3$1.scaleLog()
                 .domain(scale.domain())
                 .range(scale.range());
                 scale = newScale;
             }
 
             let deciFormat;
-            if (span >= 0.5) { deciFormat = d3.format('.1f'); }
-            if (span < 0.5) { deciFormat = d3.format('.2f'); }
-            if (span <= 0.011) { deciFormat = d3.format('.3f'); }
-            if (span < 0.0011) { deciFormat = d3.format('.4f'); }
-            if (span < 0.00011) { deciFormat = d3.format('.5f'); }
-            if (span < 0.000011) { deciFormat = d3.format('.6f'); }
-            const numberFormat = d3.format(',');
+            if (span >= 0.5) { deciFormat = d3$1.format('.1f'); }
+            if (span < 0.5) { deciFormat = d3$1.format('.2f'); }
+            if (span <= 0.011) { deciFormat = d3$1.format('.3f'); }
+            if (span < 0.0011) { deciFormat = d3$1.format('.4f'); }
+            if (span < 0.00011) { deciFormat = d3$1.format('.5f'); }
+            if (span < 0.000011) { deciFormat = d3$1.format('.6f'); }
+            const numberFormat = d3$1.format(',');
 
             const xAxis = getAxis(align)
                 .tickSize(tickSize)
@@ -724,7 +754,7 @@
     function xAxisOrdinal() {
         let banding;
         let align = 'bottom';
-        let scale = d3.scaleBand()
+        let scale = d3$1.scaleBand()
             .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
             .rangeRound([0, 220])
             .paddingInner(0.1)
@@ -916,8 +946,8 @@
         };
         function getAxis(alignment) {
             return {
-                top: d3.axisTop(),
-                bottom: d3.axisBottom(),
+                top: d3$1.axisTop(),
+                bottom: d3$1.axisBottom(),
             }[alignment];
         }
         return axis;
@@ -925,7 +955,7 @@
 
     function yLinear () {
         let banding;
-        let scale = d3.scaleLinear()
+        let scale = d3$1.scaleLinear()
             .domain([0, 10000])
             .range([120, 0]);
         let align = 'right';
@@ -951,7 +981,7 @@
             const plotHeight = plotDim[1];
 
             if (logScale) {
-                const newScale = d3.scaleLog()
+                const newScale = d3$1.scaleLog()
                 .domain(scale.domain())
                 .range(scale.range());
                 scale = newScale;
@@ -962,13 +992,13 @@
             }
 
             let deciFormat;
-            if (span >= 0.5) { deciFormat = d3.format('.1f'); }
-            if (span < 0.5) { deciFormat = d3.format('.2f'); }
-            if (span <= 0.011) { deciFormat = d3.format('.3f'); }
-            if (span < 0.0011) { deciFormat = d3.format('.4f'); }
-            if (span < 0.00011) { deciFormat = d3.format('.5f'); }
-            if (span < 0.000011) { deciFormat = d3.format('.6f'); }
-            const numberFormat = d3.format(',');
+            if (span >= 0.5) { deciFormat = d3$1.format('.1f'); }
+            if (span < 0.5) { deciFormat = d3$1.format('.2f'); }
+            if (span <= 0.011) { deciFormat = d3$1.format('.3f'); }
+            if (span < 0.0011) { deciFormat = d3$1.format('.4f'); }
+            if (span < 0.00011) { deciFormat = d3$1.format('.5f'); }
+            if (span < 0.000011) { deciFormat = d3$1.format('.6f'); }
+            const numberFormat = d3$1.format(',');
 
             const yAxis = getAxis(align)
                 .ticks(numTicks)
@@ -1107,8 +1137,8 @@
 
         function getAxis(alignment) {
             return {
-                left: d3.axisLeft(),
-                right: d3.axisRight(),
+                left: d3$1.axisLeft(),
+                right: d3$1.axisRight(),
             }[alignment];
         }
 
@@ -1209,7 +1239,7 @@
     function yOrdinal () {
         let banding;
         let align = 'left';
-        let scale = d3.scaleBand()
+        let scale = d3$1.scaleBand()
             .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
             .rangeRound([0, 220])
             .paddingInner(0.1)
@@ -1227,8 +1257,8 @@
 
         function getAxis(alignment) {
             return {
-                left: d3.axisLeft(),
-                right: d3.axisRight(),
+                left: d3$1.axisLeft(),
+                right: d3$1.axisRight(),
             }[alignment];
         }
 
@@ -1432,7 +1462,7 @@
         let banding;
         const mindate = new Date(1970, 1, 1);
         const maxdate = new Date(2017, 6, 1);
-        let scale = d3.scaleTime()
+        let scale = d3$1.scaleTime()
             .domain([mindate, maxdate])
             .range([0, 220]);
         let frameName;
@@ -1462,17 +1492,17 @@
                     console.log('intraday axis'); // eslint-disable-line
                     const newDomain = scale.domain();
                     const newRange = scale.range();
-                    scale = d3.scalePoint()
+                    scale = d3$1.scalePoint()
                         .domain(newDomain)
                         .range(newRange);
                     return {
-                        left: d3.axisLeft(),
-                        right: d3.axisRight(),
+                        left: d3$1.axisLeft(),
+                        right: d3$1.axisRight(),
                     }[alignment];
                 }
                 return {
-                    left: d3.axisLeft(),
-                    right: d3.axisRight(),
+                    left: d3$1.axisLeft(),
+                    right: d3$1.axisRight(),
                 }[alignment];
             }
 
@@ -1501,7 +1531,7 @@
                     newTicks.unshift(scale.domain()[0]);
                 }
                 if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
-                    newTicks.push(d3.timeYear(scale.domain()[1]));
+                    newTicks.push(d3$1.timeYear(scale.domain()[1]));
                 }
                 if (endTicks) { newTicks = scale.domain(); }
                 yAxis.tickValues(newTicks);
@@ -1556,7 +1586,7 @@
             if (minorAxis) {
                 yLabelMinor = parent.append('g')
                     .attr('class', () => {
-                        const pHeight = d3.select('.chart-plot').node().getBBox().height;
+                        const pHeight = d3$1.select('.chart-plot').node().getBBox().height;
                         if (pHeight === tickSize) {
                             return 'axis yAxis';
                         }
@@ -1660,44 +1690,44 @@
 
         function getTicks(intvl) {
             return {
-                century: d3.timeYear.every(100),
-                jubilee: d3.timeYear.every(50),
-                decade: d3.timeYear.every(10),
-                lustrum: d3.timeYear.every(5),
-                years: d3.timeYear.every(1),
-                fiscal: d3.timeYear.every(1),
-                quarters: d3.timeYear.every(1),
-                months: d3.timeMonth.every(1),
-                weeks: d3.timeWeek.every(1),
-                days: d3.timeDay.every(1),
-                hours: d3.timeHour.every(1),
+                century: d3$1.timeYear.every(100),
+                jubilee: d3$1.timeYear.every(50),
+                decade: d3$1.timeYear.every(10),
+                lustrum: d3$1.timeYear.every(5),
+                years: d3$1.timeYear.every(1),
+                fiscal: d3$1.timeYear.every(1),
+                quarters: d3$1.timeYear.every(1),
+                months: d3$1.timeMonth.every(1),
+                weeks: d3$1.timeWeek.every(1),
+                days: d3$1.timeDay.every(1),
+                hours: d3$1.timeHour.every(1),
             }[intvl];
         }
         function getTicksMinor(intvl) {
             return {
-                century: d3.timeYear.every(10),
-                jubilee: d3.timeYear.every(10),
-                decade: d3.timeYear.every(1),
-                lustrum: d3.timeYear.every(1),
-                years: d3.timeMonth.every(1),
-                fiscal: d3.timeMonth.every(1),
-                quarters: d3.timeMonth.every(3),
-                months: d3.timeDay.every(1),
-                weeks: d3.timeDay.every(1),
-                days: d3.timeHour.every(1),
-                hours: d3.timeMinute.every(1),
+                century: d3$1.timeYear.every(10),
+                jubilee: d3$1.timeYear.every(10),
+                decade: d3$1.timeYear.every(1),
+                lustrum: d3$1.timeYear.every(1),
+                years: d3$1.timeMonth.every(1),
+                fiscal: d3$1.timeMonth.every(1),
+                quarters: d3$1.timeMonth.every(3),
+                months: d3$1.timeDay.every(1),
+                weeks: d3$1.timeDay.every(1),
+                days: d3$1.timeHour.every(1),
+                hours: d3$1.timeMinute.every(1),
             }[intvl];
         }
 
         function tickFormat(intvl) {
-            const formatFullYear = d3.timeFormat('%Y');
-            const formatYear = d3.timeFormat('%y');
-            const formatMonth = d3.timeFormat('%b');
-            const formatWeek = d3.timeFormat('%W');
-            const formatDay = d3.timeFormat('%d');
-            const formatHour = d3.timeFormat('%H:%M');
+            const formatFullYear = d3$1.timeFormat('%Y');
+            const formatYear = d3$1.timeFormat('%y');
+            const formatMonth = d3$1.timeFormat('%b');
+            const formatWeek = d3$1.timeFormat('%W');
+            const formatDay = d3$1.timeFormat('%d');
+            const formatHour = d3$1.timeFormat('%H:%M');
             return {
-                century: d3.timeFormat('%Y'),
+                century: d3$1.timeFormat('%Y'),
                 jubilee(d, i) {
                     const format = checkCentury(d, i);
                     return format;
@@ -1782,7 +1812,7 @@
 
             function checkMonth(d, i) {
                 if (d.getMonth() === 0 || i === 0) {
-                    const newYear = d3.timeFormat('%b %Y');
+                    const newYear = d3$1.timeFormat('%b %Y');
                     return newYear(d);
                 }
                 return formatMonth(d);
@@ -1911,7 +1941,7 @@
      * 2017 Bob Haslett, ft-interactive
      */
 
-    exports.xDate = xDate;
+    exports.xDate = xaxisDate;
     exports.xLinear = xLinear;
     exports.xOrdinal = xAxisOrdinal;
     exports.yLinear = yLinear;

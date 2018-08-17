@@ -1,7 +1,7 @@
 {
   "name": "g-axis",
   "author": "Bob Haslett",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Module for rendering axes FT-style",
   "keywords": [
     "FT",
