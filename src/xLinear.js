@@ -4,7 +4,14 @@
  */
 
 import * as d3 from 'd3';
-import { getDecimalFormat, getAxis } from './utils';
+import {
+    getAxis,
+    getDecimalFormat,
+    getDefaultXAxisLabel,
+    getHorizontal,
+    getVertical,
+    setLabelIds,
+} from './utils';
 
 export default function () {
     let banding;
@@ -92,53 +99,29 @@ export default function () {
             .classed('baseline', true);
 
         if (frameName) {
-            xLabel
-                .selectAll('.axis.xAxis text')
-                .attr('id', `${frameName}xLabel`);
-            xLabel
-                .selectAll('.axis.xAxis line')
-                .attr('id', `${frameName}xTick`);
+            setLabelIds({ selection: xLabel, axis: 'x', frameName });
         }
 
         if (label) {
-            const defaultLabel = {
-                tag: label.tag,
-                hori: label.hori || 'middle',
-                vert: label.vert || 'bottom',
-                anchor: label.anchor || 'middle',
-                rotate: label.rotate || 0,
-            };
-
+            const defaultLabel = getDefaultXAxisLabel(label);
             const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-
-            const calcOffset = () => {
-                if (tickSize > 0 && tickSize < rem) {
-                    return tickSize + (rem * 0.8); // prettier-ignore
-                }
-                return (rem * 0.9); // prettier-ignore
-            };
-
-            const getVertical = (axisAlign, vertAlign) =>
-                ({
-                    toptop: 0 - rem,
-                    topmiddle: 0,
-                    topbottom: 0 + rem,
-                    bottomtop: plotHeight,
-                    bottommiddle: plotHeight + calcOffset(),
-                    bottombottom: plotHeight + calcOffset() + (rem * 1.1), // prettier-ignore
-                }[axisAlign + vertAlign]);
-
-            const getHorizontal = hori =>
-                ({
-                    left: plotWidth - plotWidth,
-                    middle: plotWidth / 2,
-                    right: plotWidth,
-                }[hori]);
 
             axisLabel
                 .append('text')
-                .attr('y', getVertical(align, defaultLabel.vert))
-                .attr('x', getHorizontal(defaultLabel.hori))
+                .attr(
+                    'y',
+                    getVertical({
+                        axisAlign: align,
+                        vertAlign: defaultLabel.vert,
+                        plotHeight,
+                        rem,
+                        tickSize,
+                    }),
+                )
+                .attr(
+                    'x',
+                    getHorizontal({ hori: defaultLabel.hori, plotWidth }),
+                )
                 .text(defaultLabel.tag);
 
             const text = axisLabel.selectAll('text');

@@ -4,7 +4,7 @@
  */
 
 import * as d3 from 'd3';
-import { getAxis } from './utils';
+import { getAxis, getDefaultYAxisLabel } from './utils';
 
 export default function () {
     let banding;
@@ -67,13 +67,7 @@ export default function () {
         }
 
         if (label) {
-            const defaultLabel = {
-                tag: label.tag,
-                hori: label.hori || 'left',
-                vert: label.vert || 'middle',
-                anchor: label.anchor || 'middle',
-                rotate: label.rotate || -90,
-            };
+            const defaultLabel = getDefaultYAxisLabel(label);
 
             const axisLabel = parent.append('g').attr('class', 'axis xAxis');
 

@@ -4,7 +4,15 @@
  */
 
 import * as d3 from 'd3';
-import { getAxis, convertToPointScale } from './utils';
+import {
+    getAxis,
+    convertToPointScale,
+    getDefaultYAxisLabel,
+    getTimeTickFormat,
+    getTimeTicks,
+    getTimeTicksMinor,
+    setLabelIds,
+} from './utils';
 
 export default function () {
     let banding;
@@ -40,7 +48,7 @@ export default function () {
             scale = convertToPointScale(scale);
             yAxis
                 .tickSize(tickSize)
-                .tickFormat(tickFormat(interval))
+                .tickFormat(getTimeTickFormat(interval, { fullYear, scale }))
                 .scale(scale);
             yAxis.tickValues(
                 scale.domain().filter((d, i) => {
@@ -58,9 +66,9 @@ export default function () {
             yAxis
                 .tickSize(tickSize)
                 // .ticks(getTicks(interval))
-                .tickFormat(tickFormat(interval))
+                .tickFormat(getTimeTickFormat(interval, { fullYear, scale }))
                 .scale(scale);
-            let newTicks = scale.ticks(getTicks(interval));
+            let newTicks = scale.ticks(getTimeTicks(interval));
             const dayCheck = scale.domain()[0].getDate();
             const monthCheck = scale.domain()[0].getMonth();
             if (dayCheck !== 1 && monthCheck !== 0) {
@@ -89,7 +97,7 @@ export default function () {
         } else {
             yMinor
                 .tickSize(minorTickSize)
-                .ticks(getTicksMinor(interval))
+                .ticks(getTimeTicksMinor(interval))
                 .tickFormat('')
                 .scale(scale);
         }
@@ -147,12 +155,7 @@ export default function () {
         }
 
         if (frameName) {
-            yLabel
-                .selectAll('.axis.yAxis text')
-                .attr('id', `${frameName}yLabel`);
-            yLabel
-                .selectAll('.axis.yAxis line')
-                .attr('id', `${frameName}xTick`);
+            setLabelIds({ selection: yLabel, axis: 'y', frameName });
             if (minorAxis) {
                 yLabelMinor
                     .selectAll('.axis.yAxis line')
@@ -160,13 +163,7 @@ export default function () {
             }
         }
         if (label) {
-            const defaultLabel = {
-                tag: label.tag,
-                hori: label.hori || 'left',
-                vert: label.vert || 'middle',
-                anchor: label.anchor || 'middle',
-                rotate: label.rotate || -90,
-            };
+            const defaultLabel = getDefaultYAxisLabel(label);
 
             const axisLabel = parent.append('g').attr('class', 'axis xAxis');
 
@@ -246,149 +243,6 @@ export default function () {
         yLabel.selectAll('.domain').remove();
     }
 
-    function getTicks(intvl) {
-        return {
-            century: d3.timeYear.every(100),
-            jubilee: d3.timeYear.every(50),
-            decade: d3.timeYear.every(10),
-            lustrum: d3.timeYear.every(5),
-            years: d3.timeYear.every(1),
-            fiscal: d3.timeYear.every(1),
-            quarters: d3.timeYear.every(1),
-            months: d3.timeMonth.every(1),
-            weeks: d3.timeWeek.every(1),
-            days: d3.timeDay.every(1),
-            hours: d3.timeHour.every(1),
-        }[intvl];
-    }
-    function getTicksMinor(intvl) {
-        return {
-            century: d3.timeYear.every(10),
-            jubilee: d3.timeYear.every(10),
-            decade: d3.timeYear.every(1),
-            lustrum: d3.timeYear.every(1),
-            years: d3.timeMonth.every(1),
-            fiscal: d3.timeMonth.every(1),
-            quarters: d3.timeMonth.every(3),
-            months: d3.timeDay.every(1),
-            weeks: d3.timeDay.every(1),
-            days: d3.timeHour.every(1),
-            hours: d3.timeMinute.every(1),
-        }[intvl];
-    }
-
-    function tickFormat(intvl) {
-        const formatFullYear = d3.timeFormat('%Y');
-        const formatYear = d3.timeFormat('%y');
-        const formatMonth = d3.timeFormat('%b');
-        const formatWeek = d3.timeFormat('%W');
-        const formatDay = d3.timeFormat('%d');
-        const formatHour = d3.timeFormat('%H:%M');
-        return {
-            century: d3.timeFormat('%Y'),
-            jubilee(d, i) {
-                const format = checkCentury(d, i);
-                return format;
-            },
-            decade(d, i) {
-                const format = checkCentury(d, i);
-                return format;
-            },
-            lustrum(d, i) {
-                const format = checkCentury(d, i);
-                return format;
-            },
-            years(d, i) {
-                const format = checkCentury(d, i);
-                return format;
-            },
-            fiscal(d, i) {
-                const format = getFiscal(d, i);
-                return format;
-            },
-            quarters(d, i) {
-                const format = getQuarters(d, i);
-                return format;
-            },
-            months(d, i) {
-                const format = checkMonth(d, i);
-                return format;
-            },
-            weeks(d, i) {
-                const format = getWeek(d, i);
-                return format;
-            },
-            days(d, i) {
-                const format = getDays(d, i);
-                return format;
-            },
-            hours(d, i) {
-                const format = getHours(d, i);
-                return format;
-            },
-        }[intvl];
-
-        function getHours(d, i) {
-            if (d.getHours() === 1 || i === 0) {
-                return `${formatHour(d)} ${formatDay(d)}`;
-            }
-            return formatHour(d);
-        }
-
-        function getDays(d, i) {
-            if (d.getDate() === 1 || i === 0) {
-                return `${formatDay(d)} ${formatMonth(d)}`;
-            }
-            return formatDay(d);
-        }
-
-        function getWeek(d) {
-            if (d.getDate() < 9) {
-                return `${formatWeek(d)} ${formatMonth(d)}`;
-            }
-            return formatWeek(d);
-        }
-
-        function getQuarters(d, i) {
-            if (d.getMonth() < 3 && i < 4) {
-                return `Q1 ${formatFullYear(d)}`;
-            }
-            if (d.getMonth() < 3) {
-                return 'Q1';
-            }
-            if (d.getMonth() >= 3 && d.getMonth() < 6) {
-                return 'Q2';
-            }
-            if (d.getMonth() >= 6 && d.getMonth() < 9) {
-                return 'Q3';
-            }
-            if (d.getMonth() >= 9 && d.getMonth() < 12) {
-                return 'Q4';
-            }
-            throw new Error('Invalid quarter');
-        }
-
-        function checkMonth(d, i) {
-            if (d.getMonth() === 0 || i === 0) {
-                const newYear = d3.timeFormat('%b %Y');
-                return newYear(d);
-            }
-            return formatMonth(d);
-        }
-
-        function checkCentury(d, i) {
-            if (fullYear || +formatFullYear(d) % 100 === 0 || i === 0) {
-                return formatFullYear(d);
-            }
-            return formatYear(d);
-        }
-        function getFiscal(d, i) {
-            if (fullYear || +formatFullYear(d) % 100 === 0 || i === 0) {
-                return `${formatFullYear(d)}/${Number(formatYear(d)) + 1}`;
-            }
-            return `${formatYear(d)}/${Number(formatYear(d)) + 1}`;
-        }
-    }
     axis.align = (d) => {
         align = d;
         return axis;
