@@ -7,12 +7,13 @@ import * as d3 from 'd3';
 import {
     convertToPointScale,
     getAxis,
+    getBandWidth,
     getDefaultXAxisLabel,
     getTimeTickFormat,
     getTimeTicks,
     getTimeTicksMinor,
-    getVertical,
-    getHorizontal,
+    getXVertical,
+    getXHorizontal,
     setLabelIds,
 } from './utils';
 
@@ -148,9 +149,9 @@ export default function xaxisDate() {
                 .append('text')
                 .attr(
                     'y',
-                    getVertical({
-                        axisAlign: align,
-                        vertAlign: defaultLabel.vert,
+                    getXVertical({
+                        align,
+                        vert: defaultLabel.vert,
                         plotHeight,
                         rem,
                         tickSize,
@@ -158,7 +159,7 @@ export default function xaxisDate() {
                 )
                 .attr(
                     'x',
-                    getHorizontal({ hori: defaultLabel.hori, plotWidth }),
+                    getXHorizontal({ hori: defaultLabel.hori, plotWidth }),
                 )
                 .text(defaultLabel.tag);
 
@@ -174,16 +175,11 @@ export default function xaxisDate() {
         }
         if (banding) {
             let bands = xAxis.tickValues();
-            const getBandWidth = (index) => {
-                if (index === bands.length - 1) {
-                    return plotWidth - scale(bands[index]);
-                }
-                return scale(bands[index + 1]) - scale(bands[index]);
-            };
+
             bands = bands
                 .map((d, i) => ({
                     date: d,
-                    width: getBandWidth(i),
+                    width: getBandWidth({ index: i, bands, plotWidth, scale }),
                 }))
                 .filter((d, i) => i % 2 === 0);
 

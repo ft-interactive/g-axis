@@ -4,7 +4,12 @@
  */
 
 import * as d3 from 'd3';
-import { getAxis, getDefaultYAxisLabel } from './utils';
+import {
+    getAxis,
+    getYHorizontal,
+    getYVertical,
+    getDefaultYAxisLabel,
+} from './utils';
 
 export default function () {
     let banding;
@@ -71,34 +76,23 @@ export default function () {
 
             const axisLabel = parent.append('g').attr('class', 'axis xAxis');
 
-            const getVertical = vert =>
-                ({
-                    top: plotHeight - plotHeight,
-                    middle: plotHeight / 2,
-                    bottom: plotHeight,
-                }[vert]);
-
-            const calcOffset = () => {
-                if (tickSize > 0 && tickSize < rem) {
-                    return tickSize / 2;
-                }
-                return 0;
-            };
-
-            // prettier-ignore
-            const getHorizontal = (axisAlign, horiAlign) => ({
-                leftleft: 0 - (labelWidth + (rem * 0.6)),
-                leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
-                leftright: rem * 0.7,
-                rightleft: plotWidth - labelWidth,
-                rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
-                rightright: plotWidth + (rem) + calcOffset(),
-            }[axisAlign + horiAlign]);
-
             axisLabel
                 .append('text')
-                .attr('y', getVertical(defaultLabel.vert))
-                .attr('x', getHorizontal(align, defaultLabel.hori))
+                .attr(
+                    'y',
+                    getYVertical({ vert: defaultLabel.vert, plotHeight }),
+                )
+                .attr(
+                    'x',
+                    getYHorizontal({
+                        align,
+                        hori: defaultLabel.hori,
+                        plotWidth,
+                        rem,
+                        tickSize,
+                        labelWidth,
+                    }),
+                )
                 .text(defaultLabel.tag);
 
             const text = axisLabel.selectAll('text');

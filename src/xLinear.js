@@ -6,10 +6,11 @@
 import * as d3 from 'd3';
 import {
     getAxis,
+    getBandWidth,
     getDecimalFormat,
     getDefaultXAxisLabel,
-    getHorizontal,
-    getVertical,
+    getXHorizontal,
+    getXVertical,
     setLabelIds,
 } from './utils';
 
@@ -110,9 +111,9 @@ export default function () {
                 .append('text')
                 .attr(
                     'y',
-                    getVertical({
-                        axisAlign: align,
-                        vertAlign: defaultLabel.vert,
+                    getXVertical({
+                        align,
+                        vert: defaultLabel.vert,
                         plotHeight,
                         rem,
                         tickSize,
@@ -120,7 +121,7 @@ export default function () {
                 )
                 .attr(
                     'x',
-                    getHorizontal({ hori: defaultLabel.hori, plotWidth }),
+                    getXHorizontal({ hori: defaultLabel.hori, plotWidth }),
                 )
                 .text(defaultLabel.tag);
 
@@ -136,20 +137,18 @@ export default function () {
         }
 
         if (banding) {
-            const getBandWidth = (index, bands) => {
-                if (index === bands.length - 1) {
-                    return plotWidth - scale(bands[index]);
-                }
-                return scale(bands[index + 1]) - scale(bands[index]);
-            };
-
             const bands = (tickValues
                 ? xAxis.tickValues()
                 : scale.ticks(numTicks)
             )
                 .map((d, i, a) => ({
                     pos: d,
-                    width: getBandWidth(i, a),
+                    width: getBandWidth({
+                        index: i,
+                        bands: a,
+                        plotWidth,
+                        scale,
+                    }),
                 }))
                 .filter((d, i) => i % 2 === 0);
 

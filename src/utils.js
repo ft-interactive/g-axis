@@ -237,32 +237,66 @@ export const getDefaultYAxisLabel = label => ({
     rotate: label.rotate || -90,
 });
 
-export const calcOffset = ({ tickSize, rem }) => {
-    if (tickSize > 0 && tickSize < rem) {
-        return tickSize + (rem * 0.8); // prettier-ignore
-    }
-    return (rem * 0.9); // prettier-ignore
-};
-
-export const getVertical = ({
-    axisAlign,
-    vertAlign,
-    plotHeight,
-    rem,
-    tickSize,
-}) =>
-    ({
+export const getXVertical = ({ align, vert, plotHeight, rem, tickSize }) => {
+    const calcOffset = () => {
+        if (tickSize > 0 && tickSize < rem) {
+            return tickSize + (rem * 0.8); // prettier-ignore
+        }
+        return (rem * 0.9); // prettier-ignore
+    };
+    return {
         toptop: 0 - rem,
         topmiddle: 0,
         topbottom: 0 + rem,
         bottomtop: plotHeight,
-        bottommiddle: plotHeight + calcOffset({ rem, tickSize }),
-        bottombottom: plotHeight + calcOffset({ rem, tickSize }) + (rem * 1.1), // prettier-ignore
-    }[axisAlign + vertAlign]);
+        bottommiddle: plotHeight + calcOffset(),
+        bottombottom: plotHeight + calcOffset() + (rem * 1.1), // prettier-ignore
+    }[align + vert];
+};
 
-export const getHorizontal = ({ hori, plotWidth }) =>
+export const getXHorizontal = ({ hori, plotWidth }) =>
     ({
         left: plotWidth - plotWidth,
         middle: plotWidth / 2,
         right: plotWidth,
     }[hori]);
+
+export const getYVertical = ({ vert, plotHeight }) =>
+    ({
+        top: plotHeight - plotHeight,
+        middle: plotHeight / 2,
+        bottom: plotHeight,
+    }[vert]);
+
+export const getYHorizontal = ({
+    align,
+    hori,
+    plotWidth,
+    rem,
+    tickSize,
+    labelWidth,
+}) => {
+    const calcOffset = () => {
+        if (tickSize > 0 && tickSize < rem) {
+            return tickSize / 2;
+        }
+        return 0;
+    };
+
+    // prettier-ignore
+    return ({
+        leftleft: 0 - (labelWidth + (rem * 0.6)),
+        leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
+        leftright: rem * 0.7,
+        rightleft: plotWidth - labelWidth,
+        rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
+        rightright: plotWidth + (rem) + calcOffset(),
+    }[align + hori]);
+};
+
+export const getBandWidth = ({ index, bands, plotWidth, scale }) => {
+    if (index === bands.length - 1) {
+        return plotWidth - scale(bands[index]);
+    }
+    return scale(bands[index + 1]) - scale(bands[index]);
+};

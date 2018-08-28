@@ -7,8 +7,8 @@ import * as d3 from 'd3';
 import {
     getAxis,
     getDefaultXAxisLabel,
-    getHorizontal,
-    getVertical,
+    getXHorizontal,
+    getXVertical,
     setLabelIds,
 } from './utils';
 
@@ -68,9 +68,9 @@ export default function xAxisOrdinal() {
                 .append('text')
                 .attr(
                     'y',
-                    getVertical({
-                        axisAlign: align,
-                        vertAlign: defaultLabel.vert,
+                    getXVertical({
+                        align,
+                        vert: defaultLabel.vert,
                         plotHeight,
                         rem,
                         tickSize,
@@ -78,7 +78,7 @@ export default function xAxisOrdinal() {
                 )
                 .attr(
                     'x',
-                    getHorizontal({ hori: defaultLabel.hori, plotWidth }),
+                    getXHorizontal({ hori: defaultLabel.hori, plotWidth }),
                 )
                 .text(defaultLabel.tag);
 
