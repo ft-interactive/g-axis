@@ -1,4 +1,10 @@
+/**
+ * @file
+ * Linear x-axes
+ */
+
 import * as d3 from 'd3';
+import { getDecimalFormat, getAxis } from './utils';
 
 export default function () {
     let banding;
@@ -21,13 +27,6 @@ export default function () {
     let tickValues;
     let customFormat = false;
 
-    function getAxis(alignment) {
-        return {
-            top: d3.axisTop(),
-            bottom: d3.axisBottom(),
-        }[alignment];
-    }
-
     function axis(parent) {
         let deciCheck = false;
         const span = scale.domain()[1] - scale.domain()[0];
@@ -46,25 +45,7 @@ export default function () {
             scale = newScale;
         }
 
-        let deciFormat;
-        if (span >= 0.5) {
-            deciFormat = d3.format('.1f');
-        }
-        if (span < 0.5) {
-            deciFormat = d3.format('.2f');
-        }
-        if (span <= 0.011) {
-            deciFormat = d3.format('.3f');
-        }
-        if (span < 0.0011) {
-            deciFormat = d3.format('.4f');
-        }
-        if (span < 0.00011) {
-            deciFormat = d3.format('.5f');
-        }
-        if (span < 0.000011) {
-            deciFormat = d3.format('.6f');
-        }
+        const deciFormat = getDecimalFormat(span);
         const numberFormat = d3.format(',');
 
         const xAxis = getAxis(align)

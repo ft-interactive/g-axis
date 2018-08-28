@@ -1,4 +1,10 @@
+/**
+ * @file
+ * Ordinal x-axes
+ */
+
 import * as d3 from 'd3';
+import { getAxis } from './utils';
 
 export default function xAxisOrdinal() {
     let banding;
@@ -200,11 +206,6 @@ export default function xAxisOrdinal() {
         xLabel = d;
         return axis;
     };
-    function getAxis(alignment) {
-        return {
-            top: d3.axisTop(),
-            bottom: d3.axisBottom(),
-        }[alignment];
-    }
+
     return axis;
 }

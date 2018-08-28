@@ -1,4 +1,10 @@
+/**
+ * @file
+ * Ordinal y-axes
+ */
+
 import * as d3 from 'd3';
+import { getAxis } from './utils';
 
 export default function () {
     let banding;
@@ -19,13 +25,6 @@ export default function () {
     let rem = 10;
     let frameName;
     let invert = false;
-
-    function getAxis(alignment) {
-        return {
-            left: d3.axisLeft(),
-            right: d3.axisRight(),
-        }[alignment];
-    }
 
     function axis(parent) {
         const plotWidth = plotDim[0];

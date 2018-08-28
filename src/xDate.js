@@ -1,4 +1,10 @@
+/**
+ * @file
+ * Date x-axes
+ */
+
 import * as d3 from 'd3';
+import { getAxis, convertToPointScale } from './utils';
 
 export default function xaxisDate() {
     let banding;
@@ -28,28 +34,9 @@ export default function xaxisDate() {
     function axis(parent) {
         const plotWidth = plotDim[0];
         const plotHeight = plotDim[1];
-
-        function getAxis(alignment) {
-            if (intraday) {
-                const newDomain = scale.domain();
-                const newRange = scale.range();
-                scale = d3
-                    .scalePoint()
-                    .domain(newDomain)
-                    .range(newRange);
-                return {
-                    top: d3.axisTop(),
-                    bottom: d3.axisBottom(),
-                }[alignment];
-            }
-            return {
-                top: d3.axisTop(),
-                bottom: d3.axisBottom(),
-            }[alignment];
-        }
-
         const xAxis = getAxis(align);
         if (intraday) {
+            scale = convertToPointScale(scale);
             xAxis
                 .tickSize(tickSize)
                 .tickFormat(tickFormat(interval))

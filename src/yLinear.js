@@ -1,4 +1,10 @@
+/**
+ * @file
+ * Linear y-axes
+ */
+
 import * as d3 from 'd3';
+import { getDecimalFormat, getAxis } from './utils';
 
 export default function () {
     let banding;
@@ -40,25 +46,7 @@ export default function () {
             scale.range(newRange);
         }
 
-        let deciFormat;
-        if (span >= 0.5) {
-            deciFormat = d3.format('.1f');
-        }
-        if (span < 0.5) {
-            deciFormat = d3.format('.2f');
-        }
-        if (span <= 0.011) {
-            deciFormat = d3.format('.3f');
-        }
-        if (span < 0.0011) {
-            deciFormat = d3.format('.4f');
-        }
-        if (span < 0.00011) {
-            deciFormat = d3.format('.5f');
-        }
-        if (span < 0.000011) {
-            deciFormat = d3.format('.6f');
-        }
+        const deciFormat = getDecimalFormat(span);
         const numberFormat = d3.format(',');
 
         const yAxis = getAxis(align)
@@ -212,13 +200,6 @@ export default function () {
             .classed('baseline', true);
 
         yLabel.selectAll('.domain').remove();
-    }
-
-    function getAxis(alignment) {
-        return {
-            left: d3.axisLeft(),
-            right: d3.axisRight(),
-        }[alignment];
     }
 
     axis.align = (d) => {

@@ -1,4 +1,10 @@
+/**
+ * @file
+ * Date y-axes
+ */
+
 import * as d3 from 'd3';
+import { getAxis, convertToPointScale } from './utils';
 
 export default function () {
     let banding;
@@ -29,29 +35,9 @@ export default function () {
     function axis(parent) {
         const plotWidth = plotDim[0];
         const plotHeight = plotDim[1];
-
-        function getAxis(alignment) {
-            if (intraday) {
-                console.log('intraday axis'); // eslint-disable-line
-                const newDomain = scale.domain();
-                const newRange = scale.range();
-                scale = d3
-                    .scalePoint()
-                    .domain(newDomain)
-                    .range(newRange);
-                return {
-                    left: d3.axisLeft(),
-                    right: d3.axisRight(),
-                }[alignment];
-            }
-            return {
-                left: d3.axisLeft(),
-                right: d3.axisRight(),
-            }[alignment];
-        }
-
         const yAxis = getAxis(align);
         if (intraday) {
+            scale = convertToPointScale(scale);
             yAxis
                 .tickSize(tickSize)
                 .tickFormat(tickFormat(interval))
