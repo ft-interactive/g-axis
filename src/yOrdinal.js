@@ -3,7 +3,8 @@ import * as d3 from 'd3';
 export default function () {
     let banding;
     let align = 'left';
-    let scale = d3.scaleBand()
+    let scale = d3
+        .scaleBand()
         .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
         .rangeRound([0, 220])
         .paddingInner(0.1)
@@ -45,11 +46,10 @@ export default function () {
             scale.paddingInner(0.2);
         }
 
-        const bandHolder = parent
-            .append('g')
-            .attr('class', 'highlights');
+        const bandHolder = parent.append('g').attr('class', 'highlights');
 
-        yLabel = parent.append('g')
+        yLabel = parent
+            .append('g')
             .attr('class', 'axis yAxis')
             .call(yAxis);
 
@@ -59,29 +59,31 @@ export default function () {
         });
 
         if (frameName) {
-            yLabel.selectAll('.axis.yAxis text')
-            .attr('id', `${frameName}yLabel`);
-            yLabel.selectAll('.axis.xAxis line')
-            .attr('id', `${frameName}yTick`);
+            yLabel
+                .selectAll('.axis.yAxis text')
+                .attr('id', `${frameName}yLabel`);
+            yLabel
+                .selectAll('.axis.xAxis line')
+                .attr('id', `${frameName}yTick`);
         }
 
         if (label) {
             const defaultLabel = {
                 tag: label.tag,
-                hori: (label.hori || 'left'),
-                vert: (label.vert || 'middle'),
-                anchor: (label.anchor || 'middle'),
-                rotate: (label.rotate || -90),
+                hori: label.hori || 'left',
+                vert: label.vert || 'middle',
+                anchor: label.anchor || 'middle',
+                rotate: label.rotate || -90,
             };
 
-            const axisLabel = parent.append('g')
-                .attr('class', 'axis xAxis');
+            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
 
-            const getVerticle = vert => ({
-                top: plotHeight - plotHeight,
-                middle: plotHeight / 2,
-                bottom: plotHeight,
-            }[vert]);
+            const getVertical = vert =>
+                ({
+                    top: plotHeight - plotHeight,
+                    middle: plotHeight / 2,
+                    bottom: plotHeight,
+                }[vert]);
 
             const calcOffset = () => {
                 if (tickSize > 0 && tickSize < rem) {
@@ -90,6 +92,7 @@ export default function () {
                 return 0;
             };
 
+            // prettier-ignore
             const getHorizontal = (axisAlign, horiAlign) => ({
                 leftleft: 0 - (labelWidth + (rem * 0.6)),
                 leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
@@ -99,29 +102,34 @@ export default function () {
                 rightright: plotWidth + (rem) + calcOffset(),
             }[axisAlign + horiAlign]);
 
-            axisLabel.append('text')
-                .attr('y', getVerticle(defaultLabel.vert))
+            axisLabel
+                .append('text')
+                .attr('y', getVertical(defaultLabel.vert))
                 .attr('x', getHorizontal(align, defaultLabel.hori))
                 .text(defaultLabel.tag);
 
             const text = axisLabel.selectAll('text');
-            const width = (text.node().getBBox().width) / 2;
-            const height = (text.node().getBBox().height) / 2;
+            const width = text.node().getBBox().width / 2;
+            const height = text.node().getBBox().height / 2;
             const textX = text.node().getBBox().x + width;
             const textY = text.node().getBBox().y + height;
-            text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
-                .style('text-anchor', defaultLabel.anchor);
+            text.attr(
+                'transform',
+                `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
+            ).style('text-anchor', defaultLabel.anchor);
         }
 
         if (banding) {
-            const bands = scale.domain()
+            const bands = scale
+                .domain()
                 .map(d => ({
                     pos: d,
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100);
+            const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100); // prettier-ignore
 
+            // prettier-ignore
             bandHolder.selectAll('rect')
                 .data(bands)
                 .enter()

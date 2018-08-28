@@ -4,7 +4,8 @@ export default function () {
     let banding;
     const mindate = new Date(1970, 1, 1);
     const maxdate = new Date(2017, 6, 1);
-    let scale = d3.scaleTime()
+    let scale = d3
+        .scaleTime()
         .domain([mindate, maxdate])
         .range([0, 220]);
     let frameName;
@@ -34,7 +35,8 @@ export default function () {
                 console.log('intraday axis'); // eslint-disable-line
                 const newDomain = scale.domain();
                 const newRange = scale.range();
-                scale = d3.scalePoint()
+                scale = d3
+                    .scalePoint()
                     .domain(newDomain)
                     .range(newRange);
                 return {
@@ -54,12 +56,18 @@ export default function () {
                 .tickSize(tickSize)
                 .tickFormat(tickFormat(interval))
                 .scale(scale);
-            yAxis.tickValues(scale.domain().filter((d, i) => {
-                let checkDate;
-                if (i === 0) { return d.getDay(); }
-                if (i > 0) { checkDate = new Date(scale.domain()[i - 1]); }
-                return (d.getDay() !== checkDate.getDay());
-            }));
+            yAxis.tickValues(
+                scale.domain().filter((d, i) => {
+                    let checkDate;
+                    if (i === 0) {
+                        return d.getDay();
+                    }
+                    if (i > 0) {
+                        checkDate = new Date(scale.domain()[i - 1]);
+                    }
+                    return d.getDay() !== checkDate.getDay();
+                }),
+            );
         } else {
             yAxis
                 .tickSize(tickSize)
@@ -67,15 +75,22 @@ export default function () {
                 .tickFormat(tickFormat(interval))
                 .scale(scale);
             let newTicks = scale.ticks(getTicks(interval));
-            const dayCheck = (scale.domain()[0]).getDate();
+            const dayCheck = scale.domain()[0].getDate();
             const monthCheck = scale.domain()[0].getMonth();
             if (dayCheck !== 1 && monthCheck !== 0) {
                 newTicks.unshift(scale.domain()[0]);
             }
-            if (interval === 'lustrum' || interval === 'decade' || interval === 'jubilee' || interval === 'century') {
+            if (
+                interval === 'lustrum' ||
+                interval === 'decade' ||
+                interval === 'jubilee' ||
+                interval === 'century'
+            ) {
                 newTicks.push(d3.timeYear(scale.domain()[1]));
             }
-            if (endTicks) { newTicks = scale.domain(); }
+            if (endTicks) {
+                newTicks = scale.domain();
+            }
             yAxis.tickValues(newTicks);
         }
 
@@ -101,11 +116,10 @@ export default function () {
             yAxis.tickFormat(customFormat);
         }
 
-        const bandHolder = parent
-            .append('g')
-            .attr('class', 'highlights');
+        const bandHolder = parent.append('g').attr('class', 'highlights');
 
-        yLabel = parent.append('g')
+        yLabel = parent
+            .append('g')
             .attr('class', 'axis yAxis axis baseline')
             .call(yAxis);
 
@@ -117,18 +131,27 @@ export default function () {
         // Use this to amend the tickSIze and re cal the vAxis
         if (tickSize < labelWidth) {
             yLabel.call(yAxis.tickSize);
-        } else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
+        } else {
+            yLabel.call(yAxis.tickSize(tickSize - labelWidth));
+        }
 
         if (align === 'right') {
-            yLabel.selectAll('text')
-            .attr('transform', `translate(${(labelWidth)},0)`)
-            .style('text-anchor', 'end');
-        } else { yLabel.selectAll('text').style('text-anchor', 'end'); }
+            yLabel
+                .selectAll('text')
+                .attr('transform', `translate(${labelWidth},0)`)
+                .style('text-anchor', 'end');
+        } else {
+            yLabel.selectAll('text').style('text-anchor', 'end');
+        }
 
         if (minorAxis) {
-            yLabelMinor = parent.append('g')
+            yLabelMinor = parent
+                .append('g')
                 .attr('class', () => {
-                    const pHeight = d3.select('.chart-plot').node().getBBox().height;
+                    const pHeight = d3
+                        .select('.chart-plot')
+                        .node()
+                        .getBBox().height;
                     if (pHeight === tickSize) {
                         return 'axis yAxis';
                     }
@@ -138,32 +161,35 @@ export default function () {
         }
 
         if (frameName) {
-            yLabel.selectAll('.axis.yAxis text')
-            .attr('id', `${frameName}yLabel`);
-            yLabel.selectAll('.axis.yAxis line')
-            .attr('id', `${frameName}xTick`);
-            if (minorAxis) {
-                yLabelMinor.selectAll('.axis.yAxis line')
+            yLabel
+                .selectAll('.axis.yAxis text')
+                .attr('id', `${frameName}yLabel`);
+            yLabel
+                .selectAll('.axis.yAxis line')
                 .attr('id', `${frameName}xTick`);
+            if (minorAxis) {
+                yLabelMinor
+                    .selectAll('.axis.yAxis line')
+                    .attr('id', `${frameName}xTick`);
             }
         }
         if (label) {
             const defaultLabel = {
                 tag: label.tag,
-                hori: (label.hori || 'left'),
-                vert: (label.vert || 'middle'),
-                anchor: (label.anchor || 'middle'),
-                rotate: (label.rotate || -90),
+                hori: label.hori || 'left',
+                vert: label.vert || 'middle',
+                anchor: label.anchor || 'middle',
+                rotate: label.rotate || -90,
             };
 
-            const axisLabel = parent.append('g')
-                .attr('class', 'axis xAxis');
+            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
 
-            const getVerticle = vert => ({
-                top: plotHeight - plotHeight,
-                middle: plotHeight / 2,
-                bottom: plotHeight,
-            }[vert]);
+            const getVertical = vert =>
+                ({
+                    top: plotHeight - plotHeight,
+                    middle: plotHeight / 2,
+                    bottom: plotHeight,
+                }[vert]);
 
             const calcOffset = () => {
                 if (tickSize > 0 && tickSize < rem) {
@@ -172,6 +198,7 @@ export default function () {
                 return 0;
             };
 
+            // prettier-ignore
             const getHorizontal = (axisAlign, horiAlign) => ({
                 leftleft: 0 - (labelWidth + (rem * 0.6)),
                 leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
@@ -181,8 +208,9 @@ export default function () {
                 rightright: plotWidth + (rem) + calcOffset(),
             }[axisAlign + horiAlign]);
 
-            axisLabel.append('text')
-                .attr('y', getVerticle(defaultLabel.vert))
+            axisLabel
+                .append('text')
+                .attr('y', getVertical(defaultLabel.vert))
                 .attr('x', getHorizontal(align, defaultLabel.hori))
                 .text(defaultLabel.tag);
 
@@ -205,14 +233,16 @@ export default function () {
                 return scale(bands[index + 1]) - scale(bands[index]);
             };
 
-            const bands = yAxis.tickValues()
+            const bands = yAxis
+                .tickValues()
                 .map((d, i, a) => ({
                     date: d,
                     height: getBandWidth(i, a),
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            bandHolder.selectAll('rect')
+            bandHolder
+                .selectAll('rect')
                 .data(bands)
                 .enter()
                 .append('rect')
@@ -361,13 +391,13 @@ export default function () {
         }
 
         function checkCentury(d, i) {
-            if (fullYear || (+formatFullYear(d) % 100 === 0) || (i === 0)) {
+            if (fullYear || +formatFullYear(d) % 100 === 0 || i === 0) {
                 return formatFullYear(d);
             }
             return formatYear(d);
         }
         function getFiscal(d, i) {
-            if (fullYear || (+formatFullYear(d) % 100 === 0) || (i === 0)) {
+            if (fullYear || +formatFullYear(d) % 100 === 0 || i === 0) {
                 return `${formatFullYear(d)}/${Number(formatYear(d)) + 1}`;
             }
             return `${formatYear(d)}/${Number(formatYear(d)) + 1}`;

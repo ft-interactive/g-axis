@@ -2,7 +2,8 @@ import * as d3 from 'd3';
 
 export default function () {
     let banding;
-    let scale = d3.scaleLinear()
+    let scale = d3
+        .scaleLinear()
         .domain([0, 10000])
         .range([120, 0]);
     let align = 'right';
@@ -28,9 +29,10 @@ export default function () {
         const plotHeight = plotDim[1];
 
         if (logScale) {
-            const newScale = d3.scaleLog()
-            .domain(scale.domain())
-            .range(scale.range());
+            const newScale = d3
+                .scaleLog()
+                .domain(scale.domain())
+                .range(scale.range());
             scale = newScale;
         }
         if (invert) {
@@ -39,12 +41,24 @@ export default function () {
         }
 
         let deciFormat;
-        if (span >= 0.5) { deciFormat = d3.format('.1f'); }
-        if (span < 0.5) { deciFormat = d3.format('.2f'); }
-        if (span <= 0.011) { deciFormat = d3.format('.3f'); }
-        if (span < 0.0011) { deciFormat = d3.format('.4f'); }
-        if (span < 0.00011) { deciFormat = d3.format('.5f'); }
-        if (span < 0.000011) { deciFormat = d3.format('.6f'); }
+        if (span >= 0.5) {
+            deciFormat = d3.format('.1f');
+        }
+        if (span < 0.5) {
+            deciFormat = d3.format('.2f');
+        }
+        if (span <= 0.011) {
+            deciFormat = d3.format('.3f');
+        }
+        if (span < 0.0011) {
+            deciFormat = d3.format('.4f');
+        }
+        if (span < 0.00011) {
+            deciFormat = d3.format('.5f');
+        }
+        if (span < 0.000011) {
+            deciFormat = d3.format('.6f');
+        }
         const numberFormat = d3.format(',');
 
         const yAxis = getAxis(align)
@@ -54,9 +68,15 @@ export default function () {
 
         function formatNumber(d) {
             const checkDecimal = Number.isInteger(d / divisor);
-            if (checkDecimal === false) { deciCheck = true; }
-            if (d / divisor === 0) { return numberFormat(d / divisor); }
-            if (logScale) { return numberFormat(d / divisor); }
+            if (checkDecimal === false) {
+                deciCheck = true;
+            }
+            if (d / divisor === 0) {
+                return numberFormat(d / divisor);
+            }
+            if (logScale) {
+                return numberFormat(d / divisor);
+            }
             if (deciCheck) {
                 return deciFormat(d / divisor);
             }
@@ -71,16 +91,14 @@ export default function () {
             yAxis.tickFormat(customFormat);
         }
 
-        const bandHolder = parent
+        const bandHolder = parent.append('g').attr('class', 'highlights');
+
+        yLabel = parent
             .append('g')
-            .attr('class', 'highlights');
+            .attr('class', 'axis yAxis')
+            .call(yAxis);
 
-        yLabel = parent.append('g')
-          .attr('class', 'axis yAxis')
-          .call(yAxis);
-
-
-    // Calculate width of widest .tick text
+        // Calculate width of widest .tick text
         yLabel.selectAll('.yAxis text').each(function calcTickTextWidth() {
             labelWidth = Math.max(this.getBBox().width, labelWidth);
         });
@@ -88,37 +106,42 @@ export default function () {
         // Use this to amend the tickSIze and re cal the vAxis
         if (tickSize < labelWidth) {
             yLabel.call(yAxis.tickSize(tickSize));
-        } else { yLabel.call(yAxis.tickSize(tickSize - labelWidth)); }
+        } else {
+            yLabel.call(yAxis.tickSize(tickSize - labelWidth));
+        }
 
         if (align === 'right') {
-            yLabel.selectAll('text')
-            .attr('transform', `translate(${(labelWidth)},0)`);
+            yLabel
+                .selectAll('text')
+                .attr('transform', `translate(${labelWidth},0)`);
         }
 
         if (frameName) {
-            yLabel.selectAll('.axis.yAxis text')
-            .attr('id', `${frameName}yLabel`);
-            yLabel.selectAll('.axis.yAxis line')
-            .attr('id', `${frameName}yTick`);
+            yLabel
+                .selectAll('.axis.yAxis text')
+                .attr('id', `${frameName}yLabel`);
+            yLabel
+                .selectAll('.axis.yAxis line')
+                .attr('id', `${frameName}yTick`);
         }
 
         if (label) {
             const defaultLabel = {
                 tag: label.tag,
-                hori: (label.hori || 'left'),
-                vert: (label.vert || 'middle'),
-                anchor: (label.anchor || 'middle'),
-                rotate: (label.rotate || -90),
+                hori: label.hori || 'left',
+                vert: label.vert || 'middle',
+                anchor: label.anchor || 'middle',
+                rotate: label.rotate || -90,
             };
 
-            const axisLabel = parent.append('g')
-                .attr('class', 'axis xAxis');
+            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
 
-            const getVerticle = vert => ({
-                top: plotHeight - plotHeight,
-                middle: plotHeight / 2,
-                bottom: plotHeight,
-            }[vert]);
+            const getVertical = vert =>
+                ({
+                    top: plotHeight - plotHeight,
+                    middle: plotHeight / 2,
+                    bottom: plotHeight,
+                }[vert]);
 
             const calcOffset = () => {
                 if (tickSize > 0 && tickSize < rem) {
@@ -127,6 +150,7 @@ export default function () {
                 return 0;
             };
 
+            // prettier-ignore
             const getHorizontal = (axisAlign, horiAlign) => ({
                 leftleft: 0 - (labelWidth + (rem * 0.6)),
                 leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
@@ -136,18 +160,21 @@ export default function () {
                 rightright: plotWidth + (rem) + calcOffset(),
             }[axisAlign + horiAlign]);
 
-            axisLabel.append('text')
-                .attr('y', getVerticle(defaultLabel.vert))
+            axisLabel
+                .append('text')
+                .attr('y', getVertical(defaultLabel.vert))
                 .attr('x', getHorizontal(align, defaultLabel.hori))
                 .text(defaultLabel.tag);
 
             const text = axisLabel.selectAll('text');
-            const width = (text.node().getBBox().width) / 2;
-            const height = (text.node().getBBox().height) / 2;
+            const width = text.node().getBBox().width / 2;
+            const height = text.node().getBBox().height / 2;
             const textX = text.node().getBBox().x + width;
             const textY = text.node().getBBox().y + height;
-            text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
-                .style('text-anchor', defaultLabel.anchor);
+            text.attr(
+                'transform',
+                `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
+            ).style('text-anchor', defaultLabel.anchor);
         }
 
         if (banding) {
@@ -158,14 +185,18 @@ export default function () {
                 return scale(bands[index - 1]) - scale(bands[index]);
             };
 
-            const bands = (tickValues ? yAxis.tickValues() : scale.ticks(numTicks))
+            const bands = (tickValues
+                ? yAxis.tickValues()
+                : scale.ticks(numTicks)
+            )
                 .map((d, i, a) => ({
                     pos: d,
                     height: getBandWidth(i, a),
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            bandHolder.selectAll('rect')
+            bandHolder
+                .selectAll('rect')
                 .data(bands)
                 .enter()
                 .append('rect')
@@ -175,7 +206,8 @@ export default function () {
                 .attr('height', d => d.height);
         }
 
-        yLabel.selectAll('.tick')
+        yLabel
+            .selectAll('.tick')
             .filter(d => d === 0 || d === yAxisHighlight)
             .classed('baseline', true);
 
