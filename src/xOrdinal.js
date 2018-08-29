@@ -3,7 +3,8 @@ import * as d3 from 'd3';
 export default function xAxisOrdinal() {
     let banding;
     let align = 'bottom';
-    let scale = d3.scaleBand()
+    let scale = d3
+        .scaleBand()
         .domain(['Oranges', 'Lemons', 'Apples', 'Pears'])
         .rangeRound([0, 220])
         .paddingInner(0.1)
@@ -35,79 +36,85 @@ export default function xAxisOrdinal() {
             scale.paddingInner(0.2);
         }
 
-        const bandHolder = parent
-            .append('g')
-            .attr('class', 'highlights');
+        const bandHolder = parent.append('g').attr('class', 'highlights');
 
-        xLabel = parent.append('g')
+        xLabel = parent
+            .append('g')
             .attr('class', 'axis xAxis')
             .call(xAxis);
 
         if (frameName) {
-            xLabel.selectAll('.axis.xAxis text')
-            .attr('id', `${frameName}xLabel`);
-            xLabel.selectAll('.axis.xAxis line')
-            .attr('id', `${frameName}xTick`);
+            xLabel
+                .selectAll('.axis.xAxis text')
+                .attr('id', `${frameName}xLabel`);
+            xLabel
+                .selectAll('.axis.xAxis line')
+                .attr('id', `${frameName}xTick`);
         }
 
         if (label) {
             const calcOffset = () => {
                 if (tickSize > 0 && tickSize < rem) {
-                    return tickSize + (rem * 0.8);
+                    return tickSize + (rem * 0.8); // prettier-ignore
                 }
-                return (rem * 0.9);
+                return (rem * 0.9); // prettier-ignore
             };
 
-            const getVerticle = (axisAlign, vertAlign) => ({
-                toptop: 0 - (rem),
-                topmiddle: 0,
-                topbottom: 0 + (rem),
-                bottomtop: plotHeight,
-                bottommiddle: plotHeight + calcOffset(),
-                bottombottom: plotHeight + calcOffset() + (rem * 1.1),
-            }[axisAlign + vertAlign]);
+            const getVertical = (axisAlign, vertAlign) =>
+                ({
+                    toptop: 0 - rem,
+                    topmiddle: 0,
+                    topbottom: 0 + rem,
+                    bottomtop: plotHeight,
+                    bottommiddle: plotHeight + calcOffset(),
+                    bottombottom: plotHeight + calcOffset() + (rem * 1.1), // prettier-ignore
+                }[axisAlign + vertAlign]);
 
-            const getHorizontal = hori => ({
-                left: plotWidth - plotWidth,
-                middle: plotWidth / 2,
-                right: plotWidth,
-            }[hori]);
+            const getHorizontal = hori =>
+                ({
+                    left: plotWidth - plotWidth,
+                    middle: plotWidth / 2,
+                    right: plotWidth,
+                }[hori]);
 
             const defaultLabel = {
                 tag: label.tag,
-                hori: (label.hori || 'middle'),
-                vert: (label.vert || 'bottom'),
-                anchor: (label.anchor || 'middle'),
-                rotate: (label.rotate || 0),
+                hori: label.hori || 'middle',
+                vert: label.vert || 'bottom',
+                anchor: label.anchor || 'middle',
+                rotate: label.rotate || 0,
             };
 
-            const axisLabel = parent.append('g')
-                .attr('class', 'axis xAxis');
+            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
 
-
-            axisLabel.append('text')
-                .attr('y', getVerticle(align, defaultLabel.vert))
+            axisLabel
+                .append('text')
+                .attr('y', getVertical(align, defaultLabel.vert))
                 .attr('x', getHorizontal(defaultLabel.hori))
                 .text(defaultLabel.tag);
 
             const text = axisLabel.selectAll('text');
-            const width = (text.node().getBBox().width) / 2;
-            const height = (text.node().getBBox().height) / 2;
+            const width = text.node().getBBox().width / 2;
+            const height = text.node().getBBox().height / 2;
             const textX = text.node().getBBox().x + width;
             const textY = text.node().getBBox().y + height;
-            text.attr('transform', `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`)
-                .style('text-anchor', defaultLabel.anchor);
+            text.attr(
+                'transform',
+                `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
+            ).style('text-anchor', defaultLabel.anchor);
         }
 
         if (banding) {
-            const bands = scale.domain()
+            const bands = scale
+                .domain()
                 .map(d => ({
                     pos: d,
                 }))
                 .filter((d, i) => i % 2 === 1);
 
-            const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100);
+            const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100); // prettier-ignore
 
+            // prettier-ignore
             bandHolder.selectAll('rect')
                 .data(bands)
                 .enter()
