@@ -4,13 +4,7 @@
  */
 
 import * as d3 from 'd3';
-import {
-    getAxis,
-    getDefaultXAxisLabel,
-    getXHorizontal,
-    getXVertical,
-    setLabelIds,
-} from './utils';
+import { generateLabels, getAxis, setLabelIds } from './utils';
 
 export default function xAxisOrdinal() {
     let banding;
@@ -60,37 +54,15 @@ export default function xAxisOrdinal() {
         }
 
         if (label) {
-            const defaultLabel = getDefaultXAxisLabel(label);
-
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-
-            axisLabel
-                .append('text')
-                .attr(
-                    'y',
-                    getXVertical({
-                        align,
-                        vert: defaultLabel.vert,
-                        plotHeight,
-                        rem,
-                        tickSize,
-                    }),
-                )
-                .attr(
-                    'x',
-                    getXHorizontal({ hori: defaultLabel.hori, plotWidth }),
-                )
-                .text(defaultLabel.tag);
-
-            const text = axisLabel.selectAll('text');
-            const width = text.node().getBBox().width / 2;
-            const height = text.node().getBBox().height / 2;
-            const textX = text.node().getBBox().x + width;
-            const textY = text.node().getBBox().y + height;
-            text.attr(
-                'transform',
-                `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
-            ).style('text-anchor', defaultLabel.anchor);
+            generateLabels('x', {
+                align,
+                label,
+                parent,
+                plotHeight,
+                plotWidth,
+                rem,
+                tickSize,
+            });
         }
 
         if (banding) {

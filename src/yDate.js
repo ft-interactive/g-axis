@@ -6,13 +6,11 @@
 import * as d3 from 'd3';
 import {
     convertToPointScale,
+    generateDateTickValues,
+    generateLabels,
     getAxis,
-    getDefaultYAxisLabel,
     getTimeTickFormat,
-    getTimeTicks,
     getTimeTicksMinor,
-    getYHorizontal,
-    getYVertical,
     setLabelIds,
 } from './utils';
 
@@ -48,60 +46,27 @@ export default function () {
         const yAxis = getAxis(align);
         if (intraday) {
             scale = convertToPointScale(scale);
-            yAxis
-                .tickSize(tickSize)
-                .tickFormat(getTimeTickFormat(interval, { fullYear, scale }))
-                .scale(scale);
-            yAxis.tickValues(
-                scale.domain().filter((d, i) => {
-                    let checkDate;
-                    if (i === 0) {
-                        return d.getDay();
-                    }
-                    if (i > 0) {
-                        checkDate = new Date(scale.domain()[i - 1]);
-                    }
-                    return d.getDay() !== checkDate.getDay();
+        }
+        yAxis
+            .tickSize(tickSize)
+            .tickFormat(getTimeTickFormat(interval, { fullYear, scale }))
+            .scale(scale)
+            .tickValues(
+                generateDateTickValues({
+                    intraday,
+                    scale,
+                    interval,
+                    endTicks,
                 }),
             );
-        } else {
-            yAxis
-                .tickSize(tickSize)
-                // .ticks(getTicks(interval))
-                .tickFormat(getTimeTickFormat(interval, { fullYear, scale }))
-                .scale(scale);
-            let newTicks = scale.ticks(getTimeTicks(interval));
-            const dayCheck = scale.domain()[0].getDate();
-            const monthCheck = scale.domain()[0].getMonth();
-            if (dayCheck !== 1 && monthCheck !== 0) {
-                newTicks.unshift(scale.domain()[0]);
-            }
-            if (
-                interval === 'lustrum' ||
-                interval === 'decade' ||
-                interval === 'jubilee' ||
-                interval === 'century'
-            ) {
-                newTicks.push(d3.timeYear(scale.domain()[1]));
-            }
-            if (endTicks) {
-                newTicks = scale.domain();
-            }
-            yAxis.tickValues(newTicks);
-        }
 
-        const yMinor = getAxis(align);
-        if (intraday) {
-            yMinor
-                .tickSize(minorTickSize)
-                .tickFormat('')
-                .scale(scale);
-        } else {
-            yMinor
-                .tickSize(minorTickSize)
-                .ticks(getTimeTicksMinor(interval))
-                .tickFormat('')
-                .scale(scale);
+        const yMinor = getAxis(align)
+            .tickSize(minorTickSize)
+            .tickFormat('')
+            .scale(scale);
+
+        if (!intraday) {
+            yMinor.ticks(getTimeTicksMinor(interval));
         }
 
         if (tickValues) {
@@ -165,38 +130,16 @@ export default function () {
             }
         }
         if (label) {
-            const defaultLabel = getDefaultYAxisLabel(label);
-
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-
-            axisLabel
-                .append('text')
-                .attr(
-                    'y',
-                    getYVertical({ vert: defaultLabel.vert, plotHeight }),
-                )
-                .attr(
-                    'x',
-                    getYHorizontal({
-                        align,
-                        hori: defaultLabel.hori,
-                        plotWidth,
-                        rem,
-                        tickSize,
-                        labelWidth,
-                    }),
-                )
-                .text(defaultLabel.tag);
-
-            // The following doesn't appear to be used anywhere:
-
-            // const text = axisLabel.selectAll('text');
-            // const width = (text.node().getBBox().width) / 2;
-            // const height = (text.node().getBBox().height) / 2;
-            // const textX = text.node().getBBox().x + width;
-            // const textY = text.node().getBBox().y + height;
-            // text.attr('transform', 'rotate(' + (defaultLabel.rotate) + ', ' + textX + ', ' + textY + ')')
-            //     .style('text-anchor', defaultLabel.anchor);
+            generateLabels('y', {
+                align,
+                label,
+                labelWidth,
+                parent,
+                plotHeight,
+                plotWidth,
+                rem,
+                tickSize,
+            });
         }
 
         if (banding) {

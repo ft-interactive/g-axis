@@ -5,11 +5,10 @@
 
 import * as d3 from 'd3';
 import {
+    formatNumber,
+    generateLabels,
     getAxis,
     getDecimalFormat,
-    getDefaultYAxisLabel,
-    getYHorizontal,
-    getYVertical,
     setLabelIds,
 } from './utils';
 
@@ -36,7 +35,7 @@ export default function () {
     let customFormat = false;
 
     function axis(parent) {
-        let deciCheck = false;
+        const deciCheck = false;
         const span = scale.domain()[1] - scale.domain()[0];
         const plotWidth = plotDim[0];
         const plotHeight = plotDim[1];
@@ -59,24 +58,15 @@ export default function () {
         const yAxis = getAxis(align)
             .ticks(numTicks)
             .scale(scale)
-            .tickFormat(formatNumber);
-
-        function formatNumber(d) {
-            const checkDecimal = Number.isInteger(d / divisor);
-            if (checkDecimal === false) {
-                deciCheck = true;
-            }
-            if (d / divisor === 0) {
-                return numberFormat(d / divisor);
-            }
-            if (logScale) {
-                return numberFormat(d / divisor);
-            }
-            if (deciCheck) {
-                return deciFormat(d / divisor);
-            }
-            return numberFormat(d / divisor);
-        }
+            .tickFormat(d =>
+                formatNumber(d, {
+                    divisor,
+                    numberFormat,
+                    deciFormat,
+                    deciCheck,
+                    logScale,
+                }),
+            );
 
         if (tickValues) {
             yAxis.tickValues(tickValues);
@@ -116,38 +106,16 @@ export default function () {
         }
 
         if (label) {
-            const defaultLabel = getDefaultYAxisLabel(label);
-
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-
-            axisLabel
-                .append('text')
-                .attr(
-                    'y',
-                    getYVertical({ vert: defaultLabel.vert, plotHeight }),
-                )
-                .attr(
-                    'x',
-                    getYHorizontal({
-                        align,
-                        hori: defaultLabel.hori,
-                        plotWidth,
-                        rem,
-                        tickSize,
-                        labelWidth,
-                    }),
-                )
-                .text(defaultLabel.tag);
-
-            const text = axisLabel.selectAll('text');
-            const width = text.node().getBBox().width / 2;
-            const height = text.node().getBBox().height / 2;
-            const textX = text.node().getBBox().x + width;
-            const textY = text.node().getBBox().y + height;
-            text.attr(
-                'transform',
-                `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
-            ).style('text-anchor', defaultLabel.anchor);
+            generateLabels('y', {
+                align,
+                label,
+                labelWidth,
+                parent,
+                plotHeight,
+                plotWidth,
+                rem,
+                tickSize,
+            });
         }
 
         if (banding) {

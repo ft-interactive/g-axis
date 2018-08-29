@@ -4,12 +4,7 @@
  */
 
 import * as d3 from 'd3';
-import {
-    getAxis,
-    getYHorizontal,
-    getYVertical,
-    getDefaultYAxisLabel,
-} from './utils';
+import { generateLabels, getAxis } from './utils';
 
 export default function () {
     let banding;
@@ -72,38 +67,16 @@ export default function () {
         }
 
         if (label) {
-            const defaultLabel = getDefaultYAxisLabel(label);
-
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-
-            axisLabel
-                .append('text')
-                .attr(
-                    'y',
-                    getYVertical({ vert: defaultLabel.vert, plotHeight }),
-                )
-                .attr(
-                    'x',
-                    getYHorizontal({
-                        align,
-                        hori: defaultLabel.hori,
-                        plotWidth,
-                        rem,
-                        tickSize,
-                        labelWidth,
-                    }),
-                )
-                .text(defaultLabel.tag);
-
-            const text = axisLabel.selectAll('text');
-            const width = text.node().getBBox().width / 2;
-            const height = text.node().getBBox().height / 2;
-            const textX = text.node().getBBox().x + width;
-            const textY = text.node().getBBox().y + height;
-            text.attr(
-                'transform',
-                `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
-            ).style('text-anchor', defaultLabel.anchor);
+            generateLabels('y', {
+                align,
+                label,
+                labelWidth,
+                parent,
+                plotHeight,
+                plotWidth,
+                rem,
+                tickSize,
+            });
         }
 
         if (banding) {

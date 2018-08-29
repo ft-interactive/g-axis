@@ -300,3 +300,136 @@ export const getBandWidth = ({ index, bands, plotWidth, scale }) => {
     }
     return scale(bands[index + 1]) - scale(bands[index]);
 };
+
+export const formatNumber = (
+    d,
+    { divisor, numberFormat, deciFormat, deciCheck, logScale },
+) => {
+    const checkDecimal = Number.isInteger(d / divisor);
+    if (checkDecimal === false) {
+        deciCheck = true;
+    }
+    if (d / divisor === 0) {
+        return numberFormat(d / divisor);
+    }
+    if (logScale) {
+        return numberFormat(d / divisor);
+    }
+    if (deciCheck) {
+        return deciFormat(d / divisor);
+    }
+    return numberFormat(d / divisor);
+};
+
+export const generateDateTickValues = ({
+    intraday,
+    scale,
+    interval,
+    endTicks,
+}) => {
+    if (intraday) {
+        // prettier-ignore
+        return scale
+            .domain()
+            .filter(
+                (d, i) =>
+                    (i > 0
+                        ? d.getDay() !==
+                          new Date(scale.domain()[i - 1]).getDay()
+                        : d.getDay()),
+            );
+    }
+
+    let newTicks = scale.ticks(getTimeTicks(interval));
+    const dayCheck = scale.domain()[0].getDate();
+    const monthCheck = scale.domain()[0].getMonth();
+
+    if (dayCheck !== 1 && monthCheck !== 0) {
+        newTicks.unshift(scale.domain()[0]);
+    }
+
+    if (
+        interval === 'lustrum' ||
+        interval === 'decade' ||
+        interval === 'jubilee' ||
+        interval === 'century'
+    ) {
+        newTicks.push(d3.timeYear(scale.domain()[1]));
+    }
+
+    if (endTicks) {
+        newTicks = scale.domain();
+    }
+
+    return newTicks;
+};
+
+export const generateLabels = (
+    axis,
+    { label, plotHeight, parent, align, plotWidth, rem, tickSize, labelWidth },
+) => {
+    const axisLabel = parent.append('g');
+    const defaultLabel =
+        axis === 'x'
+            ? getDefaultXAxisLabel(label)
+            : getDefaultYAxisLabel(label);
+
+    switch (axis) {
+    case 'x':
+        axisLabel
+                .attr('class', 'axis xAxis')
+                .append('text')
+                .attr(
+                    'y',
+                    getXVertical({
+                        align,
+                        vert: defaultLabel.vert,
+                        plotHeight,
+                        rem,
+                        tickSize,
+                    }),
+                )
+                .attr(
+                    'x',
+                    getXHorizontal({ hori: defaultLabel.hori, plotWidth }),
+                )
+                .text(defaultLabel.tag);
+        break;
+    case 'y':
+        axisLabel.attr('class', 'axis xAxis');
+
+        axisLabel
+                .append('text')
+                .attr(
+                    'y',
+                    getYVertical({ vert: defaultLabel.vert, plotHeight }),
+                )
+                .attr(
+                    'x',
+                    getYHorizontal({
+                        align,
+                        hori: defaultLabel.hori,
+                        plotWidth,
+                        rem,
+                        tickSize,
+                        labelWidth,
+                    }),
+                )
+                .text(defaultLabel.tag);
+        break;
+    default:
+        throw new Error('No axis direction specified');
+    }
+
+    const text = axisLabel.selectAll('text');
+    const width = text.node().getBBox().width / 2;
+    const height = text.node().getBBox().height / 2;
+    const textX = text.node().getBBox().x + width;
+    const textY = text.node().getBBox().y + height;
+    text.attr(
+        'transform',
+        `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
+    ).style('text-anchor', defaultLabel.anchor);
+};
+
+export const generateBanding = () => {};
