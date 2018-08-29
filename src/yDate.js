@@ -6,6 +6,7 @@
 import * as d3 from 'd3';
 import {
     convertToPointScale,
+    generateBanding,
     generateDateTickValues,
     generateLabels,
     getAxis,
@@ -76,8 +77,6 @@ export default function () {
         if (customFormat) {
             yAxis.tickFormat(customFormat);
         }
-
-        const bandHolder = parent.append('g').attr('class', 'highlights');
 
         yLabel = parent
             .append('g')
@@ -153,25 +152,18 @@ export default function () {
             const bands = yAxis
                 .tickValues()
                 .map((d, i, a) => ({
-                    date: d,
+                    pos: d,
                     height: getBandWidth(i, a),
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            bandHolder
-                .selectAll('rect')
-                .data(bands)
-                .enter()
-                .append('rect')
-                .attr('x', 0)
-                .attr('width', () => {
-                    if (align === 'left ') {
-                        return plotWidth - labelWidth;
-                    }
-                    return plotWidth - labelWidth - rem;
-                })
-                .attr('y', d => scale(d.date))
-                .attr('height', d => d.height);
+            generateBanding('y', {
+                parent,
+                bands,
+                scale,
+                plotWidth,
+                labelWidth,
+            });
         }
 
         yLabel.selectAll('.domain').remove();

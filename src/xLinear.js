@@ -6,6 +6,7 @@
 import * as d3 from 'd3';
 import {
     formatNumber,
+    generateBanding,
     generateLabels,
     getAxis,
     getBandWidth,
@@ -77,8 +78,6 @@ export default function () {
             xAxis.tickFormat(customFormat);
         }
 
-        const bandHolder = parent.append('g').attr('class', 'highlights');
-
         xLabel = parent
             .append('g')
             .attr('class', 'axis xAxis')
@@ -121,15 +120,7 @@ export default function () {
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            bandHolder
-                .selectAll('rect')
-                .data(bands)
-                .enter()
-                .append('rect')
-                .attr('y', 0)
-                .attr('height', plotHeight)
-                .attr('x', d => scale(d.pos))
-                .attr('width', d => d.width);
+            generateBanding('x', { parent, bands, plotHeight, scale });
         }
 
         xLabel

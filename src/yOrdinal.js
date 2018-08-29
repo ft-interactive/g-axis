@@ -4,7 +4,7 @@
  */
 
 import * as d3 from 'd3';
-import { generateLabels, getAxis } from './utils';
+import { generateBanding, generateLabels, getAxis } from './utils';
 
 export default function () {
     let banding;
@@ -44,8 +44,6 @@ export default function () {
         } else {
             scale.paddingInner(0.2);
         }
-
-        const bandHolder = parent.append('g').attr('class', 'highlights');
 
         yLabel = parent
             .append('g')
@@ -87,17 +85,14 @@ export default function () {
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100); // prettier-ignore
-
-            // prettier-ignore
-            bandHolder.selectAll('rect')
-                .data(bands)
-                .enter()
-                .append('rect')
-                .attr('x', 0)
-                .attr('width', plotWidth - labelWidth)
-                .attr('y', d => scale(d.pos) - (yOffset / 2))
-                .attr('height', scale.step());
+            generateBanding('y', {
+                parent,
+                bands,
+                scale,
+                plotWidth,
+                labelWidth,
+                align,
+            });
         }
 
         yLabel.selectAll('.domain').remove();

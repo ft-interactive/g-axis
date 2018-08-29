@@ -432,4 +432,58 @@ export const generateLabels = (
     ).style('text-anchor', defaultLabel.anchor);
 };
 
-export const generateBanding = () => {};
+export const generateBanding = (
+    direction,
+    { parent, bands, scale, plotHeight, plotWidth, labelWidth, align, rem },
+) => {
+    switch (direction) {
+    case 'x':
+        parent
+                .append('g')
+                .attr('class', 'highlights')
+                .selectAll('rect')
+                .data(bands)
+                .enter()
+                .append('rect')
+                .attr('y', 0)
+                .attr('height', plotHeight)
+                .attr('x', (d) => {
+                    if (scale.step) {
+                        const yOffset =
+                            (scale.step() / 100) * (scale.paddingInner() * 100);
+                        return scale(d.pos) - (yOffset / 2); // prettier-ignore
+                    }
+                    return scale(d.pos);
+                })
+                .attr('width', scale.step ? scale.step() : d => d.width);
+        break;
+    case 'y':
+        parent
+                .append('g')
+                .attr('class', 'highlights')
+                .selectAll('rect')
+                .data(bands)
+                .enter()
+                .append('rect')
+                .attr('x', 0)
+                .attr('width', () => {
+                    if (align === 'left' || !rem) {
+                        return plotWidth - labelWidth;
+                    }
+                    return plotWidth - labelWidth - rem;
+                })
+                .attr('y', (d) => {
+                    // prettier-ignore
+                    if (scale.step) {
+                        const yOffset = (scale.step() / 100)
+                            * (scale.paddingInner() * 100);
+                        return scale(d.pos) - (yOffset / 2);
+                    }
+                    return scale(d.pos);
+                })
+                .attr('height', scale.step ? scale.step() : d => d.height);
+        break;
+    default:
+        throw new Error('No axis direction specified for banding');
+    }
+};

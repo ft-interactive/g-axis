@@ -6,6 +6,7 @@
 import * as d3 from 'd3';
 import {
     convertToPointScale,
+    generateBanding,
     generateDateTickValues,
     generateLabels,
     getAxis,
@@ -79,8 +80,6 @@ export default function xaxisDate() {
             xAxis.tickFormat(customFormat);
         }
 
-        const bandHolder = parent.append('g').attr('class', 'highlights');
-
         xLabel = parent
             .append('g')
             .attr('class', 'axis xAxis axis baseline')
@@ -119,26 +118,20 @@ export default function xaxisDate() {
             });
         }
         if (banding) {
-            let bands = xAxis.tickValues();
-
-            bands = bands
-                .map((d, i) => ({
-                    date: d,
-                    width: getBandWidth({ index: i, bands, plotWidth, scale }),
+            const bands = xAxis
+                .tickValues()
+                .map((d, i, a) => ({
+                    pos: d,
+                    width: getBandWidth({
+                        index: i,
+                        bands: a,
+                        plotWidth,
+                        scale,
+                    }),
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            // console.log('bands', bands);
-
-            bandHolder
-                .selectAll('rect')
-                .data(bands)
-                .enter()
-                .append('rect')
-                .attr('y', 0)
-                .attr('height', plotHeight)
-                .attr('x', d => scale(d.date))
-                .attr('width', d => d.width);
+            generateBanding('x', { parent, bands, plotHeight, scale });
         }
 
         xLabel.selectAll('.domain').remove();

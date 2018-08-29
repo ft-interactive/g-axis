@@ -4,7 +4,7 @@
  */
 
 import * as d3 from 'd3';
-import { generateLabels, getAxis, setLabelIds } from './utils';
+import { generateBanding, generateLabels, getAxis, setLabelIds } from './utils';
 
 export default function xAxisOrdinal() {
     let banding;
@@ -42,8 +42,6 @@ export default function xAxisOrdinal() {
             scale.paddingInner(0.2);
         }
 
-        const bandHolder = parent.append('g').attr('class', 'highlights');
-
         xLabel = parent
             .append('g')
             .attr('class', 'axis xAxis')
@@ -73,17 +71,7 @@ export default function xAxisOrdinal() {
                 }))
                 .filter((d, i) => i % 2 === 1);
 
-            const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100); // prettier-ignore
-
-            // prettier-ignore
-            bandHolder.selectAll('rect')
-                .data(bands)
-                .enter()
-                .append('rect')
-                .attr('y', 0)
-                .attr('height', plotHeight)
-                .attr('x', d => scale(d.pos) - (yOffset / 2))
-                .attr('width', scale.step());
+            generateBanding('x', { parent, bands, plotHeight, scale });
         }
 
         xLabel.selectAll('.domain').remove();
