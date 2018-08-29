@@ -150,7 +150,7 @@
                     return (rem * 0.9);
                 };
 
-                const getVertical = (axisAlign, vertAlign) => ({
+                const getVerticle = (axisAlign, vertAlign) => ({
                     toptop: 0 - (rem),
                     topmiddle: 0,
                     topbottom: 0 + (rem),
@@ -169,7 +169,7 @@
                     .attr('class', 'axis xAxis');
 
                 axisLabel.append('text')
-                    .attr('y', getVertical(align, defaultLabel.vert))
+                    .attr('y', getVerticle(align, defaultLabel.vert))
                     .attr('x', getHorizontal(defaultLabel.hori))
                     .text(defaultLabel.tag);
 
@@ -569,7 +569,7 @@
                     return (rem * 0.9);
                 };
 
-                const getVertical = (axisAlign, vertAlign) => ({
+                const getVerticle = (axisAlign, vertAlign) => ({
                     toptop: 0 - (rem),
                     topmiddle: 0,
                     topbottom: 0 + (rem),
@@ -585,7 +585,7 @@
                 }[hori]);
 
                 axisLabel.append('text')
-                    .attr('y', getVertical(align, defaultLabel.vert))
+                    .attr('y', getVerticle(align, defaultLabel.vert))
                     .attr('x', getHorizontal(defaultLabel.hori))
                     .text(defaultLabel.tag);
 
@@ -779,7 +779,7 @@
                     return (rem * 0.9);
                 };
 
-                const getVertical = (axisAlign, vertAlign) => ({
+                const getVerticle = (axisAlign, vertAlign) => ({
                     toptop: 0 - (rem),
                     topmiddle: 0,
                     topbottom: 0 + (rem),
@@ -807,7 +807,7 @@
 
 
                 axisLabel.append('text')
-                    .attr('y', getVertical(align, defaultLabel.vert))
+                    .attr('y', getVerticle(align, defaultLabel.vert))
                     .attr('x', getHorizontal(defaultLabel.hori))
                     .text(defaultLabel.tag);
 
@@ -1037,7 +1037,7 @@
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
 
-                const getVertical = vert => ({
+                const getVerticle = vert => ({
                     top: plotHeight - plotHeight,
                     middle: plotHeight / 2,
                     bottom: plotHeight,
@@ -1060,7 +1060,7 @@
                 }[axisAlign + horiAlign]);
 
                 axisLabel.append('text')
-                    .attr('y', getVertical(defaultLabel.vert))
+                    .attr('y', getVerticle(defaultLabel.vert))
                     .attr('x', getHorizontal(align, defaultLabel.hori))
                     .text(defaultLabel.tag);
 
@@ -1283,7 +1283,7 @@
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
 
-                const getVertical = vert => ({
+                const getVerticle = vert => ({
                     top: plotHeight - plotHeight,
                     middle: plotHeight / 2,
                     bottom: plotHeight,
@@ -1306,7 +1306,7 @@
                 }[axisAlign + horiAlign]);
 
                 axisLabel.append('text')
-                    .attr('y', getVertical(defaultLabel.vert))
+                    .attr('y', getVerticle(defaultLabel.vert))
                     .attr('x', getHorizontal(align, defaultLabel.hori))
                     .text(defaultLabel.tag);
 
@@ -1587,7 +1587,7 @@
                 const axisLabel = parent.append('g')
                     .attr('class', 'axis xAxis');
 
-                const getVertical = vert => ({
+                const getVerticle = vert => ({
                     top: plotHeight - plotHeight,
                     middle: plotHeight / 2,
                     bottom: plotHeight,
@@ -1610,7 +1610,7 @@
                 }[axisAlign + horiAlign]);
 
                 axisLabel.append('text')
-                    .attr('y', getVertical(defaultLabel.vert))
+                    .attr('y', getVerticle(defaultLabel.vert))
                     .attr('x', getHorizontal(align, defaultLabel.hori))
                     .text(defaultLabel.tag);
 
