@@ -5,6 +5,8 @@
  * @jest-environment node
  */
 
+import pretty from 'pretty';
+
 // jest.setTimeout(20000);
 // expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
@@ -27,8 +29,12 @@ test.skip('left-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate yDate
-        const yAxis = window.yDate()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const yAxis = window
+            .yDate()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .rem(currentFrame.rem())
             .minorTickSize(currentFrame.rem() * 0.3)
             .range([0, currentFrame.dimension().height])
@@ -45,14 +51,21 @@ test.skip('left-aligned, default scales', async () => {
         currentFrame.margin({ left: newMargin });
 
         // Translate axis from the left
-        yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())}, 0)`);
+        yAxis
+            .yLabel()
+            .attr(
+                'transform',
+                `translate(${yAxis.tickSize() - yAxis.labelWidth()}, 0)`,
+            );
 
         // Call parent container to update positioning
         svg.call(currentFrame);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });
 
 test.skip('right-aligned, default scales', async () => {
@@ -70,8 +83,12 @@ test.skip('right-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate yDate
-        const yAxis = window.yDate()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const yAxis = window
+            .yDate()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .minorTickSize(currentFrame.rem() * 0.3)
             .range([0, currentFrame.dimension().height])
             .align('right')
@@ -91,6 +108,8 @@ test.skip('right-aligned, default scales', async () => {
         svg.call(currentFrame);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });

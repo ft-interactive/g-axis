@@ -3,8 +3,9 @@
  * Test suite for xOrdinal
  */
 
+import pretty from 'pretty';
+
 jest.setTimeout(20000);
-expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
 beforeAll(global.build('xOrdinal'));
 beforeEach(global.start);
@@ -24,8 +25,12 @@ test('bottom-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate xAxis
-        const xAxis = window.xOrdinal()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const xAxis = window
+            .xOrdinal()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .rangeRound([0, currentFrame.dimension().width])
             .align('bottom')
             .rem(currentFrame.rem())
@@ -35,13 +40,19 @@ test('bottom-aligned, default scales', async () => {
         currentFrame.plot().call(xAxis);
 
         // Translate to bottom of plot
-        xAxis.xLabel()
-            .attr('transform',
-                `translate(0,${currentFrame.dimension().height - (currentFrame.rem() / 1.5)})`);
+        xAxis
+            .xLabel()
+            .attr(
+                'transform',
+                `translate(0,${currentFrame.dimension().height -
+                    currentFrame.rem() / 1.5})`,
+            );
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });
 
 test('top-aligned, default scales', async () => {
@@ -59,8 +70,12 @@ test('top-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate xAxis
-        const xAxis = window.xOrdinal()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const xAxis = window
+            .xOrdinal()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .rem(currentFrame.rem())
             .rangeRound([0, currentFrame.dimension().width])
             .align('top')
@@ -70,6 +85,8 @@ test('top-aligned, default scales', async () => {
         currentFrame.plot().call(xAxis);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });

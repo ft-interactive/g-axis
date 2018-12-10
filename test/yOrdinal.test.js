@@ -3,9 +3,9 @@
  * Test suite for yOrdinal
  */
 
-jest.setTimeout(20000);
+import pretty from 'pretty';
 
-expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
+jest.setTimeout(20000);
 
 beforeAll(global.build('yOrdinal'));
 beforeEach(global.start);
@@ -25,9 +25,13 @@ test('left-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate yOrdinal
-        const yAxis = window.yOrdinal()
+        const yAxis = window
+            .yOrdinal()
             .rangeRound([0, currentFrame.dimension().height])
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .frameName('webFrameMDefault')
             .rem(currentFrame.rem())
             .align('left');
@@ -45,8 +49,10 @@ test('left-aligned, default scales', async () => {
         svg.call(currentFrame);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });
 
 test('right-aligned, default scales', async () => {
@@ -64,9 +70,13 @@ test('right-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate yOrdinal
-        const yAxis = window.yOrdinal()
+        const yAxis = window
+            .yOrdinal()
             .rangeRound([0, currentFrame.dimension().height])
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .rem(currentFrame.rem())
             .frameName('webFrameMDefault')
             .align('right');
@@ -83,10 +93,17 @@ test('right-aligned, default scales', async () => {
         // Call parent container to update positioning
         svg.call(currentFrame);
 
-        yAxis.yLabel().attr('transform',
-            `translate(${currentFrame.dimension().width - yAxis.labelWidth()}, 0)`);
+        yAxis
+            .yLabel()
+            .attr(
+                'transform',
+                `translate(${currentFrame.dimension().width -
+                    yAxis.labelWidth()}, 0)`,
+            );
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });

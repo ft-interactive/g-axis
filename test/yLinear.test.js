@@ -3,8 +3,9 @@
  * Test suite for yLinear
  */
 
+import pretty from 'pretty';
+
 jest.setTimeout(20000);
-expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
 beforeAll(global.build('yLinear'));
 beforeEach(global.start);
@@ -24,8 +25,12 @@ test('left-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate yLinear
-        const yAxis = window.yLinear()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const yAxis = window
+            .yLinear()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .tickSize(currentFrame.dimension().width)
             .domain([0, 200])
             .align('left')
@@ -43,14 +48,21 @@ test('left-aligned, default scales', async () => {
         currentFrame.margin({ left: newMargin });
 
         // Translate axis from the left
-        yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())}, 0)`);
+        yAxis
+            .yLabel()
+            .attr(
+                'transform',
+                `translate(${yAxis.tickSize() - yAxis.labelWidth()}, 0)`,
+            );
 
         // Call parent container to update positioning
         svg.call(currentFrame);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });
 
 test('right-aligned, default scales', async () => {
@@ -68,8 +80,12 @@ test('right-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate yLinear
-        const yAxis = window.yLinear()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const yAxis = window
+            .yLinear()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .tickSize(currentFrame.dimension().width - currentFrame.rem())
             .domain([0, 200])
             .rem(currentFrame.rem())
@@ -90,6 +106,8 @@ test('right-aligned, default scales', async () => {
         svg.call(currentFrame);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });

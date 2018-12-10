@@ -3,8 +3,9 @@
  * Test suite for xDate
  */
 
+import pretty from 'pretty';
+
 jest.setTimeout(20000);
-expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
 beforeAll(global.build('xDate'));
 beforeEach(global.start);
@@ -24,8 +25,12 @@ test('bottom-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate xDate
-        const xAxis = window.xDate()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const xAxis = window
+            .xDate()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .rem(currentFrame.rem())
             .frameName('webFrameMDefault')
             .align('bottom')
@@ -37,13 +42,24 @@ test('bottom-aligned, default scales', async () => {
         currentFrame.plot().call(xAxis);
 
         // Translate axis to bottom of plot
-        xAxis.xLabel().attr('transform', `translate(0,${currentFrame.dimension().height})`);
-        xAxis.xLabelMinor().attr('transform', `translate(0,${currentFrame.dimension().height})`);
+        xAxis
+            .xLabel()
+            .attr(
+                'transform',
+                `translate(0,${currentFrame.dimension().height})`,
+            );
+        xAxis
+            .xLabelMinor()
+            .attr(
+                'transform',
+                `translate(0,${currentFrame.dimension().height})`,
+            );
     });
 
-    const image = await global.page.screenshot();
-
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });
 
 test('top-aligned, default scales', async () => {
@@ -61,8 +77,12 @@ test('top-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate xDate
-        const xAxis = window.xDate()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const xAxis = window
+            .xDate()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .rem(currentFrame.rem())
             .frameName('webFrameMDefault')
             .align('top')
@@ -74,6 +94,8 @@ test('top-aligned, default scales', async () => {
         currentFrame.plot().call(xAxis);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    const bodyHTML = await global.page.evaluate(
+        () => document.documentElement.innerHTML,
+    );
+    expect(pretty(bodyHTML)).toMatchSnapshot();
 });
