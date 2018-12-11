@@ -687,7 +687,6 @@ exports[`bottom-aligned, default scales 1`] = `
           scale.rangeRound(d);
           return axis;
         };
-        axis.range = axis.rangeRound;
         axis.bandwidth = (d) => {
           if (d === undefined) return scale.bandwidth();
           scale.bandwidth(d);
@@ -736,7 +735,7 @@ exports[`bottom-aligned, default scales 1`] = `
     </text><text id=\\"ft-webgraphic-m-defaultsubtitle\\" class=\\"chart-subtitle\\">
       <tspan id=\\"ft-webgraphic-m-defaultsubtitle\\" y=\\"68\\" x=\\"1\\" font-size=\\"24\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">Bottom-aligned, default scales</tspan>
     </text><text class=\\"chart-source\\" id=\\"ft-webgraphic-m-defaultsource\\">
-      <tspan id=\\"ft-webgraphic-m-defaultsource\\" y=\\"446\\" x=\\"1\\" font-size=\\"23.990966386699313px\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">g-axis</tspan>
+      <tspan id=\\"ft-webgraphic-m-defaultsource\\" y=\\"446\\" x=\\"1\\" font-size=\\"23.996803284921473px\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">g-axis</tspan>
     </text><text class=\\"chart-copyright\\">
       <tspan x=\\"1\\" y=\\"464\\" font-size=\\"14px\\" font-style=\\"italic\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">© FT</tspan>
     </text>
@@ -1449,7 +1448,6 @@ exports[`top-aligned, default scales 1`] = `
           scale.rangeRound(d);
           return axis;
         };
-        axis.range = axis.rangeRound;
         axis.bandwidth = (d) => {
           if (d === undefined) return scale.bandwidth();
           scale.bandwidth(d);
@@ -1498,7 +1496,7 @@ exports[`top-aligned, default scales 1`] = `
     </text><text id=\\"ft-webgraphic-m-defaultsubtitle\\" class=\\"chart-subtitle\\">
       <tspan id=\\"ft-webgraphic-m-defaultsubtitle\\" y=\\"68\\" x=\\"1\\" font-size=\\"24\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">Top-aligned, default scales</tspan>
     </text><text class=\\"chart-source\\" id=\\"ft-webgraphic-m-defaultsource\\">
-      <tspan id=\\"ft-webgraphic-m-defaultsource\\" y=\\"446\\" x=\\"1\\" font-size=\\"23.98844978790119px\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">g-axis</tspan>
+      <tspan id=\\"ft-webgraphic-m-defaultsource\\" y=\\"446\\" x=\\"1\\" font-size=\\"23.991767697410314px\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">g-axis</tspan>
     </text><text class=\\"chart-copyright\\">
       <tspan x=\\"1\\" y=\\"464\\" font-size=\\"14px\\" font-style=\\"italic\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">© FT</tspan>
     </text>

@@ -43,6 +43,7 @@
     "jest-image-snapshot": "^2.4.0",
     "micro": "^9.1.4",
     "nyc": "^11.0.3",
+    "pretty": "^2.0.0",
     "puppeteer": "^1.2.0",
     "rollup": "^0.57.1",
     "tap-spec": "^4.1.1",
