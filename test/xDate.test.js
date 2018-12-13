@@ -3,22 +3,22 @@
  * Test suite for xDate
  */
 
-import pretty from 'pretty';
+import pretty from "pretty";
 
 jest.setTimeout(20000);
 
-beforeAll(global.build('xDate'));
+beforeAll(global.build("xDate"));
 beforeEach(global.start);
 
-test('bottom-aligned, default scales', async () => {
+test("bottom-aligned, default scales", async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
-            subtitle: 'Bottom-aligned, default scales',
-            title: 'xDate test',
+            source: false,
+            subtitle: "Bottom-aligned, default scales",
+            title: "xDate test"
         };
 
-        const svg = await window.d3.select(document.querySelector('svg'));
+        const svg = await window.d3.select(document.querySelector("svg"));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -29,11 +29,11 @@ test('bottom-aligned, default scales', async () => {
             .xDate()
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height,
+                currentFrame.dimension().height
             ])
             .rem(currentFrame.rem())
-            .frameName('webFrameMDefault')
-            .align('bottom')
+            .frameName("webFrameMDefault")
+            .align("bottom")
             .tickSize(currentFrame.rem() * 0.75)
             .range([0, currentFrame.dimension().width])
             .minorTickSize(currentFrame.rem() * 0.3);
@@ -45,32 +45,32 @@ test('bottom-aligned, default scales', async () => {
         xAxis
             .xLabel()
             .attr(
-                'transform',
-                `translate(0,${currentFrame.dimension().height})`,
+                "transform",
+                `translate(0,${currentFrame.dimension().height})`
             );
         xAxis
             .xLabelMinor()
             .attr(
-                'transform',
-                `translate(0,${currentFrame.dimension().height})`,
+                "transform",
+                `translate(0,${currentFrame.dimension().height})`
             );
     });
 
     const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML,
+        () => document.documentElement.innerHTML
     );
     expect(pretty(bodyHTML)).toMatchSnapshot();
 });
 
-test('top-aligned, default scales', async () => {
+test("top-aligned, default scales", async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
-            subtitle: 'Top-aligned, default scales',
-            title: 'xDate test',
+            source: false,
+            subtitle: "Top-aligned, default scales",
+            title: "xDate test"
         };
 
-        const svg = await window.d3.select(document.querySelector('svg'));
+        const svg = await window.d3.select(document.querySelector("svg"));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -81,11 +81,11 @@ test('top-aligned, default scales', async () => {
             .xDate()
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height,
+                currentFrame.dimension().height
             ])
             .rem(currentFrame.rem())
-            .frameName('webFrameMDefault')
-            .align('top')
+            .frameName("webFrameMDefault")
+            .align("top")
             .tickSize(currentFrame.rem() * 0.75)
             .range([0, currentFrame.dimension().width])
             .minorTickSize(currentFrame.rem() * 0.3);
@@ -95,7 +95,7 @@ test('top-aligned, default scales', async () => {
     });
 
     const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML,
+        () => document.documentElement.innerHTML
     );
     expect(pretty(bodyHTML)).toMatchSnapshot();
 });

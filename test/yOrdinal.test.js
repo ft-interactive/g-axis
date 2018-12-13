@@ -3,22 +3,22 @@
  * Test suite for yOrdinal
  */
 
-import pretty from 'pretty';
+import pretty from "pretty";
 
 jest.setTimeout(20000);
 
-beforeAll(global.build('yOrdinal'));
+beforeAll(global.build("yOrdinal"));
 beforeEach(global.start);
 
-test('left-aligned, default scales', async () => {
+test("left-aligned, default scales", async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
-            subtitle: 'Left-aligned, default scales',
-            title: 'yOrdinal test',
+            source: false,
+            subtitle: "Left-aligned, default scales",
+            title: "yOrdinal test"
         };
 
-        const svg = await window.d3.select(document.querySelector('svg'));
+        const svg = await window.d3.select(document.querySelector("svg"));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -30,11 +30,11 @@ test('left-aligned, default scales', async () => {
             .rangeRound([0, currentFrame.dimension().height])
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height,
+                currentFrame.dimension().height
             ])
-            .frameName('webFrameMDefault')
+            .frameName("webFrameMDefault")
             .rem(currentFrame.rem())
-            .align('left');
+            .align("left");
 
         // Set up yAxis
         currentFrame.plot().call(yAxis);
@@ -50,20 +50,20 @@ test('left-aligned, default scales', async () => {
     });
 
     const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML,
+        () => document.documentElement.innerHTML
     );
     expect(pretty(bodyHTML)).toMatchSnapshot();
 });
 
-test('right-aligned, default scales', async () => {
+test("right-aligned, default scales", async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
-            subtitle: 'Right-aligned, default scales',
-            title: 'yOrdinal test',
+            source: false,
+            subtitle: "Right-aligned, default scales",
+            title: "yOrdinal test"
         };
 
-        const svg = await window.d3.select(document.querySelector('svg'));
+        const svg = await window.d3.select(document.querySelector("svg"));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -75,11 +75,11 @@ test('right-aligned, default scales', async () => {
             .rangeRound([0, currentFrame.dimension().height])
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height,
+                currentFrame.dimension().height
             ])
             .rem(currentFrame.rem())
-            .frameName('webFrameMDefault')
-            .align('right');
+            .frameName("webFrameMDefault")
+            .align("right");
 
         // Set up yAxis
         currentFrame.plot().call(yAxis);
@@ -96,14 +96,14 @@ test('right-aligned, default scales', async () => {
         yAxis
             .yLabel()
             .attr(
-                'transform',
+                "transform",
                 `translate(${currentFrame.dimension().width -
-                    yAxis.labelWidth()}, 0)`,
+                    yAxis.labelWidth()}, 0)`
             );
     });
 
     const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML,
+        () => document.documentElement.innerHTML
     );
     expect(pretty(bodyHTML)).toMatchSnapshot();
 });

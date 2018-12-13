@@ -3,22 +3,22 @@
  * Test suite for yLinear
  */
 
-import pretty from 'pretty';
+import pretty from "pretty";
 
 jest.setTimeout(20000);
 
-beforeAll(global.build('yLinear'));
+beforeAll(global.build("yLinear"));
 beforeEach(global.start);
 
-test('left-aligned, default scales', async () => {
+test("left-aligned, default scales", async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
-            subtitle: 'Left-aligned, default scales',
-            title: 'yLinear test',
+            source: false,
+            subtitle: "Left-aligned, default scales",
+            title: "yLinear test"
         };
 
-        const svg = window.d3.select(document.querySelector('svg'));
+        const svg = window.d3.select(document.querySelector("svg"));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -29,14 +29,14 @@ test('left-aligned, default scales', async () => {
             .yLinear()
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height,
+                currentFrame.dimension().height
             ])
             .tickSize(currentFrame.dimension().width)
             .domain([0, 200])
-            .align('left')
+            .align("left")
             .rem(currentFrame.rem())
             .range([currentFrame.dimension().height, 0])
-            .frameName('webFrameMDefault');
+            .frameName("webFrameMDefault");
 
         // Set up yAxis
         currentFrame.plot().call(yAxis);
@@ -51,8 +51,8 @@ test('left-aligned, default scales', async () => {
         yAxis
             .yLabel()
             .attr(
-                'transform',
-                `translate(${yAxis.tickSize() - yAxis.labelWidth()}, 0)`,
+                "transform",
+                `translate(${yAxis.tickSize() - yAxis.labelWidth()}, 0)`
             );
 
         // Call parent container to update positioning
@@ -60,20 +60,20 @@ test('left-aligned, default scales', async () => {
     });
 
     const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML,
+        () => document.documentElement.innerHTML
     );
     expect(pretty(bodyHTML)).toMatchSnapshot();
 });
 
-test('right-aligned, default scales', async () => {
+test("right-aligned, default scales", async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
-            subtitle: 'Right-aligned, default scales',
-            title: 'yLinear test',
+            source: false,
+            subtitle: "Right-aligned, default scales",
+            title: "yLinear test"
         };
 
-        const svg = window.d3.select(document.querySelector('svg'));
+        const svg = window.d3.select(document.querySelector("svg"));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -84,14 +84,14 @@ test('right-aligned, default scales', async () => {
             .yLinear()
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height,
+                currentFrame.dimension().height
             ])
             .tickSize(currentFrame.dimension().width - currentFrame.rem())
             .domain([0, 200])
             .rem(currentFrame.rem())
-            .align('right')
+            .align("right")
             .range([currentFrame.dimension().height, 0])
-            .frameName('webFrameMDefault');
+            .frameName("webFrameMDefault");
 
         // Set up yAxis
         currentFrame.plot().call(yAxis);
@@ -107,7 +107,7 @@ test('right-aligned, default scales', async () => {
     });
 
     const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML,
+        () => document.documentElement.innerHTML
     );
     expect(pretty(bodyHTML)).toMatchSnapshot();
 });

@@ -3,7 +3,7 @@
 exports[`left-aligned, default scales 1`] = `
 "<head>
   <script src=\\"http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js\\"></script>
-  <script src=\\"https://unpkg.com/g-chartframe@5.1.12/build/g-chartframe.js\\"></script>
+  <script src=\\"https://unpkg.com/g-chartframe@5.2.2/build/g-chartframe.js\\"></script>
   <link rel=\\"stylesheet\\" href=\\"//www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^2.2.0\\">
   <style>
     /**
@@ -747,20 +747,19 @@ exports[`left-aligned, default scales 1`] = `
   </script>
 </head>
 
-<body><svg class=\\"ft-webgraphic-m-default\\" font-family=\\"MetricWeb,sans-serif\\" width=\\"700\\" height=\\"500\\" viewBox=\\"0 0 700 500\\">
-    <title>yOrdinal test</title>
-    <rect id=\\"chart-background\\" class=\\"chart-background\\" x=\\"0\\" y=\\"0\\" width=\\"700\\" height=\\"500\\" fill=\\"rgb(255, 241, 224)\\"></rect>
+<body><svg class=\\"ft-webgraphic-m-default\\" font-family=\\"MetricWeb,sans-serif\\" role=\\"img\\" aria-labelledby=\\"ft-webgraphic-m-default__chart-a11y-title ft-webgraphic-m-default__chart-a11y-desc\\" width=\\"700\\" height=\\"500\\" viewBox=\\"0 0 700 500\\">
+    <title id=\\"ft-webgraphic-m-default__chart-a11y-title\\">A chart</title>
+    <desc id=\\"ft-webgraphic-m-default__chart-a11y-desc\\">A graphic by the Financial Times</desc>
+    <rect role=\\"presentation\\" id=\\"chart-background\\" class=\\"chart-background\\" x=\\"0\\" y=\\"0\\" width=\\"700\\" height=\\"500\\" fill=\\"rgb(255, 241, 224)\\"></rect>
     <rect width=\\"60\\" height=\\"4\\" style=\\"fill: rgb(0, 0, 0);\\"></rect><text class=\\"chart-title\\" id=\\"ft-webgraphic-m-defaulttitle\\">
       <tspan y=\\"32\\" x=\\"1\\" font-size=\\"28\\" font-family=\\"MetricWeb,sans-serif\\" font-weight=\\"400\\" fill=\\"#000\\">yOrdinal test</tspan>
     </text><text id=\\"ft-webgraphic-m-defaultsubtitle\\" class=\\"chart-subtitle\\">
       <tspan id=\\"ft-webgraphic-m-defaultsubtitle\\" y=\\"68\\" x=\\"1\\" font-size=\\"24\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">Left-aligned, default scales</tspan>
-    </text><text class=\\"chart-source\\" id=\\"ft-webgraphic-m-defaultsource\\">
-      <tspan id=\\"ft-webgraphic-m-defaultsource\\" y=\\"446\\" x=\\"1\\" font-size=\\"22.974840457895183px\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">g-axis</tspan>
     </text><text class=\\"chart-copyright\\">
       <tspan x=\\"1\\" y=\\"464\\" font-size=\\"14px\\" font-style=\\"italic\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">© FT</tspan>
     </text>
-    <g class=\\"chart-watermark\\" transform=\\"translate(642,442) scale(0.58) \\"></g>
-    <g class=\\"chart-plot\\" transform=\\"translate(86.640625, 108)\\">
+    <g class=\\"chart-watermark\\" role=\\"presentation\\" transform=\\"translate(536,490) scale(1) \\"></g>
+    <g class=\\"chart-plot\\" role=\\"presentation\\" transform=\\"translate(86.640625, 108)\\">
       <g class=\\"highlights\\"></g>
       <g class=\\"axis yAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"end\\">
         <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,32.5)\\">
@@ -777,15 +776,18 @@ exports[`left-aligned, default scales 1`] = `
         </g>
       </g>
     </g>
+    <title id=\\"ft-webgraphic-m-default__chart-a11y-title\\">A chart</title>
+    <desc id=\\"ft-webgraphic-m-default__chart-a11y-desc\\">A graphic by the Financial Times</desc>
     <rect width=\\"60\\" height=\\"4\\" style=\\"fill: rgb(0, 0, 0);\\"></rect>
   </svg>
+  <div class=\\"button-holder\\"><button class=\\"save-png-button save-png-button__1x\\" style=\\"float: left; opacity: 0.6;\\">Save as .png</button><button class=\\"save-png-button save-png-button__2x\\" style=\\"float: left; opacity: 0.6;\\">Save as double size .png</button></div>
 </body>"
 `;
 
 exports[`right-aligned, default scales 1`] = `
 "<head>
   <script src=\\"http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js\\"></script>
-  <script src=\\"https://unpkg.com/g-chartframe@5.1.12/build/g-chartframe.js\\"></script>
+  <script src=\\"https://unpkg.com/g-chartframe@5.2.2/build/g-chartframe.js\\"></script>
   <link rel=\\"stylesheet\\" href=\\"//www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^2.2.0\\">
   <style>
     /**
@@ -1529,20 +1531,19 @@ exports[`right-aligned, default scales 1`] = `
   </script>
 </head>
 
-<body><svg class=\\"ft-webgraphic-m-default\\" font-family=\\"MetricWeb,sans-serif\\" width=\\"700\\" height=\\"500\\" viewBox=\\"0 0 700 500\\">
-    <title>yOrdinal test</title>
-    <rect id=\\"chart-background\\" class=\\"chart-background\\" x=\\"0\\" y=\\"0\\" width=\\"700\\" height=\\"500\\" fill=\\"rgb(255, 241, 224)\\"></rect>
+<body><svg class=\\"ft-webgraphic-m-default\\" font-family=\\"MetricWeb,sans-serif\\" role=\\"img\\" aria-labelledby=\\"ft-webgraphic-m-default__chart-a11y-title ft-webgraphic-m-default__chart-a11y-desc\\" width=\\"700\\" height=\\"500\\" viewBox=\\"0 0 700 500\\">
+    <title id=\\"ft-webgraphic-m-default__chart-a11y-title\\">A chart</title>
+    <desc id=\\"ft-webgraphic-m-default__chart-a11y-desc\\">A graphic by the Financial Times</desc>
+    <rect role=\\"presentation\\" id=\\"chart-background\\" class=\\"chart-background\\" x=\\"0\\" y=\\"0\\" width=\\"700\\" height=\\"500\\" fill=\\"rgb(255, 241, 224)\\"></rect>
     <rect width=\\"60\\" height=\\"4\\" style=\\"fill: rgb(0, 0, 0);\\"></rect><text class=\\"chart-title\\" id=\\"ft-webgraphic-m-defaulttitle\\">
       <tspan y=\\"32\\" x=\\"1\\" font-size=\\"28\\" font-family=\\"MetricWeb,sans-serif\\" font-weight=\\"400\\" fill=\\"#000\\">yOrdinal test</tspan>
     </text><text id=\\"ft-webgraphic-m-defaultsubtitle\\" class=\\"chart-subtitle\\">
       <tspan id=\\"ft-webgraphic-m-defaultsubtitle\\" y=\\"68\\" x=\\"1\\" font-size=\\"24\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">Right-aligned, default scales</tspan>
-    </text><text class=\\"chart-source\\" id=\\"ft-webgraphic-m-defaultsource\\">
-      <tspan id=\\"ft-webgraphic-m-defaultsource\\" y=\\"446\\" x=\\"1\\" font-size=\\"23.559840155804032px\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">g-axis</tspan>
     </text><text class=\\"chart-copyright\\">
       <tspan x=\\"1\\" y=\\"464\\" font-size=\\"14px\\" font-style=\\"italic\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">© FT</tspan>
     </text>
-    <g class=\\"chart-watermark\\" transform=\\"translate(642,442) scale(0.58) \\"></g>
-    <g class=\\"chart-plot\\" transform=\\"translate(20,108)\\">
+    <g class=\\"chart-watermark\\" role=\\"presentation\\" transform=\\"translate(536,490) scale(1) \\"></g>
+    <g class=\\"chart-plot\\" role=\\"presentation\\" transform=\\"translate(20,108)\\">
       <g class=\\"highlights\\"></g>
       <g class=\\"axis yAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"start\\" transform=\\"translate(541.71875, 0)\\">
         <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,32.5)\\">
@@ -1559,7 +1560,10 @@ exports[`right-aligned, default scales 1`] = `
         </g>
       </g>
     </g>
+    <title id=\\"ft-webgraphic-m-default__chart-a11y-title\\">A chart</title>
+    <desc id=\\"ft-webgraphic-m-default__chart-a11y-desc\\">A graphic by the Financial Times</desc>
     <rect width=\\"60\\" height=\\"4\\" style=\\"fill: rgb(0, 0, 0);\\"></rect>
   </svg>
+  <div class=\\"button-holder\\"><button class=\\"save-png-button save-png-button__1x\\" style=\\"float: left; opacity: 0.6;\\">Save as .png</button><button class=\\"save-png-button save-png-button__2x\\" style=\\"float: left; opacity: 0.6;\\">Save as double size .png</button></div>
 </body>"
 `;

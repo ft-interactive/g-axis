@@ -24,6 +24,3 @@ jobs:
       - run:
           name: coverage
           command: npm run report-coverage
-      - store_artifacts:
-          path: test/__image_snapshots__/__diff_output__
-          destination: image_snapshot_diff
