@@ -50,6 +50,23 @@ test("bottom-aligned, default scales", async () => {
             );
     });
 
+    // Lame hack to deal with the unrounded numbers from d3-axis
+    await global.page.evaluate(() => {
+        [...document.querySelectorAll("[transform]")].map(el => {
+            const transform = el.getAttribute("transform");
+            const [, x, y] = transform.match(
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/
+            );
+            if (x && y) {
+                const updated = transform.replace(
+                    /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+                    `transform(${Math.round(x)}, ${Math.round(y)})`
+                );
+                el.setAttribute("transform", updated);
+            }
+        });
+    });
+
     const snap = await global.page.evaluate(
         () => document.querySelector("g.chart-plot").innerHTML
     );
@@ -84,6 +101,23 @@ test("top-aligned, default scales", async () => {
 
         // Set up xAxis
         currentFrame.plot().call(xAxis);
+    });
+
+    // Lame hack to deal with the unrounded numbers from d3-axis
+    await global.page.evaluate(() => {
+        [...document.querySelectorAll("[transform]")].map(el => {
+            const transform = el.getAttribute("transform");
+            const [, x, y] = transform.match(
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/
+            );
+            if (x && y) {
+                const updated = transform.replace(
+                    /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+                    `transform(${Math.round(x)}, ${Math.round(y)})`
+                );
+                el.setAttribute("transform", updated);
+            }
+        });
     });
 
     const snap = await global.page.evaluate(

@@ -2,23 +2,23 @@
 
 exports[`bottom-aligned, default scales 1`] = `
 "<g class=\\"highlights\\"></g>
-<g class=\\"axis xAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"translate(0,277)\\">
-  <g class=\\"tick baseline\\" opacity=\\"1\\" transform=\\"translate(0.5,0)\\">
+<g class=\\"axis xAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"transform(0, 277)\\">
+  <g class=\\"tick baseline\\" opacity=\\"1\\" transform=\\"transform(1, 0)\\">
     <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">0</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(132.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(133, 0)\\">
     <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">20</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(264.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(265, 0)\\">
     <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">40</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(396.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(397, 0)\\">
     <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">60</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(528.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(529, 0)\\">
     <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(660.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(661, 0)\\">
     <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">100</text>
   </g>
 </g>"
@@ -27,22 +27,22 @@ exports[`bottom-aligned, default scales 1`] = `
 exports[`top-aligned, default scales 1`] = `
 "<g class=\\"highlights\\"></g>
 <g class=\\"axis xAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
-  <g class=\\"tick baseline\\" opacity=\\"1\\" transform=\\"translate(0.5,0)\\">
+  <g class=\\"tick baseline\\" opacity=\\"1\\" transform=\\"transform(1, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">0</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(132.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(133, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">20</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(264.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(265, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">40</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(396.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(397, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">60</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(528.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(529, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(660.5,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(661, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">100</text>
   </g>
 </g>"

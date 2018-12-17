@@ -2,179 +2,179 @@
 
 exports[`bottom-aligned, default scales 1`] = `
 "<g class=\\"highlights\\"></g>
-<g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"translate(0,277)\\">
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
+<g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"transform(0, 277)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(70, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">1975</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(142, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(213, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">85</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(284, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">90</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(355, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">95</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(426, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">2000</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(498, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">05</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(569, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">10</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(640, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">15</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(668, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">17</text>
   </g>
 </g>
-<g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"translate(0,277)\\">
+<g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"transform(0, 277)\\">
   <path class=\\"domain\\" stroke=\\"#000\\" d=\\"M0.5,6V0.5H675.5V6\\"></path>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(13.518998671825376,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(14, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(27.747971646359073,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(28, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(42.01429953225154,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(42, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(56.241648380204424,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(56, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(70, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(84.69634607611017,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(85, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(98.96267396200265,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(99, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(113.19002280995554,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(113, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(127.4173716579084,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(127, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(142, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(155.91104839175378,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(156, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(170.13839723970668,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(170, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(184.36574608765952,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(184, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(198.5930949356124,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(199, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(213, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(227.08677166945776,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(227, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(241.31412051741063,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(241, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(255.54146936536353,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(256, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(269.807797251256,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(270, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(284, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(298.26249494716177,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(298, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(312.4898437951146,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(312, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(326.7561716810071,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(327, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(340.98352052896,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(341, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(355, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(369.43821822486575,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(369, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(383.7045461107582,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(384, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(397.9318949587111,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(398, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(412.159243806664,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(412, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(426, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(440.6529205405093,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(441, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(454.88026938846224,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(455, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(469.1076182364151,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(469, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(483.3349670843679,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(483, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(498, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(511.8286438182133,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(512, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(526.0559926661662,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(526, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(540.283341514119,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(540, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(554.5496694000116,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(555, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(569, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(583.0043670959172,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(583, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(597.2317159438702,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(597, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(611.4980438297627,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(611, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(625.7253926777155,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(626, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(640, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(654.1800903736213,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(654, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(668, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
 </g>"
@@ -183,178 +183,178 @@ exports[`bottom-aligned, default scales 1`] = `
 exports[`top-aligned, default scales 1`] = `
 "<g class=\\"highlights\\"></g>
 <g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(70, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">1975</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(142, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(213, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">85</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(284, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">90</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(355, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">95</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(426, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">2000</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(498, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">05</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(569, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">10</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(640, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">15</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(668, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">17</text>
   </g>
 </g>
 <g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
   <path class=\\"domain\\" stroke=\\"#000\\" d=\\"M0.5,-6V0.5H675.5V-6\\"></path>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(13.518998671825376,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(14, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(27.747971646359073,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(28, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(42.01429953225154,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(42, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(56.241648380204424,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(56, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(70, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(84.69634607611017,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(85, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(98.96267396200265,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(99, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(113.19002280995554,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(113, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(127.4173716579084,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(127, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(142, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(155.91104839175378,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(156, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(170.13839723970668,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(170, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(184.36574608765952,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(184, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(198.5930949356124,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(199, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(213, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(227.08677166945776,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(227, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(241.31412051741063,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(241, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(255.54146936536353,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(256, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(269.807797251256,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(270, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(284, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(298.26249494716177,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(298, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(312.4898437951146,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(312, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(326.7561716810071,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(327, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(340.98352052896,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(341, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(355, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(369.43821822486575,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(369, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(383.7045461107582,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(384, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(397.9318949587111,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(398, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(412.159243806664,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(412, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(426, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(440.6529205405093,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(441, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(454.88026938846224,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(455, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(469.1076182364151,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(469, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(483.3349670843679,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(483, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(498, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(511.8286438182133,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(512, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(526.0559926661662,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(526, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(540.283341514119,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(540, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(554.5496694000116,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(555, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(569, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(583.0043670959172,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(583, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(597.2317159438702,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(597, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(611.4980438297627,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(611, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(625.7253926777155,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(626, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(640, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(654.1800903736213,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(654, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(668, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
 </g>"
