@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`bottom-aligned, default scales 1`] = `
+"<g class=\\"highlights\\"></g>
+<g class=\\"axis xAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"transform(0, 263)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(78, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"10\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"13\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">Oranges</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(251, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"10\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"13\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">Lemons</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(424, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"10\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"13\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">Apples</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(597, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"10\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"13\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">Pears</text>
+  </g>
+</g>"
+`;
+
+exports[`top-aligned, default scales 1`] = `
+"<g class=\\"highlights\\"></g>
+<g class=\\"axis xAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(78, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-10\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-13\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">Oranges</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(251, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-10\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-13\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">Lemons</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(424, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-10\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-13\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">Apples</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(597, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-10\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-13\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">Pears</text>
+  </g>
+</g>"
+`;

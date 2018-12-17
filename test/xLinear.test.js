@@ -3,8 +3,9 @@
  * Test suite for xLinear
  */
 
+import pretty from 'pretty';
+
 jest.setTimeout(20000);
-expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
 beforeAll(global.build('xLinear'));
 beforeEach(global.start);
@@ -12,7 +13,7 @@ beforeEach(global.start);
 test('bottom-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
+            source: false,
             subtitle: 'Bottom-aligned, default scales',
             title: 'xLinear test',
         };
@@ -28,9 +29,13 @@ test('bottom-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate xLinear
-        const xAxis = window.xLinear()
+        const xAxis = window
+            .xLinear()
             .range([0, currentFrame.dimension().width])
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .rem(currentFrame.rem())
             .tickSize(currentFrame.rem())
             .align('bottom')
@@ -40,19 +45,41 @@ test('bottom-aligned, default scales', async () => {
         currentFrame.plot().call(xAxis);
 
         // Translate axis to bottom of plot
-        xAxis.xLabel()
-            .attr('transform',
-                `translate(0,${currentFrame.dimension().height})`);
+        xAxis
+            .xLabel()
+            .attr(
+                'transform',
+                `translate(0,${Math.floor(currentFrame.dimension().height)})`,
+            );
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    // Lame hack to deal with the unrounded numbers from d3-axis
+    await global.page.evaluate(() =>
+        [...document.querySelectorAll('[transform]')].forEach((el) => {
+            const transform = el.getAttribute('transform');
+            const [, x, y] = transform.match(
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+            );
+            if (x && y) {
+                const updated = transform.replace(
+                    /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`,
+                );
+                el.setAttribute('transform', updated);
+            }
+        }),
+    );
+
+    const snap = await global.page.evaluate(
+        () => document.querySelector('g.chart-plot').innerHTML,
+    );
+    expect(pretty(snap)).toMatchSnapshot();
 });
 
 test('top-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
+            source: false,
             subtitle: 'Top-aligned, default scales',
             title: 'xLinear test',
         };
@@ -68,8 +95,12 @@ test('top-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate xLinear
-        const xAxis = window.xLinear()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const xAxis = window
+            .xLinear()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .rem(currentFrame.rem())
             .tickSize(currentFrame.rem())
             .range([0, currentFrame.dimension().width])
@@ -80,6 +111,25 @@ test('top-aligned, default scales', async () => {
         currentFrame.plot().call(xAxis);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    // Lame hack to deal with the unrounded numbers from d3-axis
+    await global.page.evaluate(() =>
+        [...document.querySelectorAll('[transform]')].forEach((el) => {
+            const transform = el.getAttribute('transform');
+            const [, x, y] = transform.match(
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+            );
+            if (x && y) {
+                const updated = transform.replace(
+                    /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`,
+                );
+                el.setAttribute('transform', updated);
+            }
+        }),
+    );
+
+    const snap = await global.page.evaluate(
+        () => document.querySelector('g.chart-plot').innerHTML,
+    );
+    expect(pretty(snap)).toMatchSnapshot();
 });

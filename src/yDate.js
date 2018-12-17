@@ -32,7 +32,7 @@ export default function () {
 
         function getAxis(alignment) {
             if (intraday) {
-                console.log('intraday axis'); // eslint-disable-line
+                console.log("intraday axis"); // eslint-disable-line
                 const newDomain = scale.domain();
                 const newRange = scale.range();
                 scale = d3
@@ -138,7 +138,7 @@ export default function () {
         if (align === 'right') {
             yLabel
                 .selectAll('text')
-                .attr('transform', `translate(${labelWidth},0)`)
+                .attr('transform', `translate(${Math.round(labelWidth)},0)`)
                 .style('text-anchor', 'end');
         } else {
             yLabel.selectAll('text').style('text-anchor', 'end');

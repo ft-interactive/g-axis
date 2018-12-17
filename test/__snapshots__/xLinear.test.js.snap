@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`bottom-aligned, default scales 1`] = `
+"<g class=\\"highlights\\"></g>
+<g class=\\"axis xAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"transform(0, 277)\\">
+  <g class=\\"tick baseline\\" opacity=\\"1\\" transform=\\"transform(0, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">0</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(132, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">20</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(264, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">40</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(396, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">60</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(528, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(660, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"23\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">100</text>
+  </g>
+</g>"
+`;
+
+exports[`top-aligned, default scales 1`] = `
+"<g class=\\"highlights\\"></g>
+<g class=\\"axis xAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
+  <g class=\\"tick baseline\\" opacity=\\"1\\" transform=\\"transform(0, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">0</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(132, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">20</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(264, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">40</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(396, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">60</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(528, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(660, 0)\\">
+    <line stroke=\\"#000\\" y2=\\"-20\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-23\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">100</text>
+  </g>
+</g>"
+`;

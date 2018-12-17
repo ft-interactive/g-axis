@@ -5,6 +5,8 @@
  * @jest-environment node
  */
 
+import pretty from 'pretty';
+
 // jest.setTimeout(20000);
 // expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
 
@@ -15,7 +17,7 @@
 test.skip('left-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
+            source: false,
             subtitle: 'Left-aligned, default scales',
             title: 'yDate test',
         };
@@ -27,8 +29,12 @@ test.skip('left-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate yDate
-        const yAxis = window.yDate()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const yAxis = window
+            .yDate()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .rem(currentFrame.rem())
             .minorTickSize(currentFrame.rem() * 0.3)
             .range([0, currentFrame.dimension().height])
@@ -45,20 +51,46 @@ test.skip('left-aligned, default scales', async () => {
         currentFrame.margin({ left: newMargin });
 
         // Translate axis from the left
-        yAxis.yLabel().attr('transform', `translate(${(yAxis.tickSize() - yAxis.labelWidth())}, 0)`);
+        yAxis
+            .yLabel()
+            .attr(
+                'transform',
+                `translate(${Math.floor(
+                    yAxis.tickSize() - yAxis.labelWidth(),
+                )}, 0)`,
+            );
 
         // Call parent container to update positioning
         svg.call(currentFrame);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    // Lame hack to deal with the unrounded numbers from d3-axis
+    await global.page.evaluate(() =>
+        [...document.querySelectorAll('[transform]')].forEach((el) => {
+            const transform = el.getAttribute('transform');
+            const [, x, y] = transform.match(
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+            );
+            if (x && y) {
+                const updated = transform.replace(
+                    /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`,
+                );
+                el.setAttribute('transform', updated);
+            }
+        }),
+    );
+
+    const snap = await global.page.evaluate(
+        () => document.querySelector('g.chart-plot').innerHTML,
+    );
+    expect(pretty(snap)).toMatchSnapshot();
 });
 
 test.skip('right-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
-            source: 'g-axis',
+            source: false,
             subtitle: 'Right-aligned, default scales',
             title: 'yDate test',
         };
@@ -70,8 +102,12 @@ test.skip('right-aligned, default scales', async () => {
         svg.call(currentFrame);
 
         // Instantiate yDate
-        const yAxis = window.yDate()
-            .plotDim([currentFrame.dimension().width, currentFrame.dimension().height])
+        const yAxis = window
+            .yDate()
+            .plotDim([
+                currentFrame.dimension().width,
+                currentFrame.dimension().height,
+            ])
             .minorTickSize(currentFrame.rem() * 0.3)
             .range([0, currentFrame.dimension().height])
             .align('right')
@@ -91,6 +127,25 @@ test.skip('right-aligned, default scales', async () => {
         svg.call(currentFrame);
     });
 
-    const image = await global.page.screenshot();
-    expect(image).toMatchImageSnapshot();
+    // Lame hack to deal with the unrounded numbers from d3-axis
+    await global.page.evaluate(() =>
+        [...document.querySelectorAll('[transform]')].forEach((el) => {
+            const transform = el.getAttribute('transform');
+            const [, x, y] = transform.match(
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+            );
+            if (x && y) {
+                const updated = transform.replace(
+                    /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`,
+                );
+                el.setAttribute('transform', updated);
+            }
+        }),
+    );
+
+    const snap = await global.page.evaluate(
+        () => document.querySelector('g.chart-plot').innerHTML,
+    );
+    expect(pretty(snap)).toMatchSnapshot();
 });
