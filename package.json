@@ -41,6 +41,7 @@
     "g-chartframe": "^5.2.2",
     "jest": "^23.6.0",
     "micro": "^9.1.4",
+    "prettier-eslint": "^8.8.2",
     "pretty": "^2.0.0",
     "puppeteer": "^1.11.0",
     "rollup": "^0.57.1",

@@ -16,5 +16,6 @@
   "env": {
     "browser": true,
     "jest": true
-  }
+  },
+  "root": true
 }

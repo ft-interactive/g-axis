@@ -5,7 +5,7 @@
  * @jest-environment node
  */
 
-import * as gAxis from '../index';
+import * as gAxis from "../index";
 
 jest.setTimeout(20000);
 

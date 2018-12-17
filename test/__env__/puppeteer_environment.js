@@ -7,11 +7,11 @@
 
 /* eslint-disable no-console */
 
-const NodeEnvironment = require("jest-environment-node");
-const listen = require("test-listen");
-const micro = require("micro");
-const puppeteer = require("puppeteer");
-const { rollup } = require("rollup");
+const NodeEnvironment = require('jest-environment-node');
+const listen = require('test-listen');
+const micro = require('micro');
+const puppeteer = require('puppeteer');
+const { rollup } = require('rollup');
 
 class CustomEnvironment extends NodeEnvironment {
     async setup() {
@@ -25,15 +25,15 @@ class CustomEnvironment extends NodeEnvironment {
         return async () => {
             const bundle = await rollup({
                 input: `${__dirname}/../../src/${axis}.js`,
-                external: ["d3"]
+                external: ['d3'],
             });
 
             const output = await bundle.generate({
-                format: "umd",
+                format: 'umd',
                 name: axis,
                 globals: {
-                    d3: "d3"
-                }
+                    d3: 'd3',
+                },
             });
 
             this.code = output.code;
@@ -514,7 +514,7 @@ class CustomEnvironment extends NodeEnvironment {
         <script>${this.code}</script>
         </head>
         <body><svg /></body>
-        </html>`
+        </html>`,
         );
 
         try {
@@ -522,20 +522,20 @@ class CustomEnvironment extends NodeEnvironment {
 
             this.browser = await puppeteer.launch({
                 args: [
-                    "--no-sandbox",
-                    "--disable-setuid-sandbox",
-                    "--enable-font-antialiasing"
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--enable-font-antialiasing',
                 ],
                 defaultViewport: {
                     width: 1024,
-                    height: 768
-                }
+                    height: 768,
+                },
             });
 
             this.global.page = await this.browser.newPage();
 
             await this.global.page.goto(this.url, {
-                waitUntil: "networkidle0"
+                waitUntil: 'networkidle0',
             });
         } catch (e) {
             console.error(e);
@@ -555,14 +555,14 @@ class CustomEnvironment extends NodeEnvironment {
                 await this.browser.close();
             }
         } catch (e) {
-            console.error("Issue with closing browser");
+            console.error('Issue with closing browser');
             console.error(e);
         }
 
         try {
             await this.server.close();
         } catch (e) {
-            console.error("Issue with killing server");
+            console.error('Issue with killing server');
             console.error(e);
         }
 
