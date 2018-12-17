@@ -1,6 +1,6 @@
-import * as d3 from 'd3';
+import * as d3 from "d3";
 
-export default function () {
+export default function() {
     let banding;
     const mindate = new Date(1970, 1, 1);
     const maxdate = new Date(2017, 6, 1);
@@ -10,7 +10,7 @@ export default function () {
         .range([0, 220]);
     let frameName;
     let intraday = false;
-    let interval = 'lustrum';
+    let interval = "lustrum";
     let labelWidth = 0;
     let minorAxis = true;
     let plotDim = [220, 100];
@@ -18,7 +18,7 @@ export default function () {
     let minorTickSize = 5;
     let rem = 10;
     let fullYear = false;
-    let align = 'left';
+    let align = "left";
     let yLabel;
     let label;
     let yLabelMinor;
@@ -32,7 +32,7 @@ export default function () {
 
         function getAxis(alignment) {
             if (intraday) {
-                console.log('intraday axis'); // eslint-disable-line
+                console.log("intraday axis"); // eslint-disable-line
                 const newDomain = scale.domain();
                 const newRange = scale.range();
                 scale = d3
@@ -41,12 +41,12 @@ export default function () {
                     .range(newRange);
                 return {
                     left: d3.axisLeft(),
-                    right: d3.axisRight(),
+                    right: d3.axisRight()
                 }[alignment];
             }
             return {
                 left: d3.axisLeft(),
-                right: d3.axisRight(),
+                right: d3.axisRight()
             }[alignment];
         }
 
@@ -66,7 +66,7 @@ export default function () {
                         checkDate = new Date(scale.domain()[i - 1]);
                     }
                     return d.getDay() !== checkDate.getDay();
-                }),
+                })
             );
         } else {
             yAxis
@@ -81,10 +81,10 @@ export default function () {
                 newTicks.unshift(scale.domain()[0]);
             }
             if (
-                interval === 'lustrum' ||
-                interval === 'decade' ||
-                interval === 'jubilee' ||
-                interval === 'century'
+                interval === "lustrum" ||
+                interval === "decade" ||
+                interval === "jubilee" ||
+                interval === "century"
             ) {
                 newTicks.push(d3.timeYear(scale.domain()[1]));
             }
@@ -98,13 +98,13 @@ export default function () {
         if (intraday) {
             yMinor
                 .tickSize(minorTickSize)
-                .tickFormat('')
+                .tickFormat("")
                 .scale(scale);
         } else {
             yMinor
                 .tickSize(minorTickSize)
                 .ticks(getTicksMinor(interval))
-                .tickFormat('')
+                .tickFormat("")
                 .scale(scale);
         }
 
@@ -116,15 +116,15 @@ export default function () {
             yAxis.tickFormat(customFormat);
         }
 
-        const bandHolder = parent.append('g').attr('class', 'highlights');
+        const bandHolder = parent.append("g").attr("class", "highlights");
 
         yLabel = parent
-            .append('g')
-            .attr('class', 'axis yAxis axis baseline')
+            .append("g")
+            .attr("class", "axis yAxis axis baseline")
             .call(yAxis);
 
         // Calculate width of widest .tick text
-        yLabel.selectAll('.yAxis text').each(function calcTickTextWidth() {
+        yLabel.selectAll(".yAxis text").each(function calcTickTextWidth() {
             labelWidth = Math.max(this.getBBox().width, labelWidth);
         });
 
@@ -135,60 +135,60 @@ export default function () {
             yLabel.call(yAxis.tickSize(tickSize - labelWidth));
         }
 
-        if (align === 'right') {
+        if (align === "right") {
             yLabel
-                .selectAll('text')
-                .attr('transform', `translate(${labelWidth},0)`)
-                .style('text-anchor', 'end');
+                .selectAll("text")
+                .attr("transform", `translate(${Math.floor(labelWidth)},0)`)
+                .style("text-anchor", "end");
         } else {
-            yLabel.selectAll('text').style('text-anchor', 'end');
+            yLabel.selectAll("text").style("text-anchor", "end");
         }
 
         if (minorAxis) {
             yLabelMinor = parent
-                .append('g')
-                .attr('class', () => {
+                .append("g")
+                .attr("class", () => {
                     const pHeight = d3
-                        .select('.chart-plot')
+                        .select(".chart-plot")
                         .node()
                         .getBBox().height;
                     if (pHeight === tickSize) {
-                        return 'axis yAxis';
+                        return "axis yAxis";
                     }
-                    return 'axis yAxis axis baseline';
+                    return "axis yAxis axis baseline";
                 })
                 .call(yMinor);
         }
 
         if (frameName) {
             yLabel
-                .selectAll('.axis.yAxis text')
-                .attr('id', `${frameName}yLabel`);
+                .selectAll(".axis.yAxis text")
+                .attr("id", `${frameName}yLabel`);
             yLabel
-                .selectAll('.axis.yAxis line')
-                .attr('id', `${frameName}xTick`);
+                .selectAll(".axis.yAxis line")
+                .attr("id", `${frameName}xTick`);
             if (minorAxis) {
                 yLabelMinor
-                    .selectAll('.axis.yAxis line')
-                    .attr('id', `${frameName}xTick`);
+                    .selectAll(".axis.yAxis line")
+                    .attr("id", `${frameName}xTick`);
             }
         }
         if (label) {
             const defaultLabel = {
                 tag: label.tag,
-                hori: label.hori || 'left',
-                vert: label.vert || 'middle',
-                anchor: label.anchor || 'middle',
-                rotate: label.rotate || -90,
+                hori: label.hori || "left",
+                vert: label.vert || "middle",
+                anchor: label.anchor || "middle",
+                rotate: label.rotate || -90
             };
 
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
+            const axisLabel = parent.append("g").attr("class", "axis xAxis");
 
             const getVertical = vert =>
                 ({
                     top: plotHeight - plotHeight,
                     middle: plotHeight / 2,
-                    bottom: plotHeight,
+                    bottom: plotHeight
                 }[vert]);
 
             const calcOffset = () => {
@@ -209,9 +209,9 @@ export default function () {
             }[axisAlign + horiAlign]);
 
             axisLabel
-                .append('text')
-                .attr('y', getVertical(defaultLabel.vert))
-                .attr('x', getHorizontal(align, defaultLabel.hori))
+                .append("text")
+                .attr("y", getVertical(defaultLabel.vert))
+                .attr("x", getHorizontal(align, defaultLabel.hori))
                 .text(defaultLabel.tag);
 
             // The following doesn't appear to be used anywhere:
@@ -237,27 +237,27 @@ export default function () {
                 .tickValues()
                 .map((d, i, a) => ({
                     date: d,
-                    height: getBandWidth(i, a),
+                    height: getBandWidth(i, a)
                 }))
                 .filter((d, i) => i % 2 === 0);
 
             bandHolder
-                .selectAll('rect')
+                .selectAll("rect")
                 .data(bands)
                 .enter()
-                .append('rect')
-                .attr('x', 0)
-                .attr('width', () => {
-                    if (align === 'left ') {
+                .append("rect")
+                .attr("x", 0)
+                .attr("width", () => {
+                    if (align === "left ") {
                         return plotWidth - labelWidth;
                     }
                     return plotWidth - labelWidth - rem;
                 })
-                .attr('y', d => scale(d.date))
-                .attr('height', d => d.height);
+                .attr("y", d => scale(d.date))
+                .attr("height", d => d.height);
         }
 
-        yLabel.selectAll('.domain').remove();
+        yLabel.selectAll(".domain").remove();
     }
 
     function getTicks(intvl) {
@@ -272,7 +272,7 @@ export default function () {
             months: d3.timeMonth.every(1),
             weeks: d3.timeWeek.every(1),
             days: d3.timeDay.every(1),
-            hours: d3.timeHour.every(1),
+            hours: d3.timeHour.every(1)
         }[intvl];
     }
     function getTicksMinor(intvl) {
@@ -287,19 +287,19 @@ export default function () {
             months: d3.timeDay.every(1),
             weeks: d3.timeDay.every(1),
             days: d3.timeHour.every(1),
-            hours: d3.timeMinute.every(1),
+            hours: d3.timeMinute.every(1)
         }[intvl];
     }
 
     function tickFormat(intvl) {
-        const formatFullYear = d3.timeFormat('%Y');
-        const formatYear = d3.timeFormat('%y');
-        const formatMonth = d3.timeFormat('%b');
-        const formatWeek = d3.timeFormat('%W');
-        const formatDay = d3.timeFormat('%d');
-        const formatHour = d3.timeFormat('%H:%M');
+        const formatFullYear = d3.timeFormat("%Y");
+        const formatYear = d3.timeFormat("%y");
+        const formatMonth = d3.timeFormat("%b");
+        const formatWeek = d3.timeFormat("%W");
+        const formatDay = d3.timeFormat("%d");
+        const formatHour = d3.timeFormat("%H:%M");
         return {
-            century: d3.timeFormat('%Y'),
+            century: d3.timeFormat("%Y"),
             jubilee(d, i) {
                 const format = checkCentury(d, i);
                 return format;
@@ -339,7 +339,7 @@ export default function () {
             hours(d, i) {
                 const format = getHours(d, i);
                 return format;
-            },
+            }
         }[intvl];
 
         function getHours(d, i) {
@@ -368,23 +368,23 @@ export default function () {
                 return `Q1 ${formatFullYear(d)}`;
             }
             if (d.getMonth() < 3) {
-                return 'Q1';
+                return "Q1";
             }
             if (d.getMonth() >= 3 && d.getMonth() < 6) {
-                return 'Q2';
+                return "Q2";
             }
             if (d.getMonth() >= 6 && d.getMonth() < 9) {
-                return 'Q3';
+                return "Q3";
             }
             if (d.getMonth() >= 9 && d.getMonth() < 12) {
-                return 'Q4';
+                return "Q4";
             }
-            throw new Error('Invalid quarter');
+            throw new Error("Invalid quarter");
         }
 
         function checkMonth(d, i) {
             if (d.getMonth() === 0 || i === 0) {
-                const newYear = d3.timeFormat('%b %Y');
+                const newYear = d3.timeFormat("%b %Y");
                 return newYear(d);
             }
             return formatMonth(d);
@@ -403,104 +403,104 @@ export default function () {
             return `${formatYear(d)}/${Number(formatYear(d)) + 1}`;
         }
     }
-    axis.align = (d) => {
+    axis.align = d => {
         align = d;
         return axis;
     };
-    axis.banding = (d) => {
+    axis.banding = d => {
         if (d === undefined) return banding;
         banding = d;
         return axis;
     };
-    axis.tickFormat = (d) => {
+    axis.tickFormat = d => {
         customFormat = d;
         scale.tickFormat(d);
         return axis;
     };
-    axis.endTicks = (d) => {
+    axis.endTicks = d => {
         if (d === undefined) return endTicks;
         endTicks = d;
         return axis;
     };
-    axis.frameName = (d) => {
+    axis.frameName = d => {
         if (d === undefined) return frameName;
         frameName = d;
         return axis;
     };
-    axis.intraday = (d) => {
+    axis.intraday = d => {
         if (d === undefined) return intraday;
         intraday = d;
         return axis;
     };
-    axis.label = (d) => {
+    axis.label = d => {
         if (d === undefined) return label;
         label = d;
         return axis;
     };
-    axis.labelWidth = (d) => {
+    axis.labelWidth = d => {
         if (!d) return labelWidth;
         labelWidth = d;
         return axis;
     };
-    axis.plotDim = (d) => {
+    axis.plotDim = d => {
         if (!d) return plotDim;
         plotDim = d;
         return axis;
     };
-    axis.scale = (d) => {
+    axis.scale = d => {
         if (!d) return scale;
         scale = d;
         return axis;
     };
-    axis.tickValues = (d) => {
+    axis.tickValues = d => {
         if (!d) return tickValues;
         tickValues = d;
         return axis;
     };
-    axis.domain = (d) => {
+    axis.domain = d => {
         scale.domain(d);
         return axis;
     };
-    axis.range = (d) => {
+    axis.range = d => {
         scale.range(d);
         return axis;
     };
 
-    axis.fullYear = (d) => {
+    axis.fullYear = d => {
         if (d === undefined) return fullYear;
         fullYear = d;
         return axis;
     };
-    axis.interval = (d) => {
+    axis.interval = d => {
         interval = d;
         return axis;
     };
-    axis.tickSize = (d) => {
+    axis.tickSize = d => {
         if (!d) return tickSize;
         tickSize = d;
         return axis;
     };
-    axis.minorTickSize = (d) => {
+    axis.minorTickSize = d => {
         if (!d) return minorTickSize;
         minorTickSize = d;
         return axis;
     };
-    axis.minorAxis = (d) => {
+    axis.minorAxis = d => {
         if (d === undefined) return minorAxis;
         minorAxis = d;
         return axis;
     };
-    axis.rem = (d) => {
+    axis.rem = d => {
         if (!d) return rem;
         rem = d;
         return axis;
     };
-    axis.yLabel = (d) => {
+    axis.yLabel = d => {
         if (d === undefined) return yLabel;
         yLabel = d;
         return axis;
     };
-    axis.yLabelMinor = (d) => {
+    axis.yLabelMinor = d => {
         if (d === undefined) return yLabelMinor;
         yLabelMinor = d;
         return axis;

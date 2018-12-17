@@ -525,7 +525,11 @@ class CustomEnvironment extends NodeEnvironment {
                     "--no-sandbox",
                     "--disable-setuid-sandbox",
                     "--enable-font-antialiasing"
-                ]
+                ],
+                defaultViewport: {
+                    width: 1024,
+                    height: 768
+                }
             });
 
             this.global.page = await this.browser.newPage();
