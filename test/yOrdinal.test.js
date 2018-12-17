@@ -3,22 +3,22 @@
  * Test suite for yOrdinal
  */
 
-import pretty from "pretty";
+import pretty from 'pretty';
 
 jest.setTimeout(20000);
 
-beforeAll(global.build("yOrdinal"));
+beforeAll(global.build('yOrdinal'));
 beforeEach(global.start);
 
-test("left-aligned, default scales", async () => {
+test('left-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
             source: false,
-            subtitle: "Left-aligned, default scales",
-            title: "yOrdinal test"
+            subtitle: 'Left-aligned, default scales',
+            title: 'yOrdinal test',
         };
 
-        const svg = await window.d3.select(document.querySelector("svg"));
+        const svg = await window.d3.select(document.querySelector('svg'));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -30,11 +30,11 @@ test("left-aligned, default scales", async () => {
             .rangeRound([0, currentFrame.dimension().height])
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height
+                currentFrame.dimension().height,
             ])
-            .frameName("webFrameMDefault")
+            .frameName('webFrameMDefault')
             .rem(currentFrame.rem())
-            .align("left");
+            .align('left');
 
         // Set up yAxis
         currentFrame.plot().call(yAxis);
@@ -50,37 +50,37 @@ test("left-aligned, default scales", async () => {
     });
 
     // Lame hack to deal with the unrounded numbers from d3-axis
-    await global.page.evaluate(() => {
-        [...document.querySelectorAll("[transform]")].map(el => {
-            const transform = el.getAttribute("transform");
+    await global.page.evaluate(() =>
+        [...document.querySelectorAll('[transform]')].forEach((el) => {
+            const transform = el.getAttribute('transform');
             const [, x, y] = transform.match(
-                /translate\s?\(([\d.]+),\s?([\d.]+)\)/
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
             );
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`,
                 );
-                el.setAttribute("transform", updated);
+                el.setAttribute('transform', updated);
             }
-        });
-    });
+        }),
+    );
 
     const snap = await global.page.evaluate(
-        () => document.querySelector("g.chart-plot").innerHTML
+        () => document.querySelector('g.chart-plot').innerHTML,
     );
     expect(pretty(snap)).toMatchSnapshot();
 });
 
-test("right-aligned, default scales", async () => {
+test('right-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
             source: false,
-            subtitle: "Right-aligned, default scales",
-            title: "yOrdinal test"
+            subtitle: 'Right-aligned, default scales',
+            title: 'yOrdinal test',
         };
 
-        const svg = await window.d3.select(document.querySelector("svg"));
+        const svg = await window.d3.select(document.querySelector('svg'));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -92,11 +92,11 @@ test("right-aligned, default scales", async () => {
             .rangeRound([0, currentFrame.dimension().height])
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height
+                currentFrame.dimension().height,
             ])
             .rem(currentFrame.rem())
-            .frameName("webFrameMDefault")
-            .align("right");
+            .frameName('webFrameMDefault')
+            .align('right');
 
         // Set up yAxis
         currentFrame.plot().call(yAxis);
@@ -113,32 +113,32 @@ test("right-aligned, default scales", async () => {
         yAxis
             .yLabel()
             .attr(
-                "transform",
+                'transform',
                 `translate(${Math.floor(
-                    currentFrame.dimension().width - yAxis.labelWidth()
-                )}, 0)`
+                    currentFrame.dimension().width - yAxis.labelWidth(),
+                )}, 0)`,
             );
     });
 
     // Lame hack to deal with the unrounded numbers from d3-axis
-    await global.page.evaluate(() => {
-        [...document.querySelectorAll("[transform]")].map(el => {
-            const transform = el.getAttribute("transform");
+    await global.page.evaluate(() =>
+        [...document.querySelectorAll('[transform]')].forEach((el) => {
+            const transform = el.getAttribute('transform');
             const [, x, y] = transform.match(
-                /translate\s?\(([\d.]+),\s?([\d.]+)\)/
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
             );
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`,
                 );
-                el.setAttribute("transform", updated);
+                el.setAttribute('transform', updated);
             }
-        });
-    });
+        }),
+    );
 
     const snap = await global.page.evaluate(
-        () => document.querySelector("g.chart-plot").innerHTML
+        () => document.querySelector('g.chart-plot').innerHTML,
     );
     expect(pretty(snap)).toMatchSnapshot();
 });

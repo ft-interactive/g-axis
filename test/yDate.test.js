@@ -5,7 +5,7 @@
  * @jest-environment node
  */
 
-import pretty from "pretty";
+import pretty from 'pretty';
 
 // jest.setTimeout(20000);
 // expect.extend({ toMatchImageSnapshot: global.toMatchImageSnapshot });
@@ -14,15 +14,15 @@ import pretty from "pretty";
 // beforeEach(global.start);
 
 // @TODO this is canonical AFAICT but it still renders off-plot for some reason
-test.skip("left-aligned, default scales", async () => {
+test.skip('left-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
             source: false,
-            subtitle: "Left-aligned, default scales",
-            title: "yDate test"
+            subtitle: 'Left-aligned, default scales',
+            title: 'yDate test',
         };
 
-        const svg = await window.d3.select(document.querySelector("svg"));
+        const svg = await window.d3.select(document.querySelector('svg'));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -33,13 +33,13 @@ test.skip("left-aligned, default scales", async () => {
             .yDate()
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height
+                currentFrame.dimension().height,
             ])
             .rem(currentFrame.rem())
             .minorTickSize(currentFrame.rem() * 0.3)
             .range([0, currentFrame.dimension().height])
-            .align("left")
-            .frameName("webMDefault");
+            .align('left')
+            .frameName('webMDefault');
 
         // Set up yAxis
         currentFrame.plot().call(yAxis);
@@ -54,10 +54,10 @@ test.skip("left-aligned, default scales", async () => {
         yAxis
             .yLabel()
             .attr(
-                "transform",
+                'transform',
                 `translate(${Math.floor(
-                    yAxis.tickSize() - yAxis.labelWidth()
-                )}, 0)`
+                    yAxis.tickSize() - yAxis.labelWidth(),
+                )}, 0)`,
             );
 
         // Call parent container to update positioning
@@ -65,37 +65,37 @@ test.skip("left-aligned, default scales", async () => {
     });
 
     // Lame hack to deal with the unrounded numbers from d3-axis
-    await global.page.evaluate(() => {
-        [...document.querySelectorAll("[transform]")].map(el => {
-            const transform = el.getAttribute("transform");
+    await global.page.evaluate(() =>
+        [...document.querySelectorAll('[transform]')].forEach((el) => {
+            const transform = el.getAttribute('transform');
             const [, x, y] = transform.match(
-                /translate\s?\(([\d.]+),\s?([\d.]+)\)/
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
             );
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`,
                 );
-                el.setAttribute("transform", updated);
+                el.setAttribute('transform', updated);
             }
-        });
-    });
+        }),
+    );
 
     const snap = await global.page.evaluate(
-        () => document.querySelector("g.chart-plot").innerHTML
+        () => document.querySelector('g.chart-plot').innerHTML,
     );
     expect(pretty(snap)).toMatchSnapshot();
 });
 
-test.skip("right-aligned, default scales", async () => {
+test.skip('right-aligned, default scales', async () => {
     await global.page.evaluate(async () => {
         const sharedConfig = {
             source: false,
-            subtitle: "Right-aligned, default scales",
-            title: "yDate test"
+            subtitle: 'Right-aligned, default scales',
+            title: 'yDate test',
         };
 
-        const svg = await window.d3.select(document.querySelector("svg"));
+        const svg = await window.d3.select(document.querySelector('svg'));
         const currentFrame = window.gChartframe.webFrameMDefault(sharedConfig);
 
         // Set up the chart frame
@@ -106,13 +106,13 @@ test.skip("right-aligned, default scales", async () => {
             .yDate()
             .plotDim([
                 currentFrame.dimension().width,
-                currentFrame.dimension().height
+                currentFrame.dimension().height,
             ])
             .minorTickSize(currentFrame.rem() * 0.3)
             .range([0, currentFrame.dimension().height])
-            .align("right")
+            .align('right')
             .rem(currentFrame.rem())
-            .frameName("webMDefault");
+            .frameName('webMDefault');
 
         // Set up yAxis
         currentFrame.plot().call(yAxis);
@@ -128,24 +128,24 @@ test.skip("right-aligned, default scales", async () => {
     });
 
     // Lame hack to deal with the unrounded numbers from d3-axis
-    await global.page.evaluate(() => {
-        [...document.querySelectorAll("[transform]")].map(el => {
-            const transform = el.getAttribute("transform");
+    await global.page.evaluate(() =>
+        [...document.querySelectorAll('[transform]')].forEach((el) => {
+            const transform = el.getAttribute('transform');
             const [, x, y] = transform.match(
-                /translate\s?\(([\d.]+),\s?([\d.]+)\)/
+                /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
             );
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`,
                 );
-                el.setAttribute("transform", updated);
+                el.setAttribute('transform', updated);
             }
-        });
-    });
+        }),
+    );
 
     const snap = await global.page.evaluate(
-        () => document.querySelector("g.chart-plot").innerHTML
+        () => document.querySelector('g.chart-plot').innerHTML,
     );
     expect(pretty(snap)).toMatchSnapshot();
 });
