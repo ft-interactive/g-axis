@@ -1,2415 +1,361 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`bottom-aligned, default scales 1`] = `
-"<head>
-  <script src=\\"http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js\\"></script>
-  <script src=\\"https://unpkg.com/g-chartframe@5.2.2/build/g-chartframe.js\\"></script>
-  <link rel=\\"stylesheet\\" href=\\"//www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^2.2.0\\">
-  <style>
-    /**
-             * Global styles for Visual Vocabulary Templates
-             */
-
-    .section-heading {
-      background-color: #00757F;
-      color: #fff;
-      font-family: MetricWeb;
-      font-weight: 600;
-      font-size: 20px;
-      padding: 8px 8px 5px;
-    }
-
-    figure {
-      width: fit-content;
-    }
-
-    .button-holder {
-      margin-bottom: 50px;
-    }
-
-    svg {
-      font-size: 0;
-      fill: transparent;
-    }
-
-    .axis {
-      font-size: inherit !important;
-    }
-
-    /* .overall text styles on axis*/
-    .ft-webgraphic-s .axis text,
-    .ft-webgraphic-m .axis text,
-    .ft-webgraphic-m-default .axis text,
-    .ft-webgraphic-l .axis text {
-      font-family: MetricWeb;
-      fill: #66605C;
-    }
-
-    .ft-socialgraphic .axis text,
-    .ft-videographic .axis text {
-      opacity: 0.5;
-    }
-
-    .ft-webgraphic-s .highlighted-label,
-    .ft-webgraphic-m .highlighted-label,
-    .ft-webgraphic-m-default .highlighted-label,
-    .ft-webgraphic-l .highlighted-label {
-      fill: #000000;
-    }
-
-    .ft-socialgraphic .highlighted-label,
-    .ft-videographic .highlighted-label {
-      fill: #ffffff;
-      opacity: 1;
-    }
-
-    .ft-webgraphic-s .axis text,
-    .ft-webgraphic-s .highlighted-label {
-      font-size: 14px;
-    }
-
-    .ft-webgraphic-m .axis text,
-    .ft-webgraphic-m .highlighted-label {
-      font-size: 16px;
-    }
-
-    .ft-webgraphic-m-default .axis text,
-    .ft-webgraphic-m-default .highlighted-label {
-      font-size: 20px;
-    }
-
-    .ft-webgraphic-l .axis text,
-    .ft-webgraphic-l .highlighted-label {
-      font-size: 18px;
-    }
-
-    .ft-printgraphic .axis text,
-    .ft-printgraphic .highlighted-label {
-      font-family: MetricWeb;
-      font-size: 9.6px;
-      fill: #000000;
-    }
-
-    .ft-socialgraphic .axis text,
-    .ft-socialgraphic .highlighted-label {
-      font-family: MetricWeb;
-      font-size: 28px;
-    }
-
-    .ft-videographic .axis text,
-    .ft-videographic .highlighted-label {
-      font-family: MetricWeb;
-      font-size: 48px;
-    }
-
-    /* .tick text on yAxis*/
-    .ft-webgraphic-s .yAxis text,
-    .ft-webgraphic-m .yAxis text,
-    .ft-webgraphic-m-default .yAxis text,
-    .ft-webgraphic-l .yAxis text {
-      fill: #66605C;
-      text-anchor: end;
-    }
-
-    .ft-printgraphic .yAxis text {
-      text-anchor: end;
-    }
-
-    .ft-socialgraphic .yAxis text {
-      opacity: 0.5;
-      fill: #FFFFFF;
-      text-anchor: end;
-    }
-
-    .ft-videographic .yAxis text {
-      opacity: 0.5;
-      fill: #FFFFFF;
-      text-anchor: end;
-    }
-
-    /* .tick line styles on yAxis*/
-    .ft-webgraphic-s .yAxis line,
-    .ft-webgraphic-m .yAxis line,
-    .ft-webgraphic-m-default .yAxis line,
-    .ft-webgraphic-l .yAxis line {
-      stroke: #e6d9ce;
-      stroke-width: 1px;
-    }
-
-    .ft-printgraphic .yAxis line {
-      stroke: #000000;
-      stroke-width: 0.3px;
-    }
-
-    .ft-socialgraphic .yAxis line {
-      stroke: #FFFFFF;
-      stroke-width: 2px;
-      stroke-dasharray: 2, 8;
-      stroke-opacity: 0.38;
-    }
-
-    .ft-videographic .yAxis line {
-      stroke: #FFFFFF;
-      stroke-width: 4px;
-      stroke-opacity: 0.38;
-    }
-
-    /* Makes domian invivible on yAxis*/
-    .ft-webgraphic-s .domain,
-    .ft-webgraphic-m .domain,
-    .ft-webgraphic-m-default .domain,
-    .ft-webgraphic-l .domain {
-      stroke-width: 0px;
-    }
-
-    .ft-printgraphic .domain {
-      stroke-width: 0px;
-    }
-
-    .ft-socialgraphic .domain {
-      stroke-width: 0px;
-    }
-
-    .ft-videographic .domain {
-      stroke-width: 0px;
-    }
-
-    /* reinstate domain for circle timelines*/
-
-    .ft-webgraphic-s .timelineHolder .baseline line,
-    .ft-webgraphic-m .timelineHolder .baseline line,
-    .ft-webgraphic-m-default .timelineHolder .baseline line,
-    .ft-webgraphic-l .timelineHolder .baseline line {
-      stroke: #000000;
-      stroke-width: 1px;
-      stroke-dasharray: 1, 0;
-      stroke-opacity: 0.4;
-    }
-
-    .ft-webgraphic-s .timelineHolder .domain,
-    .ft-webgraphic-m .timelineHolder .domain,
-    .ft-webgraphic-m-default .timelineHolder .domain,
-    .ft-webgraphic-l .timelineHolder .domain,
-    .ft-printgraphic .timelineHolder .domain {
-      stroke-width: 1px;
-      stroke-opacity: 0.4;
-    }
-
-    .ft-socialgraphic .timelineHolder .domain,
-    .ft-videographic .timelineHolder .domain {
-      stroke: #ffffff;
-    }
-
-    .ft-socialgraphic .timelineHolder .domain {
-      stroke-width: 2px
-    }
-
-    .ft-videographic .timelineHolder .domain {
-      stroke-width: 4px
-    }
-
-    /* .tick text on yAxis*/
-    .ft-webgraphic-s .xAxis text,
-    .ft-webgraphic-m .xAxis text,
-    .ft-webgraphic-m-default .xAxis text,
-    .ft-webgraphic-l .xAxis text {
-      fill: #66605C;
-      text-anchor: middle;
-    }
-
-    .ft-printgraphic .xAxis text {
-      text-anchor: middle;
-    }
-
-    .ft-socialgraphic .xAxis text {
-      opacity: 0.5;
-      fill: #FFFFFF;
-      text-anchor: middle;
-    }
-
-    .ft-videographic .xAxis text {
-      opacity: 0.5;
-      fill: #FFFFFF;
-      text-anchor: middle;
-    }
-
-    .ft-webgraphic-s .xAxis line,
-    .ft-webgraphic-m .xAxis line,
-    .ft-webgraphic-m-default .xAxis line,
-    .ft-webgraphic-l .xAxis line {
-      stroke: #e6d9ce;
-      stroke-width: 1px;
-    }
-
-    .ft-printgraphic .xAxis line {
-      stroke: #000000;
-      stroke-width: 0.3px;
-    }
-
-    .ft-socialgraphic .xAxis line {
-      stroke: #FFFFFF;
-      stroke-width: 2px;
-      stroke-dasharray: 2, 8;
-      stroke-opacity: 0.38;
-    }
-
-    .ft-videographic .xAxis line {
-      stroke: #FFFFFF;
-      stroke-width: 4px;
-      stroke-opacity: 0.38;
-    }
-
-    /* Style for the highlight or base line on yAxis*/
-    .ft-webgraphic-s .baseline line,
-    .ft-webgraphic-m .baseline line,
-    .ft-webgraphic-m-default .baseline line,
-    .ft-webgraphic-l .baseline line {
-      stroke: #CEC6B9;
-      stroke-width: 1px;
-      stroke-dasharray: 1, 0;
-    }
-
-    .ft-printgraphic .baseline line {
-      stroke: #000000;
-      stroke-width: 0.6px;
-    }
-
-    .ft-printgraphic .xAxis.baseline line {
-      stroke: #000000;
-      stroke-width: 0.3px;
-    }
-
-    .ft-socialgraphic .baseline line {
-      stroke: #FFFFFF;
-      stroke-width: 2px;
-      stroke-dasharray: 1, 0;
-      stroke-opacity: 0.5;
-    }
-
-    .ft-videographic .baseline line {
-      stroke: #FFFFFF;
-      stroke-width: 4px;
-      stroke-opacity: .38;
-    }
-
-    /* Styles for lines on chart*/
-    .ft-webgraphic-s .lines,
-    .ft-webgraphic-m .lines,
-    .ft-webgraphic-m-default .lines,
-    .ft-webgraphic-l .lines {
-      stroke-linecap: square;
-      stroke-linejoin: round;
-      stroke-width: 3px;
-      fill: none;
-    }
-
-    .ft-printgraphic .lines {
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 2px;
-      fill: none;
-    }
-
-    .ft-socialgraphic .lines {
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 5px;
-      fill: none;
-    }
-
-    .ft-videographic .lines {
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 8px;
-      fill: none;
-    }
-
-    /* annotation styling*/
-
-    .ft-webgraphic-s .annotations-holder line,
-    .ft-webgraphic-m .annotations-holder line,
-    .ft-webgraphic-m-default .annotations-holder line,
-    .ft-webgraphic-l .annotations-holder line {
-      stroke: #66605C;
-      stroke-width: 1px;
-    }
-
-    .ft-printgraphic .annotations-holder line {
-      stroke: #000000;
-      stroke-width: 0.5px;
-    }
-
-    .ft-socialgraphic .annotations-holder line {
-      stroke: #ffffff;
-      stroke-width: 2px;
-      opacity: 0.7;
-    }
-
-    .ft-videographic .annotations-holder line {
-      stroke: #ffffff;
-      stroke-width: 4px;
-      opacity: 0.7;
-    }
-
-    .ft-webgraphic-s .annotations-holder text {
-      font-size: 14px;
-    }
-
-    .ft-webgraphic-m .annotations-holder text {
-      font-size: 16px;
-    }
-
-    .ft-webgraphic-m-default .annotations-holder text {
-      font-size: 20px;
-    }
-
-    .ft-webgraphic-l .annotations-holder text {
-      font-size: 18px;
-    }
-
-    .ft-webgraphic-s .annotations-holder text,
-    .ft-webgraphic-m .annotations-holder text,
-    .ft-webgraphic-m-default .annotations-holder text,
-    .ft-webgraphic-l .annotations-holder text {
-      fill: #66605C;
-    }
-
-    .ft-printgraphic .annotations-holder text {
-      font-size: 9.6px;
-      fill: #000000;
-    }
-
-    .ft-socialgraphic .annotations-holder text {
-      font-size: 28px;
-      fill: #ffffff;
-      opacity: 0.7;
-    }
-
-    .ft-videographic .annotations-holder text {
-      font-size: 48px;
-      fill: #ffffff;
-      opacity: 0.7;
-    }
-
-    /* .overall text styles on axis*/
-    .ft-webgraphic-s .highlights,
-    .ft-webgraphic-m .highlights,
-    .ft-webgraphic-m-default .highlights,
-    .ft-webgraphic-l .highlights {
-      fill: #FCE6D6;
-    }
-
-    .ft-printgraphic .highlights {
-      fill: #95BFC5;
-      opacity: 0.3;
-    }
-
-    .ft-socialgraphic .highlights {
-      fill: #ffffff;
-      opacity: 0.2;
-    }
-
-    .ft-videographic .highlights {
-      fill: #ffffff;
-      opacity: 0.2;
-    }
-
-    .ft-webgraphic-s .timeline-label,
-    .ft-webgraphic-m .timeline-label,
-    .ft-webgraphic-m-default .timeline-label,
-    .ft-webgraphic-l .timeline-label {
-      font-family: MetricWeb;
-      fill: #000000;
-    }
-
-    /* legend */
-    .ft-webgraphic-s .legend,
-    .ft-webgraphic-m .legend,
-    .ft-webgraphic-m-default .legend,
-    .ft-webgraphic-l .legend {
-      font-family: MetricWeb;
-      fill: #66605C;
-    }
-
-    .ft-webgraphic-s .timeline-label,
-    .ft-webgraphic-s .legend {
-      font-size: 14px;
-    }
-
-    .ft-webgraphic-m .timeline-label,
-    .ft-webgraphic-m .legend {
-      font-size: 16px;
-    }
-
-    .ft-webgraphic-m-default .timeline-label,
-    .ft-webgraphic-m-default .legend {
-      font-size: 20px;
-    }
-
-    .ft-webgraphic-l .timeline-label,
-    .ft-webgraphic-l .legend {
-      font-size: 18px;
-    }
-
-    .ft-printgraphic .timeline-label,
-    .ft-printgraphic .legend {
-      font-family: MetricWeb;
-      font-size: 9.6px;
-      fill: #000000;
-    }
-
-    .ft-socialgraphic .timeline-label,
-    .ft-socialgraphic .legend text {
-      font-family: MetricWeb;
-      opacity: 0.5;
-      fill: #FFFFFF;
-      font-size: 28px;
-    }
-
-    .ft-videographic .timeline-label,
-    .ft-videographic .legend text {
-      font-family: MetricWeb;
-      opacity: 0.5;
-      fill: #FFFFFF;
-      font-size: 48px;
-    }
-
-    svg text {
-      font-feature-settings: 'tnum', 1;
-      -webkit-font-feature-settings: 'tnum';
-      -moz-font-feature-settings: 'tnum';
-    }
-
-    .saveable button {
-      display: block;
-    }
-
-    ul {
-      line-height: 24px;
-    }
-
-    .button {
-      border-radius: 10px;
-      background-color: #00757F;
-      color: #fff;
-      font-family: MetricWeb;
-      font-weight: 600;
-      font-size: 20px;
-      height: 25px;
-      margin-top: 2px;
-      margin-bottom: 10px;
-      margin-right: 10px;
-      border-width: 0px;
-      padding-top: 3px;
-      cursor: pointer;
-    }
-  </style>
-  <script>
-    (function(global, factory) {
-      typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('d3')) :
-        typeof define === 'function' && define.amd ? define(['d3'], factory) :
-        (global.xDate = factory(global.d3));
-    }(this, (function(d3) {
-      'use strict';
-
-      function xaxisDate() {
-        let banding;
-        const mindate = new Date(1970, 1, 1);
-        const maxdate = new Date(2017, 6, 1);
-        let scale = d3.scaleTime()
-          .domain([mindate, maxdate])
-          .range([0, 220]);
-        let frameName;
-        let intraday = false;
-        let interval = 'lustrum';
-        let minorAxis = true;
-        let tickSize = 10;
-        let minorTickSize = 5;
-        let fullYear = false;
-        let align = 'bottom';
-        let label;
-        let plotDim = [200, 100];
-        let xLabel;
-        let xLabelMinor;
-        let rem = 10;
-        let endTicks;
-        let customFormat = false;
-        let tickValues;
-
-        function axis(parent) {
-          const plotWidth = plotDim[0];
-          const plotHeight = plotDim[1];
-
-          function getAxis(alignment) {
-            if (intraday) {
-              const newDomain = scale.domain();
-              const newRange = scale.range();
-              scale = d3.scalePoint()
-                .domain(newDomain)
-                .range(newRange);
-              return {
-                top: d3.axisTop(),
-                bottom: d3.axisBottom(),
-              } [alignment];
-            }
-            return {
-              top: d3.axisTop(),
-              bottom: d3.axisBottom(),
-            } [alignment];
-          }
-
-          const xAxis = getAxis(align);
-          if (intraday) {
-            xAxis
-              .tickSize(tickSize)
-              .tickFormat(tickFormat(interval))
-              .scale(scale);
-            xAxis.tickValues(
-              scale.domain().filter((d, i) => {
-                let checkDate;
-                if (i === 0) {
-                  return d.getDay();
-                }
-                if (i > 0) {
-                  checkDate = new Date(scale.domain()[i - 1]);
-                }
-                return d.getDay() !== checkDate.getDay();
-              }),
-            );
-          } else {
-            xAxis
-              .tickSize(tickSize)
-              // .ticks(getTicks(interval))
-              .tickFormat(tickFormat(interval))
-              .scale(scale);
-            let newTicks = scale.ticks(getTicks(interval));
-            const dayCheck = scale.domain()[0].getDate();
-            const monthCheck = scale.domain()[0].getMonth();
-            if (dayCheck !== 1 && monthCheck !== 0) {
-              newTicks.unshift(scale.domain()[0]);
-            }
-            if (
-              interval === 'lustrum' ||
-              interval === 'decade' ||
-              interval === 'jubilee' ||
-              interval === 'century'
-            ) {
-              newTicks.push(d3.timeYear(scale.domain()[1]));
-            }
-            if (endTicks) {
-              newTicks = scale.domain();
-            }
-            xAxis.tickValues(newTicks);
-          }
-
-          const xMinor = getAxis(align);
-          if (intraday) {
-            xMinor
-              .tickSize(minorTickSize)
-              .tickFormat('')
-              .scale(scale);
-          } else {
-            xMinor
-              .tickSize(minorTickSize)
-              .ticks(getTicksMinor(interval))
-              .tickFormat('')
-              .scale(scale);
-          }
-
-          if (tickValues) {
-            xAxis.tickValues(tickValues);
-          }
-
-          if (customFormat) {
-            xAxis.tickFormat(customFormat);
-          }
-
-          const bandHolder = parent.append('g').attr('class', 'highlights');
-
-          xLabel = parent
-            .append('g')
-            .attr('class', 'axis xAxis axis baseline')
-            .call(xAxis);
-
-          if (minorAxis) {
-            xLabelMinor = parent
-              .append('g')
-              .attr('class', () => {
-                if (plotHeight === tickSize) {
-                  return 'axis xAxis';
-                }
-                return 'axis xAxis axis baseline';
-              })
-              .call(xMinor);
-          }
-
-          if (frameName) {
-            xLabel
-              .selectAll('.axis.xAxis text')
-              .attr('id', \`\${frameName}xLabel\`);
-            xLabel
-              .selectAll('.axis.xAxis line')
-              .attr('id', \`\${frameName}xTick\`);
-            if (minorAxis) {
-              xLabelMinor
-                .selectAll('.axis.xAxis line')
-                .attr('id', \`\${frameName}xTick\`);
-            }
-          }
-
-          if (label) {
-            const defaultLabel = {
-              tag: label.tag,
-              hori: label.hori || 'middle',
-              vert: label.vert || 'bottom',
-              anchor: label.anchor || 'middle',
-              rotate: label.rotate || 0,
-            };
-
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-            const calcOffset = () => {
-              if (tickSize > 0 && tickSize < rem) {
-                return tickSize + (rem * 0.8); // prettier-ignore
-              }
-              return rem * 0.9;
-            };
-            const getVertical = (axisAlign, vertAlign) =>
-              ({
-                toptop: 0 - rem,
-                topmiddle: 0,
-                topbottom: 0 + rem,
-                bottomtop: plotHeight,
-                bottommiddle: plotHeight + calcOffset(),
-                bottombottom: plotHeight + calcOffset() + (rem * 1.1), // prettier-ignore
-              } [axisAlign + vertAlign]);
-
-            const getHorizontal = hori =>
-              ({
-                left: plotWidth - plotWidth,
-                middle: plotWidth / 2,
-                right: plotWidth,
-              } [hori]);
-
-            axisLabel
-              .append('text')
-              .attr('y', getVertical(align, defaultLabel.vert))
-              .attr('x', getHorizontal(defaultLabel.hori))
-              .text(defaultLabel.tag);
-
-            const text = axisLabel.selectAll('text');
-            const width = text.node().getBBox().width / 2;
-            const height = text.node().getBBox().height / 2;
-            const textX = text.node().getBBox().x + width;
-            const textY = text.node().getBBox().y + height;
-            text.attr(
-              'transform',
-              \`rotate(\${defaultLabel.rotate}, \${textX}, \${textY})\`,
-            ).style('text-anchor', defaultLabel.anchor);
-          }
-          if (banding) {
-            let bands = xAxis.tickValues();
-            const getBandWidth = (index) => {
-              if (index === bands.length - 1) {
-                return plotWidth - scale(bands[index]);
-              }
-              return scale(bands[index + 1]) - scale(bands[index]);
-            };
-            bands = bands
-              .map((d, i) => ({
-                date: d,
-                width: getBandWidth(i),
-              }))
-              .filter((d, i) => i % 2 === 0);
-
-            console.log('bands', bands);
-
-            bandHolder
-              .selectAll('rect')
-              .data(bands)
-              .enter()
-              .append('rect')
-              .attr('y', 0)
-              .attr('height', plotHeight)
-              .attr('x', d => scale(d.date))
-              .attr('width', d => d.width);
-          }
-
-          xLabel.selectAll('.domain').remove();
-        }
-
-        function getTicks(intvl) {
-          return {
-            century: d3.timeYear.every(100),
-            jubilee: d3.timeYear.every(50),
-            decade: d3.timeYear.every(10),
-            lustrum: d3.timeYear.every(5),
-            years: d3.timeYear.every(1),
-            fiscal: d3.timeYear.every(1),
-            quarters: d3.timeYear.every(1),
-            months: d3.timeMonth.every(1),
-            weeks: d3.timeWeek.every(1),
-            daily: d3.timeDay.every(1),
-            days: d3.timeDay.every(1),
-            hours: d3.timeHour.every(1),
-          } [intvl];
-        }
-
-        function getTicksMinor(intvl) {
-          return {
-            century: d3.timeYear.every(10),
-            jubilee: d3.timeYear.every(10),
-            decade: d3.timeYear.every(1),
-            lustrum: d3.timeYear.every(1),
-            years: d3.timeMonth.every(1),
-            fiscal: d3.timeMonth.every(1),
-            quarters: d3.timeMonth.every(3),
-            months: d3.timeDay.every(1),
-            weeks: d3.timeDay.every(1),
-            daily: d3.timeHour.every(1),
-            days: d3.timeHour.every(1),
-            hours: d3.timeMinute.every(1),
-          } [intvl];
-        }
-
-        function tickFormat(intvl) {
-          const formatFullYear = d3.timeFormat('%Y');
-          const formatYear = d3.timeFormat('%y');
-          const formatMonth = d3.timeFormat('%b');
-          const formatWeek = d3.timeFormat('%W');
-          const formatDay = d3.timeFormat('%d');
-          const formatHour = d3.timeFormat('%H:%M');
-          return {
-            century: d3.timeFormat('%Y'),
-            jubilee(d, i) {
-              const format = checkCentury(d, i);
-              return format;
-            },
-            decade(d, i) {
-              const format = checkCentury(d, i);
-              return format;
-            },
-            lustrum(d, i) {
-              const format = checkCentury(d, i);
-              return format;
-            },
-            years(d, i) {
-              const format = checkCentury(d, i);
-              return format;
-            },
-            fiscal(d, i) {
-              const format = getFiscal(d, i);
-              return format;
-            },
-            quarters(d, i) {
-              const format = getQuarters(d, i);
-              return format;
-            },
-            months(d, i) {
-              const format = checkMonth(d, i);
-              return format;
-            },
-            weeks(d, i) {
-              const format = getWeek(d, i);
-              return format;
-            },
-            days(d, i) {
-              const format = getDays(d, i);
-              return format;
-            },
-            daily(d, i) {
-              const format = getDaily(d, i);
-              return format;
-            },
-            hours(d, i) {
-              const format = getHours(d, i);
-              return format;
-            },
-          } [intvl];
-
-          function getHours(d, i) {
-            if (d.getHours() === 1 || i === 0) {
-              return \`\${formatHour(d)} \${formatDay(d)}\`;
-            }
-            return formatHour(d);
-          }
-
-          function getDays(d, i) {
-            if (d.getDate() === 1 || i === 0) {
-              return \`\${formatDay(d)} \${formatMonth(d)}\`;
-            }
-            return formatDay(d);
-          }
-
-          function getDaily(d, i) {
-            const last = scale.domain().length - 1;
-            if (i === 0) {
-              return \`\${formatDay(d)} \${formatMonth(d)}\`;
-            }
-            if (d.getDate() === 1) {
-              return \`\${formatMonth(d)}\`;
-            }
-            if (d.getDay() === 5) {
-              return \`\${formatDay(d)}\`;
-            }
-            if (i === last) {
-              return formatDay(d);
-            }
-            return '';
-          }
-
-          function getWeek(d) {
-            if (d.getDate() < 9) {
-              return \`\${formatWeek(d)} \${formatMonth(d)}\`;
-            }
-            return formatWeek(d);
-          }
-
-          function getQuarters(d, i) {
-            if (d.getMonth() < 3 && i < 4) {
-              return \`Q1 \${formatFullYear(d)}\`;
-            }
-            if (d.getMonth() < 3) {
-              return 'Q1';
-            }
-            if (d.getMonth() >= 3 && d.getMonth() < 6) {
-              return 'Q2';
-            }
-            if (d.getMonth() >= 6 && d.getMonth() < 9) {
-              return 'Q3';
-            }
-            if (d.getMonth() >= 9 && d.getMonth() < 12) {
-              return 'Q4';
-            }
-            throw new Error('Invalid quarter');
-          }
-
-          function checkMonth(d, i) {
-            if (d.getMonth() === 0 || i === 0) {
-              const newYear = d3.timeFormat('%b %Y');
-              return newYear(d);
-            }
-            return formatMonth(d);
-          }
-
-          function checkCentury(d, i) {
-            if (fullYear || +formatFullYear(d) % 100 === 0 || i === 0) {
-              return formatFullYear(d);
-            }
-            return formatYear(d);
-          }
-
-          function getFiscal(d, i) {
-            if (fullYear || +formatFullYear(d) % 100 === 0 || i === 0) {
-              return \`\${formatFullYear(d)}/\${Number(formatYear(d)) + 1}\`;
-            }
-            return \`\${formatYear(d)}/\${Number(formatYear(d)) + 1}\`;
-          }
-        }
-        axis.align = (d) => {
-          align = d;
-          return axis;
-        };
-        axis.banding = (d) => {
-          if (d === undefined) return banding;
-          banding = d;
-          return axis;
-        };
-        axis.endTicks = (d) => {
-          if (d === undefined) return endTicks;
-          endTicks = d;
-          return axis;
-        };
-        axis.label = (d) => {
-          if (d === undefined) return label;
-          label = d;
-          return axis;
-        };
-        axis.plotDim = (d) => {
-          if (!d) return plotDim;
-          plotDim = d;
-          return axis;
-        };
-        axis.rem = (d) => {
-          if (!d) return rem;
-          rem = d;
-          return axis;
-        };
-        axis.tickFormat = (d) => {
-          customFormat = d;
-          scale.tickFormat(d);
-          return axis;
-        };
-        axis.tickValues = (d) => {
-          if (!d) return tickValues;
-          tickValues = d;
-          return axis;
-        };
-        axis.frameName = (d) => {
-          if (d === undefined) return frameName;
-          frameName = d;
-          return axis;
-        };
-        axis.intraday = (d) => {
-          if (d === undefined) return intraday;
-          intraday = d;
-          return axis;
-        };
-        axis.scale = (d) => {
-          if (!d) return scale;
-          scale = d;
-          return axis;
-        };
-        axis.domain = (d) => {
-          scale.domain(d);
-          return axis;
-        };
-        axis.range = (d) => {
-          scale.range(d);
-          return axis;
-        };
-
-        axis.fullYear = (d) => {
-          if (d === undefined) return fullYear;
-          fullYear = d;
-          return axis;
-        };
-        axis.interval = (d) => {
-          interval = d;
-          return axis;
-        };
-        axis.tickSize = (d) => {
-          if (!d) return tickSize;
-          tickSize = d;
-          return axis;
-        };
-        axis.minorTickSize = (d) => {
-          if (!d) return minorTickSize;
-          minorTickSize = d;
-          return axis;
-        };
-        axis.minorAxis = (d) => {
-          if (d === undefined) return minorAxis;
-          minorAxis = d;
-          return axis;
-        };
-        axis.xLabel = (d) => {
-          if (d === undefined) return xLabel;
-          xLabel = d;
-          return axis;
-        };
-        axis.xLabelMinor = (d) => {
-          if (d === undefined) return xLabelMinor;
-          xLabelMinor = d;
-          return axis;
-        };
-        return axis;
-      }
-
-      return xaxisDate;
-
-    })));
-  </script>
-</head>
-
-<body><svg class=\\"ft-webgraphic-m-default\\" font-family=\\"MetricWeb,sans-serif\\" role=\\"img\\" aria-labelledby=\\"ft-webgraphic-m-default__chart-a11y-title ft-webgraphic-m-default__chart-a11y-desc\\" width=\\"700\\" height=\\"500\\" viewBox=\\"0 0 700 500\\">
-    <title id=\\"ft-webgraphic-m-default__chart-a11y-title\\">A chart</title>
-    <desc id=\\"ft-webgraphic-m-default__chart-a11y-desc\\">A graphic by the Financial Times</desc>
-    <rect role=\\"presentation\\" id=\\"chart-background\\" class=\\"chart-background\\" x=\\"0\\" y=\\"0\\" width=\\"700\\" height=\\"500\\" fill=\\"rgb(255, 241, 224)\\"></rect>
-    <rect width=\\"60\\" height=\\"4\\" style=\\"fill: rgb(0, 0, 0);\\"></rect><text class=\\"chart-title\\" id=\\"ft-webgraphic-m-defaulttitle\\">
-      <tspan y=\\"32\\" x=\\"1\\" font-size=\\"28\\" font-family=\\"MetricWeb,sans-serif\\" font-weight=\\"400\\" fill=\\"#000\\">xDate test</tspan>
-    </text><text id=\\"ft-webgraphic-m-defaultsubtitle\\" class=\\"chart-subtitle\\">
-      <tspan id=\\"ft-webgraphic-m-defaultsubtitle\\" y=\\"68\\" x=\\"1\\" font-size=\\"24\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">Bottom-aligned, default scales</tspan>
-    </text><text class=\\"chart-copyright\\">
-      <tspan x=\\"1\\" y=\\"464\\" font-size=\\"14px\\" font-style=\\"italic\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">© FT</tspan>
-    </text>
-    <g class=\\"chart-watermark\\" role=\\"presentation\\" transform=\\"translate(536,490) scale(1) \\"></g>
-    <g class=\\"chart-plot\\" role=\\"presentation\\" transform=\\"translate(20,108)\\">
-      <g class=\\"highlights\\"></g>
-      <g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"translate(0,277)\\">
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">1975</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">85</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">90</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">95</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">2000</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">05</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">10</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">15</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
-          <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">17</text>
-        </g>
-      </g>
-      <g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"translate(0,277)\\">
-        <path class=\\"domain\\" stroke=\\"#000\\" d=\\"M0.5,6V0.5H675.5V6\\"></path>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(13.518998671825376,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(27.747971646359073,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(42.01429953225154,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(56.241648380204424,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(84.69634607611017,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(98.96267396200265,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(113.19002280995554,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(127.4173716579084,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(155.91104839175378,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(170.13839723970668,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(184.36574608765952,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(198.5930949356124,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(227.08677166945776,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(241.31412051741063,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(255.54146936536353,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(269.807797251256,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(298.26249494716177,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(312.4898437951146,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(326.7561716810071,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(340.98352052896,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(369.43821822486575,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(383.7045461107582,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(397.9318949587111,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(412.159243806664,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(440.6529205405093,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(454.88026938846224,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(469.1076182364151,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(483.3349670843679,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(511.8286438182133,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(526.0559926661662,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(540.283341514119,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(554.5496694000116,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(583.0043670959172,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(597.2317159438702,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(611.4980438297627,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(625.7253926777155,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(654.1800903736213,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
-          <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
-        </g>
-      </g>
-    </g>
-  </svg>
-  <div class=\\"button-holder\\"><button class=\\"save-png-button save-png-button__1x\\" style=\\"float: left; opacity: 0.6;\\">Save as .png</button><button class=\\"save-png-button save-png-button__2x\\" style=\\"float: left; opacity: 0.6;\\">Save as double size .png</button></div>
-</body>"
+"<g class=\\"highlights\\"></g>
+<g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"translate(0,277)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">1975</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">85</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">90</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">95</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">2000</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">05</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">10</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">15</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
+    <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">17</text>
+  </g>
+</g>
+<g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"translate(0,277)\\">
+  <path class=\\"domain\\" stroke=\\"#000\\" d=\\"M0.5,6V0.5H675.5V6\\"></path>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(13.518998671825376,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(27.747971646359073,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(42.01429953225154,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(56.241648380204424,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(84.69634607611017,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(98.96267396200265,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(113.19002280995554,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(127.4173716579084,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(155.91104839175378,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(170.13839723970668,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(184.36574608765952,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(198.5930949356124,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(227.08677166945776,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(241.31412051741063,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(255.54146936536353,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(269.807797251256,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(298.26249494716177,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(312.4898437951146,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(326.7561716810071,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(340.98352052896,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(369.43821822486575,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(383.7045461107582,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(397.9318949587111,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(412.159243806664,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(440.6529205405093,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(454.88026938846224,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(469.1076182364151,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(483.3349670843679,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(511.8286438182133,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(526.0559926661662,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(540.283341514119,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(554.5496694000116,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(583.0043670959172,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(597.2317159438702,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(611.4980438297627,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(625.7253926777155,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(654.1800903736213,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
+    <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
+  </g>
+</g>"
 `;
 
 exports[`top-aligned, default scales 1`] = `
-"<head>
-  <script src=\\"http://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js\\"></script>
-  <script src=\\"https://unpkg.com/g-chartframe@5.2.2/build/g-chartframe.js\\"></script>
-  <link rel=\\"stylesheet\\" href=\\"//www.ft.com/__origami/service/build/v2/bundles/css?modules=o-fonts@^2.2.0\\">
-  <style>
-    /**
-             * Global styles for Visual Vocabulary Templates
-             */
-
-    .section-heading {
-      background-color: #00757F;
-      color: #fff;
-      font-family: MetricWeb;
-      font-weight: 600;
-      font-size: 20px;
-      padding: 8px 8px 5px;
-    }
-
-    figure {
-      width: fit-content;
-    }
-
-    .button-holder {
-      margin-bottom: 50px;
-    }
-
-    svg {
-      font-size: 0;
-      fill: transparent;
-    }
-
-    .axis {
-      font-size: inherit !important;
-    }
-
-    /* .overall text styles on axis*/
-    .ft-webgraphic-s .axis text,
-    .ft-webgraphic-m .axis text,
-    .ft-webgraphic-m-default .axis text,
-    .ft-webgraphic-l .axis text {
-      font-family: MetricWeb;
-      fill: #66605C;
-    }
-
-    .ft-socialgraphic .axis text,
-    .ft-videographic .axis text {
-      opacity: 0.5;
-    }
-
-    .ft-webgraphic-s .highlighted-label,
-    .ft-webgraphic-m .highlighted-label,
-    .ft-webgraphic-m-default .highlighted-label,
-    .ft-webgraphic-l .highlighted-label {
-      fill: #000000;
-    }
-
-    .ft-socialgraphic .highlighted-label,
-    .ft-videographic .highlighted-label {
-      fill: #ffffff;
-      opacity: 1;
-    }
-
-    .ft-webgraphic-s .axis text,
-    .ft-webgraphic-s .highlighted-label {
-      font-size: 14px;
-    }
-
-    .ft-webgraphic-m .axis text,
-    .ft-webgraphic-m .highlighted-label {
-      font-size: 16px;
-    }
-
-    .ft-webgraphic-m-default .axis text,
-    .ft-webgraphic-m-default .highlighted-label {
-      font-size: 20px;
-    }
-
-    .ft-webgraphic-l .axis text,
-    .ft-webgraphic-l .highlighted-label {
-      font-size: 18px;
-    }
-
-    .ft-printgraphic .axis text,
-    .ft-printgraphic .highlighted-label {
-      font-family: MetricWeb;
-      font-size: 9.6px;
-      fill: #000000;
-    }
-
-    .ft-socialgraphic .axis text,
-    .ft-socialgraphic .highlighted-label {
-      font-family: MetricWeb;
-      font-size: 28px;
-    }
-
-    .ft-videographic .axis text,
-    .ft-videographic .highlighted-label {
-      font-family: MetricWeb;
-      font-size: 48px;
-    }
-
-    /* .tick text on yAxis*/
-    .ft-webgraphic-s .yAxis text,
-    .ft-webgraphic-m .yAxis text,
-    .ft-webgraphic-m-default .yAxis text,
-    .ft-webgraphic-l .yAxis text {
-      fill: #66605C;
-      text-anchor: end;
-    }
-
-    .ft-printgraphic .yAxis text {
-      text-anchor: end;
-    }
-
-    .ft-socialgraphic .yAxis text {
-      opacity: 0.5;
-      fill: #FFFFFF;
-      text-anchor: end;
-    }
-
-    .ft-videographic .yAxis text {
-      opacity: 0.5;
-      fill: #FFFFFF;
-      text-anchor: end;
-    }
-
-    /* .tick line styles on yAxis*/
-    .ft-webgraphic-s .yAxis line,
-    .ft-webgraphic-m .yAxis line,
-    .ft-webgraphic-m-default .yAxis line,
-    .ft-webgraphic-l .yAxis line {
-      stroke: #e6d9ce;
-      stroke-width: 1px;
-    }
-
-    .ft-printgraphic .yAxis line {
-      stroke: #000000;
-      stroke-width: 0.3px;
-    }
-
-    .ft-socialgraphic .yAxis line {
-      stroke: #FFFFFF;
-      stroke-width: 2px;
-      stroke-dasharray: 2, 8;
-      stroke-opacity: 0.38;
-    }
-
-    .ft-videographic .yAxis line {
-      stroke: #FFFFFF;
-      stroke-width: 4px;
-      stroke-opacity: 0.38;
-    }
-
-    /* Makes domian invivible on yAxis*/
-    .ft-webgraphic-s .domain,
-    .ft-webgraphic-m .domain,
-    .ft-webgraphic-m-default .domain,
-    .ft-webgraphic-l .domain {
-      stroke-width: 0px;
-    }
-
-    .ft-printgraphic .domain {
-      stroke-width: 0px;
-    }
-
-    .ft-socialgraphic .domain {
-      stroke-width: 0px;
-    }
-
-    .ft-videographic .domain {
-      stroke-width: 0px;
-    }
-
-    /* reinstate domain for circle timelines*/
-
-    .ft-webgraphic-s .timelineHolder .baseline line,
-    .ft-webgraphic-m .timelineHolder .baseline line,
-    .ft-webgraphic-m-default .timelineHolder .baseline line,
-    .ft-webgraphic-l .timelineHolder .baseline line {
-      stroke: #000000;
-      stroke-width: 1px;
-      stroke-dasharray: 1, 0;
-      stroke-opacity: 0.4;
-    }
-
-    .ft-webgraphic-s .timelineHolder .domain,
-    .ft-webgraphic-m .timelineHolder .domain,
-    .ft-webgraphic-m-default .timelineHolder .domain,
-    .ft-webgraphic-l .timelineHolder .domain,
-    .ft-printgraphic .timelineHolder .domain {
-      stroke-width: 1px;
-      stroke-opacity: 0.4;
-    }
-
-    .ft-socialgraphic .timelineHolder .domain,
-    .ft-videographic .timelineHolder .domain {
-      stroke: #ffffff;
-    }
-
-    .ft-socialgraphic .timelineHolder .domain {
-      stroke-width: 2px
-    }
-
-    .ft-videographic .timelineHolder .domain {
-      stroke-width: 4px
-    }
-
-    /* .tick text on yAxis*/
-    .ft-webgraphic-s .xAxis text,
-    .ft-webgraphic-m .xAxis text,
-    .ft-webgraphic-m-default .xAxis text,
-    .ft-webgraphic-l .xAxis text {
-      fill: #66605C;
-      text-anchor: middle;
-    }
-
-    .ft-printgraphic .xAxis text {
-      text-anchor: middle;
-    }
-
-    .ft-socialgraphic .xAxis text {
-      opacity: 0.5;
-      fill: #FFFFFF;
-      text-anchor: middle;
-    }
-
-    .ft-videographic .xAxis text {
-      opacity: 0.5;
-      fill: #FFFFFF;
-      text-anchor: middle;
-    }
-
-    .ft-webgraphic-s .xAxis line,
-    .ft-webgraphic-m .xAxis line,
-    .ft-webgraphic-m-default .xAxis line,
-    .ft-webgraphic-l .xAxis line {
-      stroke: #e6d9ce;
-      stroke-width: 1px;
-    }
-
-    .ft-printgraphic .xAxis line {
-      stroke: #000000;
-      stroke-width: 0.3px;
-    }
-
-    .ft-socialgraphic .xAxis line {
-      stroke: #FFFFFF;
-      stroke-width: 2px;
-      stroke-dasharray: 2, 8;
-      stroke-opacity: 0.38;
-    }
-
-    .ft-videographic .xAxis line {
-      stroke: #FFFFFF;
-      stroke-width: 4px;
-      stroke-opacity: 0.38;
-    }
-
-    /* Style for the highlight or base line on yAxis*/
-    .ft-webgraphic-s .baseline line,
-    .ft-webgraphic-m .baseline line,
-    .ft-webgraphic-m-default .baseline line,
-    .ft-webgraphic-l .baseline line {
-      stroke: #CEC6B9;
-      stroke-width: 1px;
-      stroke-dasharray: 1, 0;
-    }
-
-    .ft-printgraphic .baseline line {
-      stroke: #000000;
-      stroke-width: 0.6px;
-    }
-
-    .ft-printgraphic .xAxis.baseline line {
-      stroke: #000000;
-      stroke-width: 0.3px;
-    }
-
-    .ft-socialgraphic .baseline line {
-      stroke: #FFFFFF;
-      stroke-width: 2px;
-      stroke-dasharray: 1, 0;
-      stroke-opacity: 0.5;
-    }
-
-    .ft-videographic .baseline line {
-      stroke: #FFFFFF;
-      stroke-width: 4px;
-      stroke-opacity: .38;
-    }
-
-    /* Styles for lines on chart*/
-    .ft-webgraphic-s .lines,
-    .ft-webgraphic-m .lines,
-    .ft-webgraphic-m-default .lines,
-    .ft-webgraphic-l .lines {
-      stroke-linecap: square;
-      stroke-linejoin: round;
-      stroke-width: 3px;
-      fill: none;
-    }
-
-    .ft-printgraphic .lines {
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 2px;
-      fill: none;
-    }
-
-    .ft-socialgraphic .lines {
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 5px;
-      fill: none;
-    }
-
-    .ft-videographic .lines {
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 8px;
-      fill: none;
-    }
-
-    /* annotation styling*/
-
-    .ft-webgraphic-s .annotations-holder line,
-    .ft-webgraphic-m .annotations-holder line,
-    .ft-webgraphic-m-default .annotations-holder line,
-    .ft-webgraphic-l .annotations-holder line {
-      stroke: #66605C;
-      stroke-width: 1px;
-    }
-
-    .ft-printgraphic .annotations-holder line {
-      stroke: #000000;
-      stroke-width: 0.5px;
-    }
-
-    .ft-socialgraphic .annotations-holder line {
-      stroke: #ffffff;
-      stroke-width: 2px;
-      opacity: 0.7;
-    }
-
-    .ft-videographic .annotations-holder line {
-      stroke: #ffffff;
-      stroke-width: 4px;
-      opacity: 0.7;
-    }
-
-    .ft-webgraphic-s .annotations-holder text {
-      font-size: 14px;
-    }
-
-    .ft-webgraphic-m .annotations-holder text {
-      font-size: 16px;
-    }
-
-    .ft-webgraphic-m-default .annotations-holder text {
-      font-size: 20px;
-    }
-
-    .ft-webgraphic-l .annotations-holder text {
-      font-size: 18px;
-    }
-
-    .ft-webgraphic-s .annotations-holder text,
-    .ft-webgraphic-m .annotations-holder text,
-    .ft-webgraphic-m-default .annotations-holder text,
-    .ft-webgraphic-l .annotations-holder text {
-      fill: #66605C;
-    }
-
-    .ft-printgraphic .annotations-holder text {
-      font-size: 9.6px;
-      fill: #000000;
-    }
-
-    .ft-socialgraphic .annotations-holder text {
-      font-size: 28px;
-      fill: #ffffff;
-      opacity: 0.7;
-    }
-
-    .ft-videographic .annotations-holder text {
-      font-size: 48px;
-      fill: #ffffff;
-      opacity: 0.7;
-    }
-
-    /* .overall text styles on axis*/
-    .ft-webgraphic-s .highlights,
-    .ft-webgraphic-m .highlights,
-    .ft-webgraphic-m-default .highlights,
-    .ft-webgraphic-l .highlights {
-      fill: #FCE6D6;
-    }
-
-    .ft-printgraphic .highlights {
-      fill: #95BFC5;
-      opacity: 0.3;
-    }
-
-    .ft-socialgraphic .highlights {
-      fill: #ffffff;
-      opacity: 0.2;
-    }
-
-    .ft-videographic .highlights {
-      fill: #ffffff;
-      opacity: 0.2;
-    }
-
-    .ft-webgraphic-s .timeline-label,
-    .ft-webgraphic-m .timeline-label,
-    .ft-webgraphic-m-default .timeline-label,
-    .ft-webgraphic-l .timeline-label {
-      font-family: MetricWeb;
-      fill: #000000;
-    }
-
-    /* legend */
-    .ft-webgraphic-s .legend,
-    .ft-webgraphic-m .legend,
-    .ft-webgraphic-m-default .legend,
-    .ft-webgraphic-l .legend {
-      font-family: MetricWeb;
-      fill: #66605C;
-    }
-
-    .ft-webgraphic-s .timeline-label,
-    .ft-webgraphic-s .legend {
-      font-size: 14px;
-    }
-
-    .ft-webgraphic-m .timeline-label,
-    .ft-webgraphic-m .legend {
-      font-size: 16px;
-    }
-
-    .ft-webgraphic-m-default .timeline-label,
-    .ft-webgraphic-m-default .legend {
-      font-size: 20px;
-    }
-
-    .ft-webgraphic-l .timeline-label,
-    .ft-webgraphic-l .legend {
-      font-size: 18px;
-    }
-
-    .ft-printgraphic .timeline-label,
-    .ft-printgraphic .legend {
-      font-family: MetricWeb;
-      font-size: 9.6px;
-      fill: #000000;
-    }
-
-    .ft-socialgraphic .timeline-label,
-    .ft-socialgraphic .legend text {
-      font-family: MetricWeb;
-      opacity: 0.5;
-      fill: #FFFFFF;
-      font-size: 28px;
-    }
-
-    .ft-videographic .timeline-label,
-    .ft-videographic .legend text {
-      font-family: MetricWeb;
-      opacity: 0.5;
-      fill: #FFFFFF;
-      font-size: 48px;
-    }
-
-    svg text {
-      font-feature-settings: 'tnum', 1;
-      -webkit-font-feature-settings: 'tnum';
-      -moz-font-feature-settings: 'tnum';
-    }
-
-    .saveable button {
-      display: block;
-    }
-
-    ul {
-      line-height: 24px;
-    }
-
-    .button {
-      border-radius: 10px;
-      background-color: #00757F;
-      color: #fff;
-      font-family: MetricWeb;
-      font-weight: 600;
-      font-size: 20px;
-      height: 25px;
-      margin-top: 2px;
-      margin-bottom: 10px;
-      margin-right: 10px;
-      border-width: 0px;
-      padding-top: 3px;
-      cursor: pointer;
-    }
-  </style>
-  <script>
-    (function(global, factory) {
-      typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('d3')) :
-        typeof define === 'function' && define.amd ? define(['d3'], factory) :
-        (global.xDate = factory(global.d3));
-    }(this, (function(d3) {
-      'use strict';
-
-      function xaxisDate() {
-        let banding;
-        const mindate = new Date(1970, 1, 1);
-        const maxdate = new Date(2017, 6, 1);
-        let scale = d3.scaleTime()
-          .domain([mindate, maxdate])
-          .range([0, 220]);
-        let frameName;
-        let intraday = false;
-        let interval = 'lustrum';
-        let minorAxis = true;
-        let tickSize = 10;
-        let minorTickSize = 5;
-        let fullYear = false;
-        let align = 'bottom';
-        let label;
-        let plotDim = [200, 100];
-        let xLabel;
-        let xLabelMinor;
-        let rem = 10;
-        let endTicks;
-        let customFormat = false;
-        let tickValues;
-
-        function axis(parent) {
-          const plotWidth = plotDim[0];
-          const plotHeight = plotDim[1];
-
-          function getAxis(alignment) {
-            if (intraday) {
-              const newDomain = scale.domain();
-              const newRange = scale.range();
-              scale = d3.scalePoint()
-                .domain(newDomain)
-                .range(newRange);
-              return {
-                top: d3.axisTop(),
-                bottom: d3.axisBottom(),
-              } [alignment];
-            }
-            return {
-              top: d3.axisTop(),
-              bottom: d3.axisBottom(),
-            } [alignment];
-          }
-
-          const xAxis = getAxis(align);
-          if (intraday) {
-            xAxis
-              .tickSize(tickSize)
-              .tickFormat(tickFormat(interval))
-              .scale(scale);
-            xAxis.tickValues(
-              scale.domain().filter((d, i) => {
-                let checkDate;
-                if (i === 0) {
-                  return d.getDay();
-                }
-                if (i > 0) {
-                  checkDate = new Date(scale.domain()[i - 1]);
-                }
-                return d.getDay() !== checkDate.getDay();
-              }),
-            );
-          } else {
-            xAxis
-              .tickSize(tickSize)
-              // .ticks(getTicks(interval))
-              .tickFormat(tickFormat(interval))
-              .scale(scale);
-            let newTicks = scale.ticks(getTicks(interval));
-            const dayCheck = scale.domain()[0].getDate();
-            const monthCheck = scale.domain()[0].getMonth();
-            if (dayCheck !== 1 && monthCheck !== 0) {
-              newTicks.unshift(scale.domain()[0]);
-            }
-            if (
-              interval === 'lustrum' ||
-              interval === 'decade' ||
-              interval === 'jubilee' ||
-              interval === 'century'
-            ) {
-              newTicks.push(d3.timeYear(scale.domain()[1]));
-            }
-            if (endTicks) {
-              newTicks = scale.domain();
-            }
-            xAxis.tickValues(newTicks);
-          }
-
-          const xMinor = getAxis(align);
-          if (intraday) {
-            xMinor
-              .tickSize(minorTickSize)
-              .tickFormat('')
-              .scale(scale);
-          } else {
-            xMinor
-              .tickSize(minorTickSize)
-              .ticks(getTicksMinor(interval))
-              .tickFormat('')
-              .scale(scale);
-          }
-
-          if (tickValues) {
-            xAxis.tickValues(tickValues);
-          }
-
-          if (customFormat) {
-            xAxis.tickFormat(customFormat);
-          }
-
-          const bandHolder = parent.append('g').attr('class', 'highlights');
-
-          xLabel = parent
-            .append('g')
-            .attr('class', 'axis xAxis axis baseline')
-            .call(xAxis);
-
-          if (minorAxis) {
-            xLabelMinor = parent
-              .append('g')
-              .attr('class', () => {
-                if (plotHeight === tickSize) {
-                  return 'axis xAxis';
-                }
-                return 'axis xAxis axis baseline';
-              })
-              .call(xMinor);
-          }
-
-          if (frameName) {
-            xLabel
-              .selectAll('.axis.xAxis text')
-              .attr('id', \`\${frameName}xLabel\`);
-            xLabel
-              .selectAll('.axis.xAxis line')
-              .attr('id', \`\${frameName}xTick\`);
-            if (minorAxis) {
-              xLabelMinor
-                .selectAll('.axis.xAxis line')
-                .attr('id', \`\${frameName}xTick\`);
-            }
-          }
-
-          if (label) {
-            const defaultLabel = {
-              tag: label.tag,
-              hori: label.hori || 'middle',
-              vert: label.vert || 'bottom',
-              anchor: label.anchor || 'middle',
-              rotate: label.rotate || 0,
-            };
-
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-            const calcOffset = () => {
-              if (tickSize > 0 && tickSize < rem) {
-                return tickSize + (rem * 0.8); // prettier-ignore
-              }
-              return rem * 0.9;
-            };
-            const getVertical = (axisAlign, vertAlign) =>
-              ({
-                toptop: 0 - rem,
-                topmiddle: 0,
-                topbottom: 0 + rem,
-                bottomtop: plotHeight,
-                bottommiddle: plotHeight + calcOffset(),
-                bottombottom: plotHeight + calcOffset() + (rem * 1.1), // prettier-ignore
-              } [axisAlign + vertAlign]);
-
-            const getHorizontal = hori =>
-              ({
-                left: plotWidth - plotWidth,
-                middle: plotWidth / 2,
-                right: plotWidth,
-              } [hori]);
-
-            axisLabel
-              .append('text')
-              .attr('y', getVertical(align, defaultLabel.vert))
-              .attr('x', getHorizontal(defaultLabel.hori))
-              .text(defaultLabel.tag);
-
-            const text = axisLabel.selectAll('text');
-            const width = text.node().getBBox().width / 2;
-            const height = text.node().getBBox().height / 2;
-            const textX = text.node().getBBox().x + width;
-            const textY = text.node().getBBox().y + height;
-            text.attr(
-              'transform',
-              \`rotate(\${defaultLabel.rotate}, \${textX}, \${textY})\`,
-            ).style('text-anchor', defaultLabel.anchor);
-          }
-          if (banding) {
-            let bands = xAxis.tickValues();
-            const getBandWidth = (index) => {
-              if (index === bands.length - 1) {
-                return plotWidth - scale(bands[index]);
-              }
-              return scale(bands[index + 1]) - scale(bands[index]);
-            };
-            bands = bands
-              .map((d, i) => ({
-                date: d,
-                width: getBandWidth(i),
-              }))
-              .filter((d, i) => i % 2 === 0);
-
-            console.log('bands', bands);
-
-            bandHolder
-              .selectAll('rect')
-              .data(bands)
-              .enter()
-              .append('rect')
-              .attr('y', 0)
-              .attr('height', plotHeight)
-              .attr('x', d => scale(d.date))
-              .attr('width', d => d.width);
-          }
-
-          xLabel.selectAll('.domain').remove();
-        }
-
-        function getTicks(intvl) {
-          return {
-            century: d3.timeYear.every(100),
-            jubilee: d3.timeYear.every(50),
-            decade: d3.timeYear.every(10),
-            lustrum: d3.timeYear.every(5),
-            years: d3.timeYear.every(1),
-            fiscal: d3.timeYear.every(1),
-            quarters: d3.timeYear.every(1),
-            months: d3.timeMonth.every(1),
-            weeks: d3.timeWeek.every(1),
-            daily: d3.timeDay.every(1),
-            days: d3.timeDay.every(1),
-            hours: d3.timeHour.every(1),
-          } [intvl];
-        }
-
-        function getTicksMinor(intvl) {
-          return {
-            century: d3.timeYear.every(10),
-            jubilee: d3.timeYear.every(10),
-            decade: d3.timeYear.every(1),
-            lustrum: d3.timeYear.every(1),
-            years: d3.timeMonth.every(1),
-            fiscal: d3.timeMonth.every(1),
-            quarters: d3.timeMonth.every(3),
-            months: d3.timeDay.every(1),
-            weeks: d3.timeDay.every(1),
-            daily: d3.timeHour.every(1),
-            days: d3.timeHour.every(1),
-            hours: d3.timeMinute.every(1),
-          } [intvl];
-        }
-
-        function tickFormat(intvl) {
-          const formatFullYear = d3.timeFormat('%Y');
-          const formatYear = d3.timeFormat('%y');
-          const formatMonth = d3.timeFormat('%b');
-          const formatWeek = d3.timeFormat('%W');
-          const formatDay = d3.timeFormat('%d');
-          const formatHour = d3.timeFormat('%H:%M');
-          return {
-            century: d3.timeFormat('%Y'),
-            jubilee(d, i) {
-              const format = checkCentury(d, i);
-              return format;
-            },
-            decade(d, i) {
-              const format = checkCentury(d, i);
-              return format;
-            },
-            lustrum(d, i) {
-              const format = checkCentury(d, i);
-              return format;
-            },
-            years(d, i) {
-              const format = checkCentury(d, i);
-              return format;
-            },
-            fiscal(d, i) {
-              const format = getFiscal(d, i);
-              return format;
-            },
-            quarters(d, i) {
-              const format = getQuarters(d, i);
-              return format;
-            },
-            months(d, i) {
-              const format = checkMonth(d, i);
-              return format;
-            },
-            weeks(d, i) {
-              const format = getWeek(d, i);
-              return format;
-            },
-            days(d, i) {
-              const format = getDays(d, i);
-              return format;
-            },
-            daily(d, i) {
-              const format = getDaily(d, i);
-              return format;
-            },
-            hours(d, i) {
-              const format = getHours(d, i);
-              return format;
-            },
-          } [intvl];
-
-          function getHours(d, i) {
-            if (d.getHours() === 1 || i === 0) {
-              return \`\${formatHour(d)} \${formatDay(d)}\`;
-            }
-            return formatHour(d);
-          }
-
-          function getDays(d, i) {
-            if (d.getDate() === 1 || i === 0) {
-              return \`\${formatDay(d)} \${formatMonth(d)}\`;
-            }
-            return formatDay(d);
-          }
-
-          function getDaily(d, i) {
-            const last = scale.domain().length - 1;
-            if (i === 0) {
-              return \`\${formatDay(d)} \${formatMonth(d)}\`;
-            }
-            if (d.getDate() === 1) {
-              return \`\${formatMonth(d)}\`;
-            }
-            if (d.getDay() === 5) {
-              return \`\${formatDay(d)}\`;
-            }
-            if (i === last) {
-              return formatDay(d);
-            }
-            return '';
-          }
-
-          function getWeek(d) {
-            if (d.getDate() < 9) {
-              return \`\${formatWeek(d)} \${formatMonth(d)}\`;
-            }
-            return formatWeek(d);
-          }
-
-          function getQuarters(d, i) {
-            if (d.getMonth() < 3 && i < 4) {
-              return \`Q1 \${formatFullYear(d)}\`;
-            }
-            if (d.getMonth() < 3) {
-              return 'Q1';
-            }
-            if (d.getMonth() >= 3 && d.getMonth() < 6) {
-              return 'Q2';
-            }
-            if (d.getMonth() >= 6 && d.getMonth() < 9) {
-              return 'Q3';
-            }
-            if (d.getMonth() >= 9 && d.getMonth() < 12) {
-              return 'Q4';
-            }
-            throw new Error('Invalid quarter');
-          }
-
-          function checkMonth(d, i) {
-            if (d.getMonth() === 0 || i === 0) {
-              const newYear = d3.timeFormat('%b %Y');
-              return newYear(d);
-            }
-            return formatMonth(d);
-          }
-
-          function checkCentury(d, i) {
-            if (fullYear || +formatFullYear(d) % 100 === 0 || i === 0) {
-              return formatFullYear(d);
-            }
-            return formatYear(d);
-          }
-
-          function getFiscal(d, i) {
-            if (fullYear || +formatFullYear(d) % 100 === 0 || i === 0) {
-              return \`\${formatFullYear(d)}/\${Number(formatYear(d)) + 1}\`;
-            }
-            return \`\${formatYear(d)}/\${Number(formatYear(d)) + 1}\`;
-          }
-        }
-        axis.align = (d) => {
-          align = d;
-          return axis;
-        };
-        axis.banding = (d) => {
-          if (d === undefined) return banding;
-          banding = d;
-          return axis;
-        };
-        axis.endTicks = (d) => {
-          if (d === undefined) return endTicks;
-          endTicks = d;
-          return axis;
-        };
-        axis.label = (d) => {
-          if (d === undefined) return label;
-          label = d;
-          return axis;
-        };
-        axis.plotDim = (d) => {
-          if (!d) return plotDim;
-          plotDim = d;
-          return axis;
-        };
-        axis.rem = (d) => {
-          if (!d) return rem;
-          rem = d;
-          return axis;
-        };
-        axis.tickFormat = (d) => {
-          customFormat = d;
-          scale.tickFormat(d);
-          return axis;
-        };
-        axis.tickValues = (d) => {
-          if (!d) return tickValues;
-          tickValues = d;
-          return axis;
-        };
-        axis.frameName = (d) => {
-          if (d === undefined) return frameName;
-          frameName = d;
-          return axis;
-        };
-        axis.intraday = (d) => {
-          if (d === undefined) return intraday;
-          intraday = d;
-          return axis;
-        };
-        axis.scale = (d) => {
-          if (!d) return scale;
-          scale = d;
-          return axis;
-        };
-        axis.domain = (d) => {
-          scale.domain(d);
-          return axis;
-        };
-        axis.range = (d) => {
-          scale.range(d);
-          return axis;
-        };
-
-        axis.fullYear = (d) => {
-          if (d === undefined) return fullYear;
-          fullYear = d;
-          return axis;
-        };
-        axis.interval = (d) => {
-          interval = d;
-          return axis;
-        };
-        axis.tickSize = (d) => {
-          if (!d) return tickSize;
-          tickSize = d;
-          return axis;
-        };
-        axis.minorTickSize = (d) => {
-          if (!d) return minorTickSize;
-          minorTickSize = d;
-          return axis;
-        };
-        axis.minorAxis = (d) => {
-          if (d === undefined) return minorAxis;
-          minorAxis = d;
-          return axis;
-        };
-        axis.xLabel = (d) => {
-          if (d === undefined) return xLabel;
-          xLabel = d;
-          return axis;
-        };
-        axis.xLabelMinor = (d) => {
-          if (d === undefined) return xLabelMinor;
-          xLabelMinor = d;
-          return axis;
-        };
-        return axis;
-      }
-
-      return xaxisDate;
-
-    })));
-  </script>
-</head>
-
-<body><svg class=\\"ft-webgraphic-m-default\\" font-family=\\"MetricWeb,sans-serif\\" role=\\"img\\" aria-labelledby=\\"ft-webgraphic-m-default__chart-a11y-title ft-webgraphic-m-default__chart-a11y-desc\\" width=\\"700\\" height=\\"500\\" viewBox=\\"0 0 700 500\\">
-    <title id=\\"ft-webgraphic-m-default__chart-a11y-title\\">A chart</title>
-    <desc id=\\"ft-webgraphic-m-default__chart-a11y-desc\\">A graphic by the Financial Times</desc>
-    <rect role=\\"presentation\\" id=\\"chart-background\\" class=\\"chart-background\\" x=\\"0\\" y=\\"0\\" width=\\"700\\" height=\\"500\\" fill=\\"rgb(255, 241, 224)\\"></rect>
-    <rect width=\\"60\\" height=\\"4\\" style=\\"fill: rgb(0, 0, 0);\\"></rect><text class=\\"chart-title\\" id=\\"ft-webgraphic-m-defaulttitle\\">
-      <tspan y=\\"32\\" x=\\"1\\" font-size=\\"28\\" font-family=\\"MetricWeb,sans-serif\\" font-weight=\\"400\\" fill=\\"#000\\">xDate test</tspan>
-    </text><text id=\\"ft-webgraphic-m-defaultsubtitle\\" class=\\"chart-subtitle\\">
-      <tspan id=\\"ft-webgraphic-m-defaultsubtitle\\" y=\\"68\\" x=\\"1\\" font-size=\\"24\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">Top-aligned, default scales</tspan>
-    </text><text class=\\"chart-copyright\\">
-      <tspan x=\\"1\\" y=\\"464\\" font-size=\\"14px\\" font-style=\\"italic\\" font-family=\\"MetricWeb,sans-serif\\" fill=\\"#66605C\\">© FT</tspan>
-    </text>
-    <g class=\\"chart-watermark\\" role=\\"presentation\\" transform=\\"translate(536,490) scale(1) \\"></g>
-    <g class=\\"chart-plot\\" role=\\"presentation\\" transform=\\"translate(20,108)\\">
-      <g class=\\"highlights\\"></g>
-      <g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">1975</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">85</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">90</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">95</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">2000</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">05</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">10</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">15</text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">17</text>
-        </g>
-      </g>
-      <g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
-        <path class=\\"domain\\" stroke=\\"#000\\" d=\\"M0.5,-6V0.5H675.5V-6\\"></path>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(13.518998671825376,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(27.747971646359073,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(42.01429953225154,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(56.241648380204424,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(84.69634607611017,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(98.96267396200265,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(113.19002280995554,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(127.4173716579084,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(155.91104839175378,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(170.13839723970668,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(184.36574608765952,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(198.5930949356124,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(227.08677166945776,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(241.31412051741063,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(255.54146936536353,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(269.807797251256,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(298.26249494716177,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(312.4898437951146,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(326.7561716810071,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(340.98352052896,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(369.43821822486575,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(383.7045461107582,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(397.9318949587111,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(412.159243806664,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(440.6529205405093,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(454.88026938846224,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(469.1076182364151,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(483.3349670843679,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(511.8286438182133,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(526.0559926661662,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(540.283341514119,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(554.5496694000116,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(583.0043670959172,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(597.2317159438702,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(611.4980438297627,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(625.7253926777155,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(654.1800903736213,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-        <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
-          <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
-        </g>
-      </g>
-    </g>
-  </svg>
-  <div class=\\"button-holder\\"><button class=\\"save-png-button save-png-button__1x\\" style=\\"float: left; opacity: 0.6;\\">Save as .png</button><button class=\\"save-png-button save-png-button__2x\\" style=\\"float: left; opacity: 0.6;\\">Save as double size .png</button></div>
-</body>"
+"<g class=\\"highlights\\"></g>
+<g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">1975</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">85</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">90</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">95</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">2000</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">05</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">10</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">15</text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">17</text>
+  </g>
+</g>
+<g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
+  <path class=\\"domain\\" stroke=\\"#000\\" d=\\"M0.5,-6V0.5H675.5V-6\\"></path>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(13.518998671825376,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(27.747971646359073,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(42.01429953225154,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(56.241648380204424,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(70.4689972281573,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(84.69634607611017,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(98.96267396200265,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(113.19002280995554,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(127.4173716579084,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(141.6447205058613,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(155.91104839175378,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(170.13839723970668,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(184.36574608765952,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(198.5930949356124,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(212.85942282150486,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(227.08677166945776,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(241.31412051741063,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(255.54146936536353,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(269.807797251256,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(284.0351460992089,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(298.26249494716177,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(312.4898437951146,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(326.7561716810071,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(340.98352052896,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(355.21086937691285,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(369.43821822486575,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(383.7045461107582,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(397.9318949587111,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(412.159243806664,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(426.38659265461683,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(440.6529205405093,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(454.88026938846224,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(469.1076182364151,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(483.3349670843679,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(497.6012949702604,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(511.8286438182133,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(526.0559926661662,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(540.283341514119,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(554.5496694000116,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(568.7770182479644,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(583.0043670959172,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(597.2317159438702,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(611.4980438297627,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(625.7253926777155,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(639.9527415256684,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(654.1800903736213,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(668.4464182595138,0)\\">
+    <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
+  </g>
+</g>"
 `;

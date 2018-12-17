@@ -44,16 +44,16 @@ test("bottom-aligned, default scales", async () => {
             .xLabel()
             .attr(
                 "transform",
-                `translate(0,${Math.floor(
+                `translate(0,${Math.round(
                     currentFrame.dimension().height - currentFrame.rem() / 1.5
                 )})`
             );
     });
 
-    const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML
+    const snap = await global.page.evaluate(
+        () => document.querySelector("g.chart-plot").innerHTML
     );
-    expect(pretty(bodyHTML)).toMatchSnapshot();
+    expect(pretty(snap)).toMatchSnapshot();
 });
 
 test("top-aligned, default scales", async () => {
@@ -86,8 +86,8 @@ test("top-aligned, default scales", async () => {
         currentFrame.plot().call(xAxis);
     });
 
-    const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML
+    const snap = await global.page.evaluate(
+        () => document.querySelector("g.chart-plot").innerHTML
     );
-    expect(pretty(bodyHTML)).toMatchSnapshot();
+    expect(pretty(snap)).toMatchSnapshot();
 });

@@ -113,7 +113,7 @@ export default function() {
         if (align === "right") {
             yLabel
                 .selectAll("text")
-                .attr("transform", `translate(${Math.floor(labelWidth)},0)`);
+                .attr("transform", `translate(${Math.round(labelWidth)},0)`);
         }
 
         if (frameName) {

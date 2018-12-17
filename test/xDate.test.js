@@ -34,9 +34,9 @@ test("bottom-aligned, default scales", async () => {
             .rem(currentFrame.rem())
             .frameName("webFrameMDefault")
             .align("bottom")
-            .tickSize(currentFrame.rem() * 0.75)
-            .range([0, currentFrame.dimension().width])
-            .minorTickSize(currentFrame.rem() * 0.3);
+            .tickSize(Math.round(currentFrame.rem() * 0.75))
+            .range([0, Math.round(currentFrame.dimension().width)])
+            .minorTickSize(Math.round(currentFrame.rem() * 0.3));
 
         // Set up xAxis
         currentFrame.plot().call(xAxis);
@@ -46,20 +46,20 @@ test("bottom-aligned, default scales", async () => {
             .xLabel()
             .attr(
                 "transform",
-                `translate(0,${Math.floor(currentFrame.dimension().height)})`
+                `translate(0,${Math.round(currentFrame.dimension().height)})`
             );
         xAxis
             .xLabelMinor()
             .attr(
                 "transform",
-                `translate(0,${Math.floor(currentFrame.dimension().height)})`
+                `translate(0,${Math.round(currentFrame.dimension().height)})`
             );
     });
 
-    const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML
+    const snap = await global.page.evaluate(
+        () => document.querySelector("g.chart-plot").innerHTML
     );
-    expect(pretty(bodyHTML)).toMatchSnapshot();
+    expect(pretty(snap)).toMatchSnapshot();
 });
 
 test("top-aligned, default scales", async () => {
@@ -86,16 +86,16 @@ test("top-aligned, default scales", async () => {
             .rem(currentFrame.rem())
             .frameName("webFrameMDefault")
             .align("top")
-            .tickSize(currentFrame.rem() * 0.75)
-            .range([0, currentFrame.dimension().width])
-            .minorTickSize(currentFrame.rem() * 0.3);
+            .tickSize(Math.round(currentFrame.rem() * 0.75))
+            .range([0, Math.round(currentFrame.dimension().width)])
+            .minorTickSize(Math.round(currentFrame.rem() * 0.3));
 
         // Set up xAxis
         currentFrame.plot().call(xAxis);
     });
 
-    const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML
+    const snap = await global.page.evaluate(
+        () => document.querySelector("g.chart-plot").innerHTML
     );
-    expect(pretty(bodyHTML)).toMatchSnapshot();
+    expect(pretty(snap)).toMatchSnapshot();
 });

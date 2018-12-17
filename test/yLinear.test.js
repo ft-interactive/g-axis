@@ -52,7 +52,7 @@ test("left-aligned, default scales", async () => {
             .yLabel()
             .attr(
                 "transform",
-                `translate(${Math.floor(
+                `translate(${Math.round(
                     yAxis.tickSize() - yAxis.labelWidth()
                 )}, 0)`
             );
@@ -61,10 +61,10 @@ test("left-aligned, default scales", async () => {
         svg.call(currentFrame);
     });
 
-    const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML
+    const snap = await global.page.evaluate(
+        () => document.querySelector("g.chart-plot").innerHTML
     );
-    expect(pretty(bodyHTML)).toMatchSnapshot();
+    expect(pretty(snap)).toMatchSnapshot();
 });
 
 test("right-aligned, default scales", async () => {
@@ -108,8 +108,8 @@ test("right-aligned, default scales", async () => {
         svg.call(currentFrame);
     });
 
-    const bodyHTML = await global.page.evaluate(
-        () => document.documentElement.innerHTML
+    const snap = await global.page.evaluate(
+        () => document.querySelector("g.chart-plot").innerHTML
     );
-    expect(pretty(bodyHTML)).toMatchSnapshot();
+    expect(pretty(snap)).toMatchSnapshot();
 });
