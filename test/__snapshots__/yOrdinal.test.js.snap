@@ -1545,7 +1545,7 @@ exports[`right-aligned, default scales 1`] = `
     <g class=\\"chart-watermark\\" role=\\"presentation\\" transform=\\"translate(536,490) scale(1) \\"></g>
     <g class=\\"chart-plot\\" role=\\"presentation\\" transform=\\"translate(20,108)\\">
       <g class=\\"highlights\\"></g>
-      <g class=\\"axis yAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"start\\" transform=\\"translate(541.71875, 0)\\">
+      <g class=\\"axis yAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"start\\" transform=\\"translate(541, 0)\\">
         <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(0,32.5)\\">
           <line stroke=\\"#000\\" x2=\\"0\\"></line><text fill=\\"#000\\" x=\\"3\\" dy=\\"0.32em\\" id=\\"webFrameMDefaultyLabel\\">Oranges</text>
         </g>

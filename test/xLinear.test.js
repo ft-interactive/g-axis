@@ -49,7 +49,7 @@ test("bottom-aligned, default scales", async () => {
             .xLabel()
             .attr(
                 "transform",
-                `translate(0,${currentFrame.dimension().height})`
+                `translate(0,${Math.floor(currentFrame.dimension().height)})`
             );
     });
 

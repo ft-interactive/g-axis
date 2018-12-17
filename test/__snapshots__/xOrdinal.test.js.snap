@@ -741,7 +741,7 @@ exports[`bottom-aligned, default scales 1`] = `
     <g class=\\"chart-watermark\\" role=\\"presentation\\" transform=\\"translate(536,490) scale(1) \\"></g>
     <g class=\\"chart-plot\\" role=\\"presentation\\" transform=\\"translate(20,108)\\">
       <g class=\\"highlights\\"></g>
-      <g class=\\"axis xAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"translate(0,263.6666666666667)\\">
+      <g class=\\"axis xAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"translate(0,263)\\">
         <g class=\\"tick\\" opacity=\\"1\\" transform=\\"translate(78.5,0)\\">
           <line stroke=\\"#000\\" y2=\\"10\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"13\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">Oranges</text>
         </g>

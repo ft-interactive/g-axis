@@ -52,7 +52,9 @@ test("left-aligned, default scales", async () => {
             .yLabel()
             .attr(
                 "transform",
-                `translate(${yAxis.tickSize() - yAxis.labelWidth()}, 0)`
+                `translate(${Math.floor(
+                    yAxis.tickSize() - yAxis.labelWidth()
+                )}, 0)`
             );
 
         // Call parent container to update positioning

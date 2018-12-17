@@ -97,8 +97,9 @@ test("right-aligned, default scales", async () => {
             .yLabel()
             .attr(
                 "transform",
-                `translate(${currentFrame.dimension().width -
-                    yAxis.labelWidth()}, 0)`
+                `translate(${Math.floor(
+                    currentFrame.dimension().width - yAxis.labelWidth()
+                )}, 0)`
             );
     });
 

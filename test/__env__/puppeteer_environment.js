@@ -10,7 +10,7 @@
 const NodeEnvironment = require("jest-environment-node");
 const listen = require("test-listen");
 const micro = require("micro");
-const { launch } = require("puppeteer");
+const puppeteer = require("puppeteer");
 const { rollup } = require("rollup");
 
 class CustomEnvironment extends NodeEnvironment {
@@ -520,13 +520,14 @@ class CustomEnvironment extends NodeEnvironment {
         try {
             this.url = await listen(this.server);
 
-            this.browser = await launch({
+            this.browser = await puppeteer.launch({
                 args: [
                     "--no-sandbox",
                     "--disable-setuid-sandbox",
                     "--enable-font-antialiasing"
                 ]
             });
+
             this.global.page = await this.browser.newPage();
 
             await this.global.page.goto(this.url, {
