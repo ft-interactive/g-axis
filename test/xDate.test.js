@@ -34,9 +34,9 @@ test("bottom-aligned, default scales", async () => {
             .rem(currentFrame.rem())
             .frameName("webFrameMDefault")
             .align("bottom")
-            .tickSize(Math.round(currentFrame.rem() * 0.75))
-            .range([0, Math.round(currentFrame.dimension().width)])
-            .minorTickSize(Math.round(currentFrame.rem() * 0.3));
+            .tickSize(Math.floor(currentFrame.rem() * 0.75))
+            .range([0, Math.floor(currentFrame.dimension().width)])
+            .minorTickSize(Math.floor(currentFrame.rem() * 0.3));
 
         // Set up xAxis
         currentFrame.plot().call(xAxis);
@@ -46,13 +46,13 @@ test("bottom-aligned, default scales", async () => {
             .xLabel()
             .attr(
                 "transform",
-                `translate(0,${Math.round(currentFrame.dimension().height)})`
+                `translate(0,${Math.floor(currentFrame.dimension().height)})`
             );
         xAxis
             .xLabelMinor()
             .attr(
                 "transform",
-                `translate(0,${Math.round(currentFrame.dimension().height)})`
+                `translate(0,${Math.floor(currentFrame.dimension().height)})`
             );
     });
 
@@ -66,7 +66,7 @@ test("bottom-aligned, default scales", async () => {
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.round(x)}, ${Math.round(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
                 );
                 el.setAttribute("transform", updated);
             }
@@ -103,9 +103,9 @@ test("top-aligned, default scales", async () => {
             .rem(currentFrame.rem())
             .frameName("webFrameMDefault")
             .align("top")
-            .tickSize(Math.round(currentFrame.rem() * 0.75))
-            .range([0, Math.round(currentFrame.dimension().width)])
-            .minorTickSize(Math.round(currentFrame.rem() * 0.3));
+            .tickSize(Math.floor(currentFrame.rem() * 0.75))
+            .range([0, Math.floor(currentFrame.dimension().width)])
+            .minorTickSize(Math.floor(currentFrame.rem() * 0.3));
 
         // Set up xAxis
         currentFrame.plot().call(xAxis);
@@ -121,7 +121,7 @@ test("top-aligned, default scales", async () => {
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.round(x)}, ${Math.round(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
                 );
                 el.setAttribute("transform", updated);
             }

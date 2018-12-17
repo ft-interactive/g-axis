@@ -3,16 +3,16 @@
 exports[`left-aligned, default scales 1`] = `
 "<g class=\\"highlights\\"></g>
 <g class=\\"axis yAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"end\\">
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 33)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 32)\\">
     <line stroke=\\"#000\\" x2=\\"0\\"></line><text fill=\\"#000\\" x=\\"-3\\" dy=\\"0.32em\\" id=\\"webFrameMDefaultyLabel\\">Oranges</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 104)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 103)\\">
     <line stroke=\\"#000\\" x2=\\"0\\"></line><text fill=\\"#000\\" x=\\"-3\\" dy=\\"0.32em\\" id=\\"webFrameMDefaultyLabel\\">Lemons</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 175)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 174)\\">
     <line stroke=\\"#000\\" x2=\\"0\\"></line><text fill=\\"#000\\" x=\\"-3\\" dy=\\"0.32em\\" id=\\"webFrameMDefaultyLabel\\">Apples</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 246)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 245)\\">
     <line stroke=\\"#000\\" x2=\\"0\\"></line><text fill=\\"#000\\" x=\\"-3\\" dy=\\"0.32em\\" id=\\"webFrameMDefaultyLabel\\">Pears</text>
   </g>
 </g>"
@@ -20,17 +20,17 @@ exports[`left-aligned, default scales 1`] = `
 
 exports[`right-aligned, default scales 1`] = `
 "<g class=\\"highlights\\"></g>
-<g class=\\"axis yAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"start\\" transform=\\"transform(542, 0)\\">
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 33)\\">
+<g class=\\"axis yAxis\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"start\\" transform=\\"transform(541, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 32)\\">
     <line stroke=\\"#000\\" x2=\\"0\\"></line><text fill=\\"#000\\" x=\\"3\\" dy=\\"0.32em\\" id=\\"webFrameMDefaultyLabel\\">Oranges</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 104)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 103)\\">
     <line stroke=\\"#000\\" x2=\\"0\\"></line><text fill=\\"#000\\" x=\\"3\\" dy=\\"0.32em\\" id=\\"webFrameMDefaultyLabel\\">Lemons</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 175)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 174)\\">
     <line stroke=\\"#000\\" x2=\\"0\\"></line><text fill=\\"#000\\" x=\\"3\\" dy=\\"0.32em\\" id=\\"webFrameMDefaultyLabel\\">Apples</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 246)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(0, 245)\\">
     <line stroke=\\"#000\\" x2=\\"0\\"></line><text fill=\\"#000\\" x=\\"3\\" dy=\\"0.32em\\" id=\\"webFrameMDefaultyLabel\\">Pears</text>
   </g>
 </g>"

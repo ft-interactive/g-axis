@@ -55,7 +55,7 @@ test.skip("left-aligned, default scales", async () => {
             .yLabel()
             .attr(
                 "transform",
-                `translate(${Math.round(
+                `translate(${Math.floor(
                     yAxis.tickSize() - yAxis.labelWidth()
                 )}, 0)`
             );
@@ -74,7 +74,7 @@ test.skip("left-aligned, default scales", async () => {
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.round(x)}, ${Math.round(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
                 );
                 el.setAttribute("transform", updated);
             }
@@ -137,7 +137,7 @@ test.skip("right-aligned, default scales", async () => {
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.round(x)}, ${Math.round(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
                 );
                 el.setAttribute("transform", updated);
             }

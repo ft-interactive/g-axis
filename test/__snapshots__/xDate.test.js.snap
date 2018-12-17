@@ -6,10 +6,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(70, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">1975</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(142, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(141, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(213, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(212, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">85</text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(284, 0)\\">
@@ -21,13 +21,13 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(426, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">2000</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(498, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(497, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">05</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(569, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(568, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">10</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(640, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(639, 0)\\">
     <line stroke=\\"#000\\" y2=\\"15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"18\\" dy=\\"0.71em\\" id=\\"webFrameMDefaultxLabel\\">15</text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(668, 0)\\">
@@ -36,10 +36,10 @@ exports[`bottom-aligned, default scales 1`] = `
 </g>
 <g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\" transform=\\"transform(0, 277)\\">
   <path class=\\"domain\\" stroke=\\"#000\\" d=\\"M0.5,6V0.5H675.5V6\\"></path>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(14, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(13, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(28, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(27, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(42, 0)\\">
@@ -51,10 +51,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(70, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(85, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(84, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(99, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(98, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(113, 0)\\">
@@ -63,10 +63,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(127, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(142, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(141, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(156, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(155, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(170, 0)\\">
@@ -75,10 +75,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(184, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(199, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(198, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(213, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(212, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(227, 0)\\">
@@ -87,10 +87,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(241, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(256, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(255, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(270, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(269, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(284, 0)\\">
@@ -102,10 +102,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(312, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(327, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(326, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(341, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(340, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(355, 0)\\">
@@ -114,10 +114,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(369, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(384, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(383, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(398, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(397, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(412, 0)\\">
@@ -126,10 +126,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(426, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(441, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(440, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(455, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(454, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(469, 0)\\">
@@ -138,10 +138,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(483, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(498, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(497, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(512, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(511, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(526, 0)\\">
@@ -150,10 +150,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(540, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(555, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(554, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(569, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(568, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(583, 0)\\">
@@ -165,10 +165,10 @@ exports[`bottom-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(611, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(626, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(625, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(640, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(639, 0)\\">
     <line stroke=\\"#000\\" y2=\\"6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"9\\" dy=\\"0.71em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(654, 0)\\">
@@ -186,10 +186,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(70, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">1975</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(142, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(141, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">80</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(213, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(212, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">85</text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(284, 0)\\">
@@ -201,13 +201,13 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(426, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">2000</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(498, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(497, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">05</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(569, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(568, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">10</text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(640, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(639, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-15\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-18\\" dy=\\"0em\\" id=\\"webFrameMDefaultxLabel\\">15</text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(668, 0)\\">
@@ -216,10 +216,10 @@ exports[`top-aligned, default scales 1`] = `
 </g>
 <g class=\\"axis xAxis axis baseline\\" fill=\\"none\\" font-size=\\"10\\" font-family=\\"sans-serif\\" text-anchor=\\"middle\\">
   <path class=\\"domain\\" stroke=\\"#000\\" d=\\"M0.5,-6V0.5H675.5V-6\\"></path>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(14, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(13, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(28, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(27, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(42, 0)\\">
@@ -231,10 +231,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(70, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(85, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(84, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(99, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(98, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(113, 0)\\">
@@ -243,10 +243,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(127, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(142, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(141, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(156, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(155, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(170, 0)\\">
@@ -255,10 +255,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(184, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(199, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(198, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(213, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(212, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(227, 0)\\">
@@ -267,10 +267,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(241, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(256, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(255, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(270, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(269, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(284, 0)\\">
@@ -282,10 +282,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(312, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(327, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(326, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(341, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(340, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(355, 0)\\">
@@ -294,10 +294,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(369, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(384, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(383, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(398, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(397, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(412, 0)\\">
@@ -306,10 +306,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(426, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(441, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(440, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(455, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(454, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(469, 0)\\">
@@ -318,10 +318,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(483, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(498, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(497, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(512, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(511, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(526, 0)\\">
@@ -330,10 +330,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(540, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(555, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(554, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(569, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(568, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(583, 0)\\">
@@ -345,10 +345,10 @@ exports[`top-aligned, default scales 1`] = `
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(611, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(626, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(625, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
-  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(640, 0)\\">
+  <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(639, 0)\\">
     <line stroke=\\"#000\\" y2=\\"-6\\" id=\\"webFrameMDefaultxTick\\"></line><text fill=\\"#000\\" y=\\"-9\\" dy=\\"0em\\"></text>
   </g>
   <g class=\\"tick\\" opacity=\\"1\\" transform=\\"transform(654, 0)\\">

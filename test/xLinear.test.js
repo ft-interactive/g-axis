@@ -49,7 +49,7 @@ test("bottom-aligned, default scales", async () => {
             .xLabel()
             .attr(
                 "transform",
-                `translate(0,${Math.round(currentFrame.dimension().height)})`
+                `translate(0,${Math.floor(currentFrame.dimension().height)})`
             );
     });
 
@@ -63,7 +63,7 @@ test("bottom-aligned, default scales", async () => {
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.round(x)}, ${Math.round(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
                 );
                 el.setAttribute("transform", updated);
             }
@@ -121,7 +121,7 @@ test("top-aligned, default scales", async () => {
             if (x && y) {
                 const updated = transform.replace(
                     /translate\s?\(([\d.]+),\s?([\d.]+)\)/,
-                    `transform(${Math.round(x)}, ${Math.round(y)})`
+                    `transform(${Math.floor(x)}, ${Math.floor(y)})`
                 );
                 el.setAttribute("transform", updated);
             }
