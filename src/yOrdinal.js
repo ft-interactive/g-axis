@@ -53,10 +53,19 @@ export default function () {
             .attr('class', 'axis yAxis')
             .call(yAxis);
 
-        // Calculate width of widest .tick text
-        parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
-            labelWidth = Math.max(this.getBBox().width, labelWidth);
-        });
+        if (!labelWidth && parent.node().getBBox) {
+            // Calculate width of widest .tick text
+            parent.selectAll('.yAxis text').each(function calcTickTextWidth() {
+                labelWidth = Math.max(this.getBBox().width, labelWidth);
+            });
+        } else if (!labelWidth) {
+            const maxChars = d3.max(
+                parent.selectAll('.yAxis text').nodes(),
+                d => d3.select(d).text().length,
+            );
+
+            labelWidth = maxChars * rem;
+        }
 
         if (frameName) {
             yLabel
