@@ -98,10 +98,19 @@ export default function () {
             .attr('class', 'axis yAxis')
             .call(yAxis);
 
-        // Calculate width of widest .tick text
-        yLabel.selectAll('.yAxis text').each(function calcTickTextWidth() {
-            labelWidth = Math.max(this.getBBox().width, labelWidth);
-        });
+        if (!labelWidth && yLabel.node().getBBox) {
+            // Calculate width of widest .tick text
+            yLabel.selectAll('.yAxis text').each(function calcTickTextWidth() {
+                labelWidth = Math.max(this.getBBox().width, labelWidth);
+            });
+        } else if (!labelWidth) {
+            const maxChars = d3.max(
+                yLabel.selectAll('.yAxis text').nodes(),
+                d => d3.select(d).text().length,
+            );
+
+            labelWidth = maxChars * rem;
+        }
 
         // Use this to amend the tickSIze and re cal the vAxis
         if (tickSize < labelWidth) {
