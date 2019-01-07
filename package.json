@@ -1,7 +1,7 @@
 {
   "name": "g-axis",
   "author": "Bob Haslett",
-  "version": "1.0.1",
+  "version": "0.0.0",
   "description": "Module for rendering axes FT-style",
   "keywords": [
     "FT",
@@ -41,6 +41,7 @@
     "g-chartframe": "^5.2.2",
     "jest": "^23.6.0",
     "micro": "^9.1.4",
+    "npm-prepublish": "^1.2.3",
     "prettier-eslint": "^8.8.2",
     "pretty": "^2.0.0",
     "puppeteer": "^1.11.0",
