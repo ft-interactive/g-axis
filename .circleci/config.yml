@@ -1,26 +1,102 @@
+### FT IG tag-based npm publishing workflow v1
+
 version: 2
-jobs:
-  build:
-    working_directory: ~/ig
+references:
+  default_container_config: &default_container_config
     docker:
-      - image: circleci/node:latest-browsers
+      - image: node:8
+
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: ~/project
+
+  npm_cache_key: &npm_cache_key
+    v1-dependency-npm-{{ checksum "package-lock.json" }}
+
+  restore_node_modules: &restore_node_modules
+    restore_cache:
+      keys:
+        - *npm_cache_key
+        - v1-dependency-npm-
+
+  cache_node_modules: &cache_node_modules
+    save_cache:
+      key: *npm_cache_key
+      paths:
+        - ./node_modules/
+
+  only_version_tags: &only_version_tags
+    tags:
+      only: /^v.*$/
+
+jobs:
+  install:
+    <<: *default_container_config
     steps:
       - checkout
-      - restore_cache:
-          key: node_modules-{{ checksum "package-lock.json" }}
+      - run:
+          name: Upgrade npm
+          command: npm i -g npm
+      - *restore_node_modules
       - run:
           name: Install dependencies
-          command: npm install
-      - save_cache:
-          key: node_modules-{{ checksum "package-lock.json" }}
+          command: npm ci
+      - *cache_node_modules
+      - persist_to_workspace:
+          root: .
           paths:
-            - node_modules/
+            - .
+
+  test:
+    <<: *default_container_config
+    steps:
+      - *attach_workspace
       - run:
-          name: lint
+          name: Update container to support Puppeteer
+          command: |
+            apt-get update && apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
+            libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
+            libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+            libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
+            ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+      - run:
+          name: Run linting
           command: npm run lint
       - run:
-          name: test
+          name: Run tests
           command: npm test
       - run:
-          name: coverage
+          name: Run coverage
           command: npm run report-coverage
+
+  release_npm:
+    <<: *default_container_config
+    steps:
+      - *attach_workspace
+      - run:
+          name: Setup npm credentials
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > ${HOME}/.npmrc
+      - run:
+          name: Publish npm package
+          command: ./node_modules/.bin/npm-prepublish --verbose && npm publish --access public
+
+workflows:
+  version: 2
+  build-and-release:
+    jobs:
+      - install:
+          filters:
+            <<: *only_version_tags
+      - test:
+          requires:
+            - install
+          filters:
+            <<: *only_version_tags
+      - release_npm:
+          requires:
+            - install
+            - test
+          filters:
+            <<: *only_version_tags
+            branches:
+              ignore: /.*/
