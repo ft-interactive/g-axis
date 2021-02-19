@@ -1,4 +1,17 @@
+/**
+ * @file
+ * Linear y-axes
+ */
+
 import * as d3 from 'd3';
+import {
+    formatNumber,
+    generateBanding,
+    generateLabels,
+    getAxis,
+    getDecimalFormat,
+    setLabelIds,
+} from './utils';
 
 export default function () {
     let banding;
@@ -23,7 +36,7 @@ export default function () {
     let customFormat = false;
 
     function axis(parent) {
-        let deciCheck = false;
+        const deciCheck = false;
         const span = scale.domain()[1] - scale.domain()[0];
         const plotWidth = plotDim[0];
         const plotHeight = plotDim[1];
@@ -40,48 +53,21 @@ export default function () {
             scale.range(newRange);
         }
 
-        let deciFormat;
-        if (span >= 0.5) {
-            deciFormat = d3.format('.1f');
-        }
-        if (span < 0.5) {
-            deciFormat = d3.format('.2f');
-        }
-        if (span <= 0.011) {
-            deciFormat = d3.format('.3f');
-        }
-        if (span < 0.0011) {
-            deciFormat = d3.format('.4f');
-        }
-        if (span < 0.00011) {
-            deciFormat = d3.format('.5f');
-        }
-        if (span < 0.000011) {
-            deciFormat = d3.format('.6f');
-        }
+        const deciFormat = getDecimalFormat(span);
         const numberFormat = d3.format(',');
 
         const yAxis = getAxis(align)
             .ticks(numTicks)
             .scale(scale)
-            .tickFormat(formatNumber);
-
-        function formatNumber(d) {
-            const checkDecimal = Number.isInteger(d / divisor);
-            if (checkDecimal === false) {
-                deciCheck = true;
-            }
-            if (d / divisor === 0) {
-                return numberFormat(d / divisor);
-            }
-            if (logScale) {
-                return numberFormat(d / divisor);
-            }
-            if (deciCheck) {
-                return deciFormat(d / divisor);
-            }
-            return numberFormat(d / divisor);
-        }
+            .tickFormat(d =>
+                formatNumber(d, {
+                    divisor,
+                    numberFormat,
+                    deciFormat,
+                    deciCheck,
+                    logScale,
+                }),
+            );
 
         if (tickValues) {
             yAxis.tickValues(tickValues);
@@ -90,8 +76,6 @@ export default function () {
         if (customFormat) {
             yAxis.tickFormat(customFormat);
         }
-
-        const bandHolder = parent.append('g').attr('class', 'highlights');
 
         yLabel = parent
             .append('g')
@@ -126,64 +110,20 @@ export default function () {
         }
 
         if (frameName) {
-            yLabel
-                .selectAll('.axis.yAxis text')
-                .attr('id', `${frameName}yLabel`);
-            yLabel
-                .selectAll('.axis.yAxis line')
-                .attr('id', `${frameName}yTick`);
+            setLabelIds({ selection: yLabel, axis: 'y', frameName });
         }
 
         if (label) {
-            const defaultLabel = {
-                tag: label.tag,
-                hori: label.hori || 'left',
-                vert: label.vert || 'middle',
-                anchor: label.anchor || 'middle',
-                rotate: label.rotate || -90,
-            };
-
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-
-            const getVertical = vert =>
-                ({
-                    top: plotHeight - plotHeight,
-                    middle: plotHeight / 2,
-                    bottom: plotHeight,
-                }[vert]);
-
-            const calcOffset = () => {
-                if (tickSize > 0 && tickSize < rem) {
-                    return tickSize / 2;
-                }
-                return 0;
-            };
-
-            // prettier-ignore
-            const getHorizontal = (axisAlign, horiAlign) => ({
-                leftleft: 0 - (labelWidth + (rem * 0.6)),
-                leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
-                leftright: rem * 0.7,
-                rightleft: plotWidth - labelWidth,
-                rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
-                rightright: plotWidth + (rem) + calcOffset(),
-            }[axisAlign + horiAlign]);
-
-            axisLabel
-                .append('text')
-                .attr('y', getVertical(defaultLabel.vert))
-                .attr('x', getHorizontal(align, defaultLabel.hori))
-                .text(defaultLabel.tag);
-
-            const text = axisLabel.selectAll('text');
-            const width = text.node().getBBox().width / 2;
-            const height = text.node().getBBox().height / 2;
-            const textX = text.node().getBBox().x + width;
-            const textY = text.node().getBBox().y + height;
-            text.attr(
-                'transform',
-                `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
-            ).style('text-anchor', defaultLabel.anchor);
+            generateLabels('y', {
+                align,
+                label,
+                labelWidth,
+                parent,
+                plotHeight,
+                plotWidth,
+                rem,
+                tickSize,
+            });
         }
 
         if (banding) {
@@ -204,15 +144,13 @@ export default function () {
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            bandHolder
-                .selectAll('rect')
-                .data(bands)
-                .enter()
-                .append('rect')
-                .attr('x', 0)
-                .attr('width', plotWidth - labelWidth)
-                .attr('y', d => scale(d.pos))
-                .attr('height', d => d.height);
+            generateBanding('y', {
+                parent,
+                bands,
+                scale,
+                plotWidth,
+                labelWidth,
+            });
         }
 
         yLabel
@@ -221,13 +159,6 @@ export default function () {
             .classed('baseline', true);
 
         yLabel.selectAll('.domain').remove();
-    }
-
-    function getAxis(alignment) {
-        return {
-            left: d3.axisLeft(),
-            right: d3.axisRight(),
-        }[alignment];
     }
 
     axis.align = (d) => {

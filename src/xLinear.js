@@ -1,4 +1,18 @@
+/**
+ * @file
+ * Linear x-axes
+ */
+
 import * as d3 from 'd3';
+import {
+    formatNumber,
+    generateBanding,
+    generateLabels,
+    getAxis,
+    getBandWidth,
+    getDecimalFormat,
+    setLabelIds,
+} from './utils';
 
 export default function () {
     let banding;
@@ -21,15 +35,8 @@ export default function () {
     let tickValues;
     let customFormat = false;
 
-    function getAxis(alignment) {
-        return {
-            top: d3.axisTop(),
-            bottom: d3.axisBottom(),
-        }[alignment];
-    }
-
     function axis(parent) {
-        let deciCheck = false;
+        const deciCheck = false;
         const span = scale.domain()[1] - scale.domain()[0];
         const plotWidth = plotDim[0];
         const plotHeight = plotDim[1];
@@ -46,49 +53,22 @@ export default function () {
             scale = newScale;
         }
 
-        let deciFormat;
-        if (span >= 0.5) {
-            deciFormat = d3.format('.1f');
-        }
-        if (span < 0.5) {
-            deciFormat = d3.format('.2f');
-        }
-        if (span <= 0.011) {
-            deciFormat = d3.format('.3f');
-        }
-        if (span < 0.0011) {
-            deciFormat = d3.format('.4f');
-        }
-        if (span < 0.00011) {
-            deciFormat = d3.format('.5f');
-        }
-        if (span < 0.000011) {
-            deciFormat = d3.format('.6f');
-        }
+        const deciFormat = getDecimalFormat(span);
         const numberFormat = d3.format(',');
 
         const xAxis = getAxis(align)
             .tickSize(tickSize)
             .ticks(numTicks)
             .scale(scale)
-            .tickFormat(formatNumber);
-
-        function formatNumber(d) {
-            const checkDecimal = Number.isInteger(d / divisor);
-            if (checkDecimal === false) {
-                deciCheck = true;
-            }
-            if (d / divisor === 0) {
-                return numberFormat(d / divisor);
-            }
-            if (logScale) {
-                return numberFormat(d / divisor);
-            }
-            if (deciCheck) {
-                return deciFormat(d / divisor);
-            }
-            return numberFormat(d / divisor);
-        }
+            .tickFormat(d =>
+                formatNumber(d, {
+                    divisor,
+                    numberFormat,
+                    deciFormat,
+                    deciCheck,
+                    logScale,
+                }),
+            );
 
         if (tickValues) {
             xAxis.tickValues(tickValues);
@@ -97,8 +77,6 @@ export default function () {
         if (customFormat) {
             xAxis.tickFormat(customFormat);
         }
-
-        const bandHolder = parent.append('g').attr('class', 'highlights');
 
         xLabel = parent
             .append('g')
@@ -111,93 +89,38 @@ export default function () {
             .classed('baseline', true);
 
         if (frameName) {
-            xLabel
-                .selectAll('.axis.xAxis text')
-                .attr('id', `${frameName}xLabel`);
-            xLabel
-                .selectAll('.axis.xAxis line')
-                .attr('id', `${frameName}xTick`);
+            setLabelIds({ selection: xLabel, axis: 'x', frameName });
         }
 
         if (label) {
-            const defaultLabel = {
-                tag: label.tag,
-                hori: label.hori || 'middle',
-                vert: label.vert || 'bottom',
-                anchor: label.anchor || 'middle',
-                rotate: label.rotate || 0,
-            };
-
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-
-            const calcOffset = () => {
-                if (tickSize > 0 && tickSize < rem) {
-                    return tickSize + (rem * 0.8); // prettier-ignore
-                }
-                return (rem * 0.9); // prettier-ignore
-            };
-
-            const getVertical = (axisAlign, vertAlign) =>
-                ({
-                    toptop: 0 - rem,
-                    topmiddle: 0,
-                    topbottom: 0 + rem,
-                    bottomtop: plotHeight,
-                    bottommiddle: plotHeight + calcOffset(),
-                    bottombottom: plotHeight + calcOffset() + (rem * 1.1), // prettier-ignore
-                }[axisAlign + vertAlign]);
-
-            const getHorizontal = hori =>
-                ({
-                    left: plotWidth - plotWidth,
-                    middle: plotWidth / 2,
-                    right: plotWidth,
-                }[hori]);
-
-            axisLabel
-                .append('text')
-                .attr('y', getVertical(align, defaultLabel.vert))
-                .attr('x', getHorizontal(defaultLabel.hori))
-                .text(defaultLabel.tag);
-
-            const text = axisLabel.selectAll('text');
-            const width = text.node().getBBox().width / 2;
-            const height = text.node().getBBox().height / 2;
-            const textX = text.node().getBBox().x + width;
-            const textY = text.node().getBBox().y + height;
-            text.attr(
-                'transform',
-                `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
-            ).style('text-anchor', defaultLabel.anchor);
+            generateLabels('x', {
+                align,
+                label,
+                parent,
+                plotHeight,
+                plotWidth,
+                rem,
+                tickSize,
+            });
         }
 
         if (banding) {
-            const getBandWidth = (index, bands) => {
-                if (index === bands.length - 1) {
-                    return plotWidth - scale(bands[index]);
-                }
-                return scale(bands[index + 1]) - scale(bands[index]);
-            };
-
             const bands = (tickValues
                 ? xAxis.tickValues()
                 : scale.ticks(numTicks)
             )
                 .map((d, i, a) => ({
                     pos: d,
-                    width: getBandWidth(i, a),
+                    width: getBandWidth({
+                        index: i,
+                        bands: a,
+                        plotWidth,
+                        scale,
+                    }),
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            bandHolder
-                .selectAll('rect')
-                .data(bands)
-                .enter()
-                .append('rect')
-                .attr('y', 0)
-                .attr('height', plotHeight)
-                .attr('x', d => scale(d.pos))
-                .attr('width', d => d.width);
+            generateBanding('x', { parent, bands, plotHeight, scale });
         }
 
         xLabel

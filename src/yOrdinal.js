@@ -1,4 +1,10 @@
+/**
+ * @file
+ * Ordinal y-axes
+ */
+
 import * as d3 from 'd3';
+import { generateBanding, generateLabels, getAxis } from './utils';
 
 export default function () {
     let banding;
@@ -20,13 +26,6 @@ export default function () {
     let frameName;
     let invert = false;
 
-    function getAxis(alignment) {
-        return {
-            left: d3.axisLeft(),
-            right: d3.axisRight(),
-        }[alignment];
-    }
-
     function axis(parent) {
         const plotWidth = plotDim[0];
         const plotHeight = plotDim[1];
@@ -45,8 +44,6 @@ export default function () {
         } else {
             scale.paddingInner(0.2);
         }
-
-        const bandHolder = parent.append('g').attr('class', 'highlights');
 
         yLabel = parent
             .append('g')
@@ -77,55 +74,16 @@ export default function () {
         }
 
         if (label) {
-            const defaultLabel = {
-                tag: label.tag,
-                hori: label.hori || 'left',
-                vert: label.vert || 'middle',
-                anchor: label.anchor || 'middle',
-                rotate: label.rotate || -90,
-            };
-
-            const axisLabel = parent.append('g').attr('class', 'axis xAxis');
-
-            const getVertical = vert =>
-                ({
-                    top: plotHeight - plotHeight,
-                    middle: plotHeight / 2,
-                    bottom: plotHeight,
-                }[vert]);
-
-            const calcOffset = () => {
-                if (tickSize > 0 && tickSize < rem) {
-                    return tickSize / 2;
-                }
-                return 0;
-            };
-
-            // prettier-ignore
-            const getHorizontal = (axisAlign, horiAlign) => ({
-                leftleft: 0 - (labelWidth + (rem * 0.6)),
-                leftmiddle: 0 - (labelWidth / 2) - calcOffset(),
-                leftright: rem * 0.7,
-                rightleft: plotWidth - labelWidth,
-                rightmiddle: plotWidth + (labelWidth / 2) + (rem * 0.5) + calcOffset(),
-                rightright: plotWidth + (rem) + calcOffset(),
-            }[axisAlign + horiAlign]);
-
-            axisLabel
-                .append('text')
-                .attr('y', getVertical(defaultLabel.vert))
-                .attr('x', getHorizontal(align, defaultLabel.hori))
-                .text(defaultLabel.tag);
-
-            const text = axisLabel.selectAll('text');
-            const width = text.node().getBBox().width / 2;
-            const height = text.node().getBBox().height / 2;
-            const textX = text.node().getBBox().x + width;
-            const textY = text.node().getBBox().y + height;
-            text.attr(
-                'transform',
-                `rotate(${defaultLabel.rotate}, ${textX}, ${textY})`,
-            ).style('text-anchor', defaultLabel.anchor);
+            generateLabels('y', {
+                align,
+                label,
+                labelWidth,
+                parent,
+                plotHeight,
+                plotWidth,
+                rem,
+                tickSize,
+            });
         }
 
         if (banding) {
@@ -136,17 +94,14 @@ export default function () {
                 }))
                 .filter((d, i) => i % 2 === 0);
 
-            const yOffset = (scale.step() / 100) * (scale.paddingInner() * 100); // prettier-ignore
-
-            // prettier-ignore
-            bandHolder.selectAll('rect')
-                .data(bands)
-                .enter()
-                .append('rect')
-                .attr('x', 0)
-                .attr('width', plotWidth - labelWidth)
-                .attr('y', d => scale(d.pos) - (yOffset / 2))
-                .attr('height', scale.step());
+            generateBanding('y', {
+                parent,
+                bands,
+                scale,
+                plotWidth,
+                labelWidth,
+                align,
+            });
         }
 
         yLabel.selectAll('.domain').remove();
