@@ -1,4 +1,4 @@
-# gAxis [![codecov](https://codecov.io/gh/ft-interactive/g-axis/branch/master/graph/badge.svg)](https://codecov.io/gh/ft-interactive/g-axis)
+# gAxis [![codecov](https://codecov.io/gh/ft-interactive/g-axis/branch/main/graph/badge.svg)](https://codecov.io/gh/ft-interactive/g-axis)
 
 Pre styled centralised repository of axis for use with the FT's g-chartframe architecture as part of the Visual Vocabulary. Creates ordinal, linear or date axis that can be appended to the <b>.plot</b> obejct in the g-chartframe hopefully eliminating the need to code another standard axis or set up the tick format for a date sequence.
 
@@ -15,7 +15,7 @@ The FT axis styles---add the folowwing link in your index file header
 ```html
 <link
   rel="stylesheet"
-  href="//rawgit.com/ft-interactive/visual-vocabulary-templates/master/styles.css"
+  href="//rawgit.com/ft-interactive/visual-vocabulary-templates/main/styles.css"
 />
 ```
 
@@ -42,9 +42,9 @@ All examples shown are from the web frame style.
 Create and call a y-axis first, as it returms <b>.labelWidth()</b>, which holds a value equal to the width of the widest tick label on the y-axis. This value is used to re-define the left or right margin of the chartFrame before defining the <b>.range()</b> of the x axis e.g.
 
 yOrdinal axis where the width of 'Switzerland' is returned in <b>.labelWidth()</b>
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-large.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLabel-large.png)
 The tick 'Dem Republic of Congo' is much longer so will leave less space for the x axis <b>.range()</b>
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLabel-small.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLabel-small.png)
 
 For more detail on <b>.labelWidth()</b> and its use in positioning see:
 
@@ -84,7 +84,7 @@ currentFrame.plot()
 	.call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-default.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-default.png)
 
 Use the current frame dimensions to define your <b>.range()</b> and the <b>.ticksize()</b> and a <b>.domian()</b>. This will give you a basic working axis correctly positioned
 
@@ -101,7 +101,7 @@ currentFrame.plot()
     .call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-sized.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-sized.png)
 
 It is good practice to pass <b>.plotDim(), .rem() .divisor() </b>and <b>.frameName</b> to the axis when you first set it up as they are used in some of the in-built functionality, such as <b>.banding()</b> and <b>.label()</b> and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass <b>.invert()</b> and <b>.logScale()</b> at this point also.
 
@@ -131,16 +131,16 @@ currentFrame.plot()
 Before you can position an axis you need to know the steps the g-axis component goes through to render left and right aligned axis when it is called. yLinear axis nearly always have a take into account a <b>.tickSize()</b>. To see what happen when you render a y-axis without a <b>.tickSize()</b> see the similar [yOrdinal postioning](#yordpos).
 
 yLinear axis always take the left hand side of the currentFrame.plot() as their origin. Unless specified the default alignment for ylinear is right. The following example assumes a standard (width of currentFrame) <b>tickSize()</b>. For more information on positioning axis with short and long ticks see [tickSize()](#ylineartickSize).
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-howright.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-howright.png)
 
 Left alignment are be drawn from the origin to the left, because of this the labels do not need to be translated.
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-howleft.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-howleft.png)
 
 Left hand axis will need to be translated to be positioned correctly. See below.
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-alignLeft.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-alignLeft.png)
 
 The rendered axis return the width of the widest text label via <b>.labelWidth()</b>. this will vary depending on the text e.g. the label '100,000' will return a larger value than '10'
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelwidth.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-labelwidth.png)
 
 <b>.labelWidth()</b> is used to amend the appropriate margin of the currentFrame so that text is positioned outside the plot object. The following code when added to you index.js file after the y-axis has been called will resize the margin depending on the <b>.align()</b> for axis with ticks of a standard size. For positioning axis where the ticks are longer or shorter then the width of the chartFrame see [tickSize()](#ylineartickSize).
 
@@ -161,7 +161,7 @@ d3.select(currentFrame.plot().node().parentNode)
 	.call(currentFrame);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-resized.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-resized.png)
 
 The currentFrame can then be used to correctly define the <b>.range()</b> values of an x-axis.
 
@@ -193,14 +193,14 @@ yAxis
 	.align('left');
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-left.png)
 
 ```
 yAxis
 	.align('right');
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-right.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-right.png)
 
 ### <a id='ylinearbanding'>myAxis.banding([Boolean]</a>
 
@@ -217,7 +217,7 @@ yAxis
 	.banding(true)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-banding.png)
 
 ```
 const plotDim = [currentFrame.dimension().width, currentFrame.dimension().height];
@@ -229,7 +229,7 @@ yAxis
 	.numTicks(10)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-banding2.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-banding2.png)
 
 ### <a id='ylineardivisor'>myAxis.divisor([Number]</a>
 
@@ -238,7 +238,7 @@ Used to help format ticks values whane the data range contains large number e.g.
 <b>Note </b> It is very important to make he appropriate addition to the subtitle of the chart when the divisor has a value other that 1 e.g. adding the text 'million'
 
 Without using a divisor the chart would be labelled like this:
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-divisorBefore.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-divisorBefore.png)
 
 After:
 
@@ -247,7 +247,7 @@ yAxis
 	.divisor(1000000)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-divisorAfter.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-divisorAfter.png)
 
 ### <a id='ylineardomain'>myAxis.domain([Array])</a>
 
@@ -271,7 +271,7 @@ yAxis
 	.invert(true)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-invert.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-invert.png)
 
 ### <a id='ylinearlabel'>myAxis.label([Object])</a>
 
@@ -292,11 +292,11 @@ yAxis
 	.label(true)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelDefault.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-labelDefault.png)
 
 ### <a id='ylinearlabelPos'>Postioning yLinear labels)</a>
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelPosition.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-labelPosition.png)
 
 Positioning a label top left on a right hand axis.
 
@@ -317,7 +317,7 @@ yAxis
     .label(true)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelTopright.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-labelTopright.png)
 Most commonly used right hand axis. <b>Note</b> if note specified, the vertical position and text anchor revert to their default setting.
 
 ```
@@ -332,7 +332,7 @@ yAxis
     .label(true)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelCenterright.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-labelCenterright.png)
 
 ### <a id='ylinearlabelWidth'>myAxis.labelWidth([Number])</a>
 
@@ -341,7 +341,7 @@ Used to return the width of the text on the axis tick. Will vary depending on ti
 ### <a id='ylinearnLog'>myAxis.logScale([Boolean])</a>
 
 Logscales are a nonlinear scale used when there is a large range in the dataset, commonly used to project earthquake data or to minimise clustering when the data contains statistical outlayers e.g. Point 11 on the chart below. All the other data on the chart is grouped between 0 and 100, so when it is projected using a standard linear scale, it is difficult to disyinguish.
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-linearScale.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-linearScale.png)
 
 Using a log scale disperses some of the clustering and makes the data easier to read, but still shows the outlaying point 11.
 
@@ -352,7 +352,7 @@ yAxis
     .logscale(true)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-logScale.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-logScale.png)
 
 ### <a id='ylinearnumTicks'>myAxis.numTicks([Number])</a>
 
@@ -363,14 +363,14 @@ yAxis
     .numTicks(3)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-numticks.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-numticks.png)
 
 ```
 yAxis
     .numTicks(5)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-numticks5.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-numticks5.png)
 
 ### <a id='ylinearrange'>myAxis.range([Array])</a>
 
@@ -389,7 +389,7 @@ yAxis
 .tickFormat(d3.format(".2f"))
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-labelFormat.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-labelFormat.png)
 
 ### <a id='ylineartickSize'>myAxis.tickSize([Number])</a>
 
@@ -408,7 +408,7 @@ currentFrame.plot()
     .call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickSize.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-tickSize.png)
 
 Sizeing of ticks on a chart can be broken down into three categories.
 
@@ -436,7 +436,7 @@ currentFrame.plot()
     .call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickShort.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-tickShort.png)
 
 Add the following code to translate the axis into the correct position and adjust the right margin of the currentFrame so that the labels and the ticks are on the outside of the frame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
 
@@ -450,7 +450,7 @@ d3.select(currentFrame.plot().node().parentNode)
 	.call(currentFrame);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickShortRightTrans.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-tickShortRightTrans.png)
 
 #### <a id='ylinearystandardTicks'>Standard ticks</a>
 
@@ -470,7 +470,7 @@ currentFrame.plot()
     .call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandard.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-tickStandard.png)
 
 You will need to adjust the currentFrame right hand margin to include the width of the tick lables so that the labels are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
 
@@ -483,7 +483,7 @@ currentFrame.plot()
     .call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-right.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-right.png)
 
 For a left hand axis:
 
@@ -501,7 +501,7 @@ currentFrame.plot()
     .call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickStandardL.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-tickStandardL.png)
 
 This will then need to be tranlated the width of the currentFrame to position it correctly and you will need to adjust the currentFrame left hand margin to include the width of the tick lables so that the labels are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
 
@@ -515,7 +515,7 @@ d3.select(currentFrame.plot().node().parentNode)
             .call(currentFrame);;
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-left.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-left.png)
 
 #### <a id='ylinearyLongTicks'>Long ticks</a>
 
@@ -534,7 +534,7 @@ currentFrame.plot()
     .call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-longRight.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-longRight.png)
 You will need to adjust the currentFrame right hand margin to include the width of the tick lables so that the labels and an amount of the ticks equal to the <b>.rem() \* .75</b> is prodruding from the <b>currentFrame.plot()</b>are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
 
 ```
@@ -546,7 +546,7 @@ currentFrame.plot()
     .call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-longRightSized.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-longRightSized.png)
 
 For the left hand axis:
 
@@ -564,7 +564,7 @@ currentFrame.plot()
     .call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-longLeft.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-longLeft.png)
 
 This will then need to be tranlated the width of the currentFrame to position it correctly and you will need to adjust the currentFrame left hand margin to include the width of the tick lables so that the labels are on the outside of the currentFrame. For information on this see [yLinear Postioning](#ylinpos) and [important information](#important).
 
@@ -579,7 +579,7 @@ d3.select(currentFrame.plot().node().parentNode)
 .call(currentFrame);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-tickLongLTrans.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-tickLongLTrans.png)
 
 ### <a id='ylinearyAxisHighlight'>myAxis.yAxisHighlight([Number])</a>
 
@@ -590,14 +590,14 @@ yAxis
   .yAxisHighlight(100)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-highlight.png)
 
 ```
 yAxis
   .yAxisHighlight(-100)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yLinear-highlight2.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yLinear-highlight2.png)
 
 # <a id='yordinal'>yOrdinal</a>
 
@@ -622,7 +622,7 @@ currentFrame.plot()
 	.call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-default.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yOrdinal-default.png)
 
 Use the current frame dimensions to define your <b>.range()</b>. The default <b>.tickSize()</b> on the yOrdinal axis is 0. Also shown here with the default <b>.domain()</b> For more infor mation on changing this and positioning yOrdinal axis with tick see ticksize tc
 
@@ -636,7 +636,7 @@ currentFrame.plot()
 	.call(yAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-range.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yOrdinal-range.png)
 
 It is good practice to pass <b>.plotDim()</b>, <b>.rem()</b>, <b>.divisor()</b> and <b>.frameName()</b> to the axis when you first set it up as they are used in some of the in-built functionality, such as <b>.banding()</b> and <b>.label()</b> and attaching id tags used by the Pre-flight illustrator script. It would also be a good idea to pass <b>.invert()</b> and <b>.logScale()</b> at this point also. This will then need to be correctly positioned, see [yOrdinal postioning](#yordpos)
 
@@ -664,16 +664,16 @@ currentFrame.plot()
 Before you can position an axis you need to know the steps the g-axis component goes through to render left and right aligned axis when it is called. yOrdinal axis nearly never have a <b>.tickSize()</b>. For information about rendering a y-axis with a <b>.tickSize()</b> see the similar [yLinear Postioning](#ylinpos).
 
 The following example assumes their will only be labels and that the alignment is left (default). For more information on positioning yOrdinal with ticks see [tickSize()](#ylineartickSize).
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-howLeft.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yOrdinal-howLeft.png)
 
 On right aligned axis the labels are translated right. The whole axis will also need to bee moved
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-howRight.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yOrdinal-howRight.png)
 
 yOrdinal axis always take the left hand side of the currentFrame.plot() as their origin. Unless a <b>tickSize()</b> is specified both the left and right aligned axis are drawn to the left of the origin e.g.
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-alignleft.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yOrdinal-alignleft.png)
 
 Only if a <b>tickSize()</b> is specified on a right align axis (can't think when this would be) does the axis get push to the right e.g.
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/yOrdinal-alignleft.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/yOrdinal-alignleft.png)
 
 ```
 const currentFrame = frame[frameName];
@@ -713,7 +713,7 @@ currentFrame.plot()
 	.call(xAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-default.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/xDate-default.png)
 
 ### Postioning
 
@@ -731,7 +731,7 @@ if (align == 'top' ){
 }
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-default-bottom.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/xDate-default-bottom.png)
 You can now use the <b>.align()</b> to position the axis at the top or the bottom of the fram, see API reference
 
 ### xDate API reference
@@ -755,7 +755,7 @@ You can now use the <b>.align()</b> to position the axis at the top or the botto
 - "days" -- every day
 
 The interval of the ticks will also effect the tick formatting, which will default to the following:
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-tick-format.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/xDate-tick-format.png)
 
 #xAxis<b>.tickSize([Number])</b> Defines the size of the ticks. Usually set to <b>.rem()</b> \*.75 for the major ticks. When full height ticks are required some adjustment will be needed to the positioning of the axis, see examples
 
@@ -791,7 +791,7 @@ currentFrame.plot()
     .call(myXAxis);
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-yearly.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/xDate-yearly.png)
 
 ### Every ten years
 
@@ -813,7 +813,7 @@ myXAxis
 	.minorTickSize(currentFrame.rem()*.3)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-decades.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/xDate-decades.png)
 
 ### Every five years
 
@@ -835,7 +835,7 @@ myXAxis
 	.minorTickSize(currentFrame.rem()*.3)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-lustrum.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/xDate-lustrum.png)
 
 ### Every month
 
@@ -857,7 +857,7 @@ myXAxis
 	.minorTickSize(currentFrame.rem()*.3)
 ```
 
-![alt tag](https://github.com/ft-interactive/g-axis/blob/master/images/xDate-months.png)
+![alt tag](https://github.com/ft-interactive/g-axis/blob/main/images/xDate-months.png)
 
 ## <a id='ylinear'>yLinear</a>
 
