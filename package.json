@@ -27,7 +27,7 @@
     "lint:fix": "eslint --fix {index.js,src/*.js,test/*.js}"
   },
   "dependencies": {
-    "d3": "^4.9.1"
+    "d3": "^7.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
