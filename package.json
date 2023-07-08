@@ -39,7 +39,7 @@
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.14.0",
     "g-chartframe": "^5.2.2",
-    "jest": "^23.6.0",
+    "jest": "^29.6.1",
     "micro": "^9.1.4",
     "npm-prepublish": "^1.2.3",
     "prettier-eslint": "^8.8.2",
